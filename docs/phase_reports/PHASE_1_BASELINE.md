@@ -1,5 +1,7 @@
 # Phase 1: UVH-26 MV subset baseline closeout
 
+**Phase 1 is complete under the subset-based entry gate.** The baseline checkpoint commit `a4eabf1475d479332f1332a99ae24fac94b2b908` is verified on GitHub. Controlled Phase 2 experiments are eligible to begin; none were started in this task.
+
 The proper YOLOv8n baseline completed **30/30 epochs**, process exit **0**, best checkpoint **epoch 30**, with **no early stopping**. Fresh standalone evaluation and synchronized Apple MPS timing are complete. Phase 2 training has not started. The final delivery/gate status is recorded in `reports/audit/phase2_subset_gate.json`; a Git checkpoint is required before controlled Phase 2 work.
 
 This is a **subset validation baseline**, not a full-dataset result, test-set result, production readiness claim or completed traffic-analytics system.
