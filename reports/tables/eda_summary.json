@@ -1,0 +1,46 @@
+{
+  "box_area_pixels": {
+    "25%": 5890.0,
+    "50%": 14688.0,
+    "75%": 39624.0,
+    "count": 316220.0,
+    "max": 2072954.4058,
+    "mean": 41771.35229433996,
+    "min": 10.61974043785085,
+    "std": 90226.2026042713
+  },
+  "classes": {
+    "Bicycle": 3391,
+    "Bus": 9286,
+    "Hatchback": 30290,
+    "LCV": 17345,
+    "MUV": 6523,
+    "Mini-bus": 873,
+    "Others": 352,
+    "SUV": 13175,
+    "Sedan": 15950,
+    "Tempo-traveller": 1680,
+    "Three-wheeler": 52428,
+    "Truck": 13011,
+    "Two-wheeler": 149730,
+    "Van": 2186
+  },
+  "images": 26646,
+  "objects_per_image": {
+    "25%": 6.0,
+    "50%": 10.0,
+    "75%": 16.0,
+    "count": 26646.0,
+    "max": 66.0,
+    "mean": 11.867447271635518,
+    "min": 1.0,
+    "std": 7.68397137987666
+  },
+  "size_counts_original_resolution": {
+    "large": 199292,
+    "medium": 112887,
+    "small": 4041
+  },
+  "size_definition": "small <32\u00b2, medium 32\u00b2 to <96\u00b2, large >=96\u00b2 original pixels; not resized training pixels",
+  "valid_boxes": 316220
+}

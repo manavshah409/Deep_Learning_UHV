@@ -1,0 +1,38 @@
+{
+  "class_frequencies": {
+    "train:0": 9045,
+    "train:1": 4717,
+    "train:10": 510,
+    "train:11": 1039,
+    "train:12": 661,
+    "train:13": 103,
+    "train:2": 3952,
+    "train:3": 1994,
+    "train:4": 2726,
+    "train:5": 3917,
+    "train:6": 15758,
+    "train:7": 44756,
+    "train:8": 5191,
+    "train:9": 240,
+    "val:0": 2402,
+    "val:1": 1169,
+    "val:10": 130,
+    "val:11": 278,
+    "val:12": 183,
+    "val:13": 31,
+    "val:2": 1028,
+    "val:3": 541,
+    "val:4": 627,
+    "val:5": 933,
+    "val:6": 4016,
+    "val:7": 11624,
+    "val:8": 1322,
+    "val:9": 58
+  },
+  "split_counts": {
+    "train": 8000,
+    "val": 2000
+  },
+  "ultralytics_scan": "passed",
+  "version": "uvh26_mv_yolo_v1/subsets/baseline_seed42_v2"
+}

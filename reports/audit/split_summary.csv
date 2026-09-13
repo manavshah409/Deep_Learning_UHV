@@ -1,0 +1,3 @@
+split,images,annotations,disk_images,empty_annotation_list,empty_images,images_without_annotations,invalid_annotations
+train,21349,252723,525,False,False,0,0
+val,5297,63497,0,False,False,0,0

@@ -1,0 +1,20 @@
+{
+  "train": {
+    "first_box_count": 26,
+    "first_tensor_shape": [
+      3,
+      640,
+      640
+    ],
+    "images": 64
+  },
+  "val": {
+    "first_box_count": 1,
+    "first_tensor_shape": [
+      3,
+      640,
+      640
+    ],
+    "images": 32
+  }
+}

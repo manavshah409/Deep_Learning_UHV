@@ -1,0 +1,25 @@
+{
+  "batch": 8,
+  "device": "mps",
+  "duration_seconds": 10.19996512500802,
+  "f1_note": "Macro mean of per-class F1 at Ultralytics selected confidence operating point.",
+  "fps_note": "Validation-batch throughput, excludes file I/O and application overhead; not end-to-end video FPS.",
+  "imgsz": 640,
+  "inference_only_fps": 161.56682743699383,
+  "macro_f1": 0.004019129019129017,
+  "map50": 0.000625,
+  "map50_95": 0.00043303571428571425,
+  "parameters": 3013578,
+  "pipeline_fps": 101.37184555876789,
+  "precision": 0.022366522366522368,
+  "recall": 0.0023790046578406987,
+  "speed_ms_per_image": {
+    "inference": 6.189389343489893,
+    "loss": 0.00016537342162337154,
+    "postprocess": 3.373989593455917,
+    "preprocess": 0.3011276257893769
+  },
+  "split": "val",
+  "weights_bytes": 6224938,
+  "weights_sha256": "4808f80e387a019bee01a3dceaea255320f125c1c8161bd53d85b4c1e71c9753"
+}

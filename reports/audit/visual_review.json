@@ -1,0 +1,674 @@
+{
+  "class_coverage": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "dataset_version": "uvh26_mv_yolo_v1/subsets/baseline_seed42_v2",
+  "decision": "42-image representative review passes conversion alignment with documented source annotation noise. Unresolved geometry and two visibly degraded candidates excluded without changing raw data. No repaired or clipped boxes. This sample does not establish semantic perfection of all annotations.",
+  "findings": [
+    {
+      "finding": "Overlapping truck boxes include a loose box; source annotation quality limitation, no global coordinate transform error.",
+      "image": "train_2897"
+    },
+    {
+      "finding": "Sparse scene annotates one SUV while other parked vehicles are visible; source annotation completeness limitation.",
+      "image": "train_26"
+    },
+    {
+      "finding": "Dense occluded scenes show plausible alignment with crowded overlapping boxes.",
+      "image": "train_5182 and val_1364"
+    },
+    {
+      "finding": "Very small boundary object and handcart labelled Others; category retained without relabelling.",
+      "image": "train_25132"
+    },
+    {
+      "finding": "Both parked two-wheelers and boundary three-wheeler align. Source scene contains additional visible vehicles without boxes; retain documented source incompleteness.",
+      "image": "train_25440"
+    },
+    {
+      "finding": "Two motorcycle/rider boxes and bicycle/rider box align; clear image accepted as validation replacement.",
+      "image": "val_6452"
+    }
+  ],
+  "manifest_sha256": "990054a93e300a90321db19b3d0bcd98a488a891cd4e2dbd88425f4eb592c2af",
+  "review_index_sha256": "ac13d735fc351cadbbf04eb9a149bb5c8fb9c69120e2a7647872117dd684e5f6",
+  "review_method": "40 rendered overlays are byte-identical to previously inspected images; both new replacement overlays separately inspected at full image size. Hash comparison recorded in baseline_v2_review_reuse.json.",
+  "reviewed_images": [
+    {
+      "classes": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "file": "train_17614.jpg",
+      "image_id": 17614,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        8
+      ],
+      "file": "train_3155.jpg",
+      "image_id": 3155,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "file": "train_705.jpg",
+      "image_id": 705,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        1,
+        2,
+        7,
+        11
+      ],
+      "file": "train_20370.jpg",
+      "image_id": 20370,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        6,
+        7,
+        11
+      ],
+      "file": "train_7627.jpg",
+      "image_id": 7627,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "file": "train_6802.jpg",
+      "image_id": 6802,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        11
+      ],
+      "file": "train_6212.jpg",
+      "image_id": 6212,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        7,
+        8,
+        10
+      ],
+      "file": "train_4010.jpg",
+      "image_id": 4010,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        6,
+        7
+      ],
+      "file": "train_20235.jpg",
+      "image_id": 20235,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "file": "train_2897.jpg",
+      "image_id": 2897,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        1,
+        4,
+        6,
+        7,
+        10
+      ],
+      "file": "train_18651.jpg",
+      "image_id": 18651,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        4,
+        6,
+        7,
+        11
+      ],
+      "file": "train_20349.jpg",
+      "image_id": 20349,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "file": "train_24404.jpg",
+      "image_id": 24404,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        4,
+        6,
+        7
+      ],
+      "file": "train_15071.jpg",
+      "image_id": 15071,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        2,
+        5,
+        6,
+        7,
+        8
+      ],
+      "file": "train_2398.jpg",
+      "image_id": 2398,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        2,
+        6,
+        7,
+        8,
+        9
+      ],
+      "file": "train_16309.jpg",
+      "image_id": 16309,
+      "reasons": [
+        "seed42 random train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "file": "train_5182.jpg",
+      "image_id": 5182,
+      "reasons": [
+        "densest train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        2
+      ],
+      "file": "train_26.jpg",
+      "image_id": 26,
+      "reasons": [
+        "sparsest train"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        7,
+        11
+      ],
+      "file": "val_17721.jpg",
+      "image_id": 17721,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7
+      ],
+      "file": "val_2994.jpg",
+      "image_id": 2994,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        3,
+        6,
+        7,
+        8
+      ],
+      "file": "val_488.jpg",
+      "image_id": 488,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        1,
+        6,
+        7,
+        12
+      ],
+      "file": "val_20363.jpg",
+      "image_id": 20363,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        3,
+        6,
+        7
+      ],
+      "file": "val_7257.jpg",
+      "image_id": 7257,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        5,
+        7
+      ],
+      "file": "val_6461.jpg",
+      "image_id": 6461,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        2,
+        6,
+        7
+      ],
+      "file": "val_5776.jpg",
+      "image_id": 5776,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "file": "val_3793.jpg",
+      "image_id": 3793,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        7,
+        11
+      ],
+      "file": "val_6452.jpg",
+      "image_id": 6452,
+      "reasons": [
+        "seed42 random val",
+        "audited replacement"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        2,
+        6,
+        7,
+        10
+      ],
+      "file": "val_2618.jpg",
+      "image_id": 2618,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        6,
+        7,
+        8
+      ],
+      "file": "val_18579.jpg",
+      "image_id": 18579,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        3,
+        6,
+        7,
+        8
+      ],
+      "file": "val_20358.jpg",
+      "image_id": 20358,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        4,
+        6,
+        7,
+        11
+      ],
+      "file": "val_24359.jpg",
+      "image_id": 24359,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        6,
+        7,
+        11
+      ],
+      "file": "val_15345.jpg",
+      "image_id": 15345,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        6,
+        7,
+        8,
+        12
+      ],
+      "file": "val_2169.jpg",
+      "image_id": 2169,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        1,
+        6,
+        8,
+        11
+      ],
+      "file": "val_16474.jpg",
+      "image_id": 16474,
+      "reasons": [
+        "seed42 random val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "file": "val_1364.jpg",
+      "image_id": 1364,
+      "reasons": [
+        "densest val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        2
+      ],
+      "file": "val_11.jpg",
+      "image_id": 11,
+      "reasons": [
+        "sparsest val"
+      ],
+      "split": "val"
+    },
+    {
+      "classes": [
+        0,
+        6,
+        7,
+        13
+      ],
+      "file": "train_25132.jpg",
+      "image_id": 25132,
+      "reasons": [
+        "smallest normalized object"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        5,
+        6,
+        7,
+        8
+      ],
+      "file": "train_3926.jpg",
+      "image_id": 3926,
+      "reasons": [
+        "nearest coordinate boundary"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        6,
+        7,
+        9,
+        12
+      ],
+      "file": "train_231.jpg",
+      "image_id": 231,
+      "reasons": [
+        "rare class Mini-bus exposure"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        2,
+        10
+      ],
+      "file": "train_13105.jpg",
+      "image_id": 13105,
+      "reasons": [
+        "rare class Tempo-traveller exposure"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        7,
+        8,
+        13
+      ],
+      "file": "train_5007.jpg",
+      "image_id": 5007,
+      "reasons": [
+        "rare class Others exposure"
+      ],
+      "split": "train"
+    },
+    {
+      "classes": [
+        6,
+        7
+      ],
+      "file": "train_25440.jpg",
+      "image_id": 25440,
+      "reasons": [
+        "audited replacement"
+      ],
+      "split": "train"
+    }
+  ],
+  "reviewer": "Codex visual inspection",
+  "split_manifest_sha256": {
+    "train": "8e4a72413caecc9defee68e75f498b71160b06fb33f30f6cbe2dc8b3677032cf",
+    "val": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3"
+  },
+  "status": "passed_with_documented_source_limitations"
+}

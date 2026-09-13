@@ -1,0 +1,144 @@
+{
+  "algorithm": "Preserve valid candidate rows. Rank unselected locally present same-split candidates by inverse-full-class-frequency-weighted L1 exposure distance; SHA256(42:split:id) breaks ties. Audit before acceptance; forbid reused IDs, filenames and content.",
+  "candidate_sha256": "83a654b1c63624d600ff9379702865975b96954bba50ea3eb8eddbe3c220e78a",
+  "quarantined": [
+    {
+      "annotation_height": 1080,
+      "annotation_width": 1920,
+      "bytes": 2989523,
+      "errors": [
+        "dimension_mismatch"
+      ],
+      "format": "PNG",
+      "height": 1080,
+      "image_id": 21818,
+      "invalid_actual_boxes": [],
+      "invalid_metadata_boxes": [],
+      "mode": "RGB",
+      "objects": 3,
+      "sha256": "6df79d80cc4e0c3ccb09b2eb7509d0cf6742bb56e4c85d1f38b2cf01736e801c",
+      "source": "UVH-26-Train/data/003/803489.png",
+      "split": "train",
+      "unknown_categories": [],
+      "width": 1620
+    },
+    {
+      "annotation_height": 1080,
+      "annotation_width": 1920,
+      "bytes": 1349197,
+      "errors": [],
+      "format": "PNG",
+      "height": 1080,
+      "image_id": 5235,
+      "invalid_actual_boxes": [],
+      "invalid_metadata_boxes": [],
+      "mode": "RGB",
+      "objects": 3,
+      "sha256": "a155959f8549cfc71e5b78f1877f448fbf5f4ad73e10855f3e3b37cd78d3dd70",
+      "source": "UVH-26-Train/data/001/341297.png",
+      "split": "train",
+      "unknown_categories": [],
+      "visual_quarantine_reason": "severe gray artifacts observed during manual review",
+      "width": 1920
+    },
+    {
+      "annotation_height": 1080,
+      "annotation_width": 1920,
+      "bytes": 489721,
+      "errors": [],
+      "format": "PNG",
+      "height": 1080,
+      "image_id": 20260,
+      "invalid_actual_boxes": [],
+      "invalid_metadata_boxes": [],
+      "mode": "RGB",
+      "objects": 3,
+      "sha256": "750579dd4e4ad099b2ee421f9f4397549076797693ac84ceff4e99ca0e88b4c8",
+      "source": "UVH-26-Val/data/001/986228.png",
+      "split": "val",
+      "unknown_categories": [],
+      "visual_quarantine_reason": "severe gray artifacts observed during manual review",
+      "width": 1920
+    }
+  ],
+  "rejected_replacement_candidates": [],
+  "replacements": [
+    {
+      "original_class_counts": {
+        "7": 1,
+        "8": 2
+      },
+      "quarantined": {
+        "image_id": 21818,
+        "source": "UVH-26-Train/data/003/803489.png",
+        "split": "train"
+      },
+      "ranking_distance": 0.0,
+      "reason": [
+        "dimension_mismatch"
+      ],
+      "replacement": {
+        "image_id": 5235,
+        "source": "UVH-26-Train/data/001/341297.png",
+        "split": "train"
+      },
+      "replacement_class_counts": {
+        "7": 1,
+        "8": 2
+      }
+    },
+    {
+      "original_class_counts": {
+        "7": 1,
+        "8": 2
+      },
+      "quarantined": {
+        "image_id": 5235,
+        "source": "UVH-26-Train/data/001/341297.png",
+        "split": "train"
+      },
+      "ranking_distance": 0.0,
+      "reason": [
+        "severe_visual_gray_artifacts"
+      ],
+      "replacement": {
+        "image_id": 25440,
+        "source": "UVH-26-Train/data/000/233625.png",
+        "split": "train"
+      },
+      "replacement_class_counts": {
+        "7": 1,
+        "8": 2
+      },
+      "replacement_gray_fraction": 0.0008680555555555555
+    },
+    {
+      "original_class_counts": {
+        "12": 1,
+        "8": 2
+      },
+      "quarantined": {
+        "image_id": 20260,
+        "source": "UVH-26-Val/data/001/986228.png",
+        "split": "val"
+      },
+      "ranking_distance": 0.0,
+      "reason": [
+        "severe_visual_gray_artifacts"
+      ],
+      "replacement": {
+        "image_id": 6452,
+        "source": "UVH-26-Val/data/000/81395.png",
+        "split": "val"
+      },
+      "replacement_class_counts": {
+        "12": 1,
+        "8": 2
+      },
+      "replacement_gray_fraction": 0.00171875
+    }
+  ],
+  "seed": 42,
+  "supersedes": "baseline_seed42",
+  "visual_policy": "Reject these two visually observed severely degraded images. For replacement candidates reject low-resolution near-mid-gray fraction above 25%; this heuristic is a candidate filter, not a validated full-dataset corruption detector. Final replacements require manual review."
+}

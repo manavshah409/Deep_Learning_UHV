@@ -1,0 +1,41 @@
+{
+  "best_epoch_from_validation_map5095": 1,
+  "class_mapping_sha256": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+  "config": {
+    "amp": true,
+    "batch": 8,
+    "close_mosaic": 0,
+    "cos_lr": false,
+    "deterministic": true,
+    "device": "mps",
+    "epochs": 1,
+    "imgsz": 640,
+    "optimizer": "auto",
+    "patience": 10,
+    "plots": true,
+    "pretrained": true,
+    "save": true,
+    "seed": 42,
+    "workers": 0
+  },
+  "dataset_manifest_sha256": "6b20dfe2feed240f6eab74059927038826ff392caf35d9647d166e8e83153332",
+  "duration_seconds": 35.728152750001755,
+  "early_stopped": false,
+  "epochs_completed": 1,
+  "experiment_id": "yolov8n_uvh26_mv_smoke_seed42",
+  "git_commit": null,
+  "model": "models/yolov8n.pt",
+  "pretrained_source": "Ultralytics official yolov8n.pt COCO weights",
+  "python": "3.12.14",
+  "smoke": true,
+  "source_sha256": "a1af420def3f8b30d650d46819ca59dcaa1edf2b072260250b8125faab767d51",
+  "started_at": "2026-09-11T02:47:26.342056+00:00",
+  "status": "completed",
+  "torch": "2.14.0",
+  "ultralytics": "8.4.146",
+  "weights": {
+    "bytes": 6224938,
+    "path": "runs/yolov8n_uvh26_mv_smoke_seed42/weights/best.pt",
+    "sha256": "4808f80e387a019bee01a3dceaea255320f125c1c8161bd53d85b4c1e71c9753"
+  }
+}

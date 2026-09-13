@@ -1,0 +1,4 @@
+# Paths are relative to the project root (the config file's parent directory).
+raw: data/raw/UVH-26
+processed: data/processed
+reports: reports

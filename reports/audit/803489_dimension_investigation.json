@@ -1,0 +1,64 @@
+{
+  "actual_dimensions": [
+    1620,
+    1080
+  ],
+  "annotation_dimensions": [
+    1920,
+    1080
+  ],
+  "boxes": [
+    {
+      "annotation_id": 269769,
+      "bbox": [
+        510.25376,
+        586.287,
+        268.7,
+        416.79999999999995
+      ],
+      "category": "Three-wheeler",
+      "exceeds_actual_width": false,
+      "right_boundary": 778.95376
+    },
+    {
+      "annotation_id": 269770,
+      "bbox": [
+        1371.75,
+        429.25,
+        114.75,
+        203.25
+      ],
+      "category": "Two-wheeler",
+      "exceeds_actual_width": false,
+      "right_boundary": 1486.5
+    },
+    {
+      "annotation_id": 269771,
+      "bbox": [
+        1196.2,
+        656.5,
+        192.75,
+        306.25
+      ],
+      "category": "Two-wheeler",
+      "exceeds_actual_width": false,
+      "right_boundary": 1388.95
+    }
+  ],
+  "decision": "quarantine_from_subset_keep_raw_unchanged",
+  "existing_yolo_labels": [],
+  "image_id": 21818,
+  "outputs": [
+    "reports/annotation_samples/dimension_investigation/raw_coco.jpg",
+    "reports/annotation_samples/dimension_investigation/scaled_width.jpg",
+    "reports/annotation_samples/dimension_investigation/yolo_metadata_roundtrip_hypothesis.jpg"
+  ],
+  "selected": true,
+  "source": "UVH-26-Train/data/003/803489.png",
+  "source_sha256": "6df79d80cc4e0c3ccb09b2eb7509d0cf6742bb56e4c85d1f38b2cf01736e801c",
+  "split": "train",
+  "third_overlay": "No existing converted label for this image. Explicitly simulated metadata-normalized YOLO roundtrip; equivalent to width scaling, not independent evidence.",
+  "visual_findings": "Raw coordinates roughly enclose the three-wheeler but place both two-wheeler boxes on the right-side background. Width scaling improves both two-wheeler boxes but shifts the three-wheeler box left, cutting through the vehicle. Neither hypothesis consistently aligns all boxes; geometry is not confidently recoverable.",
+  "replacement": "UVH-26-Train/data/001/341297.png",
+  "replacement_image_id": 5235
+}

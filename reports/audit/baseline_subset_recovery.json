@@ -1,0 +1,54 @@
+{
+  "algorithm": "Preserve valid candidate rows. Rank unselected locally present same-split candidates by inverse-full-class-frequency-weighted L1 exposure distance; SHA256(42:split:id) breaks ties. Audit before acceptance; forbid reused IDs, filenames and content.",
+  "candidate_sha256": "83a654b1c63624d600ff9379702865975b96954bba50ea3eb8eddbe3c220e78a",
+  "quarantined": [
+    {
+      "annotation_height": 1080,
+      "annotation_width": 1920,
+      "bytes": 2989523,
+      "errors": [
+        "dimension_mismatch"
+      ],
+      "format": "PNG",
+      "height": 1080,
+      "image_id": 21818,
+      "invalid_actual_boxes": [],
+      "invalid_metadata_boxes": [],
+      "mode": "RGB",
+      "objects": 3,
+      "sha256": "6df79d80cc4e0c3ccb09b2eb7509d0cf6742bb56e4c85d1f38b2cf01736e801c",
+      "source": "UVH-26-Train/data/003/803489.png",
+      "split": "train",
+      "unknown_categories": [],
+      "width": 1620
+    }
+  ],
+  "rejected_replacement_candidates": [],
+  "replacements": [
+    {
+      "original_class_counts": {
+        "7": 1,
+        "8": 2
+      },
+      "quarantined": {
+        "image_id": 21818,
+        "source": "UVH-26-Train/data/003/803489.png",
+        "split": "train"
+      },
+      "ranking_distance": 0.0,
+      "reason": [
+        "dimension_mismatch"
+      ],
+      "replacement": {
+        "image_id": 5235,
+        "source": "UVH-26-Train/data/001/341297.png",
+        "split": "train"
+      },
+      "replacement_class_counts": {
+        "7": 1,
+        "8": 2
+      }
+    }
+  ],
+  "seed": 42
+}

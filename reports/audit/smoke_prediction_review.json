@@ -1,0 +1,11 @@
+{
+  "confidence": 0.01,
+  "detections": 0,
+  "file": "reports/predictions/smoke/100173_0.jpg",
+  "note": "Both inspected saved smoke predictions have zero detections at confidence 0.01. All 32 pilot predictions had zero detections at that threshold. The 100173 source image is heavily blurred/redacted. The smoke checkpoint is not a useful detector after one epoch.",
+  "status": "inspected",
+  "files_inspected": [
+    "reports/predictions/smoke/100173_0.jpg",
+    "reports/predictions/smoke/106832_1.jpg"
+  ]
+}

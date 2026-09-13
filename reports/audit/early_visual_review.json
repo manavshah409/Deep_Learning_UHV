@@ -1,0 +1,68 @@
+{
+  "conversion_alignment": "No systematic coordinate scaling or image-orientation error observed in normalized-and-reconstructed boxes.",
+  "coverage": "All 14 categories represented in selected annotations; sparse, dense, small and occluded vehicles visually present.",
+  "findings": [
+    {
+      "finding": "Dense queue with overlapping vehicles and rider-inclusive two-wheeler boxes.",
+      "image_id": 23593
+    },
+    {
+      "finding": "Single annotation covers distant three-wheeler; prominent foreground motorbike visibly lacks a box. Annotation completeness is imperfect.",
+      "image_id": 355
+    },
+    {
+      "finding": "Truck box appears excessively tall, extending over background above the partly visible vehicle.",
+      "image_id": 20275
+    },
+    {
+      "finding": "Source verification resolves the large green passenger-vehicle box: annotation 7986 is category 4 (MUV), not Two-wheeler. The original preview reused colors, so the renderer was improved to unique colors and larger labels.",
+      "image_id": 834
+    },
+    {
+      "finding": "Others sample marks a construction vehicle, supporting retention as a distinct catch-all class.",
+      "image_id": 1890
+    },
+    {
+      "finding": "Dense buses, cars, three-wheelers and bikes include occluded objects and very small distant vehicles.",
+      "image_id": 702
+    }
+  ],
+  "policy": "Retain original MV annotations for reproducible baseline; do not selectively relabel examples or silently drop classes. Explicitly report noisy/incomplete labels. Final YOLO dataset review still required.",
+  "reviewed_images": [
+    20275,
+    3061,
+    702,
+    23186,
+    8509,
+    7816,
+    6827,
+    3700,
+    23129,
+    2767,
+    21177,
+    23176,
+    17387,
+    2308,
+    18779,
+    13488,
+    834,
+    798,
+    2448,
+    6607,
+    1,
+    9,
+    10,
+    42,
+    88,
+    321,
+    569,
+    638,
+    1890,
+    2223,
+    23593,
+    355
+  ],
+  "sample_index_sha256": "2b61369cf40121e4251eae15dfb4f535e7bafcf6a18db5dd25bf05b591c17057",
+  "scope": "32 early downloaded training-image previews, including 20 seed42 random available images; not a full converted-dataset certification",
+  "status": "reviewed_with_annotation_quality_limitations"
+}

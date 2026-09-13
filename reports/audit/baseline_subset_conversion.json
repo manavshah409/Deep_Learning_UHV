@@ -1,0 +1,178 @@
+{
+  "accepted_boxes": 118951,
+  "background_images": [],
+  "class_frequencies": {
+    "train:0": 9045,
+    "train:1": 4717,
+    "train:10": 510,
+    "train:11": 1039,
+    "train:12": 661,
+    "train:13": 103,
+    "train:2": 3952,
+    "train:3": 1994,
+    "train:4": 2726,
+    "train:5": 3917,
+    "train:6": 15758,
+    "train:7": 44756,
+    "train:8": 5191,
+    "train:9": 240,
+    "val:0": 2402,
+    "val:1": 1169,
+    "val:10": 130,
+    "val:11": 278,
+    "val:12": 183,
+    "val:13": 31,
+    "val:2": 1028,
+    "val:3": 541,
+    "val:4": 627,
+    "val:5": 933,
+    "val:6": 4016,
+    "val:7": 11624,
+    "val:8": 1322,
+    "val:9": 58
+  },
+  "clipped": 0,
+  "images": 10000,
+  "manifest_sha256": "990054a93e300a90321db19b3d0bcd98a488a891cd4e2dbd88425f4eb592c2af",
+  "quarantined_images": [
+    {
+      "annotation_height": 1080,
+      "annotation_width": 1920,
+      "bytes": 2989523,
+      "errors": [
+        "dimension_mismatch"
+      ],
+      "format": "PNG",
+      "height": 1080,
+      "image_id": 21818,
+      "invalid_actual_boxes": [],
+      "invalid_metadata_boxes": [],
+      "mode": "RGB",
+      "objects": 3,
+      "sha256": "6df79d80cc4e0c3ccb09b2eb7509d0cf6742bb56e4c85d1f38b2cf01736e801c",
+      "source": "UVH-26-Train/data/003/803489.png",
+      "split": "train",
+      "unknown_categories": [],
+      "width": 1620
+    },
+    {
+      "annotation_height": 1080,
+      "annotation_width": 1920,
+      "bytes": 1349197,
+      "errors": [],
+      "format": "PNG",
+      "height": 1080,
+      "image_id": 5235,
+      "invalid_actual_boxes": [],
+      "invalid_metadata_boxes": [],
+      "mode": "RGB",
+      "objects": 3,
+      "sha256": "a155959f8549cfc71e5b78f1877f448fbf5f4ad73e10855f3e3b37cd78d3dd70",
+      "source": "UVH-26-Train/data/001/341297.png",
+      "split": "train",
+      "unknown_categories": [],
+      "visual_quarantine_reason": "severe gray artifacts observed during manual review",
+      "width": 1920
+    },
+    {
+      "annotation_height": 1080,
+      "annotation_width": 1920,
+      "bytes": 489721,
+      "errors": [],
+      "format": "PNG",
+      "height": 1080,
+      "image_id": 20260,
+      "invalid_actual_boxes": [],
+      "invalid_metadata_boxes": [],
+      "mode": "RGB",
+      "objects": 3,
+      "sha256": "750579dd4e4ad099b2ee421f9f4397549076797693ac84ceff4e99ca0e88b4c8",
+      "source": "UVH-26-Val/data/001/986228.png",
+      "split": "val",
+      "unknown_categories": [],
+      "visual_quarantine_reason": "severe gray artifacts observed during manual review",
+      "width": 1920
+    }
+  ],
+  "rejected": 0,
+  "rejected_boxes": [],
+  "repaired": 0,
+  "replacement_images": [
+    {
+      "original_class_counts": {
+        "7": 1,
+        "8": 2
+      },
+      "quarantined": {
+        "image_id": 21818,
+        "source": "UVH-26-Train/data/003/803489.png",
+        "split": "train"
+      },
+      "ranking_distance": 0.0,
+      "reason": [
+        "dimension_mismatch"
+      ],
+      "replacement": {
+        "image_id": 5235,
+        "source": "UVH-26-Train/data/001/341297.png",
+        "split": "train"
+      },
+      "replacement_class_counts": {
+        "7": 1,
+        "8": 2
+      }
+    },
+    {
+      "original_class_counts": {
+        "7": 1,
+        "8": 2
+      },
+      "quarantined": {
+        "image_id": 5235,
+        "source": "UVH-26-Train/data/001/341297.png",
+        "split": "train"
+      },
+      "ranking_distance": 0.0,
+      "reason": [
+        "severe_visual_gray_artifacts"
+      ],
+      "replacement": {
+        "image_id": 25440,
+        "source": "UVH-26-Train/data/000/233625.png",
+        "split": "train"
+      },
+      "replacement_class_counts": {
+        "7": 1,
+        "8": 2
+      },
+      "replacement_gray_fraction": 0.0008680555555555555
+    },
+    {
+      "original_class_counts": {
+        "12": 1,
+        "8": 2
+      },
+      "quarantined": {
+        "image_id": 20260,
+        "source": "UVH-26-Val/data/001/986228.png",
+        "split": "val"
+      },
+      "ranking_distance": 0.0,
+      "reason": [
+        "severe_visual_gray_artifacts"
+      ],
+      "replacement": {
+        "image_id": 6452,
+        "source": "UVH-26-Val/data/000/81395.png",
+        "split": "val"
+      },
+      "replacement_class_counts": {
+        "12": 1,
+        "8": 2
+      },
+      "replacement_gray_fraction": 0.00171875
+    }
+  ],
+  "unknown_categories": [],
+  "version": "uvh26_mv_yolo_v1/subsets/baseline_seed42_v2"
+}

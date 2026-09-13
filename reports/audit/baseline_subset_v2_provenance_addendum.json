@@ -1,0 +1,6 @@
+{
+  "algorithm_implementation": "src/data/revise_visual_subset.py",
+  "clarification": "The inherited selection_algorithm describes structural recovery v1. Visual recovery v2 ranks all unselected official same-split images, obtains missing candidates from the pinned revision, and applies the documented candidate gray-fraction filter before manual review. It does not restrict candidates to files already local. Valid original rows remain fixed. See baseline_subset_recovery_v2.json for the decision chain.",
+  "frozen_provenance_sha256": "977fc4a46719afd9a9730ce36b383df71b31ff0ef314322ef8d874a55e386efc",
+  "implementation_sha256": "a0196c5c6195d5bf7dbc04670620b3d48af57aac94ff8e474f38ab487bed73a2"
+}

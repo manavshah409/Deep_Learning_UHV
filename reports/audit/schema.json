@@ -1,0 +1,481 @@
+{
+  "revision": "59f82c57821e8a54dc40bc1f42e83909dbad0b70",
+  "variants": {
+    "MV": {
+      "train": {
+        "annotation_fields": {
+          "area": 252723,
+          "bbox": 252723,
+          "category_id": 252723,
+          "id": 252723,
+          "image_id": 252723,
+          "iscrowd": 252723,
+          "segmentation": 252723
+        },
+        "categories": [
+          {
+            "id": 1,
+            "name": "Hatchback",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 2,
+            "name": "Sedan",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 3,
+            "name": "SUV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 4,
+            "name": "MUV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 5,
+            "name": "Bus",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 6,
+            "name": "Truck",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 7,
+            "name": "Three-wheeler",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 8,
+            "name": "Two-wheeler",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 9,
+            "name": "LCV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 10,
+            "name": "Mini-bus",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 11,
+            "name": "Tempo-traveller",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 12,
+            "name": "Bicycle",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 13,
+            "name": "Van",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 14,
+            "name": "Others",
+            "supercategory": "vehicle"
+          }
+        ],
+        "file": "UVH-26-Train/UVH-26-MV-Train.json",
+        "image_count": 21349,
+        "image_fields": {
+          "file_name": 21349,
+          "height": 21349,
+          "id": 21349,
+          "license": 21349,
+          "width": 21349
+        },
+        "info": {
+          "contributor": "Authors: Akash Sharma, Chinmay Mhatre, Sankalp Gawali, Ruthvik Bokkasam, Brij Kishore, Vishwajeet Pattanaik, Tarun Rambha, Abdul R. Pinjari, Vijay Kovvali, Anirban Chakraborty, Punit Rathore, Raghu Krishnapuram, Yogesh Simmhan",
+          "copyright": "(c) 2025, Indian Institute of Science",
+          "date_created": "2025-11-04",
+          "description": "UVH-26-MV v1.0: Majority Voting consensus annotations of vehicle bounding boxes and UVH vehicle classes on anonymized UVH-26 image dataset in COCO format",
+          "organization": "Indian Institute of Science",
+          "url": "https://huggingface.co/datasets/iisc-aim/UVH-26/tree/v1.0",
+          "version": "1.0",
+          "year": 2025
+        },
+        "keys": [
+          "info",
+          "licenses",
+          "images",
+          "annotations",
+          "categories"
+        ],
+        "licenses": [
+          {
+            "id": 1,
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          }
+        ],
+        "object_count": 252723,
+        "sha256": "7a575d1131cd8dea32e736b1919a4e073dae328d1a7c9d4842f65bfb60c43a92"
+      },
+      "val": {
+        "annotation_fields": {
+          "area": 63497,
+          "bbox": 63497,
+          "category_id": 63497,
+          "id": 63497,
+          "image_id": 63497,
+          "iscrowd": 63497,
+          "segmentation": 63497
+        },
+        "categories": [
+          {
+            "id": 1,
+            "name": "Hatchback",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 2,
+            "name": "Sedan",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 3,
+            "name": "SUV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 4,
+            "name": "MUV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 5,
+            "name": "Bus",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 6,
+            "name": "Truck",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 7,
+            "name": "Three-wheeler",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 8,
+            "name": "Two-wheeler",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 9,
+            "name": "LCV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 10,
+            "name": "Mini-bus",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 11,
+            "name": "Tempo-traveller",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 12,
+            "name": "Bicycle",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 13,
+            "name": "Van",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 14,
+            "name": "Others",
+            "supercategory": "vehicle"
+          }
+        ],
+        "file": "UVH-26-Val/UVH-26-MV-Val.json",
+        "image_count": 5297,
+        "image_fields": {
+          "file_name": 5297,
+          "height": 5297,
+          "id": 5297,
+          "license": 5297,
+          "width": 5297
+        },
+        "info": {
+          "contributor": "Authors: Akash Sharma, Chinmay Mhatre, Sankalp Gawali, Ruthvik Bokkasam, Brij Kishore, Vishwajeet Pattanaik, Tarun Rambha, Abdul R. Pinjari, Vijay Kovvali, Anirban Chakraborty, Punit Rathore, Raghu Krishnapuram, Yogesh Simmhan",
+          "copyright": "(c) 2025, Indian Institute of Science",
+          "date_created": "2025-11-04",
+          "description": "UVH-26-MV v1.0: Majority Voting consensus annotations of vehicle bounding boxes and UVH vehicle classes on anonymized UVH-26 image dataset in COCO format",
+          "organization": "Indian Institute of Science",
+          "url": "https://huggingface.co/datasets/iisc-aim/UVH-26/tree/v1.0",
+          "version": "1.0",
+          "year": 2025
+        },
+        "keys": [
+          "info",
+          "licenses",
+          "images",
+          "annotations",
+          "categories"
+        ],
+        "licenses": [
+          {
+            "id": 1,
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          }
+        ],
+        "object_count": 63497,
+        "sha256": "9d279f48589e653d7749b9636c945a8763b457c067f23ea79def3fa70c8e8ab4"
+      }
+    },
+    "ST": {
+      "train": {
+        "annotation_fields": {
+          "area": 226239,
+          "bbox": 226239,
+          "category_id": 226239,
+          "id": 226239,
+          "image_id": 226239,
+          "iscrowd": 226239,
+          "segmentation": 226239
+        },
+        "categories": [
+          {
+            "id": 1,
+            "name": "Hatchback",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 2,
+            "name": "Sedan",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 3,
+            "name": "SUV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 4,
+            "name": "MUV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 5,
+            "name": "Bus",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 6,
+            "name": "Truck",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 7,
+            "name": "Three-wheeler",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 8,
+            "name": "Two-wheeler",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 9,
+            "name": "LCV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 10,
+            "name": "Mini-bus",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 11,
+            "name": "Tempo-traveller",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 12,
+            "name": "Bicycle",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 13,
+            "name": "Van",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 14,
+            "name": "Others",
+            "supercategory": "vehicle"
+          }
+        ],
+        "file": "UVH-26-Train/UVH-26-ST-Train.json",
+        "image_count": 17387,
+        "image_fields": {
+          "file_name": 17387,
+          "height": 17387,
+          "id": 17387,
+          "license": 17387,
+          "width": 17387
+        },
+        "info": {
+          "contributor": "Authors: Akash Sharma, Chinmay Mhatre, Sankalp Gawali, Ruthvik Bokkasam, Brij Kishore, Vishwajeet Pattanaik, Tarun Rambha, Abdul R. Pinjari, Vijay Kovvali, Anirban Chakraborty, Punit Rathore, Raghu Krishnapuram, Yogesh Simmhan",
+          "copyright": "(c) 2025, Indian Institute of Science",
+          "date_created": "2025-11-04",
+          "description": "UVH-26-MV v1.0: Majority Voting consensus annotations of vehicle bounding boxes and UVH vehicle classes on anonymized UVH-26 image dataset in COCO format",
+          "organization": "Indian Institute of Science",
+          "url": "https://huggingface.co/datasets/iisc-aim/UVH-26/tree/v1.0",
+          "version": "1.0",
+          "year": 2025
+        },
+        "keys": [
+          "info",
+          "licenses",
+          "images",
+          "annotations",
+          "categories"
+        ],
+        "licenses": [
+          {
+            "id": 1,
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          }
+        ],
+        "object_count": 226239,
+        "sha256": "f2a252387804cc2cc89dae617efc6b90a230ab2c1f52466b477de36464a26b6b"
+      },
+      "val": {
+        "annotation_fields": {
+          "area": 57163,
+          "bbox": 57163,
+          "category_id": 57163,
+          "id": 57163,
+          "image_id": 57163,
+          "iscrowd": 57163,
+          "segmentation": 57163
+        },
+        "categories": [
+          {
+            "id": 1,
+            "name": "Hatchback",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 2,
+            "name": "Sedan",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 3,
+            "name": "SUV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 4,
+            "name": "MUV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 5,
+            "name": "Bus",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 6,
+            "name": "Truck",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 7,
+            "name": "Three-wheeler",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 8,
+            "name": "Two-wheeler",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 9,
+            "name": "LCV",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 10,
+            "name": "Mini-bus",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 11,
+            "name": "Tempo-traveller",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 12,
+            "name": "Bicycle",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 13,
+            "name": "Van",
+            "supercategory": "vehicle"
+          },
+          {
+            "id": 14,
+            "name": "Others",
+            "supercategory": "vehicle"
+          }
+        ],
+        "file": "UVH-26-Val/UVH-26-ST-Val.json",
+        "image_count": 4339,
+        "image_fields": {
+          "file_name": 4339,
+          "height": 4339,
+          "id": 4339,
+          "license": 4339,
+          "width": 4339
+        },
+        "info": {
+          "contributor": "Authors: Akash Sharma, Chinmay Mhatre, Sankalp Gawali, Ruthvik Bokkasam, Brij Kishore, Vishwajeet Pattanaik, Tarun Rambha, Abdul R. Pinjari, Vijay Kovvali, Anirban Chakraborty, Punit Rathore, Raghu Krishnapuram, Yogesh Simmhan",
+          "copyright": "(c) 2025, Indian Institute of Science",
+          "date_created": "2025-11-04",
+          "description": "UVH-26-MV v1.0: Majority Voting consensus annotations of vehicle bounding boxes and UVH vehicle classes on anonymized UVH-26 image dataset in COCO format",
+          "organization": "Indian Institute of Science",
+          "url": "https://huggingface.co/datasets/iisc-aim/UVH-26/tree/v1.0",
+          "version": "1.0",
+          "year": 2025
+        },
+        "keys": [
+          "info",
+          "licenses",
+          "images",
+          "annotations",
+          "categories"
+        ],
+        "licenses": [
+          {
+            "id": 1,
+            "name": "CC BY 4.0",
+            "url": "https://creativecommons.org/licenses/by/4.0/"
+          }
+        ],
+        "object_count": 57163,
+        "sha256": "ced5798e3f4d8babf95f463a1490b0b6251d634c37400c250edf2d656f26b811"
+      }
+    }
+  }
+}

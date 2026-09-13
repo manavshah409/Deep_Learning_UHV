@@ -1,0 +1,46 @@
+{
+  "image_audit_executed": false,
+  "leakage": {
+    "note": "COCO image IDs are split-scoped; filename and content overlap determine leakage. No camera/temporal grouping inferred.",
+    "shared_filenames": [],
+    "shared_image_ids": 0,
+    "shared_sha256": []
+  },
+  "revision": "59f82c57821e8a54dc40bc1f42e83909dbad0b70",
+  "splits": {
+    "train": {
+      "annotation_sha256": "7a575d1131cd8dea32e736b1919a4e073dae328d1a7c9d4842f65bfb60c43a92",
+      "annotations": 252723,
+      "disk_images": 525,
+      "duplicate_annotation_ids": [],
+      "duplicate_disk_basenames": [],
+      "duplicate_filenames": [],
+      "duplicate_image_ids": [],
+      "empty_annotation_list": false,
+      "empty_images": false,
+      "image_errors": [],
+      "images": 21349,
+      "images_without_annotations": 0,
+      "invalid_annotations": 0,
+      "missing_fields": [],
+      "unreferenced_files": []
+    },
+    "val": {
+      "annotation_sha256": "9d279f48589e653d7749b9636c945a8763b457c067f23ea79def3fa70c8e8ab4",
+      "annotations": 63497,
+      "disk_images": 0,
+      "duplicate_annotation_ids": [],
+      "duplicate_disk_basenames": [],
+      "duplicate_filenames": [],
+      "duplicate_image_ids": [],
+      "empty_annotation_list": false,
+      "empty_images": false,
+      "image_errors": [],
+      "images": 5297,
+      "images_without_annotations": 0,
+      "invalid_annotations": 0,
+      "missing_fields": [],
+      "unreferenced_files": []
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "annotation_sha256": {
+    "train": "7a575d1131cd8dea32e736b1919a4e073dae328d1a7c9d4842f65bfb60c43a92",
+    "val": "9d279f48589e653d7749b9636c945a8763b457c067f23ea79def3fa70c8e8ab4"
+  },
+  "candidate_selection_algorithm": "Original coverage-aware seed42 selection retained except documented quarantines",
+  "class_mapping_sha256": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+  "combined_manifest_sha256": "990054a93e300a90321db19b3d0bcd98a488a891cd4e2dbd88425f4eb592c2af",
+  "image_audit_sha256": "c9534e58ca40a16e7a7777d790156a97a2add846f76d43735a6c0b48226c6408",
+  "image_audit_status": "passed",
+  "manifest_sha256": {
+    "train": "8e4a72413caecc9defee68e75f498b71160b06fb33f30f6cbe2dc8b3677032cf",
+    "val": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3"
+  },
+  "revision": "59f82c57821e8a54dc40bc1f42e83909dbad0b70",
+  "scope": "UVH-26 MV 8000/2000 subset; no full image-integrity claim",
+  "seed": 42,
+  "selection_algorithm": "Preserve valid candidate rows. Rank unselected locally present same-split candidates by inverse-full-class-frequency-weighted L1 exposure distance; SHA256(42:split:id) breaks ties. Audit before acceptance; forbid reused IDs, filenames and content.",
+  "version": "uvh26_mv_yolo_v1/subsets/baseline_seed42_v2"
+}

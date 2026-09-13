@@ -1,0 +1,26 @@
+{
+  "commit": null,
+  "completed_png_by_split": {
+    "train": 1720,
+    "val": 32
+  },
+  "completed_png_bytes": 5918104200,
+  "completed_png_files": 1752,
+  "downloader": "resumable hf download, 8 workers",
+  "errors": [
+    "Hugging Face Xet token request DNS failures",
+    "Xet CAS file reconstruction request failure",
+    "HTTP fallback incomplete response bodies",
+    "HTTP fallback repeated read-operation timeouts"
+  ],
+  "expected_images_from_annotations": 26646,
+  "git_branch": "master",
+  "observed_at_utc": "2026-09-11T02:59:14.195398+00:00",
+  "proper_baseline_completed": false,
+  "push": "not attempted; requested proper-baseline completion checkpoint not met",
+  "raw_directory_bytes_including_transfer_metadata": 6076739459,
+  "raw_files_preserved": true,
+  "revision": "59f82c57821e8a54dc40bc1f42e83909dbad0b70",
+  "smoke_completed": true,
+  "status": "resumed_in_progress"
+}
