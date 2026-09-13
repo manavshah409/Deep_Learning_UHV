@@ -1,23 +1,19 @@
 """Exploratory Data Analysis (EDA) and Annotation Review components."""
 
-from pathlib import Path
 import streamlit as st
-import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
-from utils.data_loader import get_eda_class_distribution, get_eda_summary
-from utils.artifact_loader import find_file, find_images, ROOT
+from utils.data_loader import get_eda_class_distribution
+from utils.artifact_loader import find_file
 
 
 def render_eda_section():
     """Render sections 04 and 05: EDA Analysis and Visual Annotation Review."""
     eda_df = get_eda_class_distribution()
-    summary = get_eda_summary()
 
     # --------------------------------------------------------------------------
     # 04 — Exploratory Data Analysis
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="eda">
             <div class="section-kicker">04 / DATASET INSIGHTS</div>
@@ -27,7 +23,6 @@ def render_eda_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     # Interactive Class Distribution Plotly Chart
@@ -50,7 +45,10 @@ def render_eda_section():
             go.Bar(
                 x=totals[class_col],
                 y=totals["instances"],
-                text=[f"{v:,}<br>({p:.1f}%)" for v, p in zip(totals["instances"], totals["share_pct"])],
+                text=[
+                    f"{v:,}<br>({p:.1f}%)"
+                    for v, p in zip(totals["instances"], totals["share_pct"])
+                ],
                 textposition="auto",
                 marker=dict(
                     color=totals["instances"],
@@ -81,12 +79,12 @@ def render_eda_section():
             height=430,
             margin=dict(l=40, r=20, t=60, b=80),
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     c1, c2 = st.columns(2)
 
     with c1:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -107,11 +105,10 @@ def render_eda_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with c2:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -121,7 +118,7 @@ def render_eda_section():
                 <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6;">
                     <ul style="margin-top: 0.4rem; padding-left: 1.2rem;">
                         <li><b>Objects per Image:</b> Mean = <b>11.87</b>, Median = <b>10.0</b>, Max = <b>66</b> objects/image</li>
-                        <li><b>Resolution:</b> Uniform <b>1920 × 1080</b> FHD surveillance camera streams</li>
+                        <li><b>Resolution:</b> Dimensions checked per selected image; source mismatch quarantined</li>
                         <li><b>Bounding Box Scale Breakdown (Original Pixels):</b></li>
                     </ul>
                 </div>
@@ -157,96 +154,130 @@ def render_eda_section():
                 </table>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     # Generated Figures Gallery (Tabs)
-    st.markdown("<h4 style='color: #ffffff; margin-top: 1.5rem;'>Generated EDA Figure Suite</h4>", unsafe_allow_html=True)
+    st.html(
+        "<h4 style='color: #ffffff; margin-top: 1.5rem;'>Generated EDA Figure Suite</h4>",
+    )
 
-    tab1, tab2, tab3, tab4 = st.tabs(["🔥 Spatial Heatmap", "📊 Class & Split", "📦 Box Geometry", "📈 Density Distributions"])
+    tab1, tab2, tab3, tab4 = st.tabs(
+        [
+            "🔥 Spatial Heatmap",
+            "📊 Class & Split",
+            "📦 Box Geometry",
+            "📈 Density Distributions",
+        ]
+    )
 
     with tab1:
         img_p = find_file("reports/figures/object_center_heatmap.png")
         if img_p:
-            st.image(str(img_p), caption="Normalized Object Center 2D Spatial Heatmap across Indian Road Scenes", use_container_width=True)
+            st.image(
+                str(img_p),
+                caption="Normalized Object Center 2D Spatial Heatmap across Indian Road Scenes",
+                width="stretch",
+            )
         else:
-            st.info("Heatmap figure available at reports/figures/object_center_heatmap.png")
+            st.info(
+                "Heatmap figure available at reports/figures/object_center_heatmap.png"
+            )
 
     with tab2:
         c_a, c_b = st.columns(2)
         with c_a:
             p1 = find_file("reports/figures/class_distribution.png")
             if p1:
-                st.image(str(p1), caption="Valid Majority Voting Instances by Class", use_container_width=True)
+                st.image(
+                    str(p1),
+                    caption="Valid Majority Voting Instances by Class",
+                    width="stretch",
+                )
         with c_b:
             p2 = find_file("reports/figures/split_distribution.png")
             if p2:
-                st.image(str(p2), caption="Official Split Distribution (Train vs Val)", use_container_width=True)
+                st.image(
+                    str(p2),
+                    caption="Official Split Distribution (Train vs Val)",
+                    width="stretch",
+                )
 
     with tab3:
         g1, g2 = st.columns(2)
         with g1:
             p3 = find_file("reports/figures/bbox_area_distribution.png")
             if p3:
-                st.image(str(p3), caption="Bounding Box Area Log Distribution", use_container_width=True)
+                st.image(
+                    str(p3),
+                    caption="Bounding Box Area Log Distribution",
+                    width="stretch",
+                )
         with g2:
             p4 = find_file("reports/figures/bbox_aspect_ratio.png")
             if p4:
-                st.image(str(p4), caption="Bounding Box Aspect Ratio Distribution", use_container_width=True)
+                st.image(
+                    str(p4),
+                    caption="Bounding Box Aspect Ratio Distribution",
+                    width="stretch",
+                )
 
     with tab4:
         d1, d2 = st.columns(2)
         with d1:
             p5 = find_file("reports/figures/objects_per_image.png")
             if p5:
-                st.image(str(p5), caption="Objects per Image Histogram", use_container_width=True)
+                st.image(
+                    str(p5), caption="Objects per Image Histogram", width="stretch"
+                )
         with d2:
             p6 = find_file("reports/figures/resolution_distribution.png")
             if p6:
-                st.image(str(p6), caption="Image Dimension Distribution (1920x1080)", use_container_width=True)
+                st.image(
+                    str(p6),
+                    caption="Image Dimension Distribution (1920x1080)",
+                    width="stretch",
+                )
 
     # --------------------------------------------------------------------------
     # 05 — Manual Annotation Review
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="annotation-review">
             <div class="section-kicker">05 / VISUAL QUALITY ASSURANCE</div>
             <div class="section-title">Manual Annotation Review &amp; Qualitative Analysis</div>
             <div class="section-subtitle">
-                Inspection of 32 multi-class sample images and contact sheets to visually certify bounding-box alignment and document source annotation limitations.
+                Final subset annotation review covered 42 images; proper-model closeout compared six validation GT/prediction pairs. Earlier preview images below are historical examples.
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     r1, r2 = st.columns([1.2, 0.8])
 
     with r1:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
                     <div class="glass-card-title">🔍 Visual Inspection Summary</div>
-                    <span class="badge-complete">32 SAMPLES REVIEWED</span>
+                    <span class="badge-complete">42 FINAL SUBSET GT IMAGES</span>
                 </div>
                 <div style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.6;">
                     <b>Key Observations:</b>
                     <ul style="padding-left: 1.2rem; margin-top: 0.4rem;">
-                        <li><b>Coordinate Alignment:</b> Converted normalized YOLO bounding boxes overlay with 100% pixel alignment onto original road camera imagery.</li>
+                        <li><b>Coordinate Alignment:</b> No systematic coordinate transformation error found in the reviewed final subset; source limitations remain documented.</li>
                         <li><b>Dense Queue Handling:</b> Heavy overlapping between adjacent vehicles in bumper-to-bumper city traffic. Two-wheeler boxes correctly encompass riders.</li>
                         <li><b>Observed Source Annotation Imperfections:</b> Occasional unlabelled foreground motorbikes and loose bounding boxes around large trucks.</li>
-                        <li><b>Redaction &amp; Privacy:</b> Verified that privacy face/license-plate blurs in UVH-26 imagery do not obstruct vehicle boundary coordinates.</li>
+                        <li><b>Redaction &amp; Privacy:</b> Source face/license-plate redactions are retained; no universal claim about their effect on model accuracy.</li>
                     </ul>
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with r2:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -258,7 +289,7 @@ def render_eda_section():
                         <span class="terminal-btn red"></span>
                         <span class="terminal-btn yellow"></span>
                         <span class="terminal-btn green"></span>
-                        <span style="font-size: 0.72rem; color: #94a3b8; margin-left: 0.5rem;">reports/audit/early_visual_review.json</span>
+                        <span style="font-size: 0.72rem; color: #94a3b8; margin-left: 0.5rem;">reports/audit/visual_review.json</span>
                     </div>
                     <div class="terminal-body" style="font-size: 0.78rem; max-height: 140px; overflow-y: auto;">
 {<br/>
@@ -270,11 +301,12 @@ def render_eda_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     # Gallery of local sample contact sheets
-    st.markdown("<h4 style='color: #ffffff; margin-top: 1rem;'>Visual Annotation Previews</h4>", unsafe_allow_html=True)
+    st.html(
+        "<h4 style='color: #ffffff; margin-top: 1rem;'>Visual Annotation Previews</h4>",
+    )
 
     sheet0 = find_file("reports/annotation_samples/early/sheet_0.jpg")
     pilot_sheet = find_file("reports/annotation_samples/pilot_val_sheet.jpg")
@@ -284,14 +316,30 @@ def render_eda_section():
     col_img1, col_img2 = st.columns(2)
     with col_img1:
         if sheet0:
-            st.image(str(sheet0), caption="Preview Contact Sheet 0 — Multi-Class Indian Urban Traffic Sample", use_container_width=True)
+            st.image(
+                str(sheet0),
+                caption="Preview Contact Sheet 0 — Multi-Class Indian Urban Traffic Sample",
+                width="stretch",
+            )
         elif pilot_sheet:
-            st.image(str(pilot_sheet), caption="Pilot Validation Annotation Sheet", use_container_width=True)
+            st.image(
+                str(pilot_sheet),
+                caption="Pilot Validation Annotation Sheet",
+                width="stretch",
+            )
 
     with col_img2:
         if train_sample:
-            st.image(str(train_sample), caption="train_23593.jpg — Dense Queue with Overlapping Two-Wheelers & Auto-Rickshaws", use_container_width=True)
+            st.image(
+                str(train_sample),
+                caption="train_23593.jpg — Dense Queue with Overlapping Two-Wheelers & Auto-Rickshaws",
+                width="stretch",
+            )
         elif val_sample:
-            st.image(str(val_sample), caption="val_10412.jpg — Bounding Box Verification Sample", use_container_width=True)
+            st.image(
+                str(val_sample),
+                caption="val_10412.jpg — Bounding Box Verification Sample",
+                width="stretch",
+            )
         elif sheet0:
             st.info("Sample preview images available in reports/annotation_samples/")

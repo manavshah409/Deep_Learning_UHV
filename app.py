@@ -2,10 +2,9 @@
 Phase 1 Research Showcase & Faculty Presentation Application.
 
 Author: Manav Shah
-Date: 11 September 2026
+Date: 13 September 2026
 """
 
-from pathlib import Path
 import streamlit as st
 
 # Configure wide layout and page metadata
@@ -21,7 +20,9 @@ from utils.artifact_loader import ROOT, find_file
 
 css_path = ROOT / "assets/styles.css"
 if css_path.is_file():
-    st.markdown(f"<style>{css_path.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
+    st.html(
+        f"<style>{css_path.read_text(encoding='utf-8')}</style>",
+    )
 
 # Import modular components
 from components.hero import render_hero
@@ -40,7 +41,7 @@ def main():
     # Sidebar Navigation & Presentation Mode
     # --------------------------------------------------------------------------
     with st.sidebar:
-        st.markdown(
+        st.html(
             """
             <div style="padding: 0.5rem 0 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1rem;">
                 <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #00e5ff; letter-spacing: 0.1em; font-weight: 700;">
@@ -54,13 +55,16 @@ def main():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
-        pres_mode = st.toggle("📽️ Presentation Mode", value=False, help="Increases font scaling and optimizes layout for high-resolution projectors.")
+        pres_mode = st.toggle(
+            "📽️ Presentation Mode",
+            value=False,
+            help="Increases font scaling and optimizes layout for high-resolution projectors.",
+        )
 
         if pres_mode:
-            st.markdown(
+            st.html(
                 """
                 <style>
                     .section-title { font-size: 2.8rem !important; }
@@ -70,12 +74,13 @@ def main():
                     body { font-size: 1.15rem !important; }
                 </style>
                 """,
-                unsafe_allow_html=True,
             )
 
-        st.markdown("<p style='font-size: 0.8rem; font-family: var(--font-mono); color: #64748b; margin-bottom: 0.4rem;'>JUMP TO SECTION</p>", unsafe_allow_html=True)
+        st.html(
+            "<p style='font-size: 0.8rem; font-family: var(--font-mono); color: #64748b; margin-bottom: 0.4rem;'>JUMP TO SECTION</p>",
+        )
 
-        st.markdown(
+        st.html(
             """
             <div style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.88rem;">
                 <a href="#dataset-audit" style="color: #cbd5e1; text-decoration: none; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,0.02);">📊 01. Dataset Audit</a>
@@ -91,10 +96,11 @@ def main():
                 <a href="#future-phases" style="color: #cbd5e1; text-decoration: none; padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,0.02);">🔮 Future Phases</a>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
-        st.markdown("<div style='margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08);'></div>", unsafe_allow_html=True)
+        st.html(
+            "<div style='margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08);'></div>",
+        )
 
         pdf_file = find_file("output/pdf/UVH26_Faculty_Progress_Report.pdf")
         if pdf_file and pdf_file.is_file():
@@ -104,17 +110,16 @@ def main():
                     data=f.read(),
                     file_name="UVH26_Faculty_Progress_Report.pdf",
                     mime="application/pdf",
-                    use_container_width=True,
+                    width="stretch",
                 )
 
-        st.markdown(
+        st.html(
             """
             <div style="margin-top: 1rem; font-size: 0.75rem; color: #64748b; text-align: center; font-family: var(--font-mono);">
                 Apple Silicon MPS · PyTorch 2.14<br/>
                 Ultralytics 8.4 · Python 3.12
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     # --------------------------------------------------------------------------
@@ -133,21 +138,20 @@ def main():
     # --------------------------------------------------------------------------
     # Professional Footer
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div class="app-footer">
             <div style="font-weight: 700; color: #f1f5f9; font-size: 1.05rem; margin-bottom: 0.3rem;">
                 Real-Time Vehicle Detection and Traffic Analytics for Indian Urban Roads
             </div>
             <div style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.6rem;">
-                Manav Shah · Fourth-Year Undergraduate Research · Phase 1 Progress Review · 11 September 2026
+                Manav Shah · Fourth-Year Undergraduate Research · Phase 1 Progress Review · 13 September 2026
             </div>
             <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #64748b;">
                 Built with Python · Streamlit · YOLOv8 · UVH-26 (IISc AIM) · CC BY 4.0
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
 

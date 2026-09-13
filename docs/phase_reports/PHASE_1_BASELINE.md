@@ -1,198 +1,154 @@
-# Phase 1 — Foundation, UVH-26 audit, YOLO preparation and baseline
+# Phase 1: UVH-26 MV subset baseline closeout
 
-## Project and objective
+The proper YOLOv8n baseline completed **30/30 epochs**, process exit **0**, best checkpoint **epoch 30**, with **no early stopping**. Fresh standalone evaluation and synchronized Apple MPS timing are complete. Phase 2 training has not started. The final delivery/gate status is recorded in `reports/audit/phase2_subset_gate.json`; a Git checkpoint is required before controlled Phase 2 work.
 
-**Real-Time Vehicle Detection and Traffic Analytics for Indian Urban Roads Using YOLOv8 and the UVH-26 Dataset**
+This is a **subset validation baseline**, not a full-dataset result, test-set result, production readiness claim or completed traffic-analytics system.
 
-Fourth-year undergraduate Deep Learning / Computer Vision / Intelligent Transportation Systems project. Phase 1 must establish a reproducible data pipeline and complete genuine YOLOv8n transfer learning with separate validation. This report currently records work in progress; it does not establish Phase 1 completion.
+## Data scope and integrity
 
-Indian traffic presents heterogeneous vehicles, high density, occlusion and variation in scale and appearance. The project examines localization and India-specific categorization as a foundation for later vehicle counting and density analytics.
+| Evidence | Images | Object boxes | What was checked |
+|---|---:|---:|---|
+| Full MV annotation catalogue | 26,646 | 316,220 | JSON schema, classes, box geometry and split identifiers |
+| Frozen local training subset | 8,000 | 94,609 | Decode, actual dimensions, paths, content hashes, labels and leakage |
+| Frozen local validation subset | 2,000 | 24,342 | Same selected-image integrity checks |
 
-## Dataset provenance and source
+The full catalogue contains 21,349 training and 5,297 validation image records. All selected 10,000 images passed pixel/label integrity, with zero train/validation content overlap and all 14 classes retained. Acquisition and integrity verification of **unselected images remains incomplete**. The catalogue audit must not be described as a full pixel audit. Semantic manual annotation review covered 42 selected images; closeout prediction review covered six validation scenes, not every image.
 
-- Official dataset: https://huggingface.co/datasets/iisc-aim/UVH-26
-- Pinned revision: `59f82c57821e8a54dc40bc1f42e83909dbad0b70`.
-- Acquisition began 2026-09-11; image download is incomplete.
-- Hub metadata: ungated; public license CC BY 4.0; published total file size approximately 90 GB.
-- Hub file inventory: 26,653 entries, including 26,646 PNG image paths, four consensus JSON files and repository metadata/card files.
-- Annotation checksums, embedded licenses and field schemas: `reports/audit/schema.json`.
-- Citation: Sharma et al., *Towards Image Annotations and Accurate Vision Models for Indian Traffic, Preliminary Dataset Release, UVH-26-v1.0*, IISc Technical Report, November 2025, https://doi.org/10.48550/arXiv.2511.02563.
+Source: IISc AIM UVH-26, Majority Voting, revision `59f82c57821e8a54dc40bc1f42e83909dbad0b70`, CC BY 4.0. Original class IDs 1-14 map in order to YOLO IDs 0-13. STAPLE annotations are not mixed into this experiment. Maximum selected-vs-full class-share deviation is 0.306231 percentage points.
 
-Public dataset descriptions are distinguished from measured JSON counts below. Complete-dataset byte counts, decoding results and hashes remain pending. A separately audited 96-image pilot is documented below.
+Frozen version: `uvh26_mv_yolo_v1/subsets/baseline_seed42_v2`.
 
-## Environment and repository audit
-
-The workspace initially contained only an empty Git repository: no commits, no uncommitted files, branch `master`, and no remote. After the user supplied its URL, the empty remote was verified and configured as `origin`: `https://github.com/manavshah409/Deep_Learning_UHV.git`. No history was rewritten.
-
-Detected hardware: Apple M5 MacBook Pro, arm64, 10 CPU cores and 24 GiB memory. Available storage at setup was approximately 767–768 GiB. System Python was 3.14.7; a separate installed Python 3.12.14 was used to create `.venv`. PyTorch, Ultralytics and Hugging Face Hub were initially absent. Exact installed packages are frozen in `requirements.txt`.
-
-PyTorch 2.14.0 reports MPS built. The execution sandbox hid MPS; an authorized unsandboxed check reported MPS available and successfully calculated a tensor sum on the GPU. No CUDA is assumed. CPU fallback is implemented.
-
-## Observed structure and schema
-
-Actual image paths use `UVH-26-Train/data/<shard>/*.png` and `UVH-26-Val/data/<shard>/*.png`; the dataset card's illustrative `images/` directory is not the downloaded layout. Annotation `file_name` values are PNG basenames.
-
-Each JSON has top-level `info`, `licenses`, `images`, `annotations` and `categories`. Image records include `id`, `file_name`, `height`, `width`, and `license`. Annotations include `id`, `image_id`, `category_id`, `bbox`, `area`, `iscrowd`, and `segmentation`. Representative records were inspected locally; field-presence counts are saved in the schema audit without copying object annotations into eligible reports. Boxes are COCO `[x, y, width, height]` in original image pixels.
-
-No test split is present in the inspected repository inventory. The inspected image records provide no camera, sequence or timestamp fields. Pixel/filename independence cannot establish independence of nearby frames or views.
-
-## Consensus policy and exact annotation counts
-
-Use Majority Voting (MV) only. This follows the requested default and its downloaded annotations pass geometry/reference checks. Do not combine STAPLE with MV. STAPLE comparison is a later controlled experiment.
-
-| Variant | Split | Images listed | Object instances |
-|---|---|---:|---:|
-| MV | Train | 21,349 | 252,723 |
-| MV | Val | 5,297 | 63,497 |
-| STAPLE | Train | 17,387 | 226,239 |
-| STAPLE | Val | 4,339 | 57,163 |
-
-MV total: **26,646 images and 316,220 objects**. STAPLE total: **21,726 images and 283,402 objects**. The annotation variants do not list the same number of images, despite sharing the repository image pool. Do not assume equivalent evaluation denominators.
-
-Exact MV files selected:
-
-- `UVH-26-Train/UVH-26-MV-Train.json`
-- `UVH-26-Val/UVH-26-MV-Val.json`
-
-Available STAPLE counterparts use `UVH-26-ST-Train.json` and `UVH-26-ST-Val.json`.
-
-## Annotation integrity findings
-
-The executed annotation-only audit found zero duplicate image IDs within each split, duplicate annotation IDs, duplicate filenames, missing mandatory fields, unknown categories, missing image references or invalid bounding boxes. Zero images have no annotations. All 316,220 boxes are finite, positive-area and within their declared image bounds. There is no shared image ID or filename across train and validation.
-
-**Not yet established:** image readability, actual dimensions matching annotation metadata, complete image inventory, byte-identical train/validation leakage. The annotation audit explicitly sets `image_audit_executed: false`; an empty hash-overlap array at this stage is not evidence that hash leakage was checked.
-
-## Class mapping and EDA
-
-Original numeric IDs are sorted and mapped to contiguous zero-based YOLO IDs in configs/class_mapping.yaml and reports/tables/class_mapping.csv. Names remain unchanged; no classes are merged. `Others` is retained provisionally because it is a valid supplied category; visual quality review remains required.
-
-| Original ID | YOLO ID | Name | MV instances |
-|---:|---:|---|---:|
-| 1 | 0 | Hatchback | 30,290 |
-| 2 | 1 | Sedan | 15,950 |
-| 3 | 2 | SUV | 13,175 |
-| 4 | 3 | MUV | 6,523 |
-| 5 | 4 | Bus | 9,286 |
-| 6 | 5 | Truck | 13,011 |
-| 7 | 6 | Three-wheeler | 52,428 |
-| 8 | 7 | Two-wheeler | 149,730 |
-| 9 | 8 | LCV | 17,345 |
-| 10 | 9 | Mini-bus | 873 |
-| 11 | 10 | Tempo-traveller | 1,680 |
-| 12 | 11 | Bicycle | 3,391 |
-| 13 | 12 | Van | 2,186 |
-| 14 | 13 | Others | 352 |
-
-Source: executed EDA and `reports/tables/eda_class_distribution.csv`. Class share percentages by split are in that CSV. Two-wheelers dominate; `Others`, Mini-bus and Tempo-traveller are rare, so aggregate metrics can obscure poor minority-class performance.
-
-Objects per image: mean 11.8674, median 10, minimum 1 and maximum 66. Box area median is 14,688 original pixels². Using COCO-style area boundaries on original-resolution boxes gives 4,041 small, 112,887 medium and 199,292 large instances. These counts are not equivalent to object sizes after resizing to 640 pixels.
-
-Generated figures cover split counts, classes, objects per image, metadata resolution, box width/height/area/aspect ratios and object centre spatial distribution. The notebook reads these generated artifacts; its cells have not been executed as a separate notebook run.
-
-## Conversion and validation procedure
-
-Implementation is present; full-dataset execution is pending download and image audit. Raw images/annotations remain unchanged. Conversion builds separate label files and relative image symlinks under `uvh26_mv_yolo_v1`. For `[x,y,w,h]`, normalized labels are `[(x+w/2)/W,(y+h/2)/H,w/W,h/H]` plus the mapped class ID.
-
-Repair policy: reject invalid boxes and record reasons; zero clipped and repaired boxes by design. Unknown references/categories and structural ambiguity block conversion. Empty retained objects yield an empty label file. Ordering is deterministic. Annotation hashes and policy identify the processed version; differing or incomplete versions cannot be overwritten. The manifest records source image, label, split and object count.
-
-YOLO validation checks five fields per row, integral class range, finite normalized coordinates, positive sizes, box extent, image-label pairing, manifest counts and category frequencies. It then calls Ultralytics' dataset resolver and scans both splits. This full validation has not run yet.
-
-Visual verification will render at least 20 seed-42 random annotated images plus class coverage, dense/sparse and small-object cases. Occlusion is a visual judgment, not a field in these annotations. Training is gated on a recorded manual visual review.
-
-## Subset decision, baseline and smoke test
-
-Proposed baseline: 8,000 train / 2,000 validation images, seed 42, preserving official boundaries. Selection covers rare classes then performs seeded random fill. Immutable image-ID manifests and full/subset class shares will quantify representativeness. Final feasibility will be assessed from the one-epoch smoke run; no reduced dataset results will be called full-dataset results.
-
-Planned model: official COCO-pretrained YOLOv8n. Planned settings: 640 image size, 30 epochs, batch 8, MPS, 4 workers, seed 42, deterministic mode, patience 10, optimizer auto, no cosine schedule, close mosaic 5, AMP requested, plots and checkpoint saving enabled. Smoke settings explicitly change to one epoch, zero workers and close mosaic zero on 64 train / 32 val images. Configuration and device overrides are recorded in run provenance.
-
-Pretrained inference is a separate smoke test and cannot establish UVH-26 baseline accuracy. Proper training has not started. Finite-loss checks and checkpoint existence are required after smoke training.
-
-## Evaluation, qualitative analysis and limitations
-
-| Required outcome | Current evidence |
+| Record | SHA-256 |
 |---|---|
-| Completed proper baseline | Pending |
-| Training duration / best epoch / stopping status | Not measured |
-| Precision / recall / F1 | Not measured |
-| mAP@0.5 / mAP@0.5:0.95 | Not measured |
-| Per-class AP, precision, recall | Not measured |
-| Training curves / confusion matrix / PR and F1 curves | Pending training and validation |
-| Fine-tuned prediction examples / error analysis | Pending |
-| Fine-tuned inference time / FPS / weight checksum | Not measured |
+| Combined manifest | `990054a93e300a90321db19b3d0bcd98a488a891cd4e2dbd88425f4eb592c2af` |
+| Training manifest | `8e4a72413caecc9defee68e75f498b71160b06fb33f30f6cbe2dc8b3677032cf` |
+| Validation manifest | `fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3` |
+| Class mapping | `6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8` |
+| Selected-image audit | `c9534e58ca40a16e7a7777d790156a97a2add846f76d43735a6c0b48226c6408` |
 
-Evaluation code measures the best checkpoint on validation data, records macro per-class F1, class metrics, speed and parameter count, and copies genuine plots. Reported FPS will be validation-batch throughput, with inference-only and pipeline timing distinguished; it excludes end-to-end application overhead.
+Closeout independently rehashed all 10,000 images and labels, both checkpoints, mapping, manifests, audit, frozen optimizer config, training source and requirements. Saved training dataset paths resolve to the final v2 subset. Evidence: `reports/audit/baseline_closeout_integrity.json` and `baseline_subset_frozen_provenance.json`.
 
-Diagnostic matching uses class-agnostic greedy IoU matching at 0.5 with confidence 0.1 to identify unmatched objects and class confusions. This is for qualitative sampling and is not the COCO AP evaluator. Occlusion-related conclusions require visual evidence. No best/worst class claims are made before evaluation.
+## Source-image recovery history
 
-## Tests, commands and reproduction
+Train ID 21818, `UVH-26-Train/data/003/803489.png`, decodes at 1620x1080 but declares 1920x1080. Raw-coordinate and width-rescaled overlays gave inconsistent object alignment; neither justified automatic repair. The raw file remains unchanged and quarantined. Its first candidate replacement, ID 5235 (`Train/data/001/341297.png`), was structurally valid but visually degraded and also excluded. Final replacement: train ID 25440 (`Train/data/000/233625.png`), preserving one three-wheeler and two two-wheelers.
 
-The saved `reports/audit/pytest.txt` currently records **47 passed**. Tests use synthetic images and annotations; no dataset images are committed. Coverage includes path resolution, JSON/schema loading, IDs, categories, normalization, invalid boxes, label validation, backgrounds, manifest/split integrity, coverage-aware sampling, idempotent conversion and hash-leakage blocking. Diagnostic matching tests check one-to-one matching and empty detections.
+Validation ID 20260 (`Val/data/001/986228.png`) was severely visually degraded; final replacement ID 6452 (`Val/data/000/81395.png`) preserves two two-wheelers and one bicycle. Three unique files were quarantined; two original candidate images changed. No clipping, silent resizing or relabelling was performed. The earlier frozen v1 is preserved as superseded before baseline training. `baseline_subset_v2_provenance_addendum.json` clarifies the v2 replacement search: all same-split official candidates, deterministic exposure-distance ranking/tie break and pinned acquisition if needed; the inherited v1 provenance wording is retained unchanged.
 
-Executed project commands include:
+## Actual training outcome
+
+Run ID: `yolov8n_uvh26_mv_baseline_seed42_v1`. The original run directory and logs are preserved unchanged; no retraining or resume was used for closeout. Start 2026-09-13T13:32:35.295730+00:00; completion 2026-09-13T17:59:45.280500+00:00. Wall duration **16029.859 s** (4 h 27 min 9.859 s); epoch CSV elapsed **15,948.1 s**. All 30 CSV epoch rows and losses are finite. Process exit 0 was obtained from the original process session, not inferred from epoch 29. The saved callback identifies best epoch 30; maximum CSV mAP50:95 also occurs at 30.
+
+| Effective setting | Value |
+|---|---|
+| Initialization | COCO-pretrained YOLOv8n |
+| Requested / completed epochs | 30 / 30 |
+| imgsz / batch / seed | 640 / 8 / 42 |
+| Optimizer | AdamW; lr0 0.000556, lrf 0.01, weight decay 0.0005 |
+| Warm-up / patience | 3 epochs / 10; no early stop |
+| Device / precision | Apple M5 MPS; effective AMP false |
+| Workers | configured 4; effective 0 (Ultralytics MPS behavior) |
+| Accumulation / nbs | startup 8 / 64; warm-up may vary accumulation |
+| Mosaic | 1.0; disabled for final 5 epochs |
+| Environment | Python 3.12.14, PyTorch 2.14.0, Ultralytics 8.4.146 |
+
+Complete configuration/augmentations are saved in run provenance and immutable `args.yaml`. MPS scatter_reduce and index_put_with_accumulate emitted nondeterminism warnings under warn-only deterministic mode. Seed and data selection are reproducible; bitwise numerical replay is not guaranteed. No traceback, nonfinite losses or integrity failure was found. Training began before the initial Git commit, so original provenance honestly has `git_commit: null`; source/config/requirements hashes bind that execution.
+
+## Checkpoint integrity
+
+| File (project-relative local path) | Bytes | SHA-256 |
+|---|---:|---|
+| `runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/best.pt` | 6228714 | `85b9e089ec3dfaa676e30a6191b7e5726f320d5bf85391f1675922b88f9778b3` |
+| `runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/last.pt` | 6228714 | `19cf82c3848fafae370fa36dd16e845a26dc38eb83bd80a473bb24691268551a` |
+
+Both checkpoints load, retain the correct 14-class mapping, and contain finite tensors. Ultralytics optimizer stripping resets the internal epoch field to -1; the preserved save callback and CSV establish epoch identity. Both correspond to final epoch 30, but file hashes differ. Weights stay local and are excluded from Git/portable ZIP.
+
+## Fresh standalone best-checkpoint validation
+
+| Checkpoint / evaluation | Precision | Recall | F1 (harmonic aggregate) | Macro F1 | mAP@0.5 | mAP@0.5:0.95 |
+|---|---:|---:|---:|---:|---:|---:|
+| YOLOv8n best epoch 30 / frozen 2,000 val | 0.609993 | 0.543547 | 0.574856 | 0.539397 | 0.560049 | 0.458407 |
+
+Evaluation ID: `yolov8n_uvh26_mv_baseline_seed42_v1_validation`, completed with exit 0 in 82.495 seconds. Frozen val manifest matches the table above: **2,000 images, 24,342 objects**. Settings: MPS, imgsz 640, batch 8, workers 0, confidence floor 0.001, NMS IoU 0.7, max_det 300. AP is evaluated across IoU 0.50:0.05:0.95. These are newly computed metrics, not copied from the final epoch CSV (small numerical differences are preserved).
+
+Precision/Recall are unweighted class means at the common confidence maximizing smoothed mean class F1, **0.309309**, with IoU 0.5 matching. Harmonic aggregate F1 = 2PR/(P+R); macro F1 = mean of 14 per-class F1 scores. Neither is micro-F1. The table explicitly shows both. "Others" precision 1.0 at zero recall is the evaluator's empty-prediction interpolation convention, not perfect detection.
+
+| Class | Val objects | Precision | Recall | F1 | AP@0.5 | AP@0.5:0.95 |
+|---|---:|---:|---:|---:|---:|---:|
+| Hatchback | 2402 | 0.5621 | 0.6574 | 0.6060 | 0.6345 | 0.5341 |
+| Sedan | 1169 | 0.5180 | 0.4936 | 0.5055 | 0.5603 | 0.4884 |
+| SUV | 1028 | 0.4360 | 0.5691 | 0.4937 | 0.4720 | 0.4115 |
+| MUV | 541 | 0.4421 | 0.4291 | 0.4355 | 0.4075 | 0.3645 |
+| Bus | 627 | 0.7511 | 0.7124 | 0.7312 | 0.7695 | 0.6430 |
+| Truck | 933 | 0.6074 | 0.6506 | 0.6282 | 0.6801 | 0.5454 |
+| Three-wheeler | 4016 | 0.8537 | 0.8391 | 0.8464 | 0.9036 | 0.7403 |
+| Two-wheeler | 11624 | 0.8152 | 0.8016 | 0.8084 | 0.8776 | 0.6393 |
+| LCV | 1322 | 0.6659 | 0.7080 | 0.6863 | 0.7196 | 0.5790 |
+| Mini-bus | 58 | 0.2179 | 0.1552 | 0.1813 | 0.1891 | 0.1383 |
+| Tempo-traveller | 130 | 0.6747 | 0.6062 | 0.6386 | 0.6504 | 0.5694 |
+| Bicycle | 278 | 0.5884 | 0.5502 | 0.5686 | 0.5742 | 0.4220 |
+| Van | 183 | 0.4074 | 0.4372 | 0.4218 | 0.3626 | 0.3184 |
+| Others | 31 | 1.0000 | 0.0000 | 0.0000 | 0.0396 | 0.0242 |
+
+Three-wheeler has strongest AP50:95 (0.7403), followed by Bus (0.6430) and Two-wheeler (0.6393). Others (0.0242), Mini-bus (0.1383), and Van (0.3184) are weakest. Only 31 Others and 58 Mini-bus validation instances support those estimates; rare-class reliability is limited. AP confidence intervals and independent test-set generalization have not been measured.
+
+Per-class CSV, numeric 15x15 confusion matrix and PR/F1/P/R curves are under `reports/tables/` and `reports/figures/` with the evaluation ID prefix. Matrix rows are predicted classes, columns are true classes, final row/column are background. The installed validator uses the explicit 0.001 confidence for this matrix, with matching IoU 0.45. It is not the F1 operating-point matrix.
+
+## Prediction review against ground truth
+
+100 seeded random validation images plus dense/sparse/class-coverage selection, deduplicated to 101. Six paired GT/prediction images manually inspected. conf .10, NMS IoU .7; class-agnostic greedy diagnostic matching at IoU .5. Counts are not AP, not an unbiased error-rate estimate, and unmatched predictions may include unlabelled true vehicles.
+
+- **Validation 4232:** All 10 annotated objects have correct-class IoU matches, including foreground truck and distant/partly occluded two-wheelers. Two unmatched predictions remain; this is a success example, not perfect scene accuracy.
+
+- **Validation 10518:** 15 correct-class matches out of 17 GT; distant annotated Two-wheeler index16 is missed (65.44 square pixels after long-side scaling to 640). Foreground motorcycles are detected. One LCV/Truck class confusion.
+
+- **Validation 1364:** Dense intersection: 56 GT, 48 correct-class matches, 3 unmatched GT and 71 unmatched predictions at low conf .10. Heavy overlap and partial occlusion; duplicate cross-class boxes, Bus/Mini-bus/LCV/Truck confusion; pedestrian at lower right is predicted as Bicycle. These are model errors, though not every unmatched prediction is a false vehicle.
+
+- **Validation 21621:** Dense occluded queue: 40 GT, 33 correct-class matches; no unmatched GT under class-agnostic matching, but 7 class confusions. Foreground handcart labelled Others is predicted Three-wheeler; additional low-confidence Two-wheeler box on produce cart is a false positive. Passenger-car subtype confusion and duplicate boxes persist.
+
+- **Validation 4711:** Large foreground MUV and two-/three-wheelers detected correctly; source Mini-bus is predicted Bus. Visible partial auto-rickshaw at right border lacks a corresponding GT box; its detection is an annotation-relative unmatched prediction, not established model hallucination. Fine-grained bus taxonomy needs source review, with labels kept unchanged.
+
+- **Validation 954:** Eight motorcycles correctly matched, but the clearly visible construction vehicle labelled Others is confidently predicted Truck (0.88). Rare-class semantic confusion, not a dimension/alignment problem.
+
+Source limitations are separate: some visible vehicles lack labels, bus/car subtype distinctions and occlusion box extents can be ambiguous, and source redactions remain. Labels were not changed to improve metrics. Diagnostic counts do not establish a population false-positive rate. No occlusion-stratified AP or small-object AP was measured. Detailed local paired images are in `reports/predictions/error_analysis/review_pair_*.jpg`; portable artifacts retain textual findings, not dataset imagery.
+
+## Proper-checkpoint Apple MPS timing
+
+| Stage | Mean ms | Median ms | p95 ms |
+|---|---:|---:|---:|
+| end_to_end_ms | 31.357 | 31.732 | 34.359 |
+| inference_ms | 4.956 | 3.768 | 7.358 |
+| postprocess_ms | 2.466 | 1.404 | 4.532 |
+| preprocess_ms | 1.691 | 1.017 | 3.902 |
+
+**Inference-only FPS: 201.766. End-to-end still-image FPS: 31.891.** FPS is sample count divided by total stage time (1000 / mean ms), not reciprocal median or average instantaneous FPS.
+
+Apple M5, 24 GiB system memory; MPS, float32, batch 1, imgsz 640, 10 warm-up predictions excluded, 100 deterministic seed42 validation samples. Actual stride-aligned rectangular tensor shapes are recorded per image. OpenCV local path read/decode, stride-aligned rectangular letterbox to imgsz=640, BGR-to-RGB, CHW float32 tensor /255; actual tensor shapes recorded per sample. Confidence filtering and class-aware NMS at conf .25 / IoU .7 / max_det 300; box scaling and Results construction.
+
+Explicit torch.mps.synchronize before and after each stage; no reliance on unsynchronized result.speed. End-to-end includes these instrumentation barriers. Wall time around predict(path), including local image read/decode, preprocessing, inference and postprocessing plus device synchronization; excludes model loading, drawing, video capture and UI. Model loading and warm-up are excluded; local image I/O may benefit from OS cache. Median/p95 characterize this sample, not sustained video behavior. The original unsynchronized stage pass is preserved only under ignored `data/interim/` as a diagnostic; it is not used above. The library's batched validation stage timings are also unsynchronized on MPS and must not be presented as useful inference latency.
+
+This single-model accuracy-speed point provides a frozen reference. Inference occupies a small part of file-to-result latency; image I/O and API overhead matter. Low rare-class recall, missed small/occluded vehicles and duplicate detections constrain usefulness despite the measured still-image throughput. Larger inputs/models may improve accuracy but require controlled measurements; no comparative benefit has been demonstrated yet. No predeclared video end-to-end criterion or capture/display pipeline was tested, so no real-time or production-ready claim is made.
+
+## Validation, deliverables and entry gate
+
+The complete saved test result is `reports/audit/closeout_pytest.txt`; additional evaluation consistency, unchanged-run, dashboard, PDF and portable ZIP checks are in `reports/audit/closeout_validation.json`. Data validation re-scans all selected YOLO images/labels with zero corrupt/removed labels. The report, dashboard, faculty PDF, presentation script, offline demonstration and portable ZIP are updated to this proper baseline. Historical smoke/preflight artifacts remain labelled engineering checks.
+
+The subset-based Phase 2 gate requires selected-image integrity, frozen manifests/optimizer, completed training, readable hashed checkpoint, standalone evaluation, proper timing, qualitative review, final report/tests and a Git checkpoint. Acquisition of unselected images is explicitly not required. Run `python scripts/phase2_subset_gate.py` to inspect current evidence. Git branch/push evidence is recorded separately in `reports/audit/closeout_delivery.json`. Do not start Phase 2 training as part of closeout.
+
+## Reproduction commands (do not overwrite the frozen run)
 
 ```bash
-python3.12 -m venv .venv
-.venv/bin/python -m pip freeze > requirements.txt
-.venv/bin/hf download iisc-aim/UVH-26 --repo-type dataset --revision 59f82c57821e8a54dc40bc1f42e83909dbad0b70 --local-dir data/raw/UVH-26 --max-workers 8
-# Resumed with 32 workers and HF_XET_HIGH_PERFORMANCE=1.
-.venv/bin/python -m src.data.inspect_uvh26
-.venv/bin/python -m src.data.validate_raw --annotations-only
-.venv/bin/python -m src.data.eda
+python3 scripts/show_progress.py
 .venv/bin/python -m pytest -q
-.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m src.data.validate_yolo --dataset-version uvh26_mv_yolo_v1/subsets/baseline_seed42_v2
+.venv/bin/python scripts/verify_baseline_closeout.py
+.venv/bin/python -m streamlit run app.py
 ```
 
-Initial dependency installation used the project libraries listed in the request; the resulting exact dependency versions are in `requirements.txt`. Raw transfer logs and Hub metadata remain in ignored `data/interim/`. Ruff installation initially failed on network errors, then succeeded after resuming; source formatting and undefined/unused-name checks were executed. README documents the remaining conversion, validation, training, evaluation and inference commands in execution order.
+Actual evaluation command (already executed; its name is immutable and rerunning it intentionally refuses overwrite):
 
-## Files and Git checkpoint
+```bash
+.venv/bin/python -m src.evaluation.evaluate_baseline --weights runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/best.pt --data data/processed/uvh26_mv_yolo_v1/subsets/baseline_seed42_v2/dataset.yaml --name yolov8n_uvh26_mv_baseline_seed42_v1_validation --device mps --batch 8
+.venv/bin/python -m src.evaluation.benchmark_inference --weights runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/best.pt --data data/processed/uvh26_mv_yolo_v1/subsets/baseline_seed42_v2/dataset.yaml --name yolov8n_uvh26_mv_baseline_seed42_v1 --device mps --warmup 10 --count 100
+```
 
-Created configuration/environment files, package modules under `src/`, synthetic tests, EDA notebook, genuine audit/EDA outputs, README, CHANGELOG, data/model policies and this report. No existing user files were overwritten. No dataset files, machine-specific local path config or weights are eligible for Git.
-
-Commit: pending the requested baseline-completion checkpoint. Branch: `master`. Remote: verified `origin` pointing to the user-supplied repository. Push: not attempted. Phase 1 remains incomplete.
-
-## Recommended Phase 2 objective
-
-After a verified Phase 1 baseline, improve minority-class and small-vehicle recall using controlled imbalance/augmentation experiments, then compare MV and STAPLE on a carefully aligned evaluation population. Add vehicle counting only after detector errors and measured inference throughput are understood.
-
-## Early visual review and pretrained inference update
-
-Pretrained YOLOv8n inference executed on MPS and produced nine COCO-class detections on one downloaded image; the saved speed is a single-image smoke measurement and is not a benchmark. See `reports/audit/pretrained_inference.json`.
-
-Thirty-two early training images were manually inspected as contact sheets, covering all 14 categories, dense/sparse scenes, small objects and occlusion. No systematic scaling/orientation error was observed. Original annotation quality is imperfect: image 355 lacks a foreground motorbike box, image 20275 has an excessively tall truck box, while source verification confirmed the large box in image 834 is correctly assigned to MUV (annotation 7986); reused preview colors had made it ambiguous. Image 1890 contains a construction vehicle marked Others, supporting retention. These findings do not certify the yet-unbuilt full YOLO dataset. Evidence and sampling limitations are in `reports/audit/early_visual_review.json`; raw images and labels were not altered.
-
-## Executed smoke-training update
-
-The separately downloaded and audited pilot contains 64 official training images and 32 official validation images. `reports/audit/smoke_data_audit.json` records decoding, actual dimensions, SHA-256 and label frequencies. Ultralytics scanned both splits with zero corrupt images, and first samples loaded as 3×640×640 tensors (`smoke_loading.json`). Four pilot validation annotation previews were additionally inspected with readable, distinct class colors.
-
-The one-epoch MPS run `yolov8n_uvh26_mv_smoke_seed42` completed with finite training and validation losses and saved best/last checkpoints. Wall duration including setup and final validation: 35.7282 seconds. The epoch CSV elapsed field was 12.7281 seconds. Effective selected optimizer in the executed log: AdamW, learning rate 0.000556, momentum 0.9. Peak displayed GPU memory was approximately 2.17 GB. MPS warned that scatter-reduce and index-put-with-accumulate do not have deterministic implementations; exact numerical reproducibility is not guaranteed despite deterministic settings.
-
-The saved epoch CSV reports precision 0.02237, recall 0.00238, mAP50 0.00063 and mAP50–95 0.00043. These are **smoke-only**, rounded CSV values, not proper baseline results. All 32 saved pilot predictions had zero detections at confidence 0.01; two images were manually inspected. One source image (100173.png) is heavily blurred/redacted. The one-epoch checkpoint is not a useful detector.
-
-Smoke checkpoint: `runs/yolov8n_uvh26_mv_smoke_seed42/weights/best.pt`, 6,224,938 bytes, SHA-256 `4808f80e387a019bee01a3dceaea255320f125c1c8161bd53d85b4c1e71c9753`. Provenance and actual epoch metrics are under `reports/tables/`. No smoke checkpoint is being represented as the required completed baseline.
-
-Based on steady smoke batches around 0.6 seconds, the proposed 8,000-image, 30-epoch training is estimated to require several hours plus validation and startup. This is an extrapolation, not measured baseline duration. The full dataset download failed in Xet after DNS/network errors; a resumable HTTP fallback is in progress. Completed raw files are retained.
-
-## Acquisition blocker
-
-Full image acquisition is blocked by repeated external network failures: Hugging Face Xet DNS/reconstruction errors, followed by HTTP responses ending before their declared length and repeated read timeouts. PyPI also failed DNS resolution during an optional formatter download. The project stop condition for dataset acquisition applies. Completed raw files and resumable transfer metadata are preserved. No full-dataset conversion or proper baseline completion is claimed; no commit or push was attempted because the requested pre-commit baseline-completion condition is unmet. See `reports/audit/acquisition_status.json` for the final observed local image inventory.
-
-## Faculty progress deliverable
-
-Prepared a five-page PDF, speaking script, offline evidence demo and portable project ZIP for a faculty progress review. The pack labels all smoke results explicitly and does not claim completed baseline accuracy. Source/tests/configuration and generated evidence are included; raw images, annotations, weights, local paths and credentials are excluded. The 8,000/2,000 subset selection contains 94,484/24,342 objects; maximum class-share difference from the parent split is 0.306231 percentage points. Full and prioritized downloads are running after resumption.
-
-## Authorized subset recovery (12 September 2026)
-
-The user explicitly redefined completion as a UVH-26 Majority Voting **8,000/2,000 subset baseline**. Full annotation-catalog checks remain applicable, but acquisition and pixel auditing of unselected images are no longer prerequisites. Full acquisition is retained as a separate future resumable task. No full-dataset training, full pixel-integrity or test-set claim is made.
-
-The original 10,000 candidate images were fully decoded, dimension checked, hashed and checked for box validity against both metadata and actual dimensions. One mismatch was found: training ID 21818 (`803489.png`), 1620×1080 actual versus 1920×1080 metadata. Its three boxes all end within actual width (rightmost 1486.5). Raw-coordinate overlays roughly align the three-wheeler but miss both motorcycles; horizontal scaling improves the motorcycles but shifts the three-wheeler incorrectly. No interpretation consistently aligns every box. No existing YOLO label was present, so the third diagnostic is explicitly a hypothetical metadata-normalized roundtrip, not an existing converted label. Raw data remains unchanged; the image is quarantined from the baseline.
-
-An initial exact-class-exposure replacement (training ID 5235, `341297.png`) passed structural checks but final visual review revealed severe gray artifacts. Validation ID 20260 (`986228.png`) also showed severe visual degradation despite successful PNG decoding. The first frozen candidate `baseline_seed42` is preserved and superseded before training; its review is recorded as failed. Version `baseline_seed42_v2` is being prepared with training ID 25440 (`233625.png`) and validation ID 6452 (`81395.png`). Both replacements exactly preserve the removed per-class object counts. All final images are re-audited before freezing. A near-mid-gray fraction filter is used only to reject replacement candidates; it is not claimed as a validated full-image corruption detector.
-
-The baseline optimizer is explicitly AdamW with `lr0=0.000556`, `weight_decay=0.0005`, betas `(0.9, 0.999)`, `nbs=64`, `lrf=0.01`, three warm-up epochs and zero initial bias warm-up LR. This is a conservative documented baseline choice, not an optimum from a tuning study. Installed Ultralytics 8.4.146 accepts these settings; its explicit AdamW path preserves the requested learning rate. A startup callback verifies the actual optimizer and parameter-group learning rates before training. Requested workers remain four; the installed MPS/CPU trainer unconditionally uses zero workers. After warm-up, nominal gradient accumulation is eight at batch eight, giving nominal effective batch 64; warm-up accumulation varies.
-
-Proper training, evaluation, latency measurement and the initial Git checkpoint remain pending. The final one-epoch preflight will use the final 8,000/2,000 manifests under its own experiment ID and is not the proper baseline.
-
-
-## Initial repository checkpoint requested during training
-
-The user requested committing all eligible current changes before training finalization. This supersedes the earlier timing restriction on the initial commit, but does not establish Phase 1 completion. The proper run is `yolov8n_uvh26_mv_baseline_seed42_v1`; its last observed saved epoch was 28 and epoch 29 was active. All 10,000 image and label hashes were reverified before launch. The final training subset has 94,609 objects (not the earlier snapshot count 94,484), and validation has 24,342. All 58 tests passed at the repository checkpoint. Final evaluation, latency, updated faculty deliverables and the revised Phase 2 gate remain outstanding.
+To repeat an evaluation later, supply a new unique output name. Never retrain/overwrite the baseline to reproduce a report. Dataset source: [IISc AIM UVH-26](https://huggingface.co/datasets/iisc-aim/UVH-26); source citation retained in data documentation.

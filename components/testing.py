@@ -4,7 +4,7 @@ import subprocess
 import sys
 import streamlit as st
 from utils.data_loader import get_test_suite_status
-from utils.artifact_loader import ROOT, find_file
+from utils.artifact_loader import ROOT
 
 
 def render_testing_section():
@@ -14,7 +14,7 @@ def render_testing_section():
     # --------------------------------------------------------------------------
     # 08 — Automated Reliability (Synthetic Testing)
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="testing">
             <div class="section-kicker">08 / SOFTWARE RELIABILITY</div>
@@ -24,72 +24,23 @@ def render_testing_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     t1, t2 = st.columns([1.2, 0.8])
 
     with t1:
-        st.markdown(
-            f"""
-            <div class="glass-card">
-                <div class="glass-card-header">
-                    <div class="glass-card-title">🧪 Test Coverage by Domain</div>
-                    <span class="badge-complete">{test_info['passed_count']} / {test_info['passed_count']} PASSED</span>
-                </div>
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; font-family: var(--font-mono);">
-                    <thead>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); color: #38bdf8;">
-                            <th style="padding: 6px;">Test Module</th>
-                            <th style="padding: 6px; text-align: center;">Tests</th>
-                            <th style="padding: 6px;">Validated Properties</th>
-                        </tr>
-                    </thead>
-                    <tbody style="color: #e2e8f0;">
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                            <td style="padding: 6px;"><code>test_bbox_validation.py</code></td>
-                            <td style="padding: 6px; text-align: center; color: #34d399; font-weight: 700;">20</td>
-                            <td style="padding: 6px; color: #94a3b8;">Out-of-frame rejection, non-numeric, bad dimensions</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                            <td style="padding: 6px;"><code>test_annotation_conversion.py</code></td>
-                            <td style="padding: 6px; text-align: center; color: #34d399; font-weight: 700;">10</td>
-                            <td style="padding: 6px; color: #94a3b8;">COCO normalization, duplicate IDs, category mapping</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                            <td style="padding: 6px;"><code>test_dataset_manifest.py</code></td>
-                            <td style="padding: 6px; text-align: center; color: #34d399; font-weight: 700;">6</td>
-                            <td style="padding: 6px; color: #94a3b8;">Split leakage detection, filename collisions, seed42</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                            <td style="padding: 6px;"><code>test_pipeline_integration.py</code></td>
-                            <td style="padding: 6px; text-align: center; color: #34d399; font-weight: 700;">6</td>
-                            <td style="padding: 6px; color: #94a3b8;">Audit ➔ Convert pipeline, background labels, idempotence</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                            <td style="padding: 6px;"><code>test_path_resolution.py</code></td>
-                            <td style="padding: 6px; text-align: center; color: #34d399; font-weight: 700;">3</td>
-                            <td style="padding: 6px; color: #94a3b8;">Project-relative config path resolution</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                            <td style="padding: 6px;"><code>test_error_matching.py</code></td>
-                            <td style="padding: 6px; text-align: center; color: #34d399; font-weight: 700;">3</td>
-                            <td style="padding: 6px; color: #94a3b8;">Greedy IoU matching, FP/FN confusion isolation</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 6px;"><code>test_training_provenance.py</code></td>
-                            <td style="padding: 6px; text-align: center; color: #34d399; font-weight: 700;">1</td>
-                            <td style="padding: 6px; color: #94a3b8;">Best checkpoint tracking including metric ties</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        from utils.artifact_loader import load_json
+
+        st.write(f"Saved test result: {test_info['passed_count']} passed")
+        collected = load_json("reports/audit/closeout_test_collection.json")
+        if collected:
+            st.dataframe(
+                [{"Module": k, "Collected tests": v} for k, v in collected.items()],
+                hide_index=True,
+            )
 
     with t2:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -100,10 +51,9 @@ def render_testing_section():
                     Execute the local synthetic test suite directly from this dashboard:
                 </p>
             """,
-            unsafe_allow_html=True,
         )
 
-        run_btn = st.button("▶ Run Pytest Suite", type="primary", use_container_width=True)
+        run_btn = st.button("▶ Run Pytest Suite", type="primary", width="stretch")
 
         if run_btn:
             with st.spinner("Executing the current unit and integration test suite..."):
@@ -116,7 +66,7 @@ def render_testing_section():
                         timeout=15,
                     )
                     out_text = res.stdout if res.stdout else res.stderr
-                    st.markdown(
+                    st.html(
                         f"""
                         <div class="terminal-window" style="margin-top: 0.5rem;">
                             <div class="terminal-header">
@@ -126,37 +76,37 @@ def render_testing_section():
                                 <span style="font-size: 0.72rem; color: #34d399; margin-left: 0.5rem;">Live Test Execution (Exit 0)</span>
                             </div>
                             <div class="terminal-body" style="font-size: 0.8rem; color: #34d399;">
-                                {out_text.replace(chr(10), '<br/>')}
+                                {out_text.replace(chr(10), "<br/>")}
                             </div>
                         </div>
                         """,
-                        unsafe_allow_html=True,
                     )
                 except Exception as e:
                     st.error(f"Error executing pytest: {e}")
         else:
-            st.markdown(
+            st.html(
                 f"""
                 <div class="terminal-window" style="margin-top: 0.5rem;">
                     <div class="terminal-header">
                         <span class="terminal-btn red"></span>
                         <span class="terminal-btn yellow"></span>
                         <span class="terminal-btn green"></span>
-                        <span style="font-size: 0.72rem; color: #94a3b8; margin-left: 0.5rem;">reports/audit/pytest.txt</span>
+                        <span style="font-size: 0.72rem; color: #94a3b8; margin-left: 0.5rem;">reports/audit/closeout_pytest.txt</span>
                     </div>
                     <div class="terminal-body" style="font-size: 0.8rem;">
-                        {test_info['text'].replace(chr(10), '<br/>')}
+                        {test_info["text"].replace(chr(10), "<br/>")}
                     </div>
                 </div>
                 """,
-                unsafe_allow_html=True,
             )
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.html(
+            "</div>",
+        )
 
     # --------------------------------------------------------------------------
     # 09 — Reproducibility
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="reproducibility">
             <div class="section-kicker">09 / REPRODUCIBILITY STACK</div>
@@ -166,10 +116,9 @@ def render_testing_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
-    st.markdown(
+    st.html(
         """
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
             <div class="glass-card" style="text-align: center; padding: 1.2rem;">
@@ -198,14 +147,12 @@ def render_testing_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
-    st.markdown(
+    st.html(
         """
         <div class="warning-callout">
             <b>Hardware Determinism Limitation:</b> While random seeds and split partitions are strictly locked, PyTorch warns that certain Apple Silicon MPS operations (e.g. <code>scatter_reduce</code> and <code>index_put_with_accumulate</code>) are non-deterministic. Exact bit-for-bit floating-point replay is not guaranteed across different PyTorch or macOS versions.
         </div>
         """,
-        unsafe_allow_html=True,
     )

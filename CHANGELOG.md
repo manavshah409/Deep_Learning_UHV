@@ -1,22 +1,20 @@
 # Changelog
 
-## 0.1.0 — Phase 1 in progress (2026-09-11)
+## Phase 1 baseline closeout - 2026-09-13
 
-- Initialized the project environment and pinned the official UVH-26 revision.
-- Inspected all four consensus annotation files and audited Majority Voting annotation geometry and references.
-- Generated annotation-based exploratory analysis for 26,646 images and 316,220 objects.
-- Implemented versioned COCO-to-YOLO conversion, strict validation and coverage-aware subset selection.
-- Added training, evaluation, diagnostic matching and CLI inference tools.
-- Added synthetic unit and integration tests; see the saved test output.
-- Completed a separately audited 64/32 pilot and genuine one-epoch MPS smoke training (35.7 seconds total wall time).
-- Inspected early annotation and smoke prediction images, documenting imperfect labels and heavily redacted imagery.
-- Full image acquisition, full image integrity audit and proper baseline training are pending. This release is not Phase 1 completion.
+- Verified successful exit 0, 30 completed epochs, best epoch 30 and no early stopping; preserved the training run and both checkpoints.
+- Reverified all 10,000 selected image/label hashes, dataset paths, manifests, class mapping, frozen optimizer and training-source provenance.
+- Executed fresh best-checkpoint validation on 2,000 images: P 0.609993, R 0.543547, mAP50 0.560049, mAP50:95 0.458407; recorded both F1 aggregations, per-class scores, confusion matrix and curves.
+- Added explicitly synchronized MPS batch-one stage timing: 31.732 ms median / 34.359 ms p95 end-to-end still-image latency, 31.891 images/s; no video FPS claim.
+- Reviewed six paired validation scenes from 101 diagnostic cases; separated source annotation limitations from model errors.
+- Rebuilt Phase 1 report, artifact dashboard, faculty PDF, speaking script, offline demo and portable ZIP; retained historical smoke/preflight evidence separately.
+- Re-ran complete tests, selected-data/evaluation validation and the subset Phase 2 gate. Delivery commit/push evidence lives in reports/audit/closeout_delivery.json. Phase 2 training remains unstarted.
 
+## Preparation and recovery - 2026-09-11 to 2026-09-13
 
-## Phase 1 subset recovery and training checkpoint
+- Audited the full 26,646-image MV annotation catalogue, implemented strict COCO-to-YOLO conversion, EDA and deterministic subset selection.
+- Completed smoke and full-subset preflight checks as engineering diagnostics.
+- Quarantined inconsistent/degraded source candidates, preserved originals and froze the audited 8,000/2,000 v2 subset with all 14 classes.
+- Initial source checkpoint c82e277 recorded the project while proper training was active; later closeout records supersede that progress snapshot.
 
-- Audited and froze the 8,000/2,000 MV subset with deterministic quarantine/replacement records and no content leakage.
-- Verified 42 annotation overlays, full-subset preflight checkpoints and 42 preflight prediction images.
-- Froze explicit AdamW settings and started the separate 30-epoch baseline.
-- Added audit/recovery, latency and artifact-driven faculty dashboard support; 58 tests pass.
-- This is an in-progress Git checkpoint requested during training. Final baseline evaluation, latency and updated faculty results remain pending.
+Unselected-image acquisition/integrity verification remains incomplete. Catalogue metadata audit and selected-image pixel audit are separate claims.

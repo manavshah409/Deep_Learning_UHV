@@ -1,0 +1,27 @@
+{
+  "status": "blocked",
+  "phase1_complete": false,
+  "controlled_phase2_may_begin": false,
+  "phase2_training_started": false,
+  "scope": "Frozen UVH-26 MV 8000/2000 subset; unselected acquisition is not required",
+  "checks": {
+    "selected_10000_image_audit": true,
+    "frozen_manifests": true,
+    "frozen_optimizer_config": true,
+    "proper_training_exit_and_epochs": true,
+    "proper_checkpoint": true,
+    "standalone_evaluation": true,
+    "proper_model_timing": true,
+    "qualitative_review": true,
+    "faculty_artifacts_and_tests": true,
+    "git_checkpoint": false,
+    "baseline_pushed": false
+  },
+  "blockers": [
+    "git_checkpoint",
+    "baseline_pushed"
+  ],
+  "baseline_commit": null,
+  "branch": "master",
+  "note": "This gate records eligibility only; it never launches training. Portable copies rely on saved evidence and do not include original data or weights."
+}

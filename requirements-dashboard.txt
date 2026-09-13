@@ -1,0 +1,3 @@
+# Optional faculty dashboard; training lock remains requirements.txt
+streamlit==1.63.0
+plotly==7.0.0

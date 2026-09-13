@@ -4,6 +4,7 @@ import argparse
 from pathlib import Path
 import shutil
 import time
+import numpy as np
 from src.data.common import ROOT, save_json, sha256
 
 
@@ -16,13 +17,14 @@ def main():
     p.add_argument("--batch", type=int, default=8)
     a = p.parse_args()
     from ultralytics import YOLO
+    from ultralytics.utils.metrics import smooth
     import pandas as pd
     import torch
 
     model = YOLO(a.weights)
-    device = (
-        a.device if a.device != "mps" or torch.backends.mps.is_available() else "cpu"
-    )
+    if a.device == "mps" and not torch.backends.mps.is_available():
+        raise RuntimeError("MPS unavailable; no silent CPU fallback")
+    device = a.device
     output = ROOT / "runs" / a.name
     if output.exists():
         raise ValueError("Evaluation name already exists")
@@ -35,6 +37,9 @@ def main():
         device=device,
         workers=0,
         plots=True,
+        conf=0.001,
+        iou=0.7,
+        max_det=300,
         project=str(ROOT / "runs"),
         name=a.name,
     )
@@ -77,7 +82,7 @@ def main():
         "speed_ms_per_image": speed,
         "inference_only_fps": 1000 / infer if infer else None,
         "pipeline_fps": 1000 / sum(speed.values()) if sum(speed.values()) else None,
-        "fps_note": "Validation-batch throughput, excludes file I/O and application overhead; not end-to-end video FPS.",
+        "fps_note": "Ultralytics validation stage profiler does not synchronize MPS. Stage times and derived throughput are diagnostic only; use the explicit synchronized batch-one latency report.",
         "f1_note": "f1 is the harmonic mean of overall reported Precision and Recall; macro_f1 is the mean of per-class F1. Ultralytics selects the confidence operating point.",
         "weights_bytes": Path(a.weights).stat().st_size,
         "weights_sha256": sha256(a.weights),
@@ -87,8 +92,24 @@ def main():
         "batch": a.batch,
         "imgsz": 640,
         "split": "val",
+        "confidence_floor": 0.001,
+        "nms_iou": 0.7,
+        "max_det": 300,
+        "f1_operating_confidence": float(
+            m.box.px[int(np.argmax(smooth(m.box.f1_curve.mean(0), 0.1)))]
+        ),
     }
     save_json(ROOT / "reports/tables" / f"{a.name}_metrics.json", result)
+    save_json(
+        ROOT / "reports/tables" / f"{a.name}_confusion_matrix.json",
+        {
+            "names": model.names,
+            "matrix": m.confusion_matrix.matrix.tolist(),
+            "axes": "rows predicted, columns true; final row/column background",
+            "confidence": float(model.validator.confusion_matrix_conf),
+            "matching_iou": 0.45,
+        },
+    )
     for path in output.glob("*.png"):
         if "batch" not in path.name:
             shutil.copy2(path, ROOT / "reports/figures" / f"{a.name}_{path.name}")

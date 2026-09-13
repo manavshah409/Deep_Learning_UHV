@@ -1,96 +1,38 @@
-# Real-Time Vehicle Detection and Traffic Analytics for Indian Urban Roads Using YOLOv8 and the UVH-26 Dataset
+# UVH-26 vehicle detection: Phase 1 subset baseline
 
-A fourth-year undergraduate deep learning project studying vehicle detection in heterogeneous Indian urban traffic. Phase 1 establishes a reproducible UVH-26 Majority Voting data pipeline and a YOLOv8n transfer-learning baseline. Vehicle counting, density estimation and an application interface are future phases. Real-time performance is a project objective, not an established result.
+The proper YOLOv8n run completed **30 epochs**, best epoch **30**, exit **0**, no early stopping. Fresh best-checkpoint evaluation, qualitative review and synchronized MPS timing are complete. Phase 2 training has not started; see the [entry gate](reports/audit/phase2_subset_gate.json) and [delivery status](reports/audit/closeout_delivery.json).
 
-**Status: audited subset and preflight complete; proper baseline training is running.** The frozen `baseline_seed42_v2` subset contains 8,000 training images (94,609 objects) and 2,000 validation images (24,342 objects). All selected image and label integrity checks passed, with zero split content overlap. A 42-image visual review passed with documented source limitations. The full-subset one-epoch preflight completed and its checkpoints and predictions were verified. The separate 30-epoch run is `yolov8n_uvh26_mv_baseline_seed42_v1`; its current provenance is in `reports/tables/`. Final evaluation and latency measurements remain pending. Full acquisition of unselected images is a separate future task, not a prerequisite for this subset experiment. The faculty PDF and speaking script are historical progress snapshots awaiting the final measured results.
+**Scope:** 8,000 training / 2,000 validation images, 14 Majority Voting classes. These are subset validation results, not full-dataset or test-set scores.
 
-## Observed annotation counts
+| Checkpoint / evaluation | Precision | Recall | F1 (harmonic aggregate) | Macro F1 | mAP@0.5 | mAP@0.5:0.95 |
+|---|---:|---:|---:|---:|---:|---:|
+| YOLOv8n best epoch 30 / frozen 2,000 val | 0.609993 | 0.543547 | 0.574856 | 0.539397 | 0.560049 | 0.458407 |
 
-| Official split | Images in MV JSON | Objects |
-|---|---:|---:|
-| Train | 21,349 | 252,723 |
-| Validation | 5,297 | 63,497 |
-| Total | 26,646 | 316,220 |
+F1 above is the harmonic mean of macro Precision/Recall; macro F1 averages class F1 at confidence 0.3093. Others has zero recall; its reported precision 1 is an evaluator convention. Three-wheeler AP50:95 is 0.7403; Others 0.0242 and Mini-bus 0.1383 remain weak.
 
-These are annotation-file counts, not a claim that all image files have been downloaded or decoded. See `reports/audit/annotation_audit.json` and `reports/audit/schema.json`.
+Batch-one Apple M5 MPS timing (640, float32, 10 warm-ups, 100 images): median **31.73 ms**, p95 **34.36 ms**, **31.89 end-to-end still images/s**; inference-only **201.77 FPS**. Includes file decode/preprocess/inference/postprocess and synchronized measurement, excludes capture/display. No real-time video or production-readiness claim.
 
-## Structure
+The **26,646-image annotation-catalogue audit** covers metadata. The separate **10,000-image local subset integrity audit** covers actual decoded images, dimensions, hashes, labels and split leakage. Acquisition/integrity verification of unselected images remains incomplete. Frozen subset has 94,609 train and 24,342 validation objects. Raw sources and the completed run are unchanged.
 
-- `configs/`: portable examples, model settings and generated class mapping.
-- `src/data/`: schema inspection, audits, conversion, validation, subsets and EDA.
-- `src/training/`, `src/evaluation/`, `src/inference/`: experiment and prediction tools.
-- `tests/`: synthetic unit and integration fixtures.
-- `notebooks/`: notebook reading generated EDA artifacts.
-- `reports/`: measured audits, figures, tables and local diagnostic images.
-- `docs/phase_reports/`: technical status and final Phase 1 report.
-- `data/`, `models/`, `runs/`: ignored local data, weights and experiments.
-
-## Environment and acquisition
-
-Tested setup: Apple M5 MacBook Pro, 24 GB memory, Python 3.12.14. MPS requires GPU access; it was available outside the execution sandbox. `requirements.txt` pins the installed Python dependencies.
+## Faculty demonstration
 
 ```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-cp configs/paths.example.yaml configs/paths.local.yaml
-```
-
-Follow `data/README.md` to download the official dataset after checking free disk space. The pinned revision is `59f82c57821e8a54dc40bc1f42e83909dbad0b70`. Never commit datasets or checkpoints.
-
-## Data preparation
-
-Run from the repository root after the download completes:
-
-```bash
-python -m src.data.inspect_uvh26
-python -m src.data.validate_raw
-python -m src.data.convert_to_yolo --dataset-version uvh26_mv_yolo_v1
-python -m src.data.validate_yolo --dataset-version uvh26_mv_yolo_v1
-python -m src.data.visualize_annotations --dataset-version uvh26_mv_yolo_v1
-python -m src.data.eda
+python3 scripts/show_progress.py
+# Optional dashboard, after installing dependencies:
+python -m pip install -r requirements.txt -r requirements-dashboard.txt
+python -m streamlit run app.py
 python -m pytest -q
 ```
 
-Conversion rejects invalid boxes and records a ledger; it never clips or repairs boxes implicitly. All 14 observed classes remain separate. Empty retained labels are background images. Structural errors and unresolved content leakage block conversion. Review rendered annotations before recording a passed manual review in `reports/audit/visual_review.json`.
+- [Final Phase 1 report](docs/phase_reports/PHASE_1_BASELINE.md): measured results, configuration, hashes, recovery policy and commands.
+- [Presentation script](docs/faculty_review/PRESENTATION_SCRIPT.md) and [start guide](docs/faculty_review/START_HERE.md).
+- Faculty PDF: `output/pdf/UVH26_Faculty_Progress_Report.pdf`.
+- Portable ZIP (local, generated): `deliverables/UVH26_Faculty_Review_Project.zip`; build with `python scripts/build_faculty_pack.py`.
+- [Checkpoint/integrity evidence](reports/audit/baseline_closeout_integrity.json); weights remain local under `runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/`.
+- [Measured per-class results](reports/tables/yolov8n_uvh26_mv_baseline_seed42_v1_validation_per_class.csv), [latency](reports/tables/yolov8n_uvh26_mv_baseline_seed42_v1_latency.json), [prediction review](reports/error_analysis/baseline_prediction_review.json).
 
-## Baseline procedure
+## Reproducibility and boundaries
 
-The proper baseline uses 8,000 training and 2,000 validation images, selected with seed 42 inside the official splits. The full-subset preflight passed before launch. The planned baseline has 30 epochs, image size 640, batch 8 and MPS. Any changes must be documented.
+Python 3.12.14 / PyTorch 2.14.0 / Ultralytics 8.4.146, frozen training dependencies in `requirements.txt`. Dashboard dependencies are separate. Follow [data documentation](data/README.md) for the pinned official dataset and immutable preparation policy. The portable ZIP intentionally contains no dataset images, generated YOLO labels or checkpoints. Offline reporting works without training dependencies; inference needs the original local data and weights.
 
-```bash
-python -m src.data.build_subset --name smoke_seed42 --train 64 --val 32
-python -m src.data.build_subset --name baseline_seed42 --train 8000 --val 2000
-python -m src.training.train_baseline \
-  --data data/processed/uvh26_mv_yolo_v1/subsets/smoke_seed42/dataset.yaml \
-  --name yolov8n_uvh26_mv_smoke_seed42 --smoke
-python -m src.training.train_baseline \
-  --data data/processed/uvh26_mv_yolo_v1/subsets/baseline_seed42_v2/dataset.yaml \
-  --name yolov8n_uvh26_mv_baseline_seed42_v1
-python -m src.evaluation.evaluate_baseline \
-  --weights runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/best.pt \
-  --data data/processed/uvh26_mv_yolo_v1/subsets/baseline_seed42_v2/dataset.yaml \
-  --name yolov8n_uvh26_mv_validation_seed42
-python -m src.inference.predict_image \
-  --weights runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/best.pt \
-  --source path/to/image.png --confidence 0.25 --device mps
-```
-
-The full-dataset preparation commands are optional for a future full-dataset experiment. The audited subset recovery commands are recorded in `docs/phase_reports/PHASE_1_RECOVERY_COMMANDS.md`. The active baseline is already running; do not launch a duplicate. Runs and subset manifests are never overwritten. `--device cpu` provides a training fallback.
-
-## Baseline results
-
-| Metric | Measured UVH-26 baseline result |
-|---|---|
-| Precision, recall, F1 | Not yet measured |
-| mAP@0.5, mAP@0.5:0.95 | Not yet measured |
-| Training duration, best epoch | Not yet measured |
-| Inference throughput | Not yet measured for a fine-tuned model |
-
-## Limitations and roadmap
-
-Class imbalance is substantial. Annotation quality and distinctions between similar car types require visual review. Filename and content checks cannot establish camera-level or temporal independence without suitable metadata. Validation throughput must not be described as end-to-end real-time video FPS.
-
-Finish Phase 1 before Phase 2: compare imbalance strategies and consensus variants under controlled evaluation, improve small-object recall, then add class-wise counting and density analytics.
-
-Dataset: [IISc AIM UVH-26](https://huggingface.co/datasets/iisc-aim/UVH-26), CC BY 4.0. Citation and raw-data policy are in `data/README.md`.
+Do not rerun training to demonstrate results. Existing run/evaluation IDs refuse overwrite. No tracking/counting, Phase 2 experiments, independent test scores or full pixel-audit completion is claimed. Initial smoke and full-subset preflight evidence remains historical and separate from this measured baseline.

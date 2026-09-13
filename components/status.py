@@ -1,6 +1,5 @@
 """Current Status, Roadmap, and Phase 2/3 Preview component."""
 
-from pathlib import Path
 import streamlit as st
 from utils.artifact_loader import find_file
 
@@ -10,33 +9,43 @@ def render_status_section():
     # --------------------------------------------------------------------------
     # 10 — Current Status / What Remains
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="what-remains">
             <div class="section-kicker">10 / MILESTONE SUMMARY</div>
             <div class="section-title">Current Phase 1 Status &amp; What Remains</div>
             <div class="section-subtitle">
-                Clear boundary between verified completed engineering infrastructure and pending experimental benchmarks.
+                Completed subset baseline evidence and remaining controlled experiments.
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     from utils.artifact_loader import load_json
     from utils.data_loader import get_test_suite_status
+
     audit = load_json("reports/audit/baseline_subset_frozen_provenance.json")
-    run = load_json("reports/tables/yolov8n_uvh26_mv_baseline_seed42_v1_provenance.json")
+    run = load_json(
+        "reports/tables/yolov8n_uvh26_mv_baseline_seed42_v1_provenance.json"
+    )
     tests = get_test_suite_status()
-    st.write("Selected-image audit:", audit.get("image_audit_status") if audit else "pending")
+    gate = load_json("reports/audit/phase2_subset_gate.json")
+    if gate:
+        st.write("Subset Phase 2 entry gate:", gate["status"])
+        st.write("Phase 1 complete:", gate["phase1_complete"])
+    st.write(
+        "Selected-image audit:", audit.get("image_audit_status") if audit else "pending"
+    )
     st.write("Proper subset training:", run.get("status") if run else "not started")
     st.write("Saved test result:", tests["text"])
-    st.info("Full 26,646-image acquisition remains a separate future task. It does not block the explicitly defined subset baseline. Phase 2 remains unstarted.")
+    st.info(
+        "Full 26,646-image acquisition remains a separate future task. It does not block the explicitly defined subset baseline. Phase 2 remains unstarted."
+    )
 
     # --------------------------------------------------------------------------
     # Next — Phase 2 & Phase 3 Preview
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="future-phases">
             <div class="section-kicker">FUTURE RESEARCH</div>
@@ -46,13 +55,12 @@ def render_status_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     p1, p2, p3 = st.columns(3)
 
     with p1:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card" style="height: 100%;">
                 <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #00e5ff; font-weight: 700; margin-bottom: 0.4rem;">PHASE 2</div>
@@ -68,11 +76,10 @@ def render_status_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with p2:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card" style="height: 100%;">
                 <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #38bdf8; font-weight: 700; margin-bottom: 0.4rem;">PHASE 2+</div>
@@ -88,11 +95,10 @@ def render_status_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with p3:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card" style="height: 100%;">
                 <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #a78bfa; font-weight: 700; margin-bottom: 0.4rem;">PHASE 3</div>
@@ -108,13 +114,12 @@ def render_status_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     # Formal Progress Report Download
     pdf_path = find_file("output/pdf/UVH26_Faculty_Progress_Report.pdf")
     if pdf_path and pdf_path.is_file():
-        st.markdown(
+        st.html(
             """
             <div style="margin-top: 2rem; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 12px; padding: 1.2rem 1.6rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
                 <div>
@@ -123,7 +128,6 @@ def render_status_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
         with open(pdf_path, "rb") as f:
             st.download_button(

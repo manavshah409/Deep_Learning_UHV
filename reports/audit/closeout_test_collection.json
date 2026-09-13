@@ -1,0 +1,11 @@
+{
+  "tests/test_annotation_conversion.py": 10,
+  "tests/test_bbox_validation.py": 20,
+  "tests/test_dataset_manifest.py": 6,
+  "tests/test_error_matching.py": 3,
+  "tests/test_latency_summary.py": 5,
+  "tests/test_path_resolution.py": 3,
+  "tests/test_pipeline_integration.py": 6,
+  "tests/test_subset_recovery.py": 4,
+  "tests/test_training_provenance.py": 1
+}

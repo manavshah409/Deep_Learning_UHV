@@ -5,7 +5,7 @@ import streamlit as st
 
 def render_pipeline():
     """Render the interactive step-by-step engineering pipeline."""
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3rem; margin-bottom: 1.5rem;">
             <div class="section-kicker">WORKFLOW &amp; ARCHITECTURE</div>
@@ -15,13 +15,12 @@ def render_pipeline():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     steps = [
         {
             "num": "01",
-            "name": "UVH-26 Dataset Ingestion",
+            "name": "UVH-26 Annotation Ingestion",
             "status": "COMPLETED",
             "badge": "badge-complete",
             "desc": "Official IISc AIM UVH-26 dataset. Pinned revision hash <code>59f82c57</code>. Majority Voting (MV) consensus annotations loaded.",
@@ -32,7 +31,7 @@ def render_pipeline():
             "name": "COCO Schema & Geometry Audit",
             "status": "COMPLETED",
             "badge": "badge-complete",
-            "desc": "Verified 26,646 images and 316,220 bounding boxes. Zero out-of-frame or non-finite boxes detected. Zero duplicate IDs.",
+            "desc": "Audited annotation catalogue: 26,646 image records and 316,220 bounding boxes. Zero out-of-frame or non-finite boxes detected. Zero duplicate IDs.",
             "artifact": "reports/audit/schema.json & annotation_audit.json",
         },
         {
@@ -78,9 +77,9 @@ def render_pipeline():
         {
             "num": "08",
             "name": "Proper 30-Epoch Baseline Experiment",
-            "status": "IN PROGRESS / PENDING",
-            "badge": "badge-pending",
-            "desc": "8,000 train / 2,000 val deterministic stratified subset (Δ ≤ 0.088 pp). 30 epochs on MPS. Full mAP@0.5 and mAP@0.5:0.95 benchmark.",
+            "status": "COMPLETED",
+            "badge": "badge-complete",
+            "desc": "Frozen 8,000 train / 2,000 val subset; maximum class-share deviation 0.3063 pp. 30 epochs completed on MPS. Standalone best-checkpoint validation and batch-one timing appear above.",
             "artifact": "runs/yolov8n_uvh26_mv_baseline_seed42_v1/",
         },
         {
@@ -98,26 +97,24 @@ def render_pipeline():
     for i, step in enumerate(steps):
         target_col = col_left if i % 2 == 0 else col_right
         is_pending = "PENDING" in step["status"] or "ROADMAP" in step["status"]
-        node_class = "pending" if is_pending else "completed"
 
         with target_col:
-            st.markdown(
+            st.html(
                 f"""
-                <div class="glass-card" style="border-left: 4px solid {'#f59e0b' if is_pending else '#00e5ff'}; margin-bottom: 1.2rem;">
+                <div class="glass-card" style="border-left: 4px solid {"#f59e0b" if is_pending else "#00e5ff"}; margin-bottom: 1.2rem;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem;">
-                        <span style="font-family: var(--font-mono); font-size: 0.85rem; color: #94a3b8; font-weight: 700;">STEP {step['num']}</span>
-                        <span class="{step['badge']}">{step['status']}</span>
+                        <span style="font-family: var(--font-mono); font-size: 0.85rem; color: #94a3b8; font-weight: 700;">STEP {step["num"]}</span>
+                        <span class="{step["badge"]}">{step["status"]}</span>
                     </div>
                     <div style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem;">
-                        {step['name']}
+                        {step["name"]}
                     </div>
                     <div style="font-size: 0.9rem; color: #94a3b8; line-height: 1.5; margin-bottom: 0.8rem;">
-                        {step['desc']}
+                        {step["desc"]}
                     </div>
                     <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #38bdf8; background: rgba(56, 189, 248, 0.08); padding: 0.3rem 0.6rem; border-radius: 6px; display: inline-block;">
-                        📁 {step['artifact']}
+                        📁 {step["artifact"]}
                     </div>
                 </div>
                 """,
-                unsafe_allow_html=True,
             )

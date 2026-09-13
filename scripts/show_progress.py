@@ -1,40 +1,42 @@
-"""Offline faculty demonstration of saved evidence; starts no jobs or downloads."""
+"""Offline faculty demonstration; reads saved artifacts and starts no jobs."""
 
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+NAME = "yolov8n_uvh26_mv_baseline_seed42_v1"
 
 
 def read(relative):
-    path = ROOT / relative
-    return json.loads(path.read_text()) if path.exists() else None
+    return json.loads((ROOT / relative).read_text())
 
 
 def main():
-    print("UVH-26 VEHICLE DETECTION - VERIFIED PROGRESS")
-    print("Status: proper baseline completion has not yet been established.\n")
-    audit = read("reports/audit/annotation_audit.json")
-    for split, row in audit["splits"].items():
+    print("UVH-26 PHASE 1 - SUBSET VALIDATION BASELINE")
+    run = read(f"reports/tables/{NAME}_provenance.json")
+    print(
+        f"Training: {run['status']}; {run['epochs_completed']} epochs; best epoch {run['best_epoch']}; early stop {run['early_stopped']}"
+    )
+    print("Catalogue audit: 26,646 image records / 316,220 boxes.")
+    print("Local integrity audit: 8,000 train + 2,000 validation images; 14 classes.")
+    print("Acquisition/integrity of unselected images remains incomplete.")
+    metrics = read(f"reports/tables/{NAME}_validation_metrics.json")
+    for key in ["precision", "recall", "f1", "macro_f1", "map50", "map50_95"]:
+        print(f"{key}: {metrics[key]:.6f}")
+    print(metrics["f1_note"])
+    timing = read(f"reports/tables/{NAME}_latency.json")
+    for stage, values in timing["summary"].items():
         print(
-            f"MV {split}: {row['images']:,} images listed; {row['annotations']:,} objects; "
-            f"{row['invalid_annotations']} invalid boxes"
+            f"{stage}: median {values['median_ms']:.3f} ms; p95 {values['p95_ms']:.3f} ms; FPS {values['fps_from_total_time']:.2f}"
         )
-    print("\nTests:", (ROOT / "reports/audit/pytest.txt").read_text().strip())
-    run = read("reports/tables/yolov8n_uvh26_mv_smoke_seed42_provenance.json")
-    print(
-        f"\nSmoke training: {run['status']}; {run['epochs_completed']} epoch; "
-        f"{run['duration_seconds']:.2f} seconds wall time"
-    )
-    print("Smoke checkpoint SHA-256:", run["weights"]["sha256"])
-    print("This 64/32 pilot is not the proper baseline.")
-    state = read("reports/audit/acquisition_status.json")
-    print(
-        "\nLast saved acquisition snapshot:", state["completed_png_files"], "PNG files"
-    )
-    print("This is a saved snapshot, not a live downloader status.")
-    print("\nOpen output/pdf/UVH26_Faculty_Progress_Report.pdf for the review.")
-    print("Read docs/faculty_review/PRESENTATION_SCRIPT.md for the speaking script.")
+    print(timing["end_to_end_definition"])
+    print("Not a video FPS or production readiness claim.")
+    print("Best checkpoint SHA-256:", run["weights"]["sha256"])
+    print("Tests:", (ROOT / "reports/audit/closeout_pytest.txt").read_text().strip())
+    gate = ROOT / "reports/audit/phase2_subset_gate.json"
+    if gate.exists():
+        print("Subset Phase 2 gate:", json.loads(gate.read_text())["status"])
+    print("Phase 2 training has not started.")
 
 
 if __name__ == "__main__":

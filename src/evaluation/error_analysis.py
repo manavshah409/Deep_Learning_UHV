@@ -78,7 +78,9 @@ def main():
             covered |= cs
     chosen = list({r["image_id"]: r for r in chosen}.values())
     out = ROOT / "reports/predictions/error_analysis"
-    out.mkdir(parents=True, exist_ok=True)
+    if out.exists():
+        raise ValueError("Diagnostic output already exists; preserve prior evidence")
+    out.mkdir(parents=True)
     records = []
     for row in chosen:
         result = model.predict(
@@ -86,6 +88,8 @@ def main():
             conf=0.10,
             device=a.device,
             imgsz=640,
+            iou=0.7,
+            max_det=300,
             verbose=False,
         )[0]
         h, w = result.orig_shape
@@ -108,6 +112,11 @@ def main():
                 "source": row["source"],
                 "prediction_image": filename,
                 "gt_count": len(gt),
+                "gt_boxes": gt,
+                "gt_classes": classes,
+                "pred_boxes": pb.tolist(),
+                "pred_classes": pc.astype(int).tolist(),
+                "pred_confidences": result.boxes.conf.cpu().tolist(),
                 "prediction_count": len(pb),
                 "correct_matches": sum(m["correct_class"] for m in matches),
                 "class_confusions": [
@@ -129,7 +138,18 @@ def main():
                 "note": "Class-agnostic greedy IoU matching for diagnostic evidence; not COCO AP matching. Occlusion requires manual review.",
             }
         )
-    save_json(ROOT / "reports/error_analysis/diagnostic_cases.json", records)
+    save_json(out / "diagnostic_cases_full.json", records)
+    detailed = {
+        "gt_boxes",
+        "gt_classes",
+        "pred_boxes",
+        "pred_classes",
+        "pred_confidences",
+    }
+    save_json(
+        ROOT / "reports/error_analysis/diagnostic_cases.json",
+        [{k: v for k, v in row.items() if k not in detailed} for row in records],
+    )
     print("Diagnostic cases:", len(records))
 
 

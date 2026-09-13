@@ -1,46 +1,13 @@
-# Faculty review pack - start here
+# Faculty review package
 
-This is a **verified Phase 1 progress deliverable**, not a claim that the complete baseline has finished.
+Phase 1 proper YOLOv8n subset baseline: 30 completed epochs, best epoch 30, standalone 2,000-image validation and synchronized batch-one MPS timing.
 
-## What to show
+1. Open `output/pdf/UVH26_Faculty_Progress_Report.pdf`.
+2. Read `docs/faculty_review/PRESENTATION_SCRIPT.md`.
+3. Run `python3 scripts/show_progress.py` from this folder; standard library only, no downloads.
+4. For the dashboard, install `requirements.txt` and `requirements-dashboard.txt`, then run `python -m streamlit run app.py`.
+5. With project dependencies installed, run `python -m pytest -q`.
 
-1. `output/pdf/UVH26_Faculty_Progress_Report.pdf`: polished faculty-facing progress report.
-2. `docs/faculty_review/PRESENTATION_SCRIPT.md`: a 6-7 minute explanation, demo sequence and likely viva questions.
-3. `reports/figures/class_distribution.png`: the main data finding.
-4. `reports/audit/pytest.txt`: saved test evidence.
-5. `reports/tables/yolov8n_uvh26_mv_smoke_seed42_provenance.json`: executed training evidence.
+The ZIP includes source, configuration, summarized audits, measured metrics, plots, tests and documentation. It excludes dataset images, generated labels, model weights, full runs and machine-local paths. Local inference/reverification of original data requires the original project machine; offline demonstration reads saved evidence.
 
-## Offline evidence demo
-
-From the extracted project directory, run:
-
-```bash
-python3 scripts/show_progress.py
-```
-
-This command only reads the included reports. It needs Python 3 but no dataset, weights or additional packages.
-
-For the actual project environment and tests:
-
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-python -m pytest -q
-```
-
-Dependencies must be installed before an offline classroom demo. A new installation may require network access.
-
-## What is included
-
-Source code, synthetic tests, portable configurations, exact package versions, the EDA notebook, generated charts and tables, annotation audit summaries, smoke training/evaluation evidence, technical documentation and the presentation materials.
-
-## What remains local
-
-Raw images and annotations, processed training data, checkpoints, caches, logs, local paths, virtual environments and Git credentials. No model weights or original dataset images are inside the ZIP. The image download and proper baseline continue separately in the working project.
-
-## Current experimental boundary
-
-The executed smoke test used 64 training and 32 validation images for one epoch. It verifies loading, finite losses, checkpoint saving and evaluation. Its detection quality is poor and it is not the final model.
-
-The intended proper baseline uses 8,000 training and 2,000 validation images for 30 epochs. Its final metrics must be added only after that run completes. All remaining completion criteria are documented in `docs/phase_reports/PHASE_1_BASELINE.md`.
+These are subset validation results, not test-set or full-dataset results. Full catalogue annotation audit and 10,000-image local pixel audit are distinct. Unselected-image integrity remains incomplete. No real-time video, production-readiness or Phase 2 completion claim is made. Current entry-gate and Git delivery status are saved under `reports/audit/`.

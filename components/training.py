@@ -1,7 +1,6 @@
 """YOLOv8n Model Architecture & Smoke Training Pilot components."""
 
 import streamlit as st
-import pandas as pd
 from utils.data_loader import get_smoke_training_data
 from utils.artifact_loader import find_file
 
@@ -10,13 +9,12 @@ def render_training_section():
     """Render sections 06 and 07: YOLOv8n Architecture and Smoke Training Pilot."""
     smoke = get_smoke_training_data()
     prov = smoke.get("provenance") or {}
-    metrics = smoke.get("metrics") or {}
     training_df = smoke.get("training_df")
 
     # --------------------------------------------------------------------------
     # 06 — YOLOv8n Transfer Learning Architecture
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="model-architecture">
             <div class="section-kicker">06 / MODEL ARCHITECTURE</div>
@@ -26,13 +24,12 @@ def render_training_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     m1, m2 = st.columns([1.1, 0.9])
 
     with m1:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -68,11 +65,10 @@ def render_training_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with m2:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -93,8 +89,8 @@ def render_training_section():
                         <span style="color: #00e5ff;">8</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 2px 0;">
-                        <span style="color: #94a3b8;">Planned Epochs:</span>
-                        <span style="color: #f59e0b;">30 Epochs (Early stop: 10)</span>
+                        <span style="color: #94a3b8;">Completed Epochs:</span>
+                        <span style="color: #f59e0b;">30 Epochs (No early stop)</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 2px 0;">
                         <span style="color: #94a3b8;">Optimizer:</span>
@@ -107,13 +103,12 @@ def render_training_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     # --------------------------------------------------------------------------
     # 07 — Pipeline Smoke Test
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="smoke-test">
             <div class="section-kicker">07 / PIPELINE VERIFICATION</div>
@@ -123,10 +118,9 @@ def render_training_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
-    st.markdown(
+    st.html(
         """
         <div class="warning-callout" style="border-left: 6px solid #f59e0b; background: rgba(245, 158, 11, 0.12); padding: 1.2rem; font-size: 1rem;">
             <div style="display: flex; align-items: center; gap: 0.6rem; font-weight: 800; color: #fbbf24; font-size: 1.1rem; margin-bottom: 0.4rem;">
@@ -136,13 +130,12 @@ def render_training_section():
             The one-epoch smoke run demonstrates that the training, checkpointing, and evaluation code executes without runtime exceptions. All 32 pilot predictions produced 0 detections at confidence 0.01. <b>This run is not presented as final project accuracy.</b>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     s1, s2 = st.columns([1.2, 0.8])
 
     with s1:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -150,25 +143,23 @@ def render_training_section():
                     <span class="badge-complete">COMPLETED</span>
                 </div>
             """,
-            unsafe_allow_html=True,
         )
         if training_df is not None and not training_df.empty:
             st.dataframe(
                 training_df,
-                use_container_width=True,
+                width="stretch",
                 hide_index=True,
             )
         else:
-            st.markdown(
+            st.html(
                 """
                 <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #94a3b8;">
                     Epoch 1: Box Loss: 1.41132 · Cls Loss: 4.63109 · Time: 12.73s · Wall Time: 35.73s
                 </div>
                 """,
-                unsafe_allow_html=True,
             )
 
-        st.markdown(
+        st.html(
             f"""
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; margin-top: 1rem;">
                     <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px; font-size: 0.82rem;">
@@ -177,30 +168,31 @@ def render_training_section():
                     </div>
                     <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px; font-size: 0.82rem;">
                         <span style="color: #64748b;">Wall Time:</span><br/>
-                        <b style="color: #38bdf8;">{prov.get('duration_seconds', 35.73):.2f} seconds</b>
+                        <b style="color: #38bdf8;">{prov.get("duration_seconds", 35.73):.2f} seconds</b>
                     </div>
                     <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px; font-size: 0.82rem;">
-                        <span style="color: #64748b;">Validation Throughput:</span><br/>
-                        <b style="color: #34d399;">{metrics.get('pipeline_fps', 101.37):.1f} FPS (Batch)</b>
+                        <span style="color: #64748b;">Historical profiler:</span><br/>
+                        <b style="color: #34d399;">Not synchronized on MPS</b>
                     </div>
                     <div style="background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 8px; font-size: 0.82rem;">
-                        <span style="color: #64748b;">Inference-Only:</span><br/>
-                        <b style="color: #00e5ff;">{metrics.get('inference_only_fps', 161.57):.1f} FPS (6.19 ms)</b>
+                        <span style="color: #64748b;">Timing reference:</span><br/>
+                        <b style="color: #00e5ff;">Use proper baseline timing above</b>
                     </div>
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with s2:
-        weights_sha = prov.get("weights", {}).get("sha256", "4808f80e387a019bee01a3dceaea255320f125c1c8161bd53d85b4c1e71c9753")
-        st.markdown(
+        weights_sha = prov.get("weights", {}).get(
+            "sha256", "4808f80e387a019bee01a3dceaea255320f125c1c8161bd53d85b4c1e71c9753"
+        )
+        st.html(
             f"""
             <div class="glass-card">
                 <div class="glass-card-header">
                     <div class="glass-card-title">🔒 Checkpoint Provenance</div>
-                    <span class="badge-complete">BIT-EXACT</span>
+                    <span class="badge-complete">HASH VERIFIED</span>
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #cbd5e1; line-height: 1.7;">
                     <div><b>Artifact:</b> <span style="color: #38bdf8;">runs/yolov8n_uvh26_mv_smoke_seed42/weights/best.pt</span></div>
@@ -218,21 +210,34 @@ def render_training_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     # Smoke Run Visual Curves
-    st.markdown("<h4 style='color: #ffffff; margin-top: 1rem;'>Smoke Run Output Plots</h4>", unsafe_allow_html=True)
+    st.html(
+        "<h4 style='color: #ffffff; margin-top: 1rem;'>Smoke Run Output Plots</h4>",
+    )
     c_p1, c_p2 = st.columns(2)
     with c_p1:
         res_png = find_file("runs/yolov8n_uvh26_mv_smoke_seed42/results.png")
         if res_png:
-            st.image(str(res_png), caption="Smoke Run Training & Validation Losses (Epoch 1)", use_container_width=True)
+            st.image(
+                str(res_png),
+                caption="Smoke Run Training & Validation Losses (Epoch 1)",
+                width="stretch",
+            )
         else:
-            st.info("Smoke training plots available in runs/yolov8n_uvh26_mv_smoke_seed42/")
+            st.info(
+                "Smoke training plots available in runs/yolov8n_uvh26_mv_smoke_seed42/"
+            )
     with c_p2:
         val_pred = find_file("runs/yolov8n_uvh26_mv_smoke_seed42/val_batch0_pred.jpg")
         if val_pred:
-            st.image(str(val_pred), caption="Validation Batch 0 Predictions (1-Epoch Smoke Checkpoint)", use_container_width=True)
+            st.image(
+                str(val_pred),
+                caption="Validation Batch 0 Predictions (1-Epoch Smoke Checkpoint)",
+                width="stretch",
+            )
         else:
-            st.info("Validation batch predictions available in runs/yolov8n_uvh26_mv_smoke_seed42/")
+            st.info(
+                "Validation batch predictions available in runs/yolov8n_uvh26_mv_smoke_seed42/"
+            )

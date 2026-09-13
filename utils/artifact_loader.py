@@ -3,7 +3,7 @@
 import hashlib
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, List, Optional
 import pandas as pd
 import yaml
 
@@ -89,7 +89,9 @@ def get_sha256(relative_path: str) -> Optional[str]:
         return None
 
 
-def find_images(relative_dir: str, extensions=("*.jpg", "*.png", "*.jpeg")) -> List[Path]:
+def find_images(
+    relative_dir: str, extensions=("*.jpg", "*.png", "*.jpeg")
+) -> List[Path]:
     """Find all image paths in a given relative directory."""
     p = find_file(relative_dir)
     if not p or not p.is_dir():

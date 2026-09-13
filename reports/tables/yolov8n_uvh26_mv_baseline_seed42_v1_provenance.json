@@ -1,7 +1,44 @@
 {
-  "best_epoch": 28,
-  "best_fitness_unrounded": 0.45668,
+  "augmentation": {
+    "auto_augment": "randaugment",
+    "copy_paste": 0.0,
+    "cutmix": 0.0,
+    "degrees": 0.0,
+    "erasing": 0.4,
+    "fliplr": 0.5,
+    "flipud": 0.0,
+    "hsv_h": 0.015,
+    "hsv_s": 0.7,
+    "hsv_v": 0.4,
+    "mixup": 0.0,
+    "mosaic": 1.0,
+    "perspective": 0.0,
+    "scale": 0.5,
+    "shear": 0.0,
+    "translate": 0.1
+  },
+  "best_epoch": 30,
+  "best_epoch_from_validation_map5095": 30,
+  "best_epoch_metrics": {
+    "epoch": 30.0,
+    "lr/pg0": 2.3908e-05,
+    "lr/pg1": 2.3908e-05,
+    "lr/pg2": 2.3908e-05,
+    "metrics/mAP50(B)": 0.55994,
+    "metrics/mAP50-95(B)": 0.45826,
+    "metrics/precision(B)": 0.60876,
+    "metrics/recall(B)": 0.54429,
+    "time": 15948.1,
+    "train/box_loss": 0.78017,
+    "train/cls_loss": 0.77745,
+    "train/dfl_loss": 0.91206,
+    "val/box_loss": 0.76808,
+    "val/cls_loss": 0.81139,
+    "val/dfl_loss": 0.9119
+  },
+  "best_fitness_unrounded": 0.45826,
   "class_mapping_sha256": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+  "completed_at": "2026-09-13T17:59:45.280500+00:00",
   "config": {
     "amp": true,
     "batch": 8,
@@ -29,10 +66,116 @@
   },
   "config_sha256": "1e29186ff4e574c440ca0467a65ccce72f6962f023dac315103789a125f6fc63",
   "dataset_manifest_sha256": "990054a93e300a90321db19b3d0bcd98a488a891cd4e2dbd88425f4eb592c2af",
+  "dataset_version": {
+    "annotation_sha256": {
+      "train": "7a575d1131cd8dea32e736b1919a4e073dae328d1a7c9d4842f65bfb60c43a92",
+      "val": "9d279f48589e653d7749b9636c945a8763b457c067f23ea79def3fa70c8e8ab4"
+    },
+    "candidate_selection_algorithm": "Original coverage-aware seed42 selection retained except documented quarantines",
+    "class_mapping_sha256": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+    "combined_manifest_sha256": "990054a93e300a90321db19b3d0bcd98a488a891cd4e2dbd88425f4eb592c2af",
+    "image_audit_sha256": "c9534e58ca40a16e7a7777d790156a97a2add846f76d43735a6c0b48226c6408",
+    "image_audit_status": "passed",
+    "manifest_sha256": {
+      "train": "8e4a72413caecc9defee68e75f498b71160b06fb33f30f6cbe2dc8b3677032cf",
+      "val": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3"
+    },
+    "revision": "59f82c57821e8a54dc40bc1f42e83909dbad0b70",
+    "scope": "UVH-26 MV 8000/2000 subset; no full image-integrity claim",
+    "seed": 42,
+    "selection_algorithm": "Preserve valid candidate rows. Rank unselected locally present same-split candidates by inverse-full-class-frequency-weighted L1 exposure distance; SHA256(42:split:id) breaks ties. Audit before acceptance; forbid reused IDs, filenames and content.",
+    "version": "uvh26_mv_yolo_v1/subsets/baseline_seed42_v2"
+  },
+  "duration_seconds": 16029.859081708011,
+  "early_stopped": false,
+  "effective_amp": false,
+  "effective_batch": 8,
+  "effective_workers": 0,
+  "epochs_completed": 30,
   "experiment_id": "yolov8n_uvh26_mv_baseline_seed42_v1",
+  "final_epoch_metrics": {
+    "epoch": 30.0,
+    "lr/pg0": 2.3908e-05,
+    "lr/pg1": 2.3908e-05,
+    "lr/pg2": 2.3908e-05,
+    "metrics/mAP50(B)": 0.55994,
+    "metrics/mAP50-95(B)": 0.45826,
+    "metrics/precision(B)": 0.60876,
+    "metrics/recall(B)": 0.54429,
+    "time": 15948.1,
+    "train/box_loss": 0.78017,
+    "train/cls_loss": 0.77745,
+    "train/dfl_loss": 0.91206,
+    "val/box_loss": 0.76808,
+    "val/cls_loss": 0.81139,
+    "val/dfl_loss": 0.9119
+  },
   "git_commit": null,
-  "last_saved_epoch": 28,
+  "last_saved_epoch": 30,
+  "last_weights": {
+    "bytes": 6228714,
+    "path": "runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/last.pt",
+    "sha256": "19cf82c3848fafae370fa36dd16e845a26dc38eb83bd80a473bb24691268551a"
+  },
   "model": "models/yolov8n.pt",
+  "mps_determinism_limitation": "MPS scatter_reduce and index_put_with_accumulate warned of nondeterministic implementations during smoke run; seed is reproducible, exact numerical replay is not guaranteed.",
+  "optimizer_class": "AdamW",
+  "optimizer_parameter_groups": [
+    {
+      "amsgrad": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "capturable": false,
+      "decoupled_weight_decay": true,
+      "differentiable": false,
+      "eps": 1e-08,
+      "foreach": null,
+      "fused": null,
+      "initial_lr": 0.000556,
+      "lr": 2.3907999999999995e-05,
+      "maximize": false,
+      "param_group": "weight",
+      "weight_decay": 0.0005
+    },
+    {
+      "amsgrad": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "capturable": false,
+      "decoupled_weight_decay": true,
+      "differentiable": false,
+      "eps": 1e-08,
+      "foreach": null,
+      "fused": null,
+      "initial_lr": 0.000556,
+      "lr": 2.3907999999999995e-05,
+      "maximize": false,
+      "param_group": "bn",
+      "weight_decay": 0.0
+    },
+    {
+      "amsgrad": false,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "capturable": false,
+      "decoupled_weight_decay": true,
+      "differentiable": false,
+      "eps": 1e-08,
+      "foreach": null,
+      "fused": null,
+      "initial_lr": 0.000556,
+      "lr": 2.3907999999999995e-05,
+      "maximize": false,
+      "param_group": "bias",
+      "weight_decay": 0.0
+    }
+  ],
   "preflight": false,
   "pretrained_sha256": "f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36",
   "pretrained_source": "Ultralytics official yolov8n.pt COCO weights",
@@ -136,7 +279,12 @@
     "name": "AdamW",
     "nbs": 64
   },
-  "status": "running",
+  "status": "completed",
   "torch": "2.14.0",
-  "ultralytics": "8.4.146"
+  "ultralytics": "8.4.146",
+  "weights": {
+    "bytes": 6228714,
+    "path": "runs/yolov8n_uvh26_mv_baseline_seed42_v1/weights/best.pt",
+    "sha256": "85b9e089ec3dfaa676e30a6191b7e5726f320d5bf85391f1675922b88f9778b3"
+  }
 }

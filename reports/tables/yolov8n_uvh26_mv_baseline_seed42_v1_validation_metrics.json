@@ -1,0 +1,32 @@
+{
+  "batch": 8,
+  "confidence_floor": 0.001,
+  "device": "mps",
+  "duration_seconds": 82.49542720802128,
+  "f1": 0.5748562271866977,
+  "f1_note": "Precision and Recall are unweighted means across 14 classes at the confidence maximizing smoothed mean class F1 (IoU 0.5). f1 is harmonic mean of those aggregate P/R; macro_f1 is mean per-class F1. Neither is micro-F1. Others has zero recall at this point; precision 1 is an empty-prediction interpolation convention, not perfect detection.",
+  "f1_operating_confidence": 0.30930930930930933,
+  "fps_note": "Ultralytics validation stage profiler does not synchronize MPS. Its stage times and derived throughput are diagnostic only; do not use as latency or video FPS. Use the explicit synchronized batch-one latency report.",
+  "imgsz": 640,
+  "inference_only_fps": 2445.908115732932,
+  "macro_f1": 0.5393973621713384,
+  "map50": 0.560049159856388,
+  "map50_95": 0.45840711155408354,
+  "max_det": 300,
+  "nms_iou": 0.7,
+  "parameters": 3013578,
+  "pipeline_fps": 194.3385081430848,
+  "precision": 0.6099933461410915,
+  "recall": 0.5435466042047116,
+  "scope": "UVH-26 MV 8,000/2,000 subset validation results",
+  "speed_ms_per_image": {
+    "inference": 0.4088461024221033,
+    "loss": 5.943884025327861e-05,
+    "postprocess": 4.49961149939918,
+    "preprocess": 0.23714353662217036
+  },
+  "split": "val",
+  "validation_manifest_sha256": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3",
+  "weights_bytes": 6228714,
+  "weights_sha256": "85b9e089ec3dfaa676e30a6191b7e5726f320d5bf85391f1675922b88f9778b3"
+}

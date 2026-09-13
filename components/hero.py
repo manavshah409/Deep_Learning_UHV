@@ -5,7 +5,7 @@ import streamlit as st
 
 def render_hero():
     """Render the high-impact hero header and abstract computer vision simulation."""
-    st.markdown(
+    st.html(
         """
         <div class="hero-container">
             <div class="hero-glow-orb"></div>
@@ -28,7 +28,7 @@ def render_hero():
                         </div>
                         <div class="hero-meta-item">
                             <span>📅</span>
-                            <span><b>11 September 2026</b></span>
+                            <span><b>13 September 2026</b></span>
                         </div>
                         <div class="hero-meta-item">
                             <span>🏛️</span>
@@ -72,13 +72,12 @@ def render_hero():
                 <div class="status-dot"></div>
                 <div>
                     <span style="color: #34d399;">PHASE 1 STATUS:</span>
-                    <span style="margin-left: 0.4rem; color: #ffffff;">Engineering Pipeline Operational</span>
+                    <span style="margin-left: 0.4rem; color: #ffffff;">Proper Baseline Evaluated</span>
                 </div>
             </div>
             <div class="status-sublabel">
-                UVH-26 MV 8,000/2,000 subset · See saved experiment status below
+                UVH-26 MV 8,000/2,000 subset · Video real-time performance is not established
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )

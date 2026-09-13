@@ -1,0 +1,51 @@
+{
+  "status": "completed_with_documented_model_and_source_limitations",
+  "weights_sha256": "85b9e089ec3dfaa676e30a6191b7e5726f320d5bf85391f1675922b88f9778b3",
+  "validation_manifest_sha256": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3",
+  "generated_cases": 101,
+  "manually_reviewed_validation_ids": [
+    1364,
+    21621,
+    4711,
+    954,
+    10518,
+    4232
+  ],
+  "method": "100 seeded random validation images plus dense/sparse/class-coverage selection, deduplicated to 101. Six paired GT/prediction images manually inspected. conf .10, NMS IoU .7; class-agnostic greedy diagnostic matching at IoU .5. Counts are not AP, not an unbiased error-rate estimate, and unmatched predictions may include unlabelled true vehicles.",
+  "cases": [
+    {
+      "image_id": 4232,
+      "finding": "All 10 annotated objects have correct-class IoU matches, including foreground truck and distant/partly occluded two-wheelers. Two unmatched predictions remain; this is a success example, not perfect scene accuracy."
+    },
+    {
+      "image_id": 10518,
+      "finding": "15 correct-class matches out of 17 GT; distant annotated Two-wheeler index16 is missed (65.44 square pixels after long-side scaling to 640). Foreground motorcycles are detected. One LCV/Truck class confusion."
+    },
+    {
+      "image_id": 1364,
+      "finding": "Dense intersection: 56 GT, 48 correct-class matches, 3 unmatched GT and 71 unmatched predictions at low conf .10. Heavy overlap and partial occlusion; duplicate cross-class boxes, Bus/Mini-bus/LCV/Truck confusion; pedestrian at lower right is predicted as Bicycle. These are model errors, though not every unmatched prediction is a false vehicle."
+    },
+    {
+      "image_id": 21621,
+      "finding": "Dense occluded queue: 40 GT, 33 correct-class matches; no unmatched GT under class-agnostic matching, but 7 class confusions. Foreground handcart labelled Others is predicted Three-wheeler; additional low-confidence Two-wheeler box on produce cart is a false positive. Passenger-car subtype confusion and duplicate boxes persist."
+    },
+    {
+      "image_id": 4711,
+      "finding": "Large foreground MUV and two-/three-wheelers detected correctly; source Mini-bus is predicted Bus. Visible partial auto-rickshaw at right border lacks a corresponding GT box; its detection is an annotation-relative unmatched prediction, not established model hallucination. Fine-grained bus taxonomy needs source review, with labels kept unchanged."
+    },
+    {
+      "image_id": 954,
+      "finding": "Eight motorcycles correctly matched, but the clearly visible construction vehicle labelled Others is confidently predicted Truck (0.88). Rare-class semantic confusion, not a dimension/alignment problem."
+    }
+  ],
+  "source_annotation_limitations": [
+    "Some visible vehicles are unlabelled (e.g. right-border auto in val4711).",
+    "MV fine-grained subtype labels, loose boxes and partial-occlusion extents can be ambiguous; no relabelling during evaluation.",
+    "Existing source redactions and documented quarantine history remain separate from model errors."
+  ],
+  "scope_limitations": [
+    "Six cases visually reviewed, not all 2000 validation images.",
+    "No quantitatively audited occlusion-stratified score or COCO small-object AP claim.",
+    "Low-confidence diagnostic outputs are distinct from F1 operating confidence .309309 and timing confidence .25."
+  ]
+}

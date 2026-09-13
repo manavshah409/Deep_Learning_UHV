@@ -14,7 +14,6 @@ from .artifact_loader import (
 def get_dataset_counts() -> Dict[str, Any]:
     """Retrieve verified annotation counts from schema.json and annotation_audit.json."""
     audit = load_json("reports/audit/annotation_audit.json")
-    schema = load_json("reports/audit/schema.json")
 
     if audit and "splits" in audit:
         train_info = audit["splits"].get("train", {})
@@ -33,10 +32,14 @@ def get_dataset_counts() -> Dict[str, Any]:
             "train_objects": train_objs,
             "val_objects": val_objs,
             "total_objects": total_objs,
-            "invalid_boxes": train_info.get("invalid_annotations", 0) + val_info.get("invalid_annotations", 0),
-            "duplicate_ids": len(train_info.get("duplicate_image_ids", [])) + len(val_info.get("duplicate_image_ids", [])),
+            "invalid_boxes": train_info.get("invalid_annotations", 0)
+            + val_info.get("invalid_annotations", 0),
+            "duplicate_ids": len(train_info.get("duplicate_image_ids", []))
+            + len(val_info.get("duplicate_image_ids", [])),
             "shared_images": leakage.get("shared_image_ids", 0),
-            "revision": audit.get("revision", "59f82c57821e8a54dc40bc1f42e83909dbad0b70"),
+            "revision": audit.get(
+                "revision", "59f82c57821e8a54dc40bc1f42e83909dbad0b70"
+            ),
             "license": "CC BY 4.0",
             "source": "reports/audit/annotation_audit.json",
         }
@@ -87,7 +90,9 @@ def get_eda_summary() -> Optional[Dict[str, Any]]:
 def get_smoke_training_data() -> Dict[str, Any]:
     """Retrieve smoke training artifacts (epoch CSV, metrics, provenance)."""
     training_df = load_csv("reports/tables/yolov8n_uvh26_mv_smoke_seed42_training.csv")
-    provenance = load_json("reports/tables/yolov8n_uvh26_mv_smoke_seed42_provenance.json")
+    provenance = load_json(
+        "reports/tables/yolov8n_uvh26_mv_smoke_seed42_provenance.json"
+    )
     metrics = load_json("reports/tables/smoke_validation_seed42_metrics.json")
     per_class_df = load_csv("reports/tables/smoke_validation_seed42_per_class.csv")
     review = load_json("reports/audit/smoke_prediction_review.json")
@@ -99,7 +104,10 @@ def get_smoke_training_data() -> Dict[str, Any]:
         "per_class_df": per_class_df,
         "review": review,
         "weights_path": "runs/yolov8n_uvh26_mv_smoke_seed42/weights/best.pt",
-        "checkpoint_exists": find_file("runs/yolov8n_uvh26_mv_smoke_seed42/weights/best.pt") is not None,
+        "checkpoint_exists": find_file(
+            "runs/yolov8n_uvh26_mv_smoke_seed42/weights/best.pt"
+        )
+        is not None,
     }
 
 
@@ -108,7 +116,9 @@ def get_baseline_subset_info() -> Dict[str, Any]:
     identity = load_json("reports/audit/baseline_subset_frozen_provenance.json")
     dist_df = load_csv("reports/tables/baseline_subset_final_distribution.csv")
     if dist_df is None:
-        dist_df = load_csv("reports/tables/uvh26_mv_baseline_subset_v1_distribution.csv")
+        dist_df = load_csv(
+            "reports/tables/uvh26_mv_baseline_subset_v1_distribution.csv"
+        )
     counts = {}
     if dist_df is not None:
         counts = dist_df.groupby("split")["subset_instances"].sum().to_dict()
@@ -118,7 +128,9 @@ def get_baseline_subset_info() -> Dict[str, Any]:
         "val_target": 2000,
         "train_objects": counts.get("train"),
         "val_objects": counts.get("val"),
-        "max_share_deviation_pp": float(dist_df["share_difference_pp"].abs().max()) if dist_df is not None else None,
+        "max_share_deviation_pp": float(dist_df["share_difference_pp"].abs().max())
+        if dist_df is not None
+        else None,
         "distribution_df": dist_df,
         "identity": identity,
     }
@@ -126,7 +138,11 @@ def get_baseline_subset_info() -> Dict[str, Any]:
 
 def get_test_suite_status() -> Dict[str, Any]:
     """Retrieve test count and status from pytest.txt or live count."""
-    pytest_txt = find_file("reports/audit/recovery_pytest.txt") or find_file("reports/audit/pytest.txt")
+    pytest_txt = (
+        find_file("reports/audit/closeout_pytest.txt")
+        or find_file("reports/audit/recovery_pytest.txt")
+        or find_file("reports/audit/pytest.txt")
+    )
     text = ""
     if pytest_txt:
         text = pytest_txt.read_text(encoding="utf-8")
@@ -145,12 +161,6 @@ def get_test_suite_status() -> Dict[str, Any]:
         "passed_count": passed_count,
         "text": text.strip() if text else "No saved test result available",
         "test_modules": [
-            "tests/test_annotation_conversion.py",
-            "tests/test_bbox_validation.py",
-            "tests/test_dataset_manifest.py",
-            "tests/test_error_matching.py",
-            "tests/test_path_resolution.py",
-            "tests/test_pipeline_integration.py",
-            "tests/test_training_provenance.py",
+            str(p.relative_to(ROOT)) for p in sorted((ROOT / "tests").glob("test_*.py"))
         ],
     }

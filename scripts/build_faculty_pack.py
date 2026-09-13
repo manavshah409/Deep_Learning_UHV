@@ -22,6 +22,10 @@ def main():
     files = []
     for name in [
         "README.md",
+        "README_STREAMLIT.md",
+        "app.py",
+        ".gitattributes",
+        "requirements-dashboard.txt",
         "CHANGELOG.md",
         ".gitignore",
         "requirements.txt",
@@ -32,6 +36,9 @@ def main():
         files.append(ROOT / name)
     for name in [
         "src",
+        "components",
+        "utils",
+        "assets",
         "tests",
         "configs",
         "notebooks",

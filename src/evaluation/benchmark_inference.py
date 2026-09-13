@@ -33,6 +33,7 @@ def main():
     a = p.parse_args()
     import torch
     from ultralytics import YOLO
+    from ultralytics.models.yolo.detect import DetectionPredictor
 
     if a.device == "mps" and not torch.backends.mps.is_available():
         raise RuntimeError("MPS unavailable")
@@ -52,10 +53,35 @@ def main():
         elif a.device.startswith("cuda"):
             torch.cuda.synchronize()
 
+    class TimedPredictor(DetectionPredictor):
+        """Synchronize each stage because Ultralytics Profile excludes MPS."""
+
+        def measure(self, name, method, *args, **kwargs):
+            sync()
+            start = time.perf_counter()
+            value = method(*args, **kwargs)
+            sync()
+            if not hasattr(self, "stage_ms"):
+                self.stage_ms = {}
+            self.stage_ms[name] = (time.perf_counter() - start) * 1000
+            return value
+
+        def preprocess(self, *args, **kwargs):
+            value = self.measure("preprocess_ms", super().preprocess, *args, **kwargs)
+            self.input_shape = list(value.shape)
+            return value
+
+        def inference(self, *args, **kwargs):
+            return self.measure("inference_ms", super().inference, *args, **kwargs)
+
+        def postprocess(self, *args, **kwargs):
+            return self.measure("postprocess_ms", super().postprocess, *args, **kwargs)
+
     def predict(row):
         return model.predict(
             str(root / row["image"]),
             device=a.device,
+            predictor=TimedPredictor,
             imgsz=640,
             batch=1,
             conf=0.25,
@@ -72,14 +98,15 @@ def main():
     for row in chosen:
         sync()
         start = time.perf_counter()
-        result = predict(row)
+        predict(row)
         sync()
         elapsed = (time.perf_counter() - start) * 1000
         records.append(
             dict(
                 image_id=row["image_id"],
                 end_to_end_ms=elapsed,
-                **{k + "_ms": float(v) for k, v in result.speed.items()},
+                input_shape=model.predictor.input_shape,
+                **model.predictor.stage_ms,
             )
         )
     summary = {
@@ -105,6 +132,10 @@ def main():
             records=records,
             end_to_end_definition="Wall time around predict(path), including local image read/decode, preprocessing, inference and postprocessing plus device synchronization; excludes model loading, drawing, video capture and UI.",
             realtime_claim=False,
+            stage_timing="Explicit torch.mps.synchronize before and after each stage; no reliance on unsynchronized result.speed. End-to-end includes these instrumentation barriers.",
+            preprocessing="OpenCV local path read/decode, stride-aligned rectangular letterbox to imgsz=640, BGR-to-RGB, CHW float32 tensor /255; actual tensor shapes recorded per sample.",
+            postprocessing="Confidence filtering and class-aware NMS at conf .25 / IoU .7 / max_det 300; box scaling and Results construction.",
+            model_precision="float32",
         ),
     )
     print(json.dumps(summary, indent=2))

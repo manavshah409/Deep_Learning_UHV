@@ -1,22 +1,17 @@
 """Dataset Audit, Data Engineering, and Data Quality components."""
 
 import streamlit as st
-import pandas as pd
-from utils.data_loader import get_dataset_counts, get_class_mapping
-from utils.artifact_loader import load_json, load_csv
+from utils.data_loader import get_class_mapping
 
 
 def render_dataset_section():
     """Render sections 01, 02, and 03: Dataset Audit, Data Engineering, and Data Quality."""
-    counts = get_dataset_counts()
     mapping = get_class_mapping()
-    audit_json = load_json("reports/audit/annotation_audit.json")
-    schema_json = load_json("reports/audit/schema.json")
 
     # --------------------------------------------------------------------------
     # 01 — Dataset Audit
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3.5rem; margin-bottom: 1.5rem;" id="dataset-audit">
             <div class="section-kicker">01 / AUDIT &amp; TAXONOMY</div>
@@ -26,13 +21,12 @@ def render_dataset_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     c1, c2 = st.columns([1.1, 0.9])
 
     with c1:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -40,8 +34,8 @@ def render_dataset_section():
                     <span class="badge-complete">AUDITED</span>
                 </div>
                 <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.55;">
-                    The dataset provides two consensus variants: <b>Single-Threshold (ST)</b> and <b>Majority-Voting (MV)</b>.
-                    Phase 1 adopts Majority-Voting annotations for superior bounding-box agreement across multiple independent annotators.
+                    The dataset provides two consensus variants: <b>STAPLE (ST)</b> and <b>Majority-Voting (MV)</b>.
+                    Phase 1 adopts Majority-Voting annotations as the frozen annotation variant; no superiority over STAPLE is claimed.
                 </p>
                 <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1rem 0;">
                     <thead>
@@ -80,11 +74,10 @@ def render_dataset_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with c2:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -116,13 +109,12 @@ def render_dataset_section():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     # --------------------------------------------------------------------------
     # 02 — Data Engineering (COCO -> YOLO)
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3rem; margin-bottom: 1.5rem;" id="data-engineering">
             <div class="section-kicker">02 / DATA TRANSFORMATION</div>
@@ -132,13 +124,12 @@ def render_dataset_section():
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     t1, t2 = st.columns([1, 1.2])
 
     with t1:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -165,18 +156,17 @@ norm_h = h / image_height<br/><br/>
                 <div style="color: #94a3b8; font-size: 0.88rem; line-height: 1.5;">
                     <b style="color: #38bdf8;">Engineering Principles:</b>
                     <ul style="padding-left: 1.1rem; margin-top: 0.4rem;">
-                        <li><b>Zero heuristic repair:</b> Boxes outside $[0, W] \times [0, H]$ trigger validation errors.</li>
+                        <li><b>Zero heuristic repair:</b> Boxes outside the image bounds [0,W] by [0,H] trigger validation errors.</li>
                         <li><b>Background handling:</b> Images without vehicle objects produce valid empty <code>.txt</code> files.</li>
                         <li><b>Immutable raw files:</b> Raw data directories are read-only; YOLO datasets use symlinks.</li>
                     </ul>
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with t2:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card">
                 <div class="glass-card-header">
@@ -187,41 +177,40 @@ norm_h = h / image_height<br/><br/>
                     All 14 classes defined in the UVH-26 taxonomy are preserved independently to reflect heterogeneous Indian traffic realities:
                 </p>
             """,
-            unsafe_allow_html=True,
         )
         if mapping:
             map_cols = st.columns(2)
             half = (len(mapping) + 1) // 2
             with map_cols[0]:
                 for item in mapping[:half]:
-                    st.markdown(
+                    st.html(
                         f"""
                         <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 8px; margin-bottom: 4px; background: rgba(255,255,255,0.03); border-radius: 6px; font-size: 0.82rem; font-family: var(--font-mono);">
-                            <span style="color: #00e5ff;">#{item.get('yolo_id', item.get('id', ''))}</span>
-                            <span style="color: #f1f5f9; font-weight: 600;">{item.get('name', '')}</span>
-                            <span style="color: #64748b;">(COCO: {item.get('original_id', '')})</span>
+                            <span style="color: #00e5ff;">#{item.get("yolo_id", item.get("id", ""))}</span>
+                            <span style="color: #f1f5f9; font-weight: 600;">{item.get("name", "")}</span>
+                            <span style="color: #64748b;">(COCO: {item.get("original_id", "")})</span>
                         </div>
                         """,
-                        unsafe_allow_html=True,
                     )
             with map_cols[1]:
                 for item in mapping[half:]:
-                    st.markdown(
+                    st.html(
                         f"""
                         <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 8px; margin-bottom: 4px; background: rgba(255,255,255,0.03); border-radius: 6px; font-size: 0.82rem; font-family: var(--font-mono);">
-                            <span style="color: #00e5ff;">#{item.get('yolo_id', item.get('id', ''))}</span>
-                            <span style="color: #f1f5f9; font-weight: 600;">{item.get('name', '')}</span>
-                            <span style="color: #64748b;">(COCO: {item.get('original_id', '')})</span>
+                            <span style="color: #00e5ff;">#{item.get("yolo_id", item.get("id", ""))}</span>
+                            <span style="color: #f1f5f9; font-weight: 600;">{item.get("name", "")}</span>
+                            <span style="color: #64748b;">(COCO: {item.get("original_id", "")})</span>
                         </div>
                         """,
-                        unsafe_allow_html=True,
                     )
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.html(
+            "</div>",
+        )
 
     # --------------------------------------------------------------------------
     # 03 — Data Quality & Reliability
     # --------------------------------------------------------------------------
-    st.markdown(
+    st.html(
         """
         <div style="margin-top: 3rem; margin-bottom: 1.5rem;" id="data-quality">
             <div class="section-kicker">03 / VERIFICATION &amp; INTEGRITY</div>
@@ -231,13 +220,12 @@ norm_h = h / image_height<br/><br/>
             </div>
         </div>
         """,
-        unsafe_allow_html=True,
     )
 
     q1, q2, q3 = st.columns(3)
 
     with q1:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card" style="height: 100%;">
                 <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🛡️</div>
@@ -245,7 +233,7 @@ norm_h = h / image_height<br/><br/>
                     Split Leakage Defense
                 </div>
                 <div style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin-bottom: 0.8rem;">
-                    Filename and image SHA-256 collision scans between train and validation splits:
+                    Selected-subset filename and image SHA-256 collision scans between train and validation splits:
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #34d399; background: rgba(16,185,129,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid rgba(16,185,129,0.3);">
                     ✓ Shared Filenames: 0<br/>
@@ -253,11 +241,10 @@ norm_h = h / image_height<br/><br/>
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with q2:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card" style="height: 100%;">
                 <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📐</div>
@@ -269,15 +256,14 @@ norm_h = h / image_height<br/><br/>
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #34d399; background: rgba(16,185,129,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid rgba(16,185,129,0.3);">
                     ✓ Invalid Bounding Boxes: 0<br/>
-                    ✓ Missing Image Pairs: 0
+                    ✓ Dangling annotation image IDs: 0
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
     with q3:
-        st.markdown(
+        st.html(
             """
             <div class="glass-card" style="height: 100%;">
                 <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
@@ -289,18 +275,16 @@ norm_h = h / image_height<br/><br/>
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #38bdf8; background: rgba(56,189,248,0.1); padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid rgba(56,189,248,0.3);">
                     ✓ Seed: 42 (Reproducible)<br/>
-                    ✓ Max Deviation: 0.088 pp
+                    ✓ Max Deviation: 0.3063 pp
                 </div>
             </div>
             """,
-            unsafe_allow_html=True,
         )
 
-    st.markdown(
+    st.html(
         """
         <div class="warning-callout">
-            <b>Data Quality Status:</b> Annotation-level checks are 100% complete for the entire 26,646 metadata catalog. Full pixel decoding, dimension re-confirmation, and bit-level content-hash audits across all 26,646 raw PNG files are pending download completion.
+            <b>Data Quality Status:</b> Annotation-level checks are 100% complete for the entire 26,646 metadata catalog. The selected 10,000-image local pixel/label integrity audit passed. Acquisition and pixel verification of unselected images remain incomplete.
         </div>
         """,
-        unsafe_allow_html=True,
     )
