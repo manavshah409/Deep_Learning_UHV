@@ -1,0 +1,10 @@
+{
+  "path": "output/pdf/UVH26_Faculty_Progress_Report.pdf",
+  "status": "preserved",
+  "normalized_text_matches_committed": true,
+  "pages": 5,
+  "previous_sha256": "d4ad4948f1b9391307e7c7d478835e3f609d9611a0b3e7c5b9a3ed2f3c5fe28a",
+  "preserved_sha256": "561d95e47681c14ed8493eab2476baf1e43d67be982ebda329aa37bf51ec76d1",
+  "rendered_pages_reviewed": 5,
+  "visual_status": "passed; preserved existing PDF without editing"
+}

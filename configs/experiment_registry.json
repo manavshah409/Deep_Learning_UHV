@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "scope": "Frozen UVH-26 MV 8000/2000 subset validation; no test-set or live-video claim",
+  "experiments": [
+    {
+      "id": "E0",
+      "run_id": "yolov8n_uvh26_mv_baseline_seed42_v1",
+      "status": "completed",
+      "model": "YOLOv8n",
+      "config": "configs/baseline_yolov8n.yaml",
+      "best_checkpoint_sha256": "85b9e089ec3dfaa676e30a6191b7e5726f320d5bf85391f1675922b88f9778b3"
+    },
+    {
+      "id": "E1_yolov8s_uvh26_mv_640_seed42",
+      "status": "registered_before_preflight",
+      "model": "YOLOv8s",
+      "config": "configs/E1_yolov8s_uvh26_mv_640_seed42.yaml",
+      "dataset": "uvh26_mv_yolo_v1/subsets/baseline_seed42_v2",
+      "independent_variable": "model capacity n -> s, with corresponding official COCO pretrained initialization",
+      "preflight_id": "E1_yolov8s_uvh26_mv_640_seed42_preflight_v1",
+      "budget_epochs": 30,
+      "patience": 10,
+      "control_note": "batch8, nbs64, AdamW lr0 .000556, same seed/data/imgsz/schedule/augmentations. Explicit AMP=false and workers=0 match E0 effective behavior, although E0 requested true/4. No intentional memory adjustment.",
+      "decision_rule": "Compare overall/per-class AP and common synchronized batch-one latency; report trade-off without post-hoc success threshold. Single seed; no statistical significance claim.",
+      "config_sha256": "d7790690c2874b78df05aa909322017b1493a406569df7ffcf010e4c369bc092",
+      "pretrained": {
+        "bytes": 22588772,
+        "initialization": "COCO pretrained",
+        "model": "YOLOv8s",
+        "path": "models/yolov8s.pt",
+        "sha256": "1f47a78bf100391c2a140b7ac73a1caae18c32779be7d310658112f7ac9aa78a",
+        "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8s.pt"
+      }
+    }
+  ]
+}

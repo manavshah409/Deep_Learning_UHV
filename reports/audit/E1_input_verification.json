@@ -1,0 +1,23 @@
+{
+  "E0_run_unchanged": true,
+  "checksums": {
+    "baseline_config": true,
+    "best_checkpoint": true,
+    "manifest": true,
+    "mapping": true,
+    "requirements": true,
+    "train_manifest": true,
+    "training_source": true,
+    "val_manifest": true
+  },
+  "class_mapping": "14 classes match",
+  "dataset_paths": "passed",
+  "images_and_labels_verified": 10000,
+  "manifest_sha256": "990054a93e300a90321db19b3d0bcd98a488a891cd4e2dbd88425f4eb592c2af",
+  "split_counts": {
+    "train": 8000,
+    "val": 2000
+  },
+  "status": "passed",
+  "val_manifest_sha256": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3"
+}

@@ -1,0 +1,7 @@
+{
+  "disk_free_bytes": 766810886144,
+  "mps_available": true,
+  "mps_built": true,
+  "python": "3.12.14",
+  "torch": "2.14.0"
+}

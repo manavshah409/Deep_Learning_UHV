@@ -1,0 +1,8 @@
+{
+  "bytes": 22588772,
+  "initialization": "COCO pretrained",
+  "model": "YOLOv8s",
+  "path": "models/yolov8s.pt",
+  "sha256": "1f47a78bf100391c2a140b7ac73a1caae18c32779be7d310658112f7ac9aa78a",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8s.pt"
+}
