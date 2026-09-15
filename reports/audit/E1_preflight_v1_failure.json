@@ -1,0 +1,21 @@
+{
+  "status": "failed_preserved",
+  "process_exit_code": 1,
+  "duration_seconds": 883.0935803750181,
+  "training_batches_completed": 1000,
+  "completed_validated_epochs": 0,
+  "validation_completed": false,
+  "checkpoints_saved": false,
+  "error": "TypeError: isfinite(): argument 'input' (position 1) must be Tensor, not dict",
+  "cause": "New E1 epoch-end finite-loss guard assumed tensor; installed Ultralytics trainer.tloss is a named-loss dictionary. Wrapper compatibility bug, not observed non-finite loss or memory failure.",
+  "recovery": "Guard now handles dictionary and tensor losses; regression-tested. Rerun one epoch from official initializer under new immutable preflight_v2. E1 full run remains unstarted.",
+  "log_path": "data/interim/E1_preflight_v1.log",
+  "log_sha256": "728d8404c29f3a2199505e34cbc9f7b3751a8a0038f77ca84962449e86f50902",
+  "run_file_sha256": {
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_preflight_v1/args.yaml": "f22835671291a7ea9236d9d8ec7f2dfb6c396fad71f1a7cdcc0ef3c4b736a3dc",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_preflight_v1/train_batch0.jpg": "e0c2d2f2af0dad15b9545a7c853050b2a2051ee73e3f43a3617562dcb670570f",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_preflight_v1/train_batch1.jpg": "232e1cbfc9528d2b8d3b1015cab55ef6059a58678a03574e86f71496e1d880ab",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_preflight_v1/train_batch2.jpg": "5939c94589a0a7c4e7b5cc5a7ec7ade68e889fa03442276859d157fc047bdde3",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_preflight_v1/labels.jpg": "1f5a742d7c919be9fc88fb7d8d014fe0f5ab4f1b5f09642dbc539b1603df9a40"
+  }
+}

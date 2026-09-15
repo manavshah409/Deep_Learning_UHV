@@ -33,7 +33,7 @@ from components.eda import render_eda_section
 from components.training import render_training_section
 from components.testing import render_testing_section
 from components.status import render_status_section
-from components.baseline import render_baseline_section
+from components.baseline import render_baseline_section, render_e1_section
 
 
 def main():
@@ -127,6 +127,7 @@ def main():
     # --------------------------------------------------------------------------
     render_hero()
     render_baseline_section()
+    render_e1_section()
     render_metrics()
     render_pipeline()
     render_dataset_section()

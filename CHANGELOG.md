@@ -1,5 +1,11 @@
 # Changelog
 
+## Phase 2 E1 preparation and recovery - 2026-09-15
+
+- Registered the controlled YOLOv8s comparison while preserving E0 and the frozen data.
+- Preserved failed preflight v1 (exit 1 before validation/checkpoint saving); fixed the added loss guard to accept Ultralytics named-loss dictionaries.
+- Added comparison and loss-guard tests: 68 tests pass. Recovery preflight v2 uses 800 training and all 2,000 validation images; proper E1 keeps its 30-epoch, 8,000/2,000 budget.
+
 ## Phase 1 baseline closeout - 2026-09-13
 
 - Verified successful exit 0, 30 completed epochs, best epoch 30 and no early stopping; preserved the training run and both checkpoints.

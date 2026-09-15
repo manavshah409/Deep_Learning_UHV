@@ -12,12 +12,12 @@
     },
     {
       "id": "E1_yolov8s_uvh26_mv_640_seed42",
-      "status": "registered_before_preflight",
+      "status": "recovery_preflight_v2_running",
       "model": "YOLOv8s",
       "config": "configs/E1_yolov8s_uvh26_mv_640_seed42.yaml",
       "dataset": "uvh26_mv_yolo_v1/subsets/baseline_seed42_v2",
       "independent_variable": "model capacity n -> s, with corresponding official COCO pretrained initialization",
-      "preflight_id": "E1_yolov8s_uvh26_mv_640_seed42_preflight_v1",
+      "preflight_id": "E1_yolov8s_uvh26_mv_640_seed42_preflight_v2",
       "budget_epochs": 30,
       "patience": 10,
       "control_note": "batch8, nbs64, AdamW lr0 .000556, same seed/data/imgsz/schedule/augmentations. Explicit AMP=false and workers=0 match E0 effective behavior, although E0 requested true/4. No intentional memory adjustment.",
@@ -30,7 +30,9 @@
         "path": "models/yolov8s.pt",
         "sha256": "1f47a78bf100391c2a140b7ac73a1caae18c32779be7d310658112f7ac9aa78a",
         "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8s.pt"
-      }
+      },
+      "failed_preflight_id": "E1_yolov8s_uvh26_mv_640_seed42_preflight_v1",
+      "preflight_scope": "v1 completed all 1000 training batches but failed in added callback before validation/save; v2 checks recovery on 800 train and all 2000 val via fraction=.1. Full E1 budget/data unchanged."
     }
   ]
 }

@@ -10,6 +10,7 @@ import subprocess
 import time
 import yaml
 from src.data.common import ROOT, sha256, save_json
+from src.training.loss_checks import assert_finite_losses
 
 
 def record_checkpoint(trainer, info, report):
@@ -50,18 +51,23 @@ def main():
         raise ValueError("Preflight and smoke are distinct modes")
     if a.preflight:
         cfg["epochs"] = 1
+        if a.name.endswith("_preflight_v2"):
+            cfg["fraction"] = (
+                0.1  # recovery pipeline check only: 800 train, all 2000 val
+            )
     if a.smoke:
         cfg.update(epochs=1, close_mosaic=0, workers=0)
     if a.name not in {
         "E1_yolov8s_uvh26_mv_640_seed42",
         "E1_yolov8s_uvh26_mv_640_seed42_preflight_v1",
+        "E1_yolov8s_uvh26_mv_640_seed42_preflight_v2",
     }:
         raise ValueError(
             "This registered runner only permits E1 and its unique preflight"
         )
     if a.smoke:
         raise ValueError("E1 uses the full frozen subset, not a smoke subset")
-    if a.preflight != a.name.endswith("_preflight_v1"):
+    if a.preflight != a.name.endswith(("_preflight_v1", "_preflight_v2")):
         raise ValueError("Preflight flag must match registered run name")
     output = ROOT / "runs" / a.name
     if output.exists():
@@ -117,10 +123,8 @@ def main():
         info["pretrained_sha256"] = sha256(model_name)
 
         def check_finite_epoch(trainer):
-            if trainer.tloss is not None and not bool(
-                torch.isfinite(trainer.tloss).all()
-            ):
-                raise RuntimeError("Non-finite training loss: stop immediately")
+            if trainer.tloss is not None:
+                assert_finite_losses(trainer.tloss)
 
         model.add_callback("on_train_epoch_end", check_finite_epoch)
 
@@ -135,6 +139,8 @@ def main():
                 "accumulate": trainer.accumulate,
                 "nbs": trainer.args.nbs,
                 "effective_workers": trainer.args.workers,
+                "training_images": len(trainer.train_loader.dataset),
+                "validation_images": len(trainer.test_loader.dataset),
             }
             if not a.smoke:
                 if type(trainer.optimizer).__name__ != "AdamW" or any(

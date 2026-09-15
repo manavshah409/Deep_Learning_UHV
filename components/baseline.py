@@ -56,3 +56,40 @@ def render_baseline_section():
     if frozen:
         with st.expander("Frozen subset provenance"):
             st.json(frozen)
+
+
+def render_e1_section():
+    st.subheader("Phase 2 E1: YOLOv8s versus frozen YOLOv8n")
+    registry = load_json("configs/experiment_registry.json")
+    if not registry:
+        st.info("E1 is not registered.")
+        return
+    e1 = next(
+        (
+            x
+            for x in registry["experiments"]
+            if x["id"] == "E1_yolov8s_uvh26_mv_640_seed42"
+        ),
+        None,
+    )
+    if e1:
+        st.write("E1 status:", e1["status"])
+        st.caption(
+            "Same frozen 8000/2000 subset. Model capacity is the intended independent variable; preflight is not an accuracy result."
+        )
+    run = load_json("reports/tables/E1_yolov8s_uvh26_mv_640_seed42_provenance.json")
+    if run:
+        st.write("Proper E1 training:", run["status"])
+        st.write("Last saved E1 epoch:", run.get("last_saved_epoch", "none yet"))
+    table = load_csv("reports/comparisons/E1_vs_E0/overall.csv")
+    if table is not None:
+        st.dataframe(table, hide_index=True)
+        st.caption(
+            "Deltas are absolute percentage points. Harmonic aggregate F1 is not micro-F1. No independent test or live-video claim."
+        )
+        st.dataframe(
+            load_csv("reports/comparisons/E1_vs_E0/per_class.csv"), hide_index=True
+        )
+        st.dataframe(
+            load_csv("reports/comparisons/E1_vs_E0/latency.csv"), hide_index=True
+        )
