@@ -1,0 +1,60 @@
+{
+  "accuracy_result": false,
+  "checkpoints": "readable_finite_hashes_match",
+  "controls": "Recovery preflight: first 800 training images via fraction=.1; all 2000 validation images; batch8/AdamW unchanged. Proper E1 remains 8000/2000 and 30 epochs.",
+  "duration_estimate_note": "Lower bound scales the observed full 1000-batch v1 training pass; conservative upper bound adds the entire short v2 preflight wall time per epoch, including validation twice. Estimates only; thermal/load variation can change throughput.",
+  "duration_estimate_range_seconds": [
+    26492.807411250542,
+    33985.243052490405
+  ],
+  "duration_seconds": 249.74785470799543,
+  "epochs": 1,
+  "full_30_epoch_duration_estimate_seconds": 33985.243052490405,
+  "observed_run_bytes": 52286397,
+  "previews": [
+    {
+      "classes": [
+        "LCV",
+        "Two-wheeler"
+      ],
+      "image_id": 4232,
+      "predictions": 7
+    },
+    {
+      "classes": [
+        "Bus",
+        "Hatchback",
+        "LCV",
+        "SUV",
+        "Sedan",
+        "Three-wheeler",
+        "Truck",
+        "Two-wheeler"
+      ],
+      "image_id": 4711,
+      "predictions": 18
+    },
+    {
+      "classes": [
+        "LCV",
+        "Truck",
+        "Two-wheeler"
+      ],
+      "image_id": 954,
+      "predictions": 15
+    }
+  ],
+  "status": "passed",
+  "storage_note": "Conservative reservation, not measured final E1 storage. Includes unstripped optimizer checkpoints and plots.",
+  "storage_reservation_bytes": 1073741824,
+  "process_exit_code": 0,
+  "visual_review": "passed_with_documented_preflight_model_limitations",
+  "feasible": true,
+  "available_disk_bytes": 765797888000,
+  "visual_findings": [
+    "4232: several motorcycles have plausible Two-wheeler boxes; foreground truck is missed and right-side wall/sign receives an LCV false positive. No systematic coordinate shift observed.",
+    "4711: motorcycles and central auto have plausible boxes; central MUV has duplicate incorrect subtype boxes, Mini-bus is called Bus, and border autos receive duplicate/conflicting classes.",
+    "954: motorcycles are localized; construction equipment (Others ground truth) is confused with Truck/LCV. Duplicate predictions remain.",
+    "All rendered names belong to the verified 14-class mapping. These undertrained preflight errors are documented pipeline diagnostics, not E1 accuracy or model acceptance."
+  ]
+}

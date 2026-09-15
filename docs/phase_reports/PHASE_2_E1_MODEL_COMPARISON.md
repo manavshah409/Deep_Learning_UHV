@@ -1,6 +1,6 @@
 # Phase 2 E1: controlled model-capacity comparison
 
-Status: registered; recovery preflight v2 running. No E1 accuracy comparison is available yet. Preflight metrics will be treated only as pipeline diagnostics.
+Status: recovery preflight v2 passed; full E1 training ready. No E1 accuracy comparison is available yet. Preflight metrics will be treated only as pipeline diagnostics.
 
 Research question: Does COCO-pretrained YOLOv8s improve UVH-26 vehicle detection, especially difficult categories, enough to justify additional training time, checkpoint size and synchronized still-image latency?
 
@@ -31,3 +31,5 @@ The completed report will include observed training duration/storage, actual/bes
 Preflight v1 completed 1,000 training batches with finite displayed losses, then exited 1 because the added finite-loss guard expected a tensor rather than the loss dictionary supplied by this Ultralytics version. It did not reach validation or save a checkpoint. Its run, log and failure provenance are preserved. The guard now supports both forms and has regression tests.
 
 Recovery preflight v2 uses one epoch on 800 training images (`fraction=0.1`) and all 2,000 validation images to verify the remaining pipeline. It is not an accuracy result. Proper E1 remains 30 epochs on the full frozen 8,000/2,000 subset.
+
+Recovery v2 exited 0 in 249.748 seconds; checkpoints passed readability, finite-weight and hash checks. Three previews were manually reviewed with undertrained-model false positives, misses and subtype confusions documented in `reports/audit/E1_preflight_verification.json`. Estimated 30-epoch duration: 7.4–9.4 hours (estimate, not measured E1 cost). Memory and disk permit the full run.

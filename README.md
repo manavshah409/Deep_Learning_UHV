@@ -1,8 +1,8 @@
 # UVH-26 vehicle detection: Phase 1 subset baseline
 
-**Phase 1 is complete under the subset-based entry gate.** The baseline checkpoint commit `a4eabf1475d479332f1332a99ae24fac94b2b908` is verified on GitHub. The subsequent E1-only controlled YOLOv8s comparison is registered and its recovery preflight is running.
+**Phase 1 is complete under the subset-based entry gate.** The baseline checkpoint commit `a4eabf1475d479332f1332a99ae24fac94b2b908` is verified on GitHub. The subsequent E1-only controlled YOLOv8s comparison is registered and its recovery preflight has passed; full training is ready.
 
-The proper YOLOv8n run completed **30 epochs**, best epoch **30**, exit **0**, no early stopping. Fresh best-checkpoint evaluation, qualitative review and synchronized MPS timing are complete. E1 YOLOv8s recovery preflight is now running; see the [entry gate](reports/audit/phase2_subset_gate.json) and [delivery status](reports/audit/closeout_delivery.json).
+The proper YOLOv8n run completed **30 epochs**, best epoch **30**, exit **0**, no early stopping. Fresh best-checkpoint evaluation, qualitative review and synchronized MPS timing are complete. E1 YOLOv8s recovery preflight has passed; see the [entry gate](reports/audit/phase2_subset_gate.json) and [delivery status](reports/audit/closeout_delivery.json).
 
 **Scope:** 8,000 training / 2,000 validation images, 14 Majority Voting classes. These are subset validation results, not full-dataset or test-set scores.
 
