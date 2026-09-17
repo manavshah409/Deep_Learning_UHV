@@ -1,5 +1,5 @@
 {
-  "status": "measured_reviewed_tested",
+  "status": "complete",
   "standalone_evaluation_exit_codes": {
     "E0": 0,
     "E1": 0
@@ -37,5 +37,7 @@
   "tests": "73 passed",
   "manual_review": "reports/comparisons/E1_paired_summary.json",
   "artifact_validation": "reports/audit/E1_artifact_validation.json",
-  "dashboard_validation": "Streamlit AppTest: no exceptions"
+  "dashboard_validation": "Streamlit AppTest: no exceptions",
+  "results_commit": "f2f51a464a4971167f62d16881e515e545c63e1d",
+  "push_status": "success"
 }
