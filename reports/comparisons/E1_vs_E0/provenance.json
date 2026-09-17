@@ -1,0 +1,14 @@
+{
+  "E0_checkpoint_sha256": "85b9e089ec3dfaa676e30a6191b7e5726f320d5bf85391f1675922b88f9778b3",
+  "E1_checkpoint_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+  "e0_evaluation": "reports/evaluations/yolov8n_uvh26_mv_e0_validation_seed42_v2",
+  "e0_timing_file": "reports/tables/E0_common_protocol_v2_latency.json",
+  "e1_evaluation": "reports/evaluations/yolov8s_uvh26_mv_e1_validation_seed42_v2",
+  "e1_timing_file": "reports/tables/E1_common_protocol_v2_latency.json",
+  "f1_note": "Harmonic aggregate F1 is not micro-F1. Each model selects its own max mean-F1 confidence; AP comparison uses the common validation protocol.",
+  "rare_class_note": "Mini-bus has 58 objects; Others has 31. Single seed and no confidence intervals; gains are descriptive, not significance claims.",
+  "scope": "Same frozen 2000-image MV validation subset; no independent test or live-video claim",
+  "source_sha256": "4e03ce8201b2f934f59298567ec81ddf36fcddb18c09783b923cfa3c14088bce",
+  "status": "measured",
+  "validation_manifest_sha256": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3"
+}

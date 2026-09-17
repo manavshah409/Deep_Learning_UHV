@@ -1,0 +1,57 @@
+{
+  "E0_run_unchanged": true,
+  "best_epoch": 22,
+  "checkpoints": {
+    "last_weights": {
+      "bytes": 22502762,
+      "finite": true,
+      "path": "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/last.pt",
+      "readable": true,
+      "sha256": "49a460b4c2ce7abc417b5f598ed4cdab83fca0257fdfc87c9caf3bc72a2ca3b5",
+      "stored_epoch": -1
+    },
+    "weights": {
+      "bytes": 22502762,
+      "finite": true,
+      "path": "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt",
+      "readable": true,
+      "sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+      "stored_epoch": -1
+    }
+  },
+  "early_stopped": false,
+  "effective_control_differences": [],
+  "epochs_completed": 30,
+  "process_exit_code": 0,
+  "run_file_sha256": {
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/BoxF1_curve.png": "6375b9306debff7bacf033af5ced9632932a25ea451ed098df747632717d19bb",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/BoxPR_curve.png": "9e1bc9e5584ce99c9496654643c083720e673d04ee4b70a4524f8af755e55c8d",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/BoxP_curve.png": "b0ccbd501be73922cfbb5f0ba976b5ed554487a02ef48f947f1ae0da2d562151",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/BoxR_curve.png": "af7c4b04c5fcb02909ae70ae4036f3d77f643fa08ce3596ab6a37d9e924e9202",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/args.yaml": "a66d940ac08016874afb5a8c5980cf613271da1a7ecea68257ee279e2c9d616f",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/confusion_matrix.png": "f06dea702ac84cbdd3f9b989866628553f5dc70de286c463e758e0972b4da2b3",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/confusion_matrix_normalized.png": "e3727f12d7e1af385eaba5bf60ecd5fb41c197519bf12d52b8c2877a1ad83870",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/labels.jpg": "1f5a742d7c919be9fc88fb7d8d014fe0f5ab4f1b5f09642dbc539b1603df9a40",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/results.csv": "5b9c7b971f41c062239d8583360865f1cc493dda0293a1d59855e511c3c2289a",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/results.png": "3e8340876f95293c17f3b561cd8e850448fe58d1df31292302a03c668071dc68",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/train_batch0.jpg": "e0c2d2f2af0dad15b9545a7c853050b2a2051ee73e3f43a3617562dcb670570f",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/train_batch1.jpg": "232e1cbfc9528d2b8d3b1015cab55ef6059a58678a03574e86f71496e1d880ab",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/train_batch2.jpg": "5939c94589a0a7c4e7b5cc5a7ec7ade68e889fa03442276859d157fc047bdde3",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/train_batch25000.jpg": "095e8b8a225aae59b1db2bf0261b5d838eebf4c4992c752a199b9f949b96ec69",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/train_batch25001.jpg": "ada0bebb18aaa7ddfab842a1f9ed7b4fd8eae4084b1912be747b106095613004",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/train_batch25002.jpg": "e65d885793a340717c84e9821667915b1850f9f9ed2b91e99d44535163697edb",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/val_batch0_labels.jpg": "ec8201c94ac1dccebe2b3d69e1ea7f43f4c8cd206ef81e42dad3f55e8ded442f",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/val_batch0_pred.jpg": "196332506d9d5a5d92c8cd394df3157a07321dabec6ebdac1df4b087c6f8c360",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/val_batch1_labels.jpg": "86f207b183480a2cba45353268112e8b55a5a4189fadc184f90c79430acc0f8d",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/val_batch1_pred.jpg": "16f42eb1b1609cb3c513582b0c949230974039de9e1b912b59af1ec3c8a8440d",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/val_batch2_labels.jpg": "4999ba437ce2f8101d30dedb9176ceefddf28ff76052d070d2dddb14f1f54a67",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/val_batch2_pred.jpg": "15d6e36b753fbdec06c0a645c43ef67d20322226a768990320dc30aecce62f72",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/last.pt": "49a460b4c2ce7abc417b5f598ed4cdab83fca0257fdfc87c9caf3bc72a2ca3b5"
+  },
+  "status": "passed",
+  "warnings": [
+    "<project>/.venv/lib/python3.12/site-packages/torch/autograd/graph.py:1072: UserWarning: index_put_with_accumulate_mps does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at <torch-build>/aten/src/ATen/Context.cpp:190.)",
+    "<project>/.venv/lib/python3.12/site-packages/torch/autograd/graph.py:1072: UserWarning: scatter_reduce_mps does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True, warn_only=True)'. You can file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation. (Triggered internally at <torch-build>/aten/src/ATen/Context.cpp:190.)"
+  ]
+}

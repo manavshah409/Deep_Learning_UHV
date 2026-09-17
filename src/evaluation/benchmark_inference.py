@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 import random
+import platform
 import time
 import numpy as np
 from src.data.common import ROOT, save_json, sha256
@@ -32,6 +33,7 @@ def main():
     p.add_argument("--device", default="mps")
     a = p.parse_args()
     import torch
+    import ultralytics
     from ultralytics import YOLO
     from ultralytics.models.yolo.detect import DetectionPredictor
 
@@ -117,6 +119,15 @@ def main():
         target,
         dict(
             scope="Proper subset checkpoint, sequential batch-one still-image benchmark",
+            parameters=sum(p.numel() for p in model.model.parameters()),
+            weights_bytes=Path(a.weights).stat().st_size,
+            environment=dict(
+                python=platform.python_version(),
+                torch=torch.__version__,
+                ultralytics=ultralytics.__version__,
+                platform=platform.platform(),
+                processor=platform.processor(),
+            ),
             weights_sha256=sha256(a.weights),
             validation_manifest_sha256=sha256(root / "val_manifest.json"),
             device=a.device,

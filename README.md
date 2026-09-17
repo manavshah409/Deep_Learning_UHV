@@ -1,8 +1,12 @@
 # UVH-26 vehicle detection: Phase 1 subset baseline
 
-**Phase 1 is complete under the subset-based entry gate.** The baseline checkpoint commit `a4eabf1475d479332f1332a99ae24fac94b2b908` is verified on GitHub. The subsequent E1-only controlled YOLOv8s comparison is registered and its recovery preflight has passed; full training is ready.
+**Phase 1 and the Phase 2 E1 comparison are complete.** YOLOv8s trained for 30 epochs (best epoch 22; exit 0; no early stop). Its initial evaluation export failed; the evaluator was repaired and both checkpoints were evaluated successfully under new IDs. No retraining or other experiment was started.
 
-The proper YOLOv8n run completed **30 epochs**, best epoch **30**, exit **0**, no early stopping. Fresh best-checkpoint evaluation, qualitative review and synchronized MPS timing are complete. E1 YOLOv8s recovery preflight has passed; see the [entry gate](reports/audit/phase2_subset_gate.json) and [delivery status](reports/audit/closeout_delivery.json).
+**Preferred research detector: E1 YOLOv8s at 640.** mAP50:95 improves from 0.458407 to 0.524760 (+6.635 percentage points); harmonic aggregate F1 improves from 0.574856 to 0.629658. All 14 class AP50:95 values improve, but Others recall remains zero and some dense-scene class errors worsen.
+
+Matched MPS batch-one timing: E0/E1 mean end-to-end 30.364/30.292 ms; median 31.167/30.537 ms; p95 33.681/32.063 ms; 32.934/33.012 still images/s. E1 mean inference is 17.1% slower and weights are 3.61x larger. The tiny end-to-end difference is not evidence of a speed advantage or live-video performance. See the [E1 technical report](docs/phase_reports/PHASE_2_E1_MODEL_COMPARISON.md), [recovery note](docs/phase_reports/E1_EVALUATION_RECOVERY.md), [comparison table](reports/comparisons/E1_vs_E0/comparison.csv) and [reproduction instructions](docs/reproducibility/E1_EVALUATION.md).
+
+The Phase 1 results and faculty pack below remain the historical E0 deliverable; the E1 report and dashboard provide the completed model comparison.
 
 **Scope:** 8,000 training / 2,000 validation images, 14 Majority Voting classes. These are subset validation results, not full-dataset or test-set scores.
 
@@ -16,7 +20,7 @@ Batch-one Apple M5 MPS timing (640, float32, 10 warm-ups, 100 images): median **
 
 The **26,646-image annotation-catalogue audit** covers metadata. The separate **10,000-image local subset integrity audit** covers actual decoded images, dimensions, hashes, labels and split leakage. Acquisition/integrity verification of unselected images remains incomplete. Frozen subset has 94,609 train and 24,342 validation objects. Raw sources and the completed run are unchanged.
 
-## Faculty demonstration
+## Phase 1 faculty demonstration (historical E0 pack)
 
 ```bash
 python3 scripts/show_progress.py

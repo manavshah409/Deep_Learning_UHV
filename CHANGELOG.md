@@ -1,5 +1,13 @@
 # Changelog
 
+## Phase 2 E1 evaluation and comparison closeout - 2026-09-17
+
+- Confirmed 30 successful epochs, best epoch 22, no early stop, readable/hash-verified best and last checkpoints; preserved both completed training runs.
+- Fixed the project evaluator: retain the local validator through the supported hook instead of accessing a nonexistent wrapper attribute. Publish complete evaluation bundles atomically and reject missing/non-finite metrics.
+- Reevaluated both checkpoints with identical source/settings and new IDs; E0 exactly reproduces the Phase 1 overall metrics. E1 mAP50:95 is 0.524760 (+6.635 pp), aggregate F1 0.629658.
+- Completed matched MPS timing, six-scene GT/E0/E1 visual review, all-class comparisons and preferred-model decision. E1 selected for detection quality, with size/inference cost and rare-class limitations explicit.
+- Added evaluator regression tests, artifact validation, measured report, reproduction commands and dashboard results. No new training or Phase 3 work.
+
 ## Phase 2 E1 preparation and recovery - 2026-09-15
 
 - Registered the controlled YOLOv8s comparison while preserving E0 and the frozen data.

@@ -2,6 +2,7 @@
 
 import argparse
 import json
+from datetime import datetime
 import numpy as np
 import pandas as pd
 from src.data.common import ROOT, save_json, sha256
@@ -43,6 +44,9 @@ def overall_comparison(e0, e1):
             "E0": e0[key],
             "E1": e1[key],
             "delta_percentage_points": 100 * (e1[key] - e0[key]),
+            "relative_change_percent": 100 * (e1[key] / e0[key] - 1)
+            if e0[key]
+            else None,
         }
         for key in METRICS
     ]
@@ -99,8 +103,44 @@ def check_timing_protocol(a, b):
         raise ValueError("Timing tensor shapes differ")
 
 
+def render_comparison(perclass, m0, m1, t0, t1, target):
+    import matplotlib.pyplot as plt
+
+    fig, axes = plt.subplots(1, 2, figsize=(13, 6))
+    axes[0].barh(
+        perclass.name,
+        perclass.ap50_95_delta_pp,
+        color=np.where(perclass.ap50_95_delta_pp >= 0, "#007d80", "#c94d4d"),
+    )
+    axes[0].axvline(0, color="black", linewidth=0.7)
+    axes[0].set_xlabel("AP50:95 change (percentage points)")
+    axes[0].set_title("E1 YOLOv8s minus E0 YOLOv8n")
+    for label, m, t in [("E0 YOLOv8n", m0, t0), ("E1 YOLOv8s", m1, t1)]:
+        x = t["summary"]["end_to_end_ms"]["mean_ms"]
+        y = m["map50_95"] * 100
+        axes[1].scatter(x, y, s=100)
+        axes[1].annotate(label, (x, y), xytext=(8, 5), textcoords="offset points")
+    axes[1].set_xlabel("Mean synchronized file-to-result latency (ms)")
+    axes[1].set_ylabel("Subset validation mAP50:95 (%)")
+    axes[1].set_xlim(
+        0,
+        max(
+            t0["summary"]["end_to_end_ms"]["mean_ms"],
+            t1["summary"]["end_to_end_ms"]["mean_ms"],
+        )
+        * 1.4,
+    )
+    axes[1].set_title("Single sequential timing pass; no speed-advantage claim")
+    axes[1].margins(y=0.3)
+    fig.tight_layout()
+    fig.savefig(target / "accuracy_speed.png", dpi=180)
+    plt.close(fig)
+
+
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--e0-evaluation", required=True)
+    parser.add_argument("--e1-evaluation", required=True)
     parser.add_argument("--e0-timing", required=True)
     parser.add_argument("--e1-timing", required=True)
     args = parser.parse_args()
@@ -108,8 +148,16 @@ def main():
     def load(path):
         return json.loads((ROOT / path).read_text())
 
-    m0 = load(f"reports/tables/{E0}_validation_metrics.json")
-    m1 = load(f"reports/tables/{E1}_validation_metrics.json")
+    for bundle in [args.e0_evaluation, args.e1_evaluation]:
+        marker = load(f"{bundle}/COMPLETE.json")
+        assert marker["status"] == "complete"
+        assert all(
+            sha256(ROOT / bundle / p) == h for p, h in marker["files_sha256"].items()
+        )
+    m0 = load(f"{args.e0_evaluation}/metrics.json")
+    m1 = load(f"{args.e1_evaluation}/metrics.json")
+    if m0["source_sha256"] != m1["source_sha256"]:
+        raise ValueError("Evaluator source differs between models")
     t0 = load(args.e0_timing)
     t1 = load(args.e1_timing)
     check_timing_protocol(t0, t1)
@@ -118,8 +166,8 @@ def main():
             raise ValueError("Benchmark checkpoint differs from evaluated checkpoint")
     overall = overall_comparison(m0, m1)
     perclass = per_class_comparison(
-        pd.read_csv(ROOT / f"reports/tables/{E0}_validation_per_class.csv"),
-        pd.read_csv(ROOT / f"reports/tables/{E1}_validation_per_class.csv"),
+        pd.read_csv(ROOT / args.e0_evaluation / "per_class.csv"),
+        pd.read_csv(ROOT / args.e1_evaluation / "per_class.csv"),
     )
     target = ROOT / "reports/comparisons/E1_vs_E0"
     if target.exists():
@@ -127,8 +175,8 @@ def main():
     target.mkdir(parents=True)
     pd.DataFrame(overall).to_csv(target / "overall.csv", index=False)
     perclass.to_csv(target / "per_class.csv", index=False)
-    c0 = load(f"reports/tables/{E0}_validation_confusion_matrix.json")
-    c1 = load(f"reports/tables/{E1}_validation_confusion_matrix.json")
+    c0 = load(f"{args.e0_evaluation}/confusion_matrix.json")
+    c1 = load(f"{args.e1_evaluation}/confusion_matrix.json")
     for key in ["names", "confidence", "matching_iou"]:
         if c0[key] != c1[key]:
             raise ValueError("Confusion matrix protocols differ")
@@ -169,6 +217,10 @@ def main():
             best_epoch=r["best_epoch"],
             early_stopped=r["early_stopped"],
             duration_seconds=r["duration_seconds"],
+            elapsed_calendar_seconds=(
+                datetime.fromisoformat(r["completed_at"])
+                - datetime.fromisoformat(r["started_at"])
+            ).total_seconds(),
             checkpoint_bytes=m["weights_bytes"],
             parameters=m["parameters"],
             weights_sha256=m["weights_sha256"],
@@ -176,6 +228,33 @@ def main():
         for label, r, m in zip(["E0", "E1"], runs, [m0, m1])
     ]
     save_json(target / "training_cost.json", costs)
+    comparison = []
+    pairs = [(key, m0[key], m1[key], "fraction") for key in METRICS]
+    pairs += [
+        ("parameters", m0["parameters"], m1["parameters"], "count"),
+        ("checkpoint_bytes", m0["weights_bytes"], m1["weights_bytes"], "bytes"),
+    ]
+    for key in ["mean_ms", "median_ms", "p95_ms", "fps_from_total_time"]:
+        pairs.append(
+            (
+                "end_to_end_" + key,
+                t0["summary"]["end_to_end_ms"][key],
+                t1["summary"]["end_to_end_ms"][key],
+                "FPS" if key == "fps_from_total_time" else "ms",
+            )
+        )
+    for key, a, b, unit in pairs:
+        comparison.append(
+            dict(
+                measurement=key,
+                E0=a,
+                E1=b,
+                absolute_change=b - a,
+                relative_change_percent=100 * (b / a - 1) if a else None,
+                unit=unit,
+            )
+        )
+    pd.DataFrame(comparison).to_csv(target / "comparison.csv", index=False)
     save_json(
         target / "provenance.json",
         dict(
@@ -184,6 +263,8 @@ def main():
             E0_checkpoint_sha256=m0["weights_sha256"],
             E1_checkpoint_sha256=m1["weights_sha256"],
             validation_manifest_sha256=m0["validation_manifest_sha256"],
+            e0_evaluation=args.e0_evaluation,
+            e1_evaluation=args.e1_evaluation,
             e0_timing_file=args.e0_timing,
             e1_timing_file=args.e1_timing,
             source_sha256=sha256(__file__),
@@ -191,28 +272,7 @@ def main():
             rare_class_note="Mini-bus has 58 objects; Others has 31. Single seed and no confidence intervals; gains are descriptive, not significance claims.",
         ),
     )
-    import matplotlib.pyplot as plt
-
-    fig, axes = plt.subplots(1, 2, figsize=(13, 6))
-    axes[0].barh(
-        perclass.name,
-        perclass.ap50_95_delta_pp,
-        color=np.where(perclass.ap50_95_delta_pp >= 0, "#007d80", "#c94d4d"),
-    )
-    axes[0].axvline(0, color="black", linewidth=0.7)
-    axes[0].set_xlabel("AP50:95 change (percentage points)")
-    axes[0].set_title("E1 YOLOv8s minus E0 YOLOv8n")
-    for label, m, t in [("E0 YOLOv8n", m0, t0), ("E1 YOLOv8s", m1, t1)]:
-        x = t["summary"]["end_to_end_ms"]["mean_ms"]
-        y = m["map50_95"] * 100
-        axes[1].scatter(x, y, s=100)
-        axes[1].annotate(label, (x, y), xytext=(8, 5), textcoords="offset points")
-    axes[1].set_xlabel("Mean synchronized file-to-result latency (ms)")
-    axes[1].set_ylabel("Subset validation mAP50:95 (%)")
-    axes[1].margins(0.3)
-    fig.tight_layout()
-    fig.savefig(target / "accuracy_speed.png", dpi=180)
-    plt.close(fig)
+    render_comparison(perclass, m0, m1, t0, t1, target)
     print(pd.DataFrame(overall).to_string(index=False))
 
 

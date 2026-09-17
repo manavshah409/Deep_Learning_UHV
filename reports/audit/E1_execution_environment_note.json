@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-09-15T11:11:49Z",
+  "training_state": "Running, epoch 3 batch 666/1000; two validated/saved epochs",
+  "finding": "macOS power-management log records repeated Maintenance Sleep and DarkWake cycles on battery during E1 training. Examples: local 15:53:04 sleep for 972 seconds; 16:09:18 sleep for 1033 seconds; 16:26:33 sleep for 672 seconds.",
+  "power_observation": "Latest observed DarkWake at 16:41:49 Asia/Kolkata used battery at 25 percent.",
+  "implication": "Observed wall-clock training duration includes system-sleep interruptions and must not be interpreted as uninterrupted compute cost or directly attributed to model capacity. Preflight duration estimate is no longer a reliable completion forecast.",
+  "action": "User advised to connect charger and keep lid open. Existing run remains unchanged; no restart or power-setting modification."
+}

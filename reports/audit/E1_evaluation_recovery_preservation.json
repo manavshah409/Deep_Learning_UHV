@@ -1,0 +1,37 @@
+{
+  "status": "preserved_before_repair",
+  "python": "3.12.14 (main, Aug 12 2026, 13:57:54) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "torch": "2.14.0",
+  "ultralytics": "8.4.146",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "dataset_yaml_sha256": "1e583ac5227f5a40d273ec8826f90dcacd106202c9ab02002616b9f497ef44c9",
+  "checkpoints": {
+    "weights": {
+      "bytes": 22502762,
+      "path": "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt",
+      "sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab"
+    },
+    "last_weights": {
+      "bytes": 22502762,
+      "path": "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/last.pt",
+      "sha256": "49a460b4c2ce7abc417b5f598ed4cdab83fca0257fdfc87c9caf3bc72a2ca3b5"
+    }
+  },
+  "original_file_sha256": {
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/confusion_matrix.png": "ad4a2e079d72574f117d03ad5f1ba87197e85fa0cec8c7fc93febb4016c63000",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/val_batch1_labels.jpg": "93776ece1d728c94f07dacf0c94af2a12a2161aa790f16a282581480c875a688",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/BoxR_curve.png": "af7c4b04c5fcb02909ae70ae4036f3d77f643fa08ce3596ab6a37d9e924e9202",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/val_batch2_pred.jpg": "52fd8e5d4fbd605ae9006ee4c9235624516017569643c36210ecf869c04e21eb",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/val_batch0_labels.jpg": "d701ab35b6aa0efe6a5fe4df79674b943ee567793221b0c4b80d0ff82666f80a",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/confusion_matrix_normalized.png": "dd97cde3ccd6b8420b12cd5a2b6b84349e1d8994f07527ac949f03cb55dcf8d4",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/BoxF1_curve.png": "6375b9306debff7bacf033af5ced9632932a25ea451ed098df747632717d19bb",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/val_batch1_pred.jpg": "021f2bc85f39785b0a6f69eb6930524c07ec2870dede65e72795fd5e186a31c1",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/val_batch0_pred.jpg": "d24aea4cfd755523f5be1763b7b7d871fdc73c42a5ed5e316c2c29cccb81401a",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/BoxP_curve.png": "b0ccbd501be73922cfbb5f0ba976b5ed554487a02ef48f947f1ae0da2d562151",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/val_batch2_labels.jpg": "01fb6d64550f3379ab61cbaae0d91d8c2960e4debe956d2bcf8ec515cfda74ed",
+    "runs/E1_yolov8s_uvh26_mv_640_seed42_validation/BoxPR_curve.png": "9e1bc9e5584ce99c9496654643c083720e673d04ee4b70a4524f8af755e55c8d",
+    "data/interim/E1_standalone_validation.log": "213091ba87f360d5b21810de011aa546a87b36fa715b5745a6660a154c7a7bd7",
+    "data/interim/E1_training.log": "b07fd9d60f7b37d3657229eb9700867f96258cf7a1c3a7677d5b367c2f2800db"
+  },
+  "training_run_hash_inventory": "reports/audit/E1_completed_run_verification.json"
+}

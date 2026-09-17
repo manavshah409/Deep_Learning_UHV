@@ -1,0 +1,41 @@
+{
+  "status": "measured_reviewed_tested",
+  "standalone_evaluation_exit_codes": {
+    "E0": 0,
+    "E1": 0
+  },
+  "stages": [
+    {
+      "stage": "E0_benchmark",
+      "started_at": "2026-09-17T00:42:02.818408+00:00",
+      "status": "completed",
+      "exit_code": 0,
+      "ended_at": "2026-09-17T00:42:07.741649+00:00"
+    },
+    {
+      "stage": "E1_benchmark",
+      "started_at": "2026-09-17T00:42:07.741848+00:00",
+      "status": "completed",
+      "exit_code": 0,
+      "ended_at": "2026-09-17T00:42:12.355235+00:00"
+    },
+    {
+      "stage": "paired_predictions",
+      "started_at": "2026-09-17T00:42:12.355433+00:00",
+      "status": "completed",
+      "exit_code": 0,
+      "ended_at": "2026-09-17T00:42:14.873709+00:00"
+    },
+    {
+      "stage": "comparison",
+      "started_at": "2026-09-17T00:42:14.873930+00:00",
+      "status": "completed",
+      "exit_code": 0,
+      "ended_at": "2026-09-17T00:42:15.426435+00:00"
+    }
+  ],
+  "tests": "73 passed",
+  "manual_review": "reports/comparisons/E1_paired_summary.json",
+  "artifact_validation": "reports/audit/E1_artifact_validation.json",
+  "dashboard_validation": "Streamlit AppTest: no exceptions"
+}

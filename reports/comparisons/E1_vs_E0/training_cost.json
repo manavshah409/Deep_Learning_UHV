@@ -1,0 +1,24 @@
+[
+  {
+    "best_epoch": 30,
+    "checkpoint_bytes": 6228714,
+    "duration_seconds": 16029.859081708011,
+    "early_stopped": false,
+    "elapsed_calendar_seconds": 16029.98477,
+    "epochs": 30,
+    "experiment": "E0",
+    "parameters": 3013578,
+    "weights_sha256": "85b9e089ec3dfaa676e30a6191b7e5726f320d5bf85391f1675922b88f9778b3"
+  },
+  {
+    "best_epoch": 22,
+    "checkpoint_bytes": 22502762,
+    "duration_seconds": 28459.256766166014,
+    "early_stopped": false,
+    "elapsed_calendar_seconds": 145894.818765,
+    "epochs": 30,
+    "experiment": "E1",
+    "parameters": 11141018,
+    "weights_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab"
+  }
+]

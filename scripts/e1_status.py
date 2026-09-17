@@ -9,6 +9,12 @@ E1 = "E1_yolov8s_uvh26_mv_640_seed42"
 
 
 def main():
+    recovery = ROOT / "reports/audit/E1_recovery_pipeline.json"
+    if recovery.exists():
+        print("Evaluation recovery:", json.loads(recovery.read_text())["status"])
+        print(
+            "Original pipeline below is preserved failure history; recovery supersedes evaluation status."
+        )
     pipeline = ROOT / "reports/audit/E1_pipeline_status.json"
     if pipeline.exists():
         state = json.loads(pipeline.read_text())

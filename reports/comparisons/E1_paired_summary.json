@@ -1,0 +1,284 @@
+{
+  "cases": [
+    {
+      "E0": {
+        "class_confusions": [],
+        "correct_matches": 10,
+        "predictions": 12,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 2
+      },
+      "E1": {
+        "class_confusions": [],
+        "correct_matches": 10,
+        "predictions": 14,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 4
+      },
+      "gt_count": 10,
+      "image_id": 4232,
+      "manual_finding": "Both models correctly match all 10 GT vehicles, including foreground truck and parked/occluded motorcycles. E1 has four unmatched predictions versus two for E0; the pedestrian beside the truck receives a spurious vehicle box. Larger capacity does not remove false positives."
+    },
+    {
+      "E0": {
+        "class_confusions": [
+          {
+            "predicted": "Truck",
+            "truth": "LCV"
+          }
+        ],
+        "correct_matches": 15,
+        "predictions": 21,
+        "unmatched_gt": 1,
+        "unmatched_predictions": 5
+      },
+      "E1": {
+        "class_confusions": [
+          {
+            "predicted": "Truck",
+            "truth": "LCV"
+          }
+        ],
+        "correct_matches": 16,
+        "predictions": 23,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 6
+      },
+      "gt_count": 17,
+      "image_id": 10518,
+      "manual_finding": "E1 increases correct matches from 15 to 16 and recovers the distant small two-wheeler missed by E0 (GT index 16). Both still confuse the LCV with Truck; E1 has six unmatched predictions versus five. This single selected example is not a size-stratified AP estimate."
+    },
+    {
+      "E0": {
+        "class_confusions": [
+          {
+            "predicted": "Mini-bus",
+            "truth": "Bus"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "SUV"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Bus"
+          },
+          {
+            "predicted": "Bus",
+            "truth": "Truck"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "Three-wheeler"
+          }
+        ],
+        "correct_matches": 48,
+        "predictions": 124,
+        "unmatched_gt": 3,
+        "unmatched_predictions": 71
+      },
+      "E1": {
+        "class_confusions": [
+          {
+            "predicted": "Mini-bus",
+            "truth": "Bus"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "SUV"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Truck"
+          }
+        ],
+        "correct_matches": 50,
+        "predictions": 94,
+        "unmatched_gt": 2,
+        "unmatched_predictions": 40
+      },
+      "gt_count": 56,
+      "image_id": 1364,
+      "manual_finding": "Dense junction: correct matches rise 48 to 50 of 56 GT; unmatched GT falls 3 to 2 and unmatched predictions 71 to 40 at confidence .10. Duplicate subtype boxes and fine-grained vehicle confusions remain. Occlusion makes visible extents and source box boundaries uncertain."
+    },
+    {
+      "E0": {
+        "class_confusions": [
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "Sedan",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "SUV",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Three-wheeler",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Truck"
+          },
+          {
+            "predicted": "Three-wheeler",
+            "truth": "Others"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Three-wheeler"
+          }
+        ],
+        "correct_matches": 33,
+        "predictions": 75,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 35
+      },
+      "E1": {
+        "class_confusions": [
+          {
+            "predicted": "Sedan",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Van",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Truck",
+            "truth": "LCV"
+          },
+          {
+            "predicted": "Sedan",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Van",
+            "truth": "Three-wheeler"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "Three-wheeler",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Three-wheeler",
+            "truth": "Others"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Truck"
+          }
+        ],
+        "correct_matches": 31,
+        "predictions": 72,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 32
+      },
+      "gt_count": 40,
+      "image_id": 21621,
+      "manual_finding": "Dense occluded street is a counterexample: E1 correct matches fall 33 to 31 of 40 GT while class confusions rise seven to nine. Both call the Others handcart Three-wheeler. Source subtype ambiguity and partial-vehicle boxes are separate from these scored model errors."
+    },
+    {
+      "E0": {
+        "class_confusions": [
+          {
+            "predicted": "Bus",
+            "truth": "Mini-bus"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "SUV"
+          }
+        ],
+        "correct_matches": 6,
+        "predictions": 20,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 11
+      },
+      "E1": {
+        "class_confusions": [
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "Bus",
+            "truth": "Mini-bus"
+          }
+        ],
+        "correct_matches": 7,
+        "predictions": 16,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 7
+      },
+      "gt_count": 9,
+      "image_id": 4711,
+      "manual_finding": "Correct matches increase six to seven of nine GT and unmatched predictions drop 11 to seven. E1 improves the SUV label, but both classify the Mini-bus as Bus and a Sedan as Hatchback. The extreme-right auto is an apparent source-label omission; an unmatched detection there is not necessarily hallucinated."
+    },
+    {
+      "E0": {
+        "class_confusions": [
+          {
+            "predicted": "Truck",
+            "truth": "Others"
+          }
+        ],
+        "correct_matches": 8,
+        "predictions": 12,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 3
+      },
+      "E1": {
+        "class_confusions": [
+          {
+            "predicted": "Truck",
+            "truth": "Others"
+          }
+        ],
+        "correct_matches": 8,
+        "predictions": 13,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 4
+      },
+      "gt_count": 9,
+      "image_id": 954,
+      "manual_finding": "Both correctly match eight two-wheelers; both misclassify the Others construction vehicle as Truck. E1 adds a duplicate around a distant motorcycle and has four unmatched predictions versus three. Rare-class failure persists despite the overall gain."
+    }
+  ],
+  "confidence": 0.1,
+  "image_ids": [
+    4232,
+    10518,
+    1364,
+    21621,
+    4711,
+    954
+  ],
+  "matching_iou": 0.5,
+  "method": "Same six Phase 1 diagnostic validation scenes; class-agnostic greedy IoU matching. Not an unbiased error-rate estimate. Source-label limitations are assessed separately.",
+  "nms_iou": 0.7,
+  "status": "manually_reviewed",
+  "validation_manifest_sha256": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3",
+  "weights_sha256": {
+    "E0": "85b9e089ec3dfaa676e30a6191b7e5726f320d5bf85391f1675922b88f9778b3",
+    "E1": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab"
+  },
+  "preferred_model": "E1 YOLOv8s at 640",
+  "recommendation": "Select E1 YOLOv8s at 640 as the preferred research detector for the next traffic-analytics development stage: mAP50:95 improves by 6.635 percentage points, all 14 class AP50:95 values improve, and the matched still-image mean end-to-end latency is effectively unchanged (30.364 vs 30.292 ms). This choice prioritizes detection quality on the measured subset; it is not a deployment/real-time certification. E1 costs 3.70x evaluation-model parameters and 3.61x checkpoint bytes, and mean inference time increases 17.1% (6.179 to 7.233 ms). The small end-to-end timing difference is within likely cache/load/order variability and does not establish that YOLOv8s is faster. Rare Others recall stays zero; dense-scene class confusion can worsen. Single next experiment recommendation: a controlled 640-versus-960 resolution comparison on E1, with the same frozen data/seed/budget and matched latency measurement, to test remaining small/distant and occluded-vehicle weaknesses. This recommendation is conditional on compute feasibility and further authorization; no new training was started."
+}

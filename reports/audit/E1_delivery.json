@@ -1,0 +1,16 @@
+{
+  "status": "ready_for_commit",
+  "branch": "master",
+  "remote": "https://github.com/manavshah409/Deep_Learning_UHV.git",
+  "scope": "E1 evaluation recovery and E0 comparison only; no retraining",
+  "tests": "73 passed",
+  "preferred_model": "E1 YOLOv8s at 640",
+  "remaining_limitations": [
+    "Single seed and subset validation; no independent test set",
+    "Rare classes: Mini-bus 58 and Others 31 objects; Others max-F1 recall zero",
+    "Selected qualitative examples are not unbiased error estimates",
+    "Single sequential timing pass, not sustained video FPS",
+    "Training calendar time affected by machine sleep",
+    "Unselected-image acquisition and pixel integrity remain incomplete"
+  ]
+}

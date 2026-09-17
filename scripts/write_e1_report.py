@@ -91,7 +91,7 @@ def main():
             "Model",
             "Epochs / best",
             "Early stop",
-            "Training seconds",
+            "Recorded timer seconds",
             "Parameters (evaluation model)",
             "Checkpoint bytes",
         ],
@@ -105,6 +105,28 @@ def main():
                 r["checkpoint_bytes"],
             ]
             for r in costs
+        ],
+    )
+    comparison = readcsv("reports/comparisons/E1_vs_E0/comparison.csv")
+    complete_table = table(
+        [
+            "Measurement",
+            "E0",
+            "E1",
+            "Absolute change (listed unit)",
+            "Relative change %",
+            "Unit",
+        ],
+        [
+            [
+                r["measurement"],
+                f"{float(r['E0']):.6f}",
+                f"{float(r['E1']):.6f}",
+                f"{float(r['absolute_change']):+.6f}",
+                f"{float(r['relative_change_percent']):+.3f}",
+                r["unit"],
+            ]
+            for r in comparison
         ],
     )
     text = f"""# Phase 2 E1: YOLOv8s versus frozen YOLOv8n
@@ -128,24 +150,37 @@ COCO-pretrained YOLOv8s came from official Ultralytics assets v8.4.0: initialize
 Preflight v1 exited 1 after its training batches because the added loss guard did not accept named-loss dictionaries; it saved no checkpoint. The corrected guard has regression tests. Recovery v2 used one epoch on 800 training images and all 2,000 validation images and took {pre["duration_seconds"]:.3f}s, saved readable finite checkpoints and passed visual class/placement checks. It was a pipeline test, not an E1 accuracy result. Its full-budget duration estimate was {pre["full_30_epoch_duration_estimate_seconds"] / 3600:.2f}h; the actual duration is below. Original preflight and E0 files remain separate and preserved.
 
 {cost_table}
+Calendar elapsed seconds: E0 {costs[0]["elapsed_calendar_seconds"]:.3f}; E1 {costs[1]["elapsed_calendar_seconds"]:.3f}. E1's recorded perf_counter duration is 28459.257 s (7.905 h), whereas its timestamp span is 145894.819 s (40.526 h). macOS sleep cycles are documented in E1_execution_environment_note.json. Neither the calendar ratio nor the timer ratio is a clean controlled estimate of model-capacity compute cost; sleep, background load and timer behavior limit interpretation.
+
 E1 process exit: {integrity["process_exit_code"]}. Start {run["started_at"]}; end {run["completed_at"]}. Best epoch comes from the save callback, cross-checked against CSV validation fitness; optimizer-stripped checkpoint epoch metadata may be -1. Complete effective args, finite losses, per-epoch CSV, warnings and checkpoint hashes are preserved. MPS nondeterminism under warn-only settings limits bitwise numerical replay.
 
-## Fresh standalone validation
+## Evaluation recovery and fresh standalone validation
+
+Training and checkpoint integrity exited 0; only the original evaluation export failed. Installed YOLO.val keeps its validator local, so the old model.validator access fell through to DetectionModel. The repaired evaluator retains a validator through the supported val(validator=...) hook, extracts standard DetMetrics and atomically publishes complete bundles. See [recovery note](E1_EVALUATION_RECOVERY.md). Both checkpoints were reevaluated using the same repaired source; E0 exactly reproduces its Phase 1 overall metrics. Source/package versions and prediction counts are recorded in each bundle.
+
+Evaluation IDs: yolov8n_uvh26_mv_e0_validation_seed42_v2 and yolov8s_uvh26_mv_e1_validation_seed42_v2. Python 3.12.14, PyTorch 2.14.0, Ultralytics 8.4.146, macOS 26.6.2 arm64, Apple M5 with 24 GiB RAM. Both processed 2000 images / 24342 GT objects. These do not constitute independent test results.
 
 {metric_table}
-The E1 best checkpoint was freshly validated using E0's evaluator settings: same manifest, MPS, imgsz640, batch8, confidence floor .001, NMS IoU .7, max_det300. Precision/Recall are macro class means at each model's max smoothed mean-F1 confidence. Harmonic aggregate F1 is 2PR/(P+R); macro per-class F1 averages class F1. Neither is micro-F1. AP50:95 averages IoU .50:.05:.95. Differences are absolute percentage points, not relative-percent gains.
+
+{complete_table}
+Absolute accuracy changes in the first table are percentage points; the combined table uses raw fractions. Relative change is 100*(E1/E0-1).
+The E1 best checkpoint was freshly validated using E0's evaluator settings: same manifest, MPS, imgsz640, batch8, confidence floor .001, NMS IoU .7, max_det300. Precision/Recall are macro class means at each model's max smoothed mean-F1 confidence. Harmonic aggregate F1 is 2PR/(P+R); macro per-class F1 averages class F1. Neither is micro-F1. AP50:95 averages IoU .50:.05:.95. Accuracy differences in the first table are absolute percentage points; the combined table separately labels relative-percent changes.
 
 {class_table}
+All 14 AP50:95 changes are positive; no class AP regression was observed. Largest gains: Van +13.808 pp, Bicycle +12.217 pp, Tempo-traveller +11.552 pp, Sedan +10.322 pp. Strongest E1 class is Three-wheeler (0.7814); Two-wheeler reaches 0.6925. Weakest remain Others (0.0306) and Mini-bus (0.1736). Precision regresses for LCV (-0.877 pp) and MUV (-0.213 pp), while recall improves; P/R are measured at each model's own max-F1 confidence. Others recall stays zero.
+
 Rare-class estimates are uncertain: Mini-bus has 58 validation objects and Others 31; Van has 183. Others precision can equal one when recall is zero due to the evaluator's empty-prediction interpolation convention. Per-class CSV includes separate P/R/F1/AP deltas. No claim that every class benefits is implied by aggregate mAP.
 
 Numeric confusion changes (`confusion_delta.json`) are E1 minus E0, rows predicted / columns true, final row/column background. Both use confidence .001 and matching IoU .45, distinct from the F1 operating point. Negative off-diagonal/background values indicate fewer errors for those cells, not a standalone AP change.
+
+At this low .001 confusion threshold, correct-class matches rise 12671 to 14540; wrong-class matches fall 11471 to 9659; unmatched GT falls 200 to 143; unmatched predictions fall 290417 to 247459. These permissive-threshold counts are not operating-point error rates. Others-to-background false positives increase by 281; Hatchback predictions on true Sedan increase by 40. Annotation omissions can contribute to unmatched predictions.
 
 ## Comparable MPS speed
 
 Both models were freshly benchmarked after E1 training, sequentially without another model job on MPS. The original Phase 1 E0 measurement was preserved. Common protocol: Apple M5, MPS float32, batch1, imgsz640 rectangular letterbox, identical seed42 100-image order, 10 warm-ups, conf .25/NMS .7/max_det300, explicit synchronization before/after each stage. Actual input tensor shapes are checked for equality.
 
 {speed_table}
-End-to-end includes local image read/decode, preprocess, forward pass, postprocess, API overhead and synchronization instrumentation. Excludes model load/warm-up, drawing, capture and display. FPS is 1000/mean ms. OS cache and thermal/background load can affect timing; these sequential measurements are not a controlled laboratory repeated-trials estimate or sustained live-video throughput.
+End-to-end includes local image read/decode, preprocess, forward pass, postprocess, API overhead and synchronization instrumentation. Excludes model load/warm-up, drawing, capture and display. FPS is 1000/mean ms. E1 mean inference is 17.1% slower, but its measured mean end-to-end latency is 0.23% lower; this tiny sequential-run difference does not establish a speed advantage. Disk decode/API overhead and cache/load variation dominate this still-image comparison. OS cache and thermal/background load can affect timing; these sequential measurements are not a controlled laboratory repeated-trials estimate or sustained live-video throughput.
 
 ## Paired diagnostic review
 

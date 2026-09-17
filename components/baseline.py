@@ -81,6 +81,12 @@ def render_e1_section():
     if run:
         st.write("Proper E1 training:", run["status"])
         st.write("Last saved E1 epoch:", run.get("last_saved_epoch", "none yet"))
+    review = load_json("reports/comparisons/E1_paired_summary.json")
+    if review and review.get("status") == "manually_reviewed":
+        st.write("Preferred research detector:", review["preferred_model"])
+        st.caption(
+            "Training completed; initial export failure recovered. Matched still-image timing does not establish live-video performance."
+        )
     table = load_csv("reports/comparisons/E1_vs_E0/overall.csv")
     if table is not None:
         st.dataframe(table, hide_index=True)

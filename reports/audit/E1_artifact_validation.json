@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "complete_evaluation_bundles": 2,
+  "images_per_evaluation": 2000,
+  "classes": 14,
+  "plots_verified": 12,
+  "matched_benchmark_images": 100,
+  "checkpoint_and_run_preservation": "passed",
+  "comparison_arithmetic": "passed"
+}

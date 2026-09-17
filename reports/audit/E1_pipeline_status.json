@@ -1,0 +1,37 @@
+{
+  "experiment": "E1_yolov8s_uvh26_mv_640_seed42",
+  "status": "failed_or_interrupted",
+  "started_at": "2026-09-15T06:56:52.267788+00:00",
+  "supervisor_pid": 97127,
+  "stages": [
+    {
+      "stage": "training",
+      "status": "completed",
+      "started_at": "2026-09-15T06:56:52.267923+00:00",
+      "log": "data/interim/E1_training.log",
+      "pid": 97129,
+      "exit_code": 0,
+      "completed_at": "2026-09-16T23:28:28.252678+00:00"
+    },
+    {
+      "stage": "checkpoint_integrity",
+      "status": "completed",
+      "started_at": "2026-09-16T23:28:28.253474+00:00",
+      "log": "data/interim/E1_completed_integrity.log",
+      "pid": 7033,
+      "exit_code": 0,
+      "completed_at": "2026-09-16T23:28:29.484405+00:00"
+    },
+    {
+      "stage": "standalone_validation",
+      "status": "failed",
+      "started_at": "2026-09-16T23:28:29.484589+00:00",
+      "log": "data/interim/E1_standalone_validation.log",
+      "pid": 7054,
+      "exit_code": 1,
+      "completed_at": "2026-09-16T23:29:52.893579+00:00"
+    }
+  ],
+  "failed_stage": "standalone_validation",
+  "ended_at": "2026-09-16T23:29:52.893829+00:00"
+}

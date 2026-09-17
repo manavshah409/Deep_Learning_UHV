@@ -12,7 +12,7 @@
     },
     {
       "id": "E1_yolov8s_uvh26_mv_640_seed42",
-      "status": "preflight_passed_ready_for_full_training",
+      "status": "completed_evaluated_reviewed",
       "model": "YOLOv8s",
       "config": "configs/E1_yolov8s_uvh26_mv_640_seed42.yaml",
       "dataset": "uvh26_mv_yolo_v1/subsets/baseline_seed42_v2",
@@ -32,7 +32,16 @@
         "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8s.pt"
       },
       "failed_preflight_id": "E1_yolov8s_uvh26_mv_640_seed42_preflight_v1",
-      "preflight_scope": "v1 completed all 1000 training batches but failed in added callback before validation/save; v2 checks recovery on 800 train and all 2000 val via fraction=.1. Full E1 budget/data unchanged."
+      "preflight_scope": "v1 completed all 1000 training batches but failed in added callback before validation/save; v2 checks recovery on 800 train and all 2000 val via fraction=.1. Full E1 budget/data unchanged.",
+      "epochs_completed": 30,
+      "best_epoch": 22,
+      "early_stopped": false,
+      "preferred_model": true,
+      "evaluation": "reports/evaluations/yolov8s_uvh26_mv_e1_validation_seed42_v2",
+      "matched_E0_evaluation": "reports/evaluations/yolov8n_uvh26_mv_e0_validation_seed42_v2",
+      "comparison": "reports/comparisons/E1_vs_E0",
+      "recovery_note": "docs/phase_reports/E1_EVALUATION_RECOVERY.md",
+      "best_checkpoint_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab"
     }
   ]
 }
