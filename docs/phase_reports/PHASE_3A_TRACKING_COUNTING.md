@@ -15,3 +15,7 @@ Outputs are isolated by immutable run ID: annotated MP4, timing CSV, configurati
 109 synthetic/full-suite tests passed before real-video evaluation. Added tests cover IDs, misses, expiry, empty frames, malformed outputs, confidence votes/ties, forward/reverse/diagonal crossings, jitter/no crossing/finite endpoints, duplicate frames, reappearance, ROI, simultaneous tracks, frozen event classes, atomic publication and generated-video integration. Ordinary tests use no checkpoint/network. Test collection now lazily imports Ultralytics tracking to avoid its global Pillow patch changing earlier corruption tests.
 
 No manual counting GT is yet available. Smoke and full-pilot observations/results will be documented separately. No dashboard is included.
+
+## Smoke review and frozen pilot decision
+
+Actual-checkpoint MPS smoke processed300frames/10seconds successfully. Four sampled annotated frames (1,4,7,9seconds) were inspected. Visible issues include oversized false boxes on the gantry, headlight-region confusion, car/two-wheeler class instability and fragmented IDs. This is a substantial night-domain shift from UVH-26 validation; no accuracy claim follows from event generation. Line/settings remain unchanged for the full30second pilot. Detector confidence stays.25 as requested, so ByteTrack's below.25 low-confidence recovery stage receives few/no detections; this limitation is documented rather than silently changing detector threshold. No GT-driven tuning occurred.
