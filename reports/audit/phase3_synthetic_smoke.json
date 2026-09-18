@@ -1,0 +1,32 @@
+{
+  "status": "complete",
+  "scope": "detector_only_smoke_no_tracking_or_counting",
+  "input_sha256": "94161ad3b53020b1c902c5fadbba4edb2b6bf7e1dfe029cd0aba8bc379a6ba05",
+  "checkpoint_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+  "detector_backend": "FrozenDetector",
+  "checkpoint_verified": true,
+  "device": "mps",
+  "source_fps": 10.0,
+  "output_fps": 10.0,
+  "source_frame_count": 20,
+  "processed_frame_count": 20,
+  "source_duration_seconds": 2.0,
+  "processed_duration_seconds": 2.0,
+  "resolution": [
+    320,
+    240
+  ],
+  "processing_seconds": 2.2903061249999155,
+  "processing_fps": 8.7324571076719,
+  "latency_ms": {
+    "mean": 114.47335630005,
+    "median": 17.241999999896507,
+    "p95": 140.93182534961804
+  },
+  "failed_reads": 0,
+  "dropped_frames": 0,
+  "unprocessed_frames_after_decode_failure": 0,
+  "warnings": [],
+  "encoding_included": true,
+  "timing_note": "Decode through detection/render/encode; wall includes writer finalization. Model loading and source hashing excluded. No warm-up excluded: first-frame startup included. Detector time includes preprocessing and postprocessing, not inference-only."
+}

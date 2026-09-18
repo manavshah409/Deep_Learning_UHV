@@ -1,0 +1,30 @@
+model_name: YOLOv8s
+checkpoint: runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt
+checkpoint_sha256: 9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab
+imgsz: 640
+device: mps
+cpu_fallback: true
+confidence: 0.25
+nms_iou: 0.7
+max_det: 300
+seed: 42
+input_video: data/videos/input.mp4
+output_root: runs/phase3
+run_id: phase3_video_smoke_v1
+output_video: annotated.mp4
+tracker:
+  type: bytetrack
+  config: configs/phase3_bytetrack.yaml
+counting:
+  anchor: bottom_center
+  line_normalized: [[0.1, 0.5], [0.9, 0.5]]
+  roi_normalized: null
+  directions: [A_to_B, B_to_A]
+  minimum_confirmed_age: 3
+  maximum_absence_frames: 30
+  hysteresis_pixels: 5
+  class_policy: confidence_weighted_vote
+start_seconds: 0
+end_seconds: null
+max_frames: null
+render: true

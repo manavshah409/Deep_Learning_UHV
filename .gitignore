@@ -24,3 +24,9 @@ tmp/
 
 # Preserved invalid preliminary size exports; audit hashes remain tracked.
 reports/evaluations/E2_gateA_*_seed42_v1/
+
+# Phase 3 private inputs and generated videos
+data/videos/
+*.mp4
+*.mov
+*.avi

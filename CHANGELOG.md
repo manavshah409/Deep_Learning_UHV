@@ -1,3 +1,9 @@
+# Phase 3 initial delivery — 2026-09-18
+
+- Added hash-verified streaming video detector smoke, immutable outputs, timing and failure records.
+- Added frozen proposed ByteTrack/counting configuration and architecture; tracking/counting are not yet implemented.
+- 90 tests pass; actual MPS checkpoint processed 20 synthetic frames. Real-video evaluation awaits supplied clips.
+
 # E2 closeout — 2026-09-18
 
 - Finalized inference-only resolution study: retain YOLOv8s 640; Gate B not entered.

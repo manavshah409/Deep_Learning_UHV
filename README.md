@@ -1,3 +1,5 @@
+**Phase 3 initial delivery:** architecture/configuration and detector-only video smoke are implemented; 90 tests pass. Tracking/counting and real-video evaluation remain pending suitable clips. [Progress](docs/phase_reports/PHASE_3_INITIAL_PROGRESS.md) · [Architecture](docs/phase_reports/PHASE_3_ARCHITECTURE.md).
+
 **E2 resolution study closed:** Gate A failed: overall AP50:95 +0.038 pp; small-object macro AP −7.076 pp. Retain E1 YOLOv8s at 640. No 960 training. [E2 report](docs/phase_reports/PHASE_2_E2_RESOLUTION_ABLATION.md).
 
 # UVH-26 vehicle detection: Phase 1 subset baseline
