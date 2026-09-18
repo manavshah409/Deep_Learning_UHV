@@ -1,3 +1,5 @@
+**E2 resolution study closed:** Gate A failed: overall AP50:95 +0.038 pp; small-object macro AP −7.076 pp. Retain E1 YOLOv8s at 640. No 960 training. [E2 report](docs/phase_reports/PHASE_2_E2_RESOLUTION_ABLATION.md).
+
 # UVH-26 vehicle detection: Phase 1 subset baseline
 
 **Phase 1 and the Phase 2 E1 comparison are complete.** YOLOv8s trained for 30 epochs (best epoch 22; exit 0; no early stop). Its initial evaluation export failed; the evaluator was repaired and both checkpoints were evaluated successfully under new IDs. No retraining or other experiment was started.
@@ -41,8 +43,8 @@ python -m pytest -q
 
 Python 3.12.14 / PyTorch 2.14.0 / Ultralytics 8.4.146, frozen training dependencies in `requirements.txt`. Dashboard dependencies are separate. Follow [data documentation](data/README.md) for the pinned official dataset and immutable preparation policy. The portable ZIP intentionally contains no dataset images, generated YOLO labels or checkpoints. Offline reporting works without training dependencies; inference needs the original local data and weights.
 
-Do not rerun training to demonstrate results. Existing run/evaluation IDs refuse overwrite. No tracking/counting, Phase 2 experiments, independent test scores or full pixel-audit completion is claimed. Initial smoke and full-subset preflight evidence remains historical and separate from this measured baseline.
+Do not rerun training to demonstrate results. Existing run/evaluation IDs refuse overwrite. No tracking/counting, independent test scores or full pixel-audit completion is claimed. Initial smoke and full-subset preflight evidence remains historical and separate from this measured baseline.
 
 ## Phase 2 E1
 
-E1 compares YOLOv8s with the frozen YOLOv8n reference. Same 8,000/2,000 subset, imgsz640, batch8, seed42 and 30-epoch budget. [Preregistered protocol and current status](docs/phase_reports/PHASE_2_E1_MODEL_COMPARISON.md). Preflight is a pipeline check; no E1 comparison result is claimed until proper training and standalone evaluation complete.
+E1 compares YOLOv8s with the frozen YOLOv8n reference. Same 8,000/2,000 subset, imgsz640, batch8, seed42 and 30-epoch budget. [Preregistered protocol and current status](docs/phase_reports/PHASE_2_E1_MODEL_COMPARISON.md). E1 training and standalone evaluation are complete; preflight remains a separate pipeline check.

@@ -1,0 +1,42 @@
+{
+  "status": "v1_size_AP_invalid_superseded",
+  "cause": "Ultralytics custom prediction JSON is 1-based; initial COCO-size adapter treated categories as YOLO 0-based. Corrected with explicit class_map inversion and regression test.",
+  "recovery": "Both evaluations repeated under v2 with identical corrected source, pinned before launch. No training.",
+  "source_timing_note": "v1 recorded source hash at export; source was repaired while v1 960 job was running, making that on-disk hash unsuitable for implementation equality. v2 captures source hashes at process start and source stays unchanged throughout both runs.",
+  "preserved": [
+    {
+      "bundle": "reports/evaluations/E2_gateA_640_seed42_v1",
+      "file_sha256": {
+        "confusion_matrix.png": "ad4a2e079d72574f117d03ad5f1ba87197e85fa0cec8c7fc93febb4016c63000",
+        "metrics.json": "2cec92f30365776ff5ae8a66a926f2eb6b03782c3142223d7f942aafe6e2f2ed",
+        "BoxR_curve.png": "af7c4b04c5fcb02909ae70ae4036f3d77f643fa08ce3596ab6a37d9e924e9202",
+        "confusion_matrix.json": "5841043a2277e26f747d9bacc01d923387301a536ee6b4313e41eb0cd861f84c",
+        "size_ap.json": "3521688c909c9fa1928a701634725b2b29acdddb7a63c13ad5f884ec928e1ea4",
+        "COMPLETE.json": "3818369eab46ba1e7edd79e03baad29a91015b31022d8fce67bcba4b5f95a2d9",
+        "confusion_matrix_normalized.png": "dd97cde3ccd6b8420b12cd5a2b6b84349e1d8994f07527ac949f03cb55dcf8d4",
+        "BoxF1_curve.png": "6375b9306debff7bacf033af5ced9632932a25ea451ed098df747632717d19bb",
+        "per_class.csv": "6111eca34e6ad080c94bb8afc725948310ca767e58c6e82a35372196527947de",
+        "BoxP_curve.png": "b0ccbd501be73922cfbb5f0ba976b5ed554487a02ef48f947f1ae0da2d562151",
+        "prediction_counts.json": "e8bc1ebf85f9c7ad248a6a530985afbc2f09a08d343e48a2f7daacea623978be",
+        "BoxPR_curve.png": "9e1bc9e5584ce99c9496654643c083720e673d04ee4b70a4524f8af755e55c8d"
+      }
+    },
+    {
+      "bundle": "reports/evaluations/E2_gateA_960_seed42_v1",
+      "file_sha256": {
+        "confusion_matrix.png": "18bfe6aade94bc9655353e0f99f7b2daa1082ceb696d5f49a04e0e2af6fed9b7",
+        "metrics.json": "b76f6495426502c168d21c38d8d9267eda76c68414d7d98d40d95b102f39d1e6",
+        "BoxR_curve.png": "c3a1cf0e2c831c72b87d9a8855e7cb50a5e80ccfef3719594173d197b7d56ce0",
+        "confusion_matrix.json": "6b7f796e931fd2acaff3f4ffb7bf626212749e8bb2af51231939f96d80080b10",
+        "size_ap.json": "8691f765d41287d055a4f922f135500f6d1becc6fc8e0c168240fa52b2ec8cf9",
+        "COMPLETE.json": "7912f1b84edd71f0afeb78a025e1dfe2fbca439e9656619d55e99f5ff7ef72e6",
+        "confusion_matrix_normalized.png": "72197f5125b5ed981f754ff395b94bb47b82b8b72674ade84c345dbbb782ee70",
+        "BoxF1_curve.png": "3bce851bba92acb0450719f196d4d72e02f6b94d3471817127c26951441c1f79",
+        "per_class.csv": "fba4adb936347ddb84cd1c8b4096c281b446ed03382228fe0e8a4bc7698ed0a4",
+        "BoxP_curve.png": "db5b8fed50a640e57ef33a6c14e453e75846d67cfec7b6be5dafb7790fde5e8f",
+        "prediction_counts.json": "d655391224085a3983d9465e004ce8271cacdd9086fce8a2b35cd3aa17f4a18f",
+        "BoxPR_curve.png": "fe09809440861aceebd23b66c89687c15998fe2e2a26211ed90d6042b46edbfa"
+      }
+    }
+  ]
+}

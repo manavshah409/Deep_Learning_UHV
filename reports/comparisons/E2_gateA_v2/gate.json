@@ -1,0 +1,46 @@
+{
+  "status": "failed_threshold_retain_640",
+  "small_ap50_95_delta_pp": -7.0761933549304405,
+  "overall_map50_95_delta_pp": 0.03786642348370117,
+  "small_threshold_met": false,
+  "overall_threshold_met": false,
+  "protocol_integrity": "passed",
+  "training_started": false,
+  "evaluation_memory": [
+    {
+      "method": "Maximum MPS current allocated and driver allocated bytes sampled once per validation batch; not a hardware absolute peak",
+      "samples": 250,
+      "sampled_max_allocated_bytes": 69803008,
+      "sampled_max_driver_bytes": 1209729024
+    },
+    {
+      "method": "Maximum MPS current allocated and driver allocated bytes sampled once per validation batch; not a hardware absolute peak",
+      "samples": 250,
+      "sampled_max_allocated_bytes": 100288000,
+      "sampled_max_driver_bytes": 1142620160
+    }
+  ],
+  "benchmark_memory": [
+    {
+      "method": "MPS allocation snapshots after each timed image; not absolute peak",
+      "sampled_max_allocated_bytes": 44587520,
+      "sampled_max_driver_bytes": 144375808
+    },
+    {
+      "method": "MPS allocation snapshots after each timed image; not absolute peak",
+      "sampled_max_allocated_bytes": 44655872,
+      "sampled_max_driver_bytes": 177930240
+    }
+  ],
+  "evaluation_duration_seconds": [
+    150.64697999996133,
+    169.88482325000223
+  ],
+  "prediction_counts": [
+    271658,
+    253260
+  ],
+  "expected_gate_rule": "small +2pp OR overall +1pp with clearly improved relevant small/distant classes, plus integrity/cost justification",
+  "gate_B": "not_entered",
+  "review": "Qualitative and cost review complete; small two/three-wheeler gains do not meet the preregistered aggregate gate."
+}

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "resolutions": [
+    640,
+    960
+  ],
+  "images_each": 2000,
+  "classes": 14,
+  "original_E0_E1_artifacts_unchanged": true,
+  "full_E2_training_started": false
+}

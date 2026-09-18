@@ -1,0 +1,516 @@
+{
+  "prediction_class_map": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "method": "pycocotools COCOeval original-image bbox area; GT reconstructed from frozen YOLO labels. Standard COCO ignored-GT/out-of-area-unmatched-prediction logic. maxDets [1,10,300], IoU .50:.05:.95, 101 recall points. Not identical AP integration to Ultralytics overall AP.",
+  "area_bounds_pixels_squared": {
+    "all": [
+      0,
+      10000000000.0
+    ],
+    "small": [
+      0,
+      1024
+    ],
+    "medium": [
+      1024,
+      9216
+    ],
+    "large": [
+      9216,
+      10000000000.0
+    ]
+  },
+  "boundary_note": "COCOeval includes endpoints; exact 1024/9216-area boxes can occur in adjacent bins.",
+  "groups": {
+    "all": {
+      "objects": 24342,
+      "ap50_95": 0.5248380544108846,
+      "ap50": 0.6248905902649907,
+      "per_class": [
+        {
+          "class_id": 0,
+          "name": "Hatchback",
+          "objects": 2402,
+          "ap50_95": 0.601659752509683,
+          "ap50": 0.6914752411017849,
+          "status": "measured"
+        },
+        {
+          "class_id": 1,
+          "name": "Sedan",
+          "objects": 1169,
+          "ap50_95": 0.5962137785576987,
+          "ap50": 0.6590818277488443,
+          "status": "measured"
+        },
+        {
+          "class_id": 2,
+          "name": "SUV",
+          "objects": 1028,
+          "ap50_95": 0.4776678063661911,
+          "ap50": 0.5345850266175586,
+          "status": "measured"
+        },
+        {
+          "class_id": 3,
+          "name": "MUV",
+          "objects": 541,
+          "ap50_95": 0.43027474691587697,
+          "ap50": 0.4761487612835914,
+          "status": "measured"
+        },
+        {
+          "class_id": 4,
+          "name": "Bus",
+          "objects": 627,
+          "ap50_95": 0.693134332266355,
+          "ap50": 0.8337723740975339,
+          "status": "measured"
+        },
+        {
+          "class_id": 5,
+          "name": "Truck",
+          "objects": 933,
+          "ap50_95": 0.547969727455749,
+          "ap50": 0.6827080824971739,
+          "status": "measured"
+        },
+        {
+          "class_id": 6,
+          "name": "Three-wheeler",
+          "objects": 4016,
+          "ap50_95": 0.7905204265913238,
+          "ap50": 0.9279993198727498,
+          "status": "measured"
+        },
+        {
+          "class_id": 7,
+          "name": "Two-wheeler",
+          "objects": 11624,
+          "ap50_95": 0.7023385769598278,
+          "ap50": 0.9149572059892203,
+          "status": "measured"
+        },
+        {
+          "class_id": 8,
+          "name": "LCV",
+          "objects": 1322,
+          "ap50_95": 0.6208241374851945,
+          "ap50": 0.755650104038509,
+          "status": "measured"
+        },
+        {
+          "class_id": 9,
+          "name": "Mini-bus",
+          "objects": 58,
+          "ap50_95": 0.17354819612441102,
+          "ap50": 0.22674678055368613,
+          "status": "measured"
+        },
+        {
+          "class_id": 10,
+          "name": "Tempo-traveller",
+          "objects": 130,
+          "ap50_95": 0.6690973980049782,
+          "ap50": 0.7665638066033464,
+          "status": "measured"
+        },
+        {
+          "class_id": 11,
+          "name": "Bicycle",
+          "objects": 278,
+          "ap50_95": 0.546722655778308,
+          "ap50": 0.6877230101782861,
+          "status": "measured"
+        },
+        {
+          "class_id": 12,
+          "name": "Van",
+          "objects": 183,
+          "ap50_95": 0.459890625832632,
+          "ap50": 0.5233957159547352,
+          "status": "measured"
+        },
+        {
+          "class_id": 13,
+          "name": "Others",
+          "objects": 31,
+          "ap50_95": 0.03787060090415541,
+          "ap50": 0.06766100717285135,
+          "status": "measured"
+        }
+      ]
+    },
+    "small": {
+      "objects": 338,
+      "ap50_95": 0.20271031587010355,
+      "ap50": 0.3013075949568886,
+      "per_class": [
+        {
+          "class_id": 0,
+          "name": "Hatchback",
+          "objects": 4,
+          "ap50_95": 0.08947622802970258,
+          "ap50": 0.13973258449241652,
+          "status": "measured"
+        },
+        {
+          "class_id": 1,
+          "name": "Sedan",
+          "objects": 1,
+          "ap50_95": 0.021428571428571436,
+          "ap50": 0.023809523809523805,
+          "status": "measured"
+        },
+        {
+          "class_id": 2,
+          "name": "SUV",
+          "objects": 1,
+          "ap50_95": 0.0,
+          "ap50": 0.0,
+          "status": "measured"
+        },
+        {
+          "class_id": 3,
+          "name": "MUV",
+          "objects": 0,
+          "ap50_95": null,
+          "ap50": null,
+          "status": "not_applicable_no_ground_truth"
+        },
+        {
+          "class_id": 4,
+          "name": "Bus",
+          "objects": 0,
+          "ap50_95": null,
+          "ap50": null,
+          "status": "not_applicable_no_ground_truth"
+        },
+        {
+          "class_id": 5,
+          "name": "Truck",
+          "objects": 1,
+          "ap50_95": 0.45,
+          "ap50": 0.5,
+          "status": "measured"
+        },
+        {
+          "class_id": 6,
+          "name": "Three-wheeler",
+          "objects": 28,
+          "ap50_95": 0.41373872428245995,
+          "ap50": 0.6410272993946644,
+          "status": "measured"
+        },
+        {
+          "class_id": 7,
+          "name": "Two-wheeler",
+          "objects": 297,
+          "ap50_95": 0.46072927334600816,
+          "ap50": 0.7940635757742923,
+          "status": "measured"
+        },
+        {
+          "class_id": 8,
+          "name": "LCV",
+          "objects": 3,
+          "ap50_95": 0.07850070721357848,
+          "ap50": 0.1308345120226308,
+          "status": "measured"
+        },
+        {
+          "class_id": 9,
+          "name": "Mini-bus",
+          "objects": 0,
+          "ap50_95": null,
+          "ap50": null,
+          "status": "not_applicable_no_ground_truth"
+        },
+        {
+          "class_id": 10,
+          "name": "Tempo-traveller",
+          "objects": 0,
+          "ap50_95": null,
+          "ap50": null,
+          "status": "not_applicable_no_ground_truth"
+        },
+        {
+          "class_id": 11,
+          "name": "Bicycle",
+          "objects": 3,
+          "ap50_95": 0.10780902266050779,
+          "ap50": 0.18099326416158087,
+          "status": "measured"
+        },
+        {
+          "class_id": 12,
+          "name": "Van",
+          "objects": 0,
+          "ap50_95": null,
+          "ap50": null,
+          "status": "not_applicable_no_ground_truth"
+        },
+        {
+          "class_id": 13,
+          "name": "Others",
+          "objects": 0,
+          "ap50_95": null,
+          "ap50": null,
+          "status": "not_applicable_no_ground_truth"
+        }
+      ]
+    },
+    "medium": {
+      "objects": 8577,
+      "ap50_95": 0.37076940770154254,
+      "ap50": 0.49085194811039057,
+      "per_class": [
+        {
+          "class_id": 0,
+          "name": "Hatchback",
+          "objects": 675,
+          "ap50_95": 0.4891450255316822,
+          "ap50": 0.6070761678314149,
+          "status": "measured"
+        },
+        {
+          "class_id": 1,
+          "name": "Sedan",
+          "objects": 277,
+          "ap50_95": 0.40592520634554524,
+          "ap50": 0.501544569176451,
+          "status": "measured"
+        },
+        {
+          "class_id": 2,
+          "name": "SUV",
+          "objects": 189,
+          "ap50_95": 0.28389463164689926,
+          "ap50": 0.36102459637664797,
+          "status": "measured"
+        },
+        {
+          "class_id": 3,
+          "name": "MUV",
+          "objects": 65,
+          "ap50_95": 0.1715664022386203,
+          "ap50": 0.20816300680264826,
+          "status": "measured"
+        },
+        {
+          "class_id": 4,
+          "name": "Bus",
+          "objects": 106,
+          "ap50_95": 0.5014260820250603,
+          "ap50": 0.6849005059009,
+          "status": "measured"
+        },
+        {
+          "class_id": 5,
+          "name": "Truck",
+          "objects": 110,
+          "ap50_95": 0.3286296274195689,
+          "ap50": 0.44790237160581947,
+          "status": "measured"
+        },
+        {
+          "class_id": 6,
+          "name": "Three-wheeler",
+          "objects": 1528,
+          "ap50_95": 0.6734605335952836,
+          "ap50": 0.8755797645841563,
+          "status": "measured"
+        },
+        {
+          "class_id": 7,
+          "name": "Two-wheeler",
+          "objects": 5274,
+          "ap50_95": 0.6550139046426182,
+          "ap50": 0.8900053839245455,
+          "status": "measured"
+        },
+        {
+          "class_id": 8,
+          "name": "LCV",
+          "objects": 221,
+          "ap50_95": 0.44227111048021267,
+          "ap50": 0.6071890642724518,
+          "status": "measured"
+        },
+        {
+          "class_id": 9,
+          "name": "Mini-bus",
+          "objects": 11,
+          "ap50_95": 0.16038457399255407,
+          "ap50": 0.29332626119754834,
+          "status": "measured"
+        },
+        {
+          "class_id": 10,
+          "name": "Tempo-traveller",
+          "objects": 18,
+          "ap50_95": 0.40433140331122575,
+          "ap50": 0.5239222113452495,
+          "status": "measured"
+        },
+        {
+          "class_id": 11,
+          "name": "Bicycle",
+          "objects": 65,
+          "ap50_95": 0.33548064394448174,
+          "ap50": 0.4493244711136641,
+          "status": "measured"
+        },
+        {
+          "class_id": 12,
+          "name": "Van",
+          "objects": 29,
+          "ap50_95": 0.2670331135434587,
+          "ap50": 0.3257160312531807,
+          "status": "measured"
+        },
+        {
+          "class_id": 13,
+          "name": "Others",
+          "objects": 9,
+          "ap50_95": 0.07220944910438486,
+          "ap50": 0.09625286816079051,
+          "status": "measured"
+        }
+      ]
+    },
+    "large": {
+      "objects": 15427,
+      "ap50_95": 0.5676496249904552,
+      "ap50": 0.6592359687484043,
+      "per_class": [
+        {
+          "class_id": 0,
+          "name": "Hatchback",
+          "objects": 1723,
+          "ap50_95": 0.6596195082412811,
+          "ap50": 0.7350345378388147,
+          "status": "measured"
+        },
+        {
+          "class_id": 1,
+          "name": "Sedan",
+          "objects": 891,
+          "ap50_95": 0.6536319638133407,
+          "ap50": 0.704371252958006,
+          "status": "measured"
+        },
+        {
+          "class_id": 2,
+          "name": "SUV",
+          "objects": 838,
+          "ap50_95": 0.5229387103370291,
+          "ap50": 0.5758081395231418,
+          "status": "measured"
+        },
+        {
+          "class_id": 3,
+          "name": "MUV",
+          "objects": 476,
+          "ap50_95": 0.4647964973797524,
+          "ap50": 0.5104515177559533,
+          "status": "measured"
+        },
+        {
+          "class_id": 4,
+          "name": "Bus",
+          "objects": 521,
+          "ap50_95": 0.7283676914268354,
+          "ap50": 0.8584172234852667,
+          "status": "measured"
+        },
+        {
+          "class_id": 5,
+          "name": "Truck",
+          "objects": 822,
+          "ap50_95": 0.575507414099837,
+          "ap50": 0.7107366373798697,
+          "status": "measured"
+        },
+        {
+          "class_id": 6,
+          "name": "Three-wheeler",
+          "objects": 2460,
+          "ap50_95": 0.8590490756377246,
+          "ap50": 0.9546918178542729,
+          "status": "measured"
+        },
+        {
+          "class_id": 7,
+          "name": "Two-wheeler",
+          "objects": 6053,
+          "ap50_95": 0.7541424403038998,
+          "ap50": 0.9413808625779028,
+          "status": "measured"
+        },
+        {
+          "class_id": 8,
+          "name": "LCV",
+          "objects": 1098,
+          "ap50_95": 0.657659970098949,
+          "ap50": 0.7855546748724036,
+          "status": "measured"
+        },
+        {
+          "class_id": 9,
+          "name": "Mini-bus",
+          "objects": 47,
+          "ap50_95": 0.20504192795391127,
+          "ap50": 0.24018970350457192,
+          "status": "measured"
+        },
+        {
+          "class_id": 10,
+          "name": "Tempo-traveller",
+          "objects": 112,
+          "ap50_95": 0.7080319140920986,
+          "ap50": 0.8002230531965634,
+          "status": "measured"
+        },
+        {
+          "class_id": 11,
+          "name": "Bicycle",
+          "objects": 210,
+          "ap50_95": 0.6136099249628493,
+          "ap50": 0.7631495347779036,
+          "status": "measured"
+        },
+        {
+          "class_id": 12,
+          "name": "Van",
+          "objects": 154,
+          "ap50_95": 0.49676984480253245,
+          "ap50": 0.5616637340296516,
+          "status": "measured"
+        },
+        {
+          "class_id": 13,
+          "name": "Others",
+          "objects": 22,
+          "ap50_95": 0.04792786671633255,
+          "ap50": 0.0876308727233379,
+          "status": "measured"
+        }
+      ]
+    }
+  }
+}

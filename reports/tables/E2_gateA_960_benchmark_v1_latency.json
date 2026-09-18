@@ -1,0 +1,1566 @@
+{
+  "batch": 1,
+  "confidence": 0.25,
+  "device": "mps",
+  "end_to_end_definition": "Wall time around predict(path), including local image read/decode, preprocessing, inference and postprocessing plus device synchronization; excludes model loading, drawing, video capture and UI.",
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.14",
+    "torch": "2.14.0",
+    "ultralytics": "8.4.146"
+  },
+  "imgsz": 960,
+  "max_det": 300,
+  "measured_images": 100,
+  "memory": {
+    "method": "MPS allocation snapshots after each timed image; not absolute peak",
+    "sampled_max_allocated_bytes": 44655872,
+    "sampled_max_driver_bytes": 177930240
+  },
+  "model_precision": "float32",
+  "nms_iou": 0.7,
+  "parameters": 11141018,
+  "postprocessing": "Confidence filtering and class-aware NMS at conf .25 / IoU .7 / max_det 300; box scaling and Results construction.",
+  "preprocessing": "OpenCV local path read/decode, stride-aligned rectangular letterbox to requested imgsz, BGR-to-RGB, CHW float32 tensor /255; actual tensor shapes recorded per sample.",
+  "realtime_claim": false,
+  "records": [
+    {
+      "end_to_end_ms": 65.15012501040474,
+      "image_id": 17721,
+      "inference_ms": 14.051833015400916,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.6896249619312584,
+      "preprocess_ms": 2.2135830367915332
+    },
+    {
+      "end_to_end_ms": 60.26266701519489,
+      "image_id": 2994,
+      "inference_ms": 14.378083986230195,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.2177920220419765,
+      "preprocess_ms": 2.147041028365493
+    },
+    {
+      "end_to_end_ms": 62.26512498687953,
+      "image_id": 488,
+      "inference_ms": 14.644749986473471,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.1896670223213732,
+      "preprocess_ms": 2.157541981432587
+    },
+    {
+      "end_to_end_ms": 65.21524995332584,
+      "image_id": 20363,
+      "inference_ms": 15.090290980879217,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.826334035489708,
+      "preprocess_ms": 2.198083035182208
+    },
+    {
+      "end_to_end_ms": 64.92683297256008,
+      "image_id": 7257,
+      "inference_ms": 15.657834010198712,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.635333046782762,
+      "preprocess_ms": 2.4318340001627803
+    },
+    {
+      "end_to_end_ms": 63.801166019402444,
+      "image_id": 6461,
+      "inference_ms": 14.882832998409867,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4381250366568565,
+      "preprocess_ms": 2.1856669918633997
+    },
+    {
+      "end_to_end_ms": 65.01654197927564,
+      "image_id": 5776,
+      "inference_ms": 15.73212502989918,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.53795798541978,
+      "preprocess_ms": 2.192624961026013
+    },
+    {
+      "end_to_end_ms": 64.57783404039219,
+      "image_id": 3793,
+      "inference_ms": 16.482916951645166,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.9640000429935753,
+      "preprocess_ms": 2.2993330494500697
+    },
+    {
+      "end_to_end_ms": 65.64545904984698,
+      "image_id": 6452,
+      "inference_ms": 17.26187503663823,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.7552500357851386,
+      "preprocess_ms": 2.237832988612354
+    },
+    {
+      "end_to_end_ms": 68.15395801095292,
+      "image_id": 2618,
+      "inference_ms": 19.56958300434053,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.8267080304212868,
+      "preprocess_ms": 1.937166030984372
+    },
+    {
+      "end_to_end_ms": 67.63283297186717,
+      "image_id": 18579,
+      "inference_ms": 21.175541973207146,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.0633329986594617,
+      "preprocess_ms": 2.5671669864095747
+    },
+    {
+      "end_to_end_ms": 72.81091704498976,
+      "image_id": 20358,
+      "inference_ms": 23.29654200002551,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.1984170200303197,
+      "preprocess_ms": 2.7275420143269002
+    },
+    {
+      "end_to_end_ms": 70.93120797071606,
+      "image_id": 24359,
+      "inference_ms": 20.586291968356818,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.775917004328221,
+      "preprocess_ms": 2.308916999027133
+    },
+    {
+      "end_to_end_ms": 70.32495900057256,
+      "image_id": 15345,
+      "inference_ms": 20.75312496162951,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.2560419640503824,
+      "preprocess_ms": 1.9847499788738787
+    },
+    {
+      "end_to_end_ms": 69.45733301108703,
+      "image_id": 2169,
+      "inference_ms": 21.070458984468132,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.203208965715021,
+      "preprocess_ms": 2.0461249514482915
+    },
+    {
+      "end_to_end_ms": 71.19762501679361,
+      "image_id": 16474,
+      "inference_ms": 21.22862497344613,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.572665980551392,
+      "preprocess_ms": 2.267415984533727
+    },
+    {
+      "end_to_end_ms": 67.2818329767324,
+      "image_id": 11927,
+      "inference_ms": 21.65950002381578,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.6486250096932054,
+      "preprocess_ms": 2.041917003225535
+    },
+    {
+      "end_to_end_ms": 68.91691702185199,
+      "image_id": 625,
+      "inference_ms": 19.913416996132582,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5425420133396983,
+      "preprocess_ms": 2.44824995752424
+    },
+    {
+      "end_to_end_ms": 64.41012502182275,
+      "image_id": 561,
+      "inference_ms": 19.76354100042954,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.540917030069977,
+      "preprocess_ms": 2.02095799613744
+    },
+    {
+      "end_to_end_ms": 66.55616598436609,
+      "image_id": 2373,
+      "inference_ms": 18.410832970403135,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4855840126983821,
+      "preprocess_ms": 2.075208001770079
+    },
+    {
+      "end_to_end_ms": 62.303375045303255,
+      "image_id": 5669,
+      "inference_ms": 16.812583955470473,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.520249992609024,
+      "preprocess_ms": 1.7554169753566384
+    },
+    {
+      "end_to_end_ms": 64.5639169961214,
+      "image_id": 5978,
+      "inference_ms": 17.505832947790623,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5207079704850912,
+      "preprocess_ms": 2.3398749763146043
+    },
+    {
+      "end_to_end_ms": 67.94254202395678,
+      "image_id": 14252,
+      "inference_ms": 17.311332980170846,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.513750001322478,
+      "preprocess_ms": 2.255583996884525
+    },
+    {
+      "end_to_end_ms": 64.22275002114475,
+      "image_id": 16734,
+      "inference_ms": 17.509250028524548,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4168329653330147,
+      "preprocess_ms": 1.972625032067299
+    },
+    {
+      "end_to_end_ms": 64.3442909931764,
+      "image_id": 493,
+      "inference_ms": 17.484167008660734,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.6516669895499945,
+      "preprocess_ms": 1.715709047857672
+    },
+    {
+      "end_to_end_ms": 61.421082995366305,
+      "image_id": 15770,
+      "inference_ms": 17.508083023130894,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.3104579993523657,
+      "preprocess_ms": 2.1922090090811253
+    },
+    {
+      "end_to_end_ms": 63.08137497399002,
+      "image_id": 5296,
+      "inference_ms": 17.737124988343567,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.5830829981714487,
+      "preprocess_ms": 2.246874966658652
+    },
+    {
+      "end_to_end_ms": 64.61579096503556,
+      "image_id": 19724,
+      "inference_ms": 17.621749953832477,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.462416024878621,
+      "preprocess_ms": 2.227624994702637
+    },
+    {
+      "end_to_end_ms": 60.39050000254065,
+      "image_id": 17974,
+      "inference_ms": 17.767417011782527,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.480750019662082,
+      "preprocess_ms": 2.207583049312234
+    },
+    {
+      "end_to_end_ms": 63.24041698826477,
+      "image_id": 19330,
+      "inference_ms": 15.940790995955467,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.3090409920550883,
+      "preprocess_ms": 1.721500011626631
+    },
+    {
+      "end_to_end_ms": 64.21512499218807,
+      "image_id": 11859,
+      "inference_ms": 17.94550003251061,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4325000229291618,
+      "preprocess_ms": 2.2800000151619315
+    },
+    {
+      "end_to_end_ms": 64.72299998858944,
+      "image_id": 5693,
+      "inference_ms": 17.524750030133873,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.564708014484495,
+      "preprocess_ms": 2.3296669824048877
+    },
+    {
+      "end_to_end_ms": 64.61520795710385,
+      "image_id": 12712,
+      "inference_ms": 16.9504169607535,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5537090366706252,
+      "preprocess_ms": 1.9891250412911177
+    },
+    {
+      "end_to_end_ms": 62.19491601223126,
+      "image_id": 16422,
+      "inference_ms": 17.562084016390145,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.9829999548383057,
+      "preprocess_ms": 2.0456250058487058
+    },
+    {
+      "end_to_end_ms": 60.1602079696022,
+      "image_id": 7343,
+      "inference_ms": 16.691625001840293,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.360249996650964,
+      "preprocess_ms": 2.1613749559037387
+    },
+    {
+      "end_to_end_ms": 63.86762502370402,
+      "image_id": 22056,
+      "inference_ms": 17.460125032812357,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.769291982986033,
+      "preprocess_ms": 2.125791972503066
+    },
+    {
+      "end_to_end_ms": 66.685541998595,
+      "image_id": 23655,
+      "inference_ms": 18.33679201081395,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655360,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5334169729612768,
+      "preprocess_ms": 2.2134590544737875
+    },
+    {
+      "end_to_end_ms": 64.93737502023578,
+      "image_id": 143,
+      "inference_ms": 16.999666986521333,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4822499942965806,
+      "preprocess_ms": 1.9670839537866414
+    },
+    {
+      "end_to_end_ms": 65.44599996414036,
+      "image_id": 20754,
+      "inference_ms": 18.321750045288354,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4437499921768904,
+      "preprocess_ms": 2.2987499833106995
+    },
+    {
+      "end_to_end_ms": 65.72362501174212,
+      "image_id": 21962,
+      "inference_ms": 18.45595898339525,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.7673330148681998,
+      "preprocess_ms": 2.6526660076342523
+    },
+    {
+      "end_to_end_ms": 67.53970903810114,
+      "image_id": 4358,
+      "inference_ms": 19.344958011060953,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.8696669721975923,
+      "preprocess_ms": 2.2023750352673233
+    },
+    {
+      "end_to_end_ms": 65.84454199764878,
+      "image_id": 19250,
+      "inference_ms": 19.62804200593382,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4967500464990735,
+      "preprocess_ms": 2.436208014842123
+    },
+    {
+      "end_to_end_ms": 70.88954199571162,
+      "image_id": 11929,
+      "inference_ms": 19.244750030338764,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.513334027957171,
+      "preprocess_ms": 2.1901250001974404
+    },
+    {
+      "end_to_end_ms": 55.63462502323091,
+      "image_id": 9323,
+      "inference_ms": 18.459958024322987,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.53950001206249,
+      "preprocess_ms": 2.2946249810047448
+    },
+    {
+      "end_to_end_ms": 61.052167031448334,
+      "image_id": 4262,
+      "inference_ms": 21.731165994424373,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.83370801480487,
+      "preprocess_ms": 1.7390419961884618
+    },
+    {
+      "end_to_end_ms": 69.78091603377834,
+      "image_id": 5626,
+      "inference_ms": 23.291582998353988,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.6512499898672104,
+      "preprocess_ms": 2.121458004694432
+    },
+    {
+      "end_to_end_ms": 39.4445420242846,
+      "image_id": 26259,
+      "inference_ms": 12.50899996375665,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.8727079732343554,
+      "preprocess_ms": 1.6342499875463545
+    },
+    {
+      "end_to_end_ms": 72.17212504474446,
+      "image_id": 20896,
+      "inference_ms": 21.310832991730422,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.240582998842001,
+      "preprocess_ms": 2.681499987374991
+    },
+    {
+      "end_to_end_ms": 72.39975000265986,
+      "image_id": 9230,
+      "inference_ms": 20.687667012680322,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.6318749878555536,
+      "preprocess_ms": 2.27033399278298
+    },
+    {
+      "end_to_end_ms": 68.31308401888236,
+      "image_id": 2330,
+      "inference_ms": 19.048458023462445,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.5524169905111194,
+      "preprocess_ms": 2.415125025436282
+    },
+    {
+      "end_to_end_ms": 71.6968749766238,
+      "image_id": 10602,
+      "inference_ms": 22.084749944042414,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.1440829625353217,
+      "preprocess_ms": 2.3595839738845825
+    },
+    {
+      "end_to_end_ms": 72.75191700318828,
+      "image_id": 2469,
+      "inference_ms": 21.291791985277086,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.0325420084409416,
+      "preprocess_ms": 2.2642079857178032
+    },
+    {
+      "end_to_end_ms": 71.46195799577981,
+      "image_id": 9990,
+      "inference_ms": 21.51895797578618,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.286624967586249,
+      "preprocess_ms": 2.335375000257045
+    },
+    {
+      "end_to_end_ms": 72.5315409945324,
+      "image_id": 23069,
+      "inference_ms": 20.9258749964647,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.521542006637901,
+      "preprocess_ms": 2.4933750391937792
+    },
+    {
+      "end_to_end_ms": 71.46800000919029,
+      "image_id": 9548,
+      "inference_ms": 21.211916988249868,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.1956659513525665,
+      "preprocess_ms": 2.6429580175317824
+    },
+    {
+      "end_to_end_ms": 69.89220896502957,
+      "image_id": 16815,
+      "inference_ms": 21.56362496316433,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.625624998472631,
+      "preprocess_ms": 2.6724999770522118
+    },
+    {
+      "end_to_end_ms": 66.30383303854614,
+      "image_id": 6992,
+      "inference_ms": 19.565624999813735,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5049169887788594,
+      "preprocess_ms": 2.6088330196216702
+    },
+    {
+      "end_to_end_ms": 64.48854098562151,
+      "image_id": 21991,
+      "inference_ms": 17.112625006120652,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655360,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.558624964673072,
+      "preprocess_ms": 2.361459017265588
+    },
+    {
+      "end_to_end_ms": 64.42808295832947,
+      "image_id": 929,
+      "inference_ms": 16.521083016414195,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5041250153444707,
+      "preprocess_ms": 2.3811659775674343
+    },
+    {
+      "end_to_end_ms": 63.875499996356666,
+      "image_id": 20054,
+      "inference_ms": 16.966041002888232,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.560457982122898,
+      "preprocess_ms": 2.5237920344807208
+    },
+    {
+      "end_to_end_ms": 65.7074999762699,
+      "image_id": 12935,
+      "inference_ms": 16.819374985061586,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5347910230048,
+      "preprocess_ms": 2.5752909714356065
+    },
+    {
+      "end_to_end_ms": 64.58020803984255,
+      "image_id": 15140,
+      "inference_ms": 16.559958981815726,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.0492079784162343,
+      "preprocess_ms": 2.8144160169176757
+    },
+    {
+      "end_to_end_ms": 66.11016701208428,
+      "image_id": 3406,
+      "inference_ms": 16.519917000550777,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5185830416157842,
+      "preprocess_ms": 2.587791997939348
+    },
+    {
+      "end_to_end_ms": 63.021000009030104,
+      "image_id": 26564,
+      "inference_ms": 15.798209002241492,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.1513330284506083,
+      "preprocess_ms": 2.555499959271401
+    },
+    {
+      "end_to_end_ms": 67.68533302238211,
+      "image_id": 25223,
+      "inference_ms": 16.540999989956617,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.443499990273267,
+      "preprocess_ms": 2.405500039458275
+    },
+    {
+      "end_to_end_ms": 63.53262497577816,
+      "image_id": 10589,
+      "inference_ms": 16.705250018276274,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5352909686043859,
+      "preprocess_ms": 2.41650000680238
+    },
+    {
+      "end_to_end_ms": 63.925083028152585,
+      "image_id": 1986,
+      "inference_ms": 16.69662503991276,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.381208003498614,
+      "preprocess_ms": 2.3331669508479536
+    },
+    {
+      "end_to_end_ms": 60.054709028918296,
+      "image_id": 15524,
+      "inference_ms": 16.76208298886195,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.8332079527899623,
+      "preprocess_ms": 2.2052910062484443
+    },
+    {
+      "end_to_end_ms": 66.95037498138845,
+      "image_id": 7876,
+      "inference_ms": 16.87904098071158,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655616,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5047090128064156,
+      "preprocess_ms": 2.369833004195243
+    },
+    {
+      "end_to_end_ms": 64.29787504021078,
+      "image_id": 22573,
+      "inference_ms": 16.83479198254645,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5019580023363233,
+      "preprocess_ms": 2.4267910048365593
+    },
+    {
+      "end_to_end_ms": 65.7317090081051,
+      "image_id": 17487,
+      "inference_ms": 16.218500037211925,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4915000065229833,
+      "preprocess_ms": 1.9955000025220215
+    },
+    {
+      "end_to_end_ms": 61.98395899264142,
+      "image_id": 17197,
+      "inference_ms": 17.201750015374273,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.704207960050553,
+      "preprocess_ms": 2.2688329918310046
+    },
+    {
+      "end_to_end_ms": 63.20879195118323,
+      "image_id": 24168,
+      "inference_ms": 17.067000037059188,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5032090013846755,
+      "preprocess_ms": 2.3608329938724637
+    },
+    {
+      "end_to_end_ms": 64.78924996918067,
+      "image_id": 23436,
+      "inference_ms": 17.001292027998716,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4175840187817812,
+      "preprocess_ms": 1.792666967958212
+    },
+    {
+      "end_to_end_ms": 62.7308749826625,
+      "image_id": 10027,
+      "inference_ms": 16.87491696793586,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.324707980733365,
+      "preprocess_ms": 2.236250031273812
+    },
+    {
+      "end_to_end_ms": 63.20350000169128,
+      "image_id": 16149,
+      "inference_ms": 17.43158302269876,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.5508750113658607,
+      "preprocess_ms": 2.257290994748473
+    },
+    {
+      "end_to_end_ms": 64.77604201063514,
+      "image_id": 5197,
+      "inference_ms": 16.677459003403783,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655872,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5160419861786067,
+      "preprocess_ms": 1.6374579863622785
+    },
+    {
+      "end_to_end_ms": 65.32220804365352,
+      "image_id": 19459,
+      "inference_ms": 17.845499969553202,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.682042027823627,
+      "preprocess_ms": 2.137166040483862
+    },
+    {
+      "end_to_end_ms": 63.78749996656552,
+      "image_id": 1757,
+      "inference_ms": 17.48316700104624,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655616,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.619750041048974,
+      "preprocess_ms": 2.1567500079981983
+    },
+    {
+      "end_to_end_ms": 65.09920803364366,
+      "image_id": 988,
+      "inference_ms": 18.24454200686887,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4689159579575062,
+      "preprocess_ms": 2.1492079831659794
+    },
+    {
+      "end_to_end_ms": 64.58854203810915,
+      "image_id": 18231,
+      "inference_ms": 18.098291009664536,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5207090182229877,
+      "preprocess_ms": 2.316625032108277
+    },
+    {
+      "end_to_end_ms": 65.50054100807756,
+      "image_id": 5867,
+      "inference_ms": 19.023458007723093,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.5222500078380108,
+      "preprocess_ms": 2.2727500181645155
+    },
+    {
+      "end_to_end_ms": 64.26895799813792,
+      "image_id": 21136,
+      "inference_ms": 19.398084026761353,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.836542029399425,
+      "preprocess_ms": 2.2697080275975168
+    },
+    {
+      "end_to_end_ms": 68.99225001689047,
+      "image_id": 7709,
+      "inference_ms": 19.888542010448873,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.919833001215011,
+      "preprocess_ms": 2.277792023960501
+    },
+    {
+      "end_to_end_ms": 72.79287499841303,
+      "image_id": 1995,
+      "inference_ms": 21.347458008676767,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.63166701188311,
+      "preprocess_ms": 2.222416049335152
+    },
+    {
+      "end_to_end_ms": 67.71579198539257,
+      "image_id": 23307,
+      "inference_ms": 20.732166012749076,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.2650840003043413,
+      "preprocess_ms": 2.036208054050803
+    },
+    {
+      "end_to_end_ms": 70.76154201058671,
+      "image_id": 23594,
+      "inference_ms": 20.39825002430007,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655616,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.1659159576520324,
+      "preprocess_ms": 2.2875420399941504
+    },
+    {
+      "end_to_end_ms": 65.19391597248614,
+      "image_id": 2542,
+      "inference_ms": 17.927166947629303,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.3268330367282033,
+      "preprocess_ms": 2.3200419964268804
+    },
+    {
+      "end_to_end_ms": 65.24041603552178,
+      "image_id": 12812,
+      "inference_ms": 18.992250028532,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.3232919736765325,
+      "preprocess_ms": 2.269625023473054
+    },
+    {
+      "end_to_end_ms": 65.50483399769291,
+      "image_id": 17641,
+      "inference_ms": 19.371000002138317,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.3787919888272882,
+      "preprocess_ms": 2.3019170039333403
+    },
+    {
+      "end_to_end_ms": 60.41337503120303,
+      "image_id": 22703,
+      "inference_ms": 18.258208001498133,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4402499655261636,
+      "preprocess_ms": 2.2876669536344707
+    },
+    {
+      "end_to_end_ms": 61.07504200190306,
+      "image_id": 10112,
+      "inference_ms": 17.94858300127089,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.153082972858101,
+      "preprocess_ms": 2.1777909714728594
+    },
+    {
+      "end_to_end_ms": 64.29795798612759,
+      "image_id": 4423,
+      "inference_ms": 16.189249989110976,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4037080109119415,
+      "preprocess_ms": 2.673249982763082
+    },
+    {
+      "end_to_end_ms": 63.60995798604563,
+      "image_id": 10310,
+      "inference_ms": 18.028166028670967,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655360,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.448208000510931,
+      "preprocess_ms": 2.1613340359181166
+    },
+    {
+      "end_to_end_ms": 65.3860000311397,
+      "image_id": 9879,
+      "inference_ms": 16.417040955275297,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.560000004246831,
+      "preprocess_ms": 2.262583002448082
+    },
+    {
+      "end_to_end_ms": 61.289125005714595,
+      "image_id": 5543,
+      "inference_ms": 15.764124982524663,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655360,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.9987919949926436,
+      "preprocess_ms": 2.2250000038184226
+    },
+    {
+      "end_to_end_ms": 65.88041601935402,
+      "image_id": 18384,
+      "inference_ms": 15.600332990288734,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.4239579904824495,
+      "preprocess_ms": 2.2505829692818224
+    },
+    {
+      "end_to_end_ms": 61.26570800552145,
+      "image_id": 7032,
+      "inference_ms": 14.61745798587799,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654848,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 2.2596250055357814,
+      "preprocess_ms": 2.217707980889827
+    },
+    {
+      "end_to_end_ms": 63.15362500026822,
+      "image_id": 19334,
+      "inference_ms": 15.190707985311747,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44655104,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 1.7382500227540731,
+      "preprocess_ms": 1.855375012382865
+    },
+    {
+      "end_to_end_ms": 58.57275001471862,
+      "image_id": 25710,
+      "inference_ms": 15.242124965880066,
+      "input_shape": [
+        1,
+        3,
+        544,
+        960
+      ],
+      "mps_allocated_bytes": 44654592,
+      "mps_driver_bytes": 177930240,
+      "postprocess_ms": 3.190667019225657,
+      "preprocess_ms": 2.221208007540554
+    }
+  ],
+  "scope": "Proper subset checkpoint, sequential batch-one still-image benchmark",
+  "seed": 42,
+  "stage_timing": "Explicit torch.mps.synchronize before and after each stage; no reliance on unsynchronized result.speed. End-to-end includes these instrumentation barriers.",
+  "summary": {
+    "end_to_end_ms": {
+      "count": 100,
+      "fps_from_total_time": 15.320503695538465,
+      "mean_ms": 65.27200540353078,
+      "median_ms": 64.93210399639793,
+      "p95_ms": 72.18350629264023
+    },
+    "inference_ms": {
+      "count": 100,
+      "fps_from_total_time": 55.381094867255946,
+      "mean_ms": 18.056703328038566,
+      "median_ms": 17.54341702326201,
+      "p95_ms": 21.568418716196902
+    },
+    "postprocess_ms": {
+      "count": 100,
+      "fps_from_total_time": 470.80249801727473,
+      "mean_ms": 2.124032910214737,
+      "median_ms": 1.7970205226447433,
+      "p95_ms": 3.2564940658630803
+    },
+    "preprocess_ms": {
+      "count": 100,
+      "fps_from_total_time": 445.6229582805479,
+      "mean_ms": 2.244049552245997,
+      "median_ms": 2.256437495816499,
+      "p95_ms": 2.6536577061051503
+    }
+  },
+  "validation_manifest_sha256": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3",
+  "warmup_runs": 10,
+  "weights_bytes": 22502762,
+  "weights_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab"
+}

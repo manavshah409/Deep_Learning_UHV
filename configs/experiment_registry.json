@@ -42,6 +42,24 @@
       "comparison": "reports/comparisons/E1_vs_E0",
       "recovery_note": "docs/phase_reports/E1_EVALUATION_RECOVERY.md",
       "best_checkpoint_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab"
+    },
+    {
+      "id": "E2_yolov8s_resolution_study",
+      "status": "gate_A_failed_retain_640",
+      "checkpoint": "E1 epoch22 best",
+      "checkpoint_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+      "resolutions": [
+        640,
+        960
+      ],
+      "evaluation_ids": [
+        "E2_gateA_640_seed42_v2",
+        "E2_gateA_960_seed42_v2"
+      ],
+      "gate_A_threshold": "small COCO-area AP50:95 +2.0pp OR overall Ultralytics mAP50:95 +1.0pp with clear relevant small/distant class gains; integrity and cost review also required",
+      "gate_B": "Not entered: Gate A threshold not met; no 960 training",
+      "batch_control_note": "E1 physical batch8, recorded startup accumulation8, nbs64; verify actual accumulation and optimizer behavior, do not call physical8 effective8.",
+      "report": "docs/phase_reports/PHASE_2_E2_RESOLUTION_ABLATION.md"
     }
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "files_sha256": {
+    "confusion_matrix.png": "ad4a2e079d72574f117d03ad5f1ba87197e85fa0cec8c7fc93febb4016c63000",
+    "metrics.json": "1a53cb82a89c7c29c43fc903a683c675bd03a08639db71c551d0e33192f8f724",
+    "BoxR_curve.png": "af7c4b04c5fcb02909ae70ae4036f3d77f643fa08ce3596ab6a37d9e924e9202",
+    "confusion_matrix.json": "5841043a2277e26f747d9bacc01d923387301a536ee6b4313e41eb0cd861f84c",
+    "size_ap.json": "7e418bf78ad707bd867dc24a3fb1f7f9e1a63e3ca4b1cd31235333e12ff36c5f",
+    "confusion_matrix_normalized.png": "dd97cde3ccd6b8420b12cd5a2b6b84349e1d8994f07527ac949f03cb55dcf8d4",
+    "BoxF1_curve.png": "6375b9306debff7bacf033af5ced9632932a25ea451ed098df747632717d19bb",
+    "per_class.csv": "6111eca34e6ad080c94bb8afc725948310ca767e58c6e82a35372196527947de",
+    "BoxP_curve.png": "b0ccbd501be73922cfbb5f0ba976b5ed554487a02ef48f947f1ae0da2d562151",
+    "prediction_counts.json": "e8bc1ebf85f9c7ad248a6a530985afbc2f09a08d343e48a2f7daacea623978be",
+    "BoxPR_curve.png": "9e1bc9e5584ce99c9496654643c083720e673d04ee4b70a4524f8af755e55c8d"
+  }
+}

@@ -21,3 +21,6 @@ reports/annotation_samples/
 .ruff_cache/
 deliverables/
 tmp/
+
+# Preserved invalid preliminary size exports; audit hashes remain tracked.
+reports/evaluations/E2_gateA_*_seed42_v1/

@@ -1,0 +1,2 @@
+# Auxiliary original-area COCO evaluation; installed without dependency upgrades.
+pycocotools==2.0.11

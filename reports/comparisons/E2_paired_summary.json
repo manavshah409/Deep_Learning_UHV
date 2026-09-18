@@ -1,0 +1,275 @@
+{
+  "cases": [
+    {
+      "640": {
+        "class_confusions": [],
+        "correct_matches": 10,
+        "predictions": 14,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 4
+      },
+      "960": {
+        "class_confusions": [],
+        "correct_matches": 10,
+        "predictions": 15,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 5
+      },
+      "gt_count": 10,
+      "image_id": 4232
+    },
+    {
+      "640": {
+        "class_confusions": [
+          {
+            "predicted": "Truck",
+            "truth": "LCV"
+          }
+        ],
+        "correct_matches": 16,
+        "predictions": 23,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 6
+      },
+      "960": {
+        "class_confusions": [
+          {
+            "predicted": "Truck",
+            "truth": "LCV"
+          }
+        ],
+        "correct_matches": 16,
+        "predictions": 27,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 10
+      },
+      "gt_count": 17,
+      "image_id": 10518
+    },
+    {
+      "640": {
+        "class_confusions": [
+          {
+            "predicted": "Mini-bus",
+            "truth": "Bus"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "SUV"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Truck"
+          }
+        ],
+        "correct_matches": 50,
+        "predictions": 94,
+        "unmatched_gt": 2,
+        "unmatched_predictions": 40
+      },
+      "960": {
+        "class_confusions": [
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "MUV",
+            "truth": "SUV"
+          },
+          {
+            "predicted": "Mini-bus",
+            "truth": "Bus"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Truck"
+          }
+        ],
+        "correct_matches": 49,
+        "predictions": 95,
+        "unmatched_gt": 3,
+        "unmatched_predictions": 42
+      },
+      "gt_count": 56,
+      "image_id": 1364
+    },
+    {
+      "640": {
+        "class_confusions": [
+          {
+            "predicted": "Sedan",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Van",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Truck",
+            "truth": "LCV"
+          },
+          {
+            "predicted": "Sedan",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Van",
+            "truth": "Three-wheeler"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "Three-wheeler",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Three-wheeler",
+            "truth": "Others"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Truck"
+          }
+        ],
+        "correct_matches": 31,
+        "predictions": 72,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 32
+      },
+      "960": {
+        "class_confusions": [
+          {
+            "predicted": "Van",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Truck",
+            "truth": "LCV"
+          },
+          {
+            "predicted": "Sedan",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "Hatchback",
+            "truth": "SUV"
+          },
+          {
+            "predicted": "MUV",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Truck"
+          },
+          {
+            "predicted": "Three-wheeler",
+            "truth": "Hatchback"
+          },
+          {
+            "predicted": "LCV",
+            "truth": "Three-wheeler"
+          },
+          {
+            "predicted": "Three-wheeler",
+            "truth": "Others"
+          }
+        ],
+        "correct_matches": 30,
+        "predictions": 92,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 52
+      },
+      "gt_count": 40,
+      "image_id": 21621
+    },
+    {
+      "640": {
+        "class_confusions": [
+          {
+            "predicted": "Hatchback",
+            "truth": "Sedan"
+          },
+          {
+            "predicted": "Bus",
+            "truth": "Mini-bus"
+          }
+        ],
+        "correct_matches": 7,
+        "predictions": 16,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 7
+      },
+      "960": {
+        "class_confusions": [
+          {
+            "predicted": "Bus",
+            "truth": "Mini-bus"
+          }
+        ],
+        "correct_matches": 8,
+        "predictions": 19,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 10
+      },
+      "gt_count": 9,
+      "image_id": 4711
+    },
+    {
+      "640": {
+        "class_confusions": [
+          {
+            "predicted": "Truck",
+            "truth": "Others"
+          }
+        ],
+        "correct_matches": 8,
+        "predictions": 13,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 4
+      },
+      "960": {
+        "class_confusions": [
+          {
+            "predicted": "Truck",
+            "truth": "Others"
+          }
+        ],
+        "correct_matches": 8,
+        "predictions": 13,
+        "unmatched_gt": 0,
+        "unmatched_predictions": 4
+      },
+      "gt_count": 9,
+      "image_id": 954
+    }
+  ],
+  "confidence": 0.1,
+  "image_ids": [
+    4232,
+    10518,
+    1364,
+    21621,
+    4711,
+    954
+  ],
+  "matching_iou": 0.5,
+  "method": "Same six Phase 1 diagnostic validation scenes; class-agnostic greedy IoU matching. Not an unbiased error-rate estimate. Source-label limitations are assessed separately.",
+  "nms_iou": 0.7,
+  "status": "manually_reviewed",
+  "validation_manifest_sha256": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3",
+  "weights_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+  "review_document": "docs/PROJECT_UPDATE_AND_HANDOVER_2026-09-18.md",
+  "decision": "Retain E1 at 640; dense-scene duplicate and class errors persist."
+}

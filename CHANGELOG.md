@@ -1,3 +1,8 @@
+# E2 closeout — 2026-09-18
+
+- Finalized inference-only resolution study: retain YOLOv8s 640; Gate B not entered.
+- Preserved superseded exports and corrected paired evaluations; added size/protocol integrity tests and dashboard comparison.
+
 # Changelog
 
 ## Phase 2 E1 evaluation and comparison closeout - 2026-09-17

@@ -1,0 +1,1566 @@
+{
+  "batch": 1,
+  "confidence": 0.25,
+  "device": "mps",
+  "end_to_end_definition": "Wall time around predict(path), including local image read/decode, preprocessing, inference and postprocessing plus device synchronization; excludes model loading, drawing, video capture and UI.",
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.14",
+    "torch": "2.14.0",
+    "ultralytics": "8.4.146"
+  },
+  "imgsz": 640,
+  "max_det": 300,
+  "measured_images": 100,
+  "memory": {
+    "method": "MPS allocation snapshots after each timed image; not absolute peak",
+    "sampled_max_allocated_bytes": 44587520,
+    "sampled_max_driver_bytes": 144375808
+  },
+  "model_precision": "float32",
+  "nms_iou": 0.7,
+  "parameters": 11141018,
+  "postprocessing": "Confidence filtering and class-aware NMS at conf .25 / IoU .7 / max_det 300; box scaling and Results construction.",
+  "preprocessing": "OpenCV local path read/decode, stride-aligned rectangular letterbox to requested imgsz, BGR-to-RGB, CHW float32 tensor /255; actual tensor shapes recorded per sample.",
+  "realtime_claim": false,
+  "records": [
+    {
+      "end_to_end_ms": 59.849832963664085,
+      "image_id": 17721,
+      "inference_ms": 8.680291997734457,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.7223749784752727,
+      "preprocess_ms": 1.9150000298395753
+    },
+    {
+      "end_to_end_ms": 54.61716704303399,
+      "image_id": 2994,
+      "inference_ms": 9.238000027835369,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.7756670024245977,
+      "preprocess_ms": 2.0057919900864363
+    },
+    {
+      "end_to_end_ms": 57.42254096549004,
+      "image_id": 488,
+      "inference_ms": 10.042416979558766,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.3341660271398723,
+      "preprocess_ms": 1.9013750134035945
+    },
+    {
+      "end_to_end_ms": 60.5153749929741,
+      "image_id": 20363,
+      "inference_ms": 10.217416973318905,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.0482920119538903,
+      "preprocess_ms": 1.9179590162821114
+    },
+    {
+      "end_to_end_ms": 60.66970794927329,
+      "image_id": 7257,
+      "inference_ms": 10.859542002435774,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.1994160381145775,
+      "preprocess_ms": 1.9999580108560622
+    },
+    {
+      "end_to_end_ms": 62.09470797330141,
+      "image_id": 6461,
+      "inference_ms": 12.144791020546108,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.8013749979436398,
+      "preprocess_ms": 1.541999983601272
+    },
+    {
+      "end_to_end_ms": 63.08645801618695,
+      "image_id": 5776,
+      "inference_ms": 12.722874991595745,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.71891598822549,
+      "preprocess_ms": 1.6557499766349792
+    },
+    {
+      "end_to_end_ms": 61.59229204058647,
+      "image_id": 3793,
+      "inference_ms": 13.52604100247845,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.1753340153954923,
+      "preprocess_ms": 1.6607079887762666
+    },
+    {
+      "end_to_end_ms": 62.681458017323166,
+      "image_id": 6452,
+      "inference_ms": 13.728249992709607,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.585417008958757,
+      "preprocess_ms": 1.6218749806284904
+    },
+    {
+      "end_to_end_ms": 64.32025000685826,
+      "image_id": 2618,
+      "inference_ms": 16.13770896801725,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.2579579963348806,
+      "preprocess_ms": 1.611167041119188
+    },
+    {
+      "end_to_end_ms": 65.89662499027327,
+      "image_id": 18579,
+      "inference_ms": 17.165792000014335,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.3597499821335077,
+      "preprocess_ms": 2.041791973169893
+    },
+    {
+      "end_to_end_ms": 72.69374997122213,
+      "image_id": 20358,
+      "inference_ms": 19.64208303252235,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.855750033631921,
+      "preprocess_ms": 1.723584020510316
+    },
+    {
+      "end_to_end_ms": 72.61187501717359,
+      "image_id": 24359,
+      "inference_ms": 17.162583011668175,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.080374968703836,
+      "preprocess_ms": 2.0314999856054783
+    },
+    {
+      "end_to_end_ms": 71.4523330098018,
+      "image_id": 15345,
+      "inference_ms": 18.749582988675684,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.2653340022079647,
+      "preprocess_ms": 2.0103330025449395
+    },
+    {
+      "end_to_end_ms": 72.5946250022389,
+      "image_id": 2169,
+      "inference_ms": 19.47770797414705,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.0053749796934426,
+      "preprocess_ms": 1.9743749871850014
+    },
+    {
+      "end_to_end_ms": 71.4590409770608,
+      "image_id": 16474,
+      "inference_ms": 17.769499972928315,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.3340830230154097,
+      "preprocess_ms": 1.7160410061478615
+    },
+    {
+      "end_to_end_ms": 70.11979096569121,
+      "image_id": 11927,
+      "inference_ms": 17.874874989502132,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.0566250206902623,
+      "preprocess_ms": 1.9678750541061163
+    },
+    {
+      "end_to_end_ms": 72.6569999824278,
+      "image_id": 625,
+      "inference_ms": 17.757082998286933,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.922500018030405,
+      "preprocess_ms": 1.9001250038854778
+    },
+    {
+      "end_to_end_ms": 66.98870798572898,
+      "image_id": 561,
+      "inference_ms": 17.373416980262846,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.4185829786583781,
+      "preprocess_ms": 1.8229580018669367
+    },
+    {
+      "end_to_end_ms": 72.03554204897955,
+      "image_id": 2373,
+      "inference_ms": 17.420874966774136,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.3898749970830977,
+      "preprocess_ms": 1.6952500445768237
+    },
+    {
+      "end_to_end_ms": 64.5865419646725,
+      "image_id": 5669,
+      "inference_ms": 17.207875032909214,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.298833045642823,
+      "preprocess_ms": 1.9939999911002815
+    },
+    {
+      "end_to_end_ms": 70.86741697276011,
+      "image_id": 5978,
+      "inference_ms": 17.629582958761603,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.993500034790486,
+      "preprocess_ms": 1.7244580085389316
+    },
+    {
+      "end_to_end_ms": 75.24612499400973,
+      "image_id": 14252,
+      "inference_ms": 17.762916977517307,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.18979105213657,
+      "preprocess_ms": 1.9464169745333493
+    },
+    {
+      "end_to_end_ms": 68.12420801725239,
+      "image_id": 16734,
+      "inference_ms": 17.76208297815174,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.3342499625869095,
+      "preprocess_ms": 1.7257920117117465
+    },
+    {
+      "end_to_end_ms": 66.59437500638887,
+      "image_id": 493,
+      "inference_ms": 15.492332982830703,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.383042021188885,
+      "preprocess_ms": 2.033500000834465
+    },
+    {
+      "end_to_end_ms": 65.31591701786965,
+      "image_id": 15770,
+      "inference_ms": 16.844541998580098,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.4700419851578772,
+      "preprocess_ms": 1.7584169982001185
+    },
+    {
+      "end_to_end_ms": 64.91541699506342,
+      "image_id": 5296,
+      "inference_ms": 15.645499981474131,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.968666969332844,
+      "preprocess_ms": 1.7822919762693346
+    },
+    {
+      "end_to_end_ms": 67.77058297302574,
+      "image_id": 19724,
+      "inference_ms": 15.712541004177183,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.263291971758008,
+      "preprocess_ms": 1.6031249542720616
+    },
+    {
+      "end_to_end_ms": 62.764166039414704,
+      "image_id": 17974,
+      "inference_ms": 16.315083019435406,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.4458749685436487,
+      "preprocess_ms": 1.92679202882573
+    },
+    {
+      "end_to_end_ms": 69.49408398941159,
+      "image_id": 19330,
+      "inference_ms": 16.505500010680407,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.0645420299842954,
+      "preprocess_ms": 1.7362500075250864
+    },
+    {
+      "end_to_end_ms": 67.74049997329712,
+      "image_id": 11859,
+      "inference_ms": 16.11116697313264,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.299999992828816,
+      "preprocess_ms": 1.6857499722391367
+    },
+    {
+      "end_to_end_ms": 68.78708401927724,
+      "image_id": 5693,
+      "inference_ms": 16.282125026918948,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.4634170113131404,
+      "preprocess_ms": 1.7369170091114938
+    },
+    {
+      "end_to_end_ms": 71.02999999187887,
+      "image_id": 12712,
+      "inference_ms": 16.369374992791563,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.2052919850684702,
+      "preprocess_ms": 2.0691250101663172
+    },
+    {
+      "end_to_end_ms": 61.74504099180922,
+      "image_id": 16422,
+      "inference_ms": 15.52083296701312,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.4201250160112977,
+      "preprocess_ms": 1.7462499672546983
+    },
+    {
+      "end_to_end_ms": 68.06112499907613,
+      "image_id": 7343,
+      "inference_ms": 19.710291002411395,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.803375023882836,
+      "preprocess_ms": 1.6583329997956753
+    },
+    {
+      "end_to_end_ms": 65.23249996826053,
+      "image_id": 22056,
+      "inference_ms": 14.47412499692291,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.625000022817403,
+      "preprocess_ms": 1.3757499982602894
+    },
+    {
+      "end_to_end_ms": 75.92337502865121,
+      "image_id": 23655,
+      "inference_ms": 15.511417004745454,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587264,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.6505829775705934,
+      "preprocess_ms": 2.554917009547353
+    },
+    {
+      "end_to_end_ms": 70.32320799771696,
+      "image_id": 143,
+      "inference_ms": 15.688583953306079,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.2598750074394047,
+      "preprocess_ms": 2.0650000078603625
+    },
+    {
+      "end_to_end_ms": 67.95983400661498,
+      "image_id": 20754,
+      "inference_ms": 15.558542043436319,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.9059170153923333,
+      "preprocess_ms": 1.6058339970186353
+    },
+    {
+      "end_to_end_ms": 67.38283298909664,
+      "image_id": 21962,
+      "inference_ms": 15.051666996441782,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.360166981816292,
+      "preprocess_ms": 1.8255829927511513
+    },
+    {
+      "end_to_end_ms": 68.4296659892425,
+      "image_id": 4358,
+      "inference_ms": 15.98500000545755,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.096875036135316,
+      "preprocess_ms": 1.8201250350102782
+    },
+    {
+      "end_to_end_ms": 67.18220899347216,
+      "image_id": 19250,
+      "inference_ms": 15.780707995872945,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.4815839822404087,
+      "preprocess_ms": 2.0757910097017884
+    },
+    {
+      "end_to_end_ms": 74.4908339693211,
+      "image_id": 11929,
+      "inference_ms": 17.478750029113144,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.1848750077188015,
+      "preprocess_ms": 2.2453340352512896
+    },
+    {
+      "end_to_end_ms": 61.35208299383521,
+      "image_id": 9323,
+      "inference_ms": 18.920208036433905,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.8491659904830158,
+      "preprocess_ms": 2.0565420272760093
+    },
+    {
+      "end_to_end_ms": 63.893084006849676,
+      "image_id": 4262,
+      "inference_ms": 18.759374972432852,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.579583029728383,
+      "preprocess_ms": 2.017374965362251
+    },
+    {
+      "end_to_end_ms": 69.43783303722739,
+      "image_id": 5626,
+      "inference_ms": 17.777625005692244,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.4253330193459988,
+      "preprocess_ms": 2.031209005508572
+    },
+    {
+      "end_to_end_ms": 50.712124968413264,
+      "image_id": 26259,
+      "inference_ms": 17.59366603801027,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.7295000036247075,
+      "preprocess_ms": 1.4335000305436552
+    },
+    {
+      "end_to_end_ms": 69.69608296640217,
+      "image_id": 20896,
+      "inference_ms": 19.326500012539327,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.510541002266109,
+      "preprocess_ms": 1.7737920279614627
+    },
+    {
+      "end_to_end_ms": 75.969333993271,
+      "image_id": 9230,
+      "inference_ms": 20.56587499100715,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 1.7087080050259829,
+      "preprocess_ms": 1.911916013341397
+    },
+    {
+      "end_to_end_ms": 71.16954197408631,
+      "image_id": 2330,
+      "inference_ms": 19.15616699261591,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 2.506125019863248,
+      "preprocess_ms": 1.9981670193374157
+    },
+    {
+      "end_to_end_ms": 74.10383399110287,
+      "image_id": 10602,
+      "inference_ms": 19.07533302437514,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 110821376,
+      "postprocess_ms": 3.420707944314927,
+      "preprocess_ms": 2.1763340337201953
+    },
+    {
+      "end_to_end_ms": 72.88208301179111,
+      "image_id": 2469,
+      "inference_ms": 17.850000003818423,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.0663749892264605,
+      "preprocess_ms": 1.8829999607987702
+    },
+    {
+      "end_to_end_ms": 75.17612498486415,
+      "image_id": 9990,
+      "inference_ms": 19.141375028993934,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.3385000424459577,
+      "preprocess_ms": 2.12208298034966
+    },
+    {
+      "end_to_end_ms": 74.63016698602587,
+      "image_id": 23069,
+      "inference_ms": 19.23691702540964,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.602416032459587,
+      "preprocess_ms": 1.88904203241691
+    },
+    {
+      "end_to_end_ms": 75.15270897420123,
+      "image_id": 9548,
+      "inference_ms": 18.98424996761605,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.7910420214757323,
+      "preprocess_ms": 2.037000027485192
+    },
+    {
+      "end_to_end_ms": 70.60366700170562,
+      "image_id": 16815,
+      "inference_ms": 17.847875016741455,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.6927919825538993,
+      "preprocess_ms": 1.678041007835418
+    },
+    {
+      "end_to_end_ms": 70.89387497399002,
+      "image_id": 6992,
+      "inference_ms": 18.933792016468942,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 1.595166977494955,
+      "preprocess_ms": 1.541583042126149
+    },
+    {
+      "end_to_end_ms": 72.16899999184534,
+      "image_id": 21991,
+      "inference_ms": 17.850167001597583,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.263042017351836,
+      "preprocess_ms": 2.5056659942492843
+    },
+    {
+      "end_to_end_ms": 74.78883297881112,
+      "image_id": 929,
+      "inference_ms": 18.647208984475583,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.6284999805502594,
+      "preprocess_ms": 2.4289999855682254
+    },
+    {
+      "end_to_end_ms": 69.94354201015085,
+      "image_id": 20054,
+      "inference_ms": 17.382416990585625,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 1.5279999934136868,
+      "preprocess_ms": 2.4974580155685544
+    },
+    {
+      "end_to_end_ms": 73.62637500045821,
+      "image_id": 12935,
+      "inference_ms": 20.000374992378056,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.40737501392141,
+      "preprocess_ms": 2.01104098232463
+    },
+    {
+      "end_to_end_ms": 75.40233299368992,
+      "image_id": 15140,
+      "inference_ms": 21.01562498137355,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.102332993876189,
+      "preprocess_ms": 2.2472499986179173
+    },
+    {
+      "end_to_end_ms": 77.20041595166549,
+      "image_id": 3406,
+      "inference_ms": 20.88004199322313,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.718749969266355,
+      "preprocess_ms": 3.12587502412498
+    },
+    {
+      "end_to_end_ms": 71.79924997035414,
+      "image_id": 26564,
+      "inference_ms": 22.056874993722886,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.4219159968197346,
+      "preprocess_ms": 2.4978750152513385
+    },
+    {
+      "end_to_end_ms": 80.43054200243205,
+      "image_id": 25223,
+      "inference_ms": 22.412375023122877,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.75000003259629,
+      "preprocess_ms": 2.5415000272914767
+    },
+    {
+      "end_to_end_ms": 77.45945802889764,
+      "image_id": 10589,
+      "inference_ms": 23.981958045624197,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.513792016543448,
+      "preprocess_ms": 2.2139170323498547
+    },
+    {
+      "end_to_end_ms": 73.39395803865045,
+      "image_id": 1986,
+      "inference_ms": 20.21595905534923,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.9824170051142573,
+      "preprocess_ms": 1.9460839685052633
+    },
+    {
+      "end_to_end_ms": 56.33383302483708,
+      "image_id": 15524,
+      "inference_ms": 13.89058300992474,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.259708009660244,
+      "preprocess_ms": 1.6322499723173678
+    },
+    {
+      "end_to_end_ms": 76.95891702314839,
+      "image_id": 7876,
+      "inference_ms": 20.648583013098687,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587520,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.3442910062149167,
+      "preprocess_ms": 1.8012090004049242
+    },
+    {
+      "end_to_end_ms": 71.11662498209625,
+      "image_id": 22573,
+      "inference_ms": 19.252584024798125,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.502207993529737,
+      "preprocess_ms": 2.1382920094765723
+    },
+    {
+      "end_to_end_ms": 75.71383303729817,
+      "image_id": 17487,
+      "inference_ms": 19.460209005046636,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.9474999755620956,
+      "preprocess_ms": 2.0549159962683916
+    },
+    {
+      "end_to_end_ms": 70.33366698306054,
+      "image_id": 17197,
+      "inference_ms": 19.78933298960328,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.1382080051116645,
+      "preprocess_ms": 2.1049579954706132
+    },
+    {
+      "end_to_end_ms": 71.01937499828637,
+      "image_id": 24168,
+      "inference_ms": 18.64070794545114,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.02025000564754,
+      "preprocess_ms": 2.1428330219350755
+    },
+    {
+      "end_to_end_ms": 72.99000001512468,
+      "image_id": 23436,
+      "inference_ms": 17.96841702889651,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.7044170312583447,
+      "preprocess_ms": 1.6253750072792172
+    },
+    {
+      "end_to_end_ms": 67.26066704140976,
+      "image_id": 10027,
+      "inference_ms": 17.608749971259385,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.6903749676421285,
+      "preprocess_ms": 2.078499994240701
+    },
+    {
+      "end_to_end_ms": 63.5685829911381,
+      "image_id": 16149,
+      "inference_ms": 17.551333992742002,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.0619999850168824,
+      "preprocess_ms": 2.003000001423061
+    },
+    {
+      "end_to_end_ms": 74.29420802509412,
+      "image_id": 5197,
+      "inference_ms": 19.328750029671937,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587520,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.0125839984975755,
+      "preprocess_ms": 1.823167025577277
+    },
+    {
+      "end_to_end_ms": 70.65308297751471,
+      "image_id": 19459,
+      "inference_ms": 17.850874981377274,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.3436250048689544,
+      "preprocess_ms": 1.6222919803112745
+    },
+    {
+      "end_to_end_ms": 69.72462497651577,
+      "image_id": 1757,
+      "inference_ms": 18.386749958153814,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587520,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.108083037659526,
+      "preprocess_ms": 1.6792920068837702
+    },
+    {
+      "end_to_end_ms": 70.35533402813599,
+      "image_id": 988,
+      "inference_ms": 18.328125006519258,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.3980419975705445,
+      "preprocess_ms": 1.7232500249519944
+    },
+    {
+      "end_to_end_ms": 71.08758401591331,
+      "image_id": 18231,
+      "inference_ms": 18.436582991853356,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.171375021338463,
+      "preprocess_ms": 1.5988749801181257
+    },
+    {
+      "end_to_end_ms": 71.252541965805,
+      "image_id": 5867,
+      "inference_ms": 19.632124982308596,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 1.4682089677080512,
+      "preprocess_ms": 1.9901249906979501
+    },
+    {
+      "end_to_end_ms": 66.7428330052644,
+      "image_id": 21136,
+      "inference_ms": 18.511708010919392,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 1.3853749842382967,
+      "preprocess_ms": 2.0030830055475235
+    },
+    {
+      "end_to_end_ms": 71.37625000905246,
+      "image_id": 7709,
+      "inference_ms": 17.28129101684317,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.160291991662234,
+      "preprocess_ms": 2.0312080159783363
+    },
+    {
+      "end_to_end_ms": 73.8688749843277,
+      "image_id": 1995,
+      "inference_ms": 17.219832981936634,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.9489590087905526,
+      "preprocess_ms": 1.8797499942593277
+    },
+    {
+      "end_to_end_ms": 69.82079095905647,
+      "image_id": 23307,
+      "inference_ms": 17.897500016260892,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.8303330182097852,
+      "preprocess_ms": 1.893332984764129
+    },
+    {
+      "end_to_end_ms": 73.18300002953038,
+      "image_id": 23594,
+      "inference_ms": 17.94799999333918,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587520,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.092666040174663,
+      "preprocess_ms": 1.9694999791681767
+    },
+    {
+      "end_to_end_ms": 75.29800001066178,
+      "image_id": 2542,
+      "inference_ms": 20.06324997637421,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.0102090095169842,
+      "preprocess_ms": 2.5320409913547337
+    },
+    {
+      "end_to_end_ms": 72.62391602853313,
+      "image_id": 12812,
+      "inference_ms": 20.211042021401227,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.3925419664010406,
+      "preprocess_ms": 2.355625038035214
+    },
+    {
+      "end_to_end_ms": 65.5545000336133,
+      "image_id": 17641,
+      "inference_ms": 14.386874972842634,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 1.3652080087922513,
+      "preprocess_ms": 1.8781659891828895
+    },
+    {
+      "end_to_end_ms": 65.18112495541573,
+      "image_id": 22703,
+      "inference_ms": 18.594374996609986,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 1.382332993671298,
+      "preprocess_ms": 1.455125049687922
+    },
+    {
+      "end_to_end_ms": 65.65570895327255,
+      "image_id": 10112,
+      "inference_ms": 18.774167052470148,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.030916977673769,
+      "preprocess_ms": 1.5887499903328717
+    },
+    {
+      "end_to_end_ms": 68.38608300313354,
+      "image_id": 4423,
+      "inference_ms": 17.488959012553096,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586752,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.3285840288735926,
+      "preprocess_ms": 1.5650420100428164
+    },
+    {
+      "end_to_end_ms": 67.32816703151911,
+      "image_id": 10310,
+      "inference_ms": 16.30499999737367,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.1259590284898877,
+      "preprocess_ms": 1.7818750347942114
+    },
+    {
+      "end_to_end_ms": 69.25920798676088,
+      "image_id": 9879,
+      "inference_ms": 15.627917018719018,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.155542024411261,
+      "preprocess_ms": 2.6046669809147716
+    },
+    {
+      "end_to_end_ms": 66.894166986458,
+      "image_id": 5543,
+      "inference_ms": 15.747458033729345,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587264,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.3408749839290977,
+      "preprocess_ms": 1.907916972413659
+    },
+    {
+      "end_to_end_ms": 74.15412500267848,
+      "image_id": 18384,
+      "inference_ms": 16.271416970994323,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.247207961976528,
+      "preprocess_ms": 2.3494999622926116
+    },
+    {
+      "end_to_end_ms": 69.40062501234934,
+      "image_id": 7032,
+      "inference_ms": 16.54720801161602,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 3.3197090378962457,
+      "preprocess_ms": 2.0201249863021076
+    },
+    {
+      "end_to_end_ms": 70.42604201706126,
+      "image_id": 19334,
+      "inference_ms": 15.527291980106384,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44587008,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 2.7643750072456896,
+      "preprocess_ms": 2.1185840014368296
+    },
+    {
+      "end_to_end_ms": 64.32495801709592,
+      "image_id": 25710,
+      "inference_ms": 17.56595796905458,
+      "input_shape": [
+        1,
+        3,
+        384,
+        640
+      ],
+      "mps_allocated_bytes": 44586496,
+      "mps_driver_bytes": 144375808,
+      "postprocess_ms": 1.6054159495979548,
+      "preprocess_ms": 2.009916992392391
+    }
+  ],
+  "scope": "Proper subset checkpoint, sequential batch-one still-image benchmark",
+  "seed": 42,
+  "stage_timing": "Explicit torch.mps.synchronize before and after each stage; no reliance on unsynchronized result.speed. End-to-end includes these instrumentation barriers.",
+  "summary": {
+    "end_to_end_ms": {
+      "count": 100,
+      "fps_from_total_time": 14.473133876992641,
+      "mean_ms": 69.09353623748757,
+      "median_ms": 70.03166648792103,
+      "p95_ms": 75.9256729768822
+    },
+    "inference_ms": {
+      "count": 100,
+      "fps_from_total_time": 57.78856033082312,
+      "mean_ms": 17.304462929605506,
+      "median_ms": 17.693332978524268,
+      "p95_ms": 20.66015596210491
+    },
+    "postprocess_ms": {
+      "count": 100,
+      "fps_from_total_time": 381.2929397809077,
+      "mean_ms": 2.622655432787724,
+      "median_ms": 2.691583475098014,
+      "p95_ms": 3.629604130401276
+    },
+    "preprocess_ms": {
+      "count": 100,
+      "fps_from_total_time": 515.6261502285497,
+      "mean_ms": 1.9393896131077781,
+      "median_ms": 1.9223755225539207,
+      "p95_ms": 2.5069847441045567
+    }
+  },
+  "validation_manifest_sha256": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3",
+  "warmup_runs": 10,
+  "weights_bytes": 22502762,
+  "weights_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab"
+}

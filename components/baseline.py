@@ -99,3 +99,16 @@ def render_e1_section():
         st.dataframe(
             load_csv("reports/comparisons/E1_vs_E0/latency.csv"), hide_index=True
         )
+
+
+def render_e2_section():
+    st.subheader("E2: inference resolution study")
+    gate = load_json("reports/comparisons/E2_gateA_v2/gate.json")
+    if not gate:
+        return
+    st.write("Gate A:", gate["status"])
+    st.caption("Retain YOLOv8s 640. No 960 training. Small class-specific gains do not meet the predefined aggregate threshold. Still-image timing is not video FPS.")
+    for name in ["overall", "size_ap", "per_class", "latency"]:
+        data = load_csv(f"reports/comparisons/E2_gateA_v2/{name}.csv")
+        if data is not None:
+            st.dataframe(data, hide_index=True)

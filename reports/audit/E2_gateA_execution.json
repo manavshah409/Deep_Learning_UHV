@@ -1,0 +1,30 @@
+{
+  "status": "completed_gate_A_failed_no_training",
+  "stages": [
+    {
+      "stage": "evaluate_640",
+      "status": "completed",
+      "started_at": "2026-09-17T06:01:25.167525+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "evaluate_960",
+      "status": "completed",
+      "started_at": "2026-09-17T06:04:14.036793+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "benchmark_640",
+      "status": "completed",
+      "started_at": "2026-09-17T06:07:21.567764+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "benchmark_960",
+      "status": "completed",
+      "started_at": "2026-09-17T06:07:32.225586+00:00",
+      "exit_code": 0
+    }
+  ],
+  "training_started": false
+}
