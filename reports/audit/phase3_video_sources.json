@@ -1,0 +1,65 @@
+{
+  "accepted": [
+    {
+      "video_id": "bangalore",
+      "filename": "bangalore_original.webm",
+      "bytes": 15560748,
+      "sha256": "796bcf9e9b6ede9427ea9af306fe7d908ee4a31c89c5efef63a24b5cfb12b18c",
+      "fps": 30.0,
+      "frames": 1224,
+      "width": 1920,
+      "height": 1080,
+      "duration_seconds": 40.8,
+      "codec": "VP80",
+      "title": "Ramana Maharshi Road, Bangalore (2025) 01.webm",
+      "creator": "Gpkp",
+      "uploader": "Gpkp",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ramana_Maharshi_Road,_Bangalore_(2025)_01.webm",
+      "direct_download": "https://upload.wikimedia.org/wikipedia/commons/8/83/Ramana_Maharshi_Road%2C_Bangalore_%282025%29_01.webm",
+      "hosting": "Wikimedia Commons / Wikimedia Foundation",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Ramana Maharshi Road, Bangalore (2025) 01, Gpkp, Wikimedia Commons, CC BY-SA 4.0. Derived 0\u201330 s excerpt, audio removed and re-encoded; annotations added in output. Share adaptations under CC BY-SA 4.0.",
+      "access_date": "2026-09-18",
+      "suitability": "Elevated view of bidirectional urban road at night; headlights/occlusion and minor camera movement; same camera location limits diversity"
+    },
+    {
+      "video_id": "bangalore02",
+      "filename": "bangalore02_original.webm",
+      "bytes": 19155632,
+      "sha256": "fdc7b1cd795fb3529fdf492f193de4c5d99a4cd81d54164dba3efdb89b726aca",
+      "fps": 30.0,
+      "frames": 1237,
+      "width": 1920,
+      "height": 1080,
+      "duration_seconds": 41.233333333333334,
+      "codec": "VP80",
+      "title": "Ramana Maharshi Road, Bangalore (2025) 02.webm",
+      "creator": "Gpkp",
+      "uploader": "Gpkp",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Ramana_Maharshi_Road,_Bangalore_(2025)_02.webm",
+      "direct_download": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ramana_Maharshi_Road%2C_Bangalore_%282025%29_02.webm",
+      "hosting": "Wikimedia Commons / Wikimedia Foundation",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "attribution": "Ramana Maharshi Road, Bangalore (2025) 02, Gpkp, Wikimedia Commons, CC BY-SA 4.0. Derived 0\u201330 s excerpt, audio removed and re-encoded; annotations added in output. Share adaptations under CC BY-SA 4.0.",
+      "access_date": "2026-09-18",
+      "suitability": "Elevated view of bidirectional urban road at night; headlights/occlusion and minor camera movement; same camera location limits diversity"
+    }
+  ],
+  "rejected": [
+    {
+      "video_id": "cuttack",
+      "filename": "cuttack_original.webm",
+      "bytes": 35099101,
+      "sha256": "3e35d10f72a75c9360007bfe8666995c46ee8fd67e1f771cb46bb1bf4167de2f",
+      "fps": 25.0,
+      "frames": 3368,
+      "width": 1080,
+      "height": 606,
+      "duration_seconds": 134.72,
+      "codec": "VP80",
+      "reason": "Decode mismatch/keyframe warnings; no pilot use"
+    }
+  ]
+}

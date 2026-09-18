@@ -1,0 +1,42 @@
+[
+  {
+    "video_id": "bangalore",
+    "source_sha256": "796bcf9e9b6ede9427ea9af306fe7d908ee4a31c89c5efef63a24b5cfb12b18c",
+    "source_decoded_frames": 1224,
+    "reported_frame_count": 1224,
+    "timestamp_interval_ms": [
+      32.999999999992724,
+      34.00000000000364
+    ],
+    "last_timestamp_ms": 40767.0,
+    "start_seconds": 0,
+    "end_seconds": 30,
+    "filename": "bangalore_0_30_v2.mp4",
+    "sha256": "42833cd01527ee03c6bee7b9c6caba5baa75532c57ca3262757dd51f0347dab2",
+    "reencoded": true,
+    "audio_removed": true,
+    "command": ".venv/bin/python scripts/prepare_phase3_clips.py",
+    "codec": "mp4v",
+    "max_one_second_gray_change": 19.221666666666668
+  },
+  {
+    "video_id": "bangalore02",
+    "source_sha256": "fdc7b1cd795fb3529fdf492f193de4c5d99a4cd81d54164dba3efdb89b726aca",
+    "source_decoded_frames": 1232,
+    "reported_frame_count": 1237,
+    "timestamp_interval_ms": [
+      32.999999999992724,
+      34.00000000000364
+    ],
+    "last_timestamp_ms": 41033.0,
+    "start_seconds": 0,
+    "end_seconds": 30,
+    "filename": "bangalore02_0_30_v2.mp4",
+    "sha256": "9cade39514e5beeedbd56c4d18a1cbcc45bac02164b2c7e40f0d180d87f2bebf",
+    "reencoded": true,
+    "audio_removed": true,
+    "command": ".venv/bin/python scripts/prepare_phase3_clips.py",
+    "codec": "mp4v",
+    "max_one_second_gray_change": 27.180416666666666
+  }
+]
