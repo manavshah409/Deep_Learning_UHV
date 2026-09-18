@@ -1,0 +1,14 @@
+{
+  "captured_after_preflight": true,
+  "base_commit": "7e4416e61e880ecbc3b75ed889a8ddd45d1b9577",
+  "source_sha256": {
+    "src/experiments/faster_rcnn.py": "383949a37825bdd75dc5de96e5525f4c5e92d9ff6b9f54f508de10a8187ce9ac",
+    "src/experiments/__init__.py": "536f72eaf44c2b8c0660bbd5c27e67b4cf851d05a931359d6df243817ab3c3ac",
+    "src/experiments/train_frcnn.py": "7a1f6530235a0cc8af0a5673a6e4e84a3398633b74f87624b0c64e10bb55aad5",
+    "src/experiments/accuracy_data.py": "f3e92fe62b7796b700cb35efef08efab305043e91d296eee40a4eafd478c92a4",
+    "src/experiments/frcnn_metrics.py": "a36f5025697e927c8636d538ff19765f78dab448ddeed923e60d42d22d5c1127",
+    "src/training/epoch_timing.py": "6ee6001a95022e983c2f89c4e2c422f5c34331c349373b57977ce6914b0ee414",
+    "configs/accuracy/E3_fasterrcnn.yaml": "52b03d52ded757f1ce35d17aca9f8a4a6222ab5d8e3e1541279d51ebe11d6641"
+  },
+  "execution_exit_code": 0
+}

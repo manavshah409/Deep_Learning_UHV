@@ -1,0 +1,15 @@
+{
+  "requested_device": "mps",
+  "selected_device": "mps",
+  "batch_size": 1,
+  "scope": "one real batch forward/backward/optimizer; not full memory stress test",
+  "losses": {
+    "loss_classifier": 2.7804198265075684,
+    "loss_box_reg": 0.9433347582817078,
+    "loss_objectness": 0.08362755179405212,
+    "loss_rpn_box_reg": 0.050280582159757614
+  },
+  "seconds": 6.397586625000258,
+  "sampled_allocated_bytes": 500543488,
+  "sampled_driver_bytes": 1261191168
+}

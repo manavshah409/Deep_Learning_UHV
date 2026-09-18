@@ -1,0 +1,113 @@
+{
+  "seed": 42,
+  "dataset_version": "data/processed/uvh26_mv_yolo_v1/subsets/baseline_seed42_v2",
+  "parent_manifest_sha256": {
+    "train_manifest.json": "8e4a72413caecc9defee68e75f498b71160b06fb33f30f6cbe2dc8b3677032cf",
+    "val_manifest.json": "fd23d2e417d70a8614b6312cb3eff1deb0ed98f0532269c22878269fdc5959d3"
+  },
+  "class_mapping_sha256": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+  "splits": {
+    "calibration_500": {
+      "file_sha256": "a436b78d561516d61ae2f7eedb4a8acb4a58222d2c13df80411ae807f288c502",
+      "canonical_rows_sha256": "6c8097f485f83ede1b318cfb1f0e368ed97e68f273ca059704582d157098067e",
+      "images": 500,
+      "object_counts": [
+        610,
+        301,
+        236,
+        147,
+        166,
+        253,
+        1035,
+        2920,
+        311,
+        19,
+        30,
+        62,
+        48,
+        10
+      ]
+    },
+    "final_evaluation_1500": {
+      "file_sha256": "6fc3e8928e5e90c3390ab298a234f90ad883d413f292dc04f38b2e63dbe5d0e0",
+      "canonical_rows_sha256": "b905644167c73b2629d2b837b69ea78f285e33eacd4fb4a04e09581171061c97",
+      "images": 1500,
+      "object_counts": [
+        1792,
+        868,
+        792,
+        394,
+        461,
+        680,
+        2981,
+        8704,
+        1011,
+        39,
+        100,
+        216,
+        135,
+        21
+      ]
+    },
+    "preflight_train_128": {
+      "file_sha256": "b5006d09908eb7d2447c88cc367b8f24492ee87a953a48af16a7750db69599ca",
+      "canonical_rows_sha256": "82a3cdaaf94b53949de52ae2fd851160eb2956fb5de3b4f5882d3f464f382a0b",
+      "images": 128,
+      "object_counts": [
+        149,
+        62,
+        70,
+        25,
+        57,
+        79,
+        302,
+        704,
+        112,
+        4,
+        9,
+        21,
+        12,
+        0
+      ]
+    },
+    "preflight_calibration_64": {
+      "file_sha256": "e576c92715f1dcd1a1f206359f3bc62257d435922c15f1813e132b05088eb59b",
+      "canonical_rows_sha256": "01dec5444dd16dcc37120c7e0680c75af18ebf05f4b4213b2832c866a0cb9781",
+      "images": 64,
+      "object_counts": [
+        71,
+        33,
+        23,
+        20,
+        13,
+        23,
+        113,
+        339,
+        35,
+        3,
+        3,
+        13,
+        2,
+        2
+      ]
+    }
+  },
+  "background_id": 0,
+  "foreground_mapping": {
+    "1": "Hatchback",
+    "2": "Sedan",
+    "3": "SUV",
+    "4": "MUV",
+    "5": "Bus",
+    "6": "Truck",
+    "7": "Three-wheeler",
+    "8": "Two-wheeler",
+    "9": "LCV",
+    "10": "Mini-bus",
+    "11": "Tempo-traveller",
+    "12": "Bicycle",
+    "13": "Van",
+    "14": "Others"
+  },
+  "final_evaluation_policy": "No parameter tuning or model evaluation until final comparison; already used in historical E0/E1/E2 model selection, not independent unseen test data"
+}

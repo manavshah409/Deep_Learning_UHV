@@ -1,0 +1,9 @@
+{
+  "method": "Linear extrapolation of one small preflight; not a validated runtime forecast. Dataset/image mix, weighted exposure, MPS compilation/cache, OS load and sleep may change cost.",
+  "train_seconds_per_epoch": 2476.3721067499773,
+  "calibration_seconds_per_epoch": 85.66904785155316,
+  "checkpoint_overhead_seconds": 1.4086595000007947,
+  "total_seconds_per_epoch": 2563.449814101531,
+  "hours_20_epochs": 14.241387856119617,
+  "hours_30_epochs": 21.362081784179427
+}

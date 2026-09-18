@@ -1,0 +1,9 @@
+{
+  "files_sha256": {
+    "summary.json": "a92c66fcb55e802977ed257578c4a2883906ad5a39828dafdf42fab7039d6799",
+    "epoch_001.pth": "7e8bcc54a8d8e85efc02c0879554f1998f6768df88319c94cf5c4025d42bc8c9",
+    "config.json": "10a9dc70651631ec1441db90c2306e9b2b5b37c4de927d6bfc538b3fbac8c0d1",
+    "memory_check.json": "7eb9ad782b01d2e17ae43027fd8f1186a9bbb0d4e70c97a545325f602a99c0f6",
+    "epoch_timing.csv": "dc9fd30e7543a88e58ae5403ef74cb5596fa7828ae2741f61d9247e54a5e2a64"
+  }
+}

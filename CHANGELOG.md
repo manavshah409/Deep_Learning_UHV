@@ -1,3 +1,9 @@
+## Accuracy Improvement Stage A — 2026-09-18
+
+- Added official Faster R-CNN ResNet-50-FPN pipeline, explicit background mapping, capped inverse-square-root image sampling and durable epoch CSV logging.
+- Prepared deterministic 500-calibration/1,500-reserved manifests and distribution diagnostics. Historical validation reuse remains disclosed.
+- Completed one-epoch MPS preflight on 128/64 images in 52.00 s; 125 local tests / 121 repository-deliverable tests passed; no full training or fusion.
+
 # Phase 3 initial delivery — 2026-09-18
 
 - Added hash-verified streaming video detector smoke, immutable outputs, timing and failure records.

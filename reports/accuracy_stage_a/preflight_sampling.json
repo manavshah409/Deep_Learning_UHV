@@ -1,0 +1,7 @@
+{
+  "pool_images": 128,
+  "epoch_draws": 128,
+  "unique_images_drawn": 80,
+  "maximum_repeats": 3,
+  "note": "128 is the selected training pool, not 128 distinct exposures in this weighted epoch"
+}

@@ -32,3 +32,7 @@ data/videos/
 *.avi
 
 *.webm
+
+# Accuracy experiment weights and incomplete preparation evidence
+*.pth
+reports/accuracy_stage_a/protocol_v1/

@@ -1,0 +1,10 @@
+{
+  "status": "ready_for_commit",
+  "preflight_process_exit": 0,
+  "local_tests": 125,
+  "repository_deliverable_tests": 121,
+  "preexisting_uncommitted_phase3_files_preserved": true,
+  "full_training_started": false,
+  "fusion_started": false,
+  "final1500_evaluated": false
+}

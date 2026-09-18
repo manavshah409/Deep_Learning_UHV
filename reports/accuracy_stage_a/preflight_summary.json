@@ -1,0 +1,73 @@
+{
+  "status": "complete",
+  "scope": "pipeline_preflight_not_accuracy",
+  "completed_epochs": 1,
+  "epochs": [
+    {
+      "epoch": 1,
+      "start_utc": "2026-09-18T18:04:54.706800+00:00",
+      "end_utc": "2026-09-18T18:05:46.703707+00:00",
+      "training_seconds": 39.62195370799964,
+      "validation_seconds": 10.965638124998804,
+      "total_epoch_seconds": 51.996251332999236,
+      "cumulative_seconds": 51.9965438750005,
+      "learning_rate": 0.005,
+      "total_training_loss": 1.5591736907990708,
+      "classification_loss": 0.6992732576327398,
+      "box_regression_loss": 0.5747244310332462,
+      "rpn_objectness_loss": 0.1638531031931052,
+      "rpn_box_loss": 0.1213228989399795,
+      "validation_precision": 0.14586188766427213,
+      "validation_recall": 0.1335128121557355,
+      "validation_map50": 0.18441806362579327,
+      "validation_map50_95": 0.10048890974499901,
+      "checkpoint_saved": "epoch_001.pth",
+      "device": "mps",
+      "batch_size": 1,
+      "resize_policy": "short_side480_max_side640",
+      "checkpoint_sha256": "7e8bcc54a8d8e85efc02c0879554f1998f6768df88319c94cf5c4025d42bc8c9",
+      "checkpoint_bytes": 330578251,
+      "validation": {
+        "precision": 0.14586188766427213,
+        "recall": 0.1335128121557355,
+        "map50": 0.18441806362579327,
+        "map50_95": 0.10048890974499901,
+        "images": 64,
+        "objects": 693,
+        "prediction_count": 19200,
+        "class_support": [
+          71,
+          33,
+          23,
+          20,
+          13,
+          23,
+          113,
+          339,
+          35,
+          3,
+          3,
+          13,
+          2,
+          2
+        ],
+        "method": "COCO bbox AP maxDet300; P/R macro over represented GT classes, conf.25 IoU.5 greedy; calibration preflight only, not model-performance estimate"
+      }
+    }
+  ],
+  "memory_check": {
+    "requested_device": "mps",
+    "selected_device": "mps",
+    "batch_size": 1,
+    "scope": "one real batch forward/backward/optimizer; not full memory stress test",
+    "losses": {
+      "loss_classifier": 2.7804198265075684,
+      "loss_box_reg": 0.9433347582817078,
+      "loss_objectness": 0.08362755179405212,
+      "loss_rpn_box_reg": 0.050280582159757614
+    },
+    "seconds": 6.397586625000258,
+    "sampled_allocated_bytes": 500543488,
+    "sampled_driver_bytes": 1261191168
+  }
+}

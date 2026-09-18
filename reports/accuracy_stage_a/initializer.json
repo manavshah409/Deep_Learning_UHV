@@ -1,0 +1,7 @@
+{
+  "source_url": "https://download.pytorch.org/models/fasterrcnn_resnet50_fpn_coco-258fb6c6.pth",
+  "weights_enum": "FasterRCNN_ResNet50_FPN_Weights.COCO_V1",
+  "sha256": "258fb6c638b15964ddcdd1ae0748c5eef1be9e732750120cc857feed3faac384",
+  "bytes": 167502836,
+  "path": "models/torchvision/checkpoints/fasterrcnn_resnet50_fpn_coco-258fb6c6.pth"
+}

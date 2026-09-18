@@ -60,6 +60,24 @@
       "gate_B": "Not entered: Gate A threshold not met; no 960 training",
       "batch_control_note": "E1 physical batch8, recorded startup accumulation8, nbs64; verify actual accumulation and optimizer behavior, do not call physical8 effective8.",
       "report": "docs/phase_reports/PHASE_2_E2_RESOLUTION_ABLATION.md"
+    },
+    {
+      "id": "E3_fasterrcnn_stageA",
+      "status": "one_epoch_preflight_complete_full_training_unstarted",
+      "config": "configs/accuracy/E3_fasterrcnn.yaml",
+      "protocol": "reports/accuracy_stage_a/protocol_v2/protocol.json",
+      "preflight_run": "E3_stageA_preflight_seed42_v1",
+      "preflight_images": [
+        128,
+        64
+      ],
+      "calibration_images": 500,
+      "reserved_evaluation_images": 1500,
+      "sampling": "capped_inverse_sqrt_unique_class_mean_image_weight_max3_exposures",
+      "architecture": "torchvision_fasterrcnn_resnet50_fpn_COCO_V1",
+      "report": "docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_A.md",
+      "full_training_started": false,
+      "fusion_started": false
     }
   ]
 }

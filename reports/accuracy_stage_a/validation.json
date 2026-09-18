@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "completed_epochs": 1,
+  "calibration_images": 500,
+  "reserved_evaluation_images": 1500,
+  "preflight_train": 128,
+  "preflight_validation": 64,
+  "historical_artifacts_unchanged": true,
+  "final1500_model_evaluation_started": false,
+  "full_training_started": false,
+  "model_fusion_started": false
+}
