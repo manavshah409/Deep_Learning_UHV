@@ -1,0 +1,2 @@
+# ByteTrack assignment solver; existing Ultralytics stays frozen.
+lap==0.5.12
