@@ -1,0 +1,100 @@
+{
+  "created_utc": "2026-09-19T13:06:26.802641+00:00",
+  "seed": 42,
+  "selection": "Seeded shuffle; rare-first class-covering anchors; fill in shuffled order",
+  "hashes": {
+    "reports/accuracy_stage_b/train_1000.json": "34fa84707b06acc9261eb2a9f9a186b0436b08d159ed7ae1efa4ea2b0f4e32f8",
+    "reports/accuracy_stage_b/calibration_250.json": "c1137ae07dc3f4bfd58d1d2b66e7a9295890c9e2683fd0eedec5729b2a5c90c1",
+    "configs/accuracy/E3_stage_b.json": "8d2d06c3d848cc86d6c93bbcbfcac61d2e8c1b3d845d548f07f28ab1d7985609",
+    "reports/accuracy_stage_a/protocol_v2/image_sampling_weights.csv": "4649530d621cfedaeaf56a5e947901e7d8e69996c83f7d4a4e544b2e071f3126"
+  },
+  "parents": {
+    "data/processed/uvh26_mv_yolo_v1/subsets/baseline_seed42_v2/train_manifest.json": "8e4a72413caecc9defee68e75f498b71160b06fb33f30f6cbe2dc8b3677032cf",
+    "reports/accuracy_stage_a/protocol_v2/calibration_500.json": "a436b78d561516d61ae2f7eedb4a8acb4a58222d2c13df80411ae807f288c502",
+    "configs/class_mapping.yaml": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8"
+  },
+  "train_objects": [
+    1099,
+    585,
+    473,
+    228,
+    346,
+    422,
+    1862,
+    5571,
+    615,
+    31,
+    61,
+    129,
+    99,
+    18
+  ],
+  "calibration_objects": [
+    305,
+    154,
+    118,
+    67,
+    80,
+    122,
+    484,
+    1538,
+    180,
+    9,
+    16,
+    28,
+    23,
+    8
+  ],
+  "reserved_split_accessed": false,
+  "config": {
+    "seed": 42,
+    "batch_size": 1,
+    "workers": 0,
+    "device": "mps",
+    "min_size": 480,
+    "max_size": 640,
+    "augmentation": "none",
+    "optimizer": "SGD",
+    "learning_rate": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.0005,
+    "maximum_image_repeats_per_epoch": 3,
+    "scheduler": "lr(e) = 0.001 * min(1,e/2) * 0.1**(int(e>=13)+int(e>=18)); e is one-based",
+    "lr_rationale": "Batch-one gradients are noisy; Stage A only established finite losses at 0.005 for 128 updates. Use fivefold lower base LR with two-epoch warm-up as a conservative, unoptimized safety choice. Three epochs cannot validate later decay milestones.",
+    "decision": {
+      "overall_regression_limit_ap": 0.01,
+      "minority_class_ids": [
+        13,
+        9,
+        10,
+        12,
+        11
+      ],
+      "minimum_calibration_objects_for_minority_ap": 10,
+      "rule": "Prefer weighted only with finite losses, no overall AP50 or AP50:95 regression above 0.01, and improved aggregate minority exposure or supported minority macro AP. Require supported minority macro AP not to regress when judging exposure-only benefit. Otherwise prefer unweighted; single-seed three-epoch evidence is provisional."
+    },
+    "scope": "Configuration selection only; 1000 train / 250 calibration. Reserved 1500 never opened. Full 20 epochs requires separate authorization."
+  },
+  "lr_by_epoch": {
+    "1": 0.0005,
+    "2": 0.001,
+    "3": 0.001,
+    "4": 0.001,
+    "5": 0.001,
+    "6": 0.001,
+    "7": 0.001,
+    "8": 0.001,
+    "9": 0.001,
+    "10": 0.001,
+    "11": 0.001,
+    "12": 0.001,
+    "13": 0.0001,
+    "14": 0.0001,
+    "15": 0.0001,
+    "16": 0.0001,
+    "17": 0.0001,
+    "18": 1.0000000000000003e-05,
+    "19": 1.0000000000000003e-05,
+    "20": 1.0000000000000003e-05
+  }
+}

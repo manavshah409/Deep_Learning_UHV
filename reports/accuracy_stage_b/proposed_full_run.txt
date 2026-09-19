@@ -1,0 +1,1 @@
+caffeinate -i .venv/bin/python -m src.experiments.stage_b --sampling unweighted --run-id E3_fasterrcnn_unweighted_20ep_seed42_v1 --allow-full-training

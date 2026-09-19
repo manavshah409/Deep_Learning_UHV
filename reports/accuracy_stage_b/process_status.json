@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-09-19T13:07:41.788235+00:00",
+  "processes": [
+    {
+      "run_id": "E3_stageB_unweighted_3ep_seed42_v1",
+      "returncode": 0,
+      "finished_utc": "2026-09-19T13:26:10.658692+00:00"
+    },
+    {
+      "run_id": "E3_stageB_weighted_3ep_seed42_v1",
+      "returncode": 0,
+      "finished_utc": "2026-09-19T13:43:40.245371+00:00"
+    }
+  ]
+}

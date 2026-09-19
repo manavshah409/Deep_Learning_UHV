@@ -1,0 +1,44 @@
+{
+  "decision": {
+    "selected": "unweighted",
+    "final_epoch_map50_delta": -0.001572667375103698,
+    "final_epoch_map50_95_delta": 0.0044948138626614564,
+    "supported_minority_class_ids": [
+      10,
+      12,
+      11
+    ],
+    "supported_minority_ap_b1": 0.1913687057212219,
+    "supported_minority_ap_b2": 0.17797524881773966,
+    "aggregate_minority_object_exposure_b1": 1014,
+    "aggregate_minority_object_exposure_b2": 1120,
+    "finite_and_nonincreasing_endpoint_loss": true,
+    "overall_regression_within_limit": true,
+    "minority_ap_gain": false,
+    "minority_exposure_gain": true,
+    "interpretation": "Provisional configuration selection from one seed and three epochs; no statistical superiority claim. Unsupported rare classes are excluded from AP selection. Unweighted is the lower-coverage-risk default when the weighted rule does not pass."
+  },
+  "projection": {
+    "unweighted": {
+      "hours_20_epochs": 14.855746366361132,
+      "observed_epoch_scaled_range_hours": [
+        14.574019252077779,
+        15.014464626161114
+      ]
+    },
+    "weighted": {
+      "hours_20_epochs": 14.059492438727789,
+      "observed_epoch_scaled_range_hours": [
+        13.867595958550009,
+        14.198897339133408
+      ]
+    }
+  },
+  "projection_method": "20 * mean(8*1000-image training + 2*250-image calibration + checkpoint/log overhead); planning estimate, not measured full training; no early stopping assumed",
+  "warnings": {
+    "unweighted": [],
+    "weighted": []
+  },
+  "initial_state_sha256": "d1e6d7c12c066be9f3be743461926f63874bc000ed2e9cbd6961eb84e306242f",
+  "scope": "Configuration selection only; full E3/E4/reserved evaluation unstarted"
+}

@@ -1,0 +1,12 @@
+{
+  "tests": {
+    "returncode": 0,
+    "passed": 136,
+    "summary": "136 passed in 6.96s"
+  },
+  "git_deliverable_tests": {
+    "returncode": 0,
+    "passed": 132,
+    "summary": "132 passed in 3.10s"
+  }
+}

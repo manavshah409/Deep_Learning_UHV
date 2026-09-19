@@ -1,0 +1,10 @@
+{
+  "python": "3.12.14",
+  "system": "Darwin",
+  "release": "25.6.0",
+  "machine": "arm64",
+  "torch": "2.14.0",
+  "torchvision": "0.29.0",
+  "mps_fallback_environment": "unset",
+  "measurement_note": "Sequential runs; other test suites deferred until training completes to avoid test contention."
+}

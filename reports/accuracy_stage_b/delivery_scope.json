@@ -1,0 +1,11 @@
+{
+  "branch": "master",
+  "remote": "https://github.com/manavshah409/Deep_Learning_UHV.git",
+  "eligible_scope": "Stage B source, configuration, metadata manifests, summarized numerical results, tests and documentation only",
+  "excluded": "Datasets, generated labels, checkpoints, full runs, caches, secrets, machine-specific paths and the six pre-existing Phase 3 untracked paths",
+  "local_tests": 136,
+  "deliverable_tests": 132,
+  "full_E3_started": false,
+  "E4_fusion_started": false,
+  "reserved_split_evaluation_started": false
+}

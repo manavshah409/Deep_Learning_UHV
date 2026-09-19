@@ -78,6 +78,23 @@
       "report": "docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_A.md",
       "full_training_started": false,
       "fusion_started": false
+    },
+    {
+      "id": "E3_stageB_sampling_pilot",
+      "status": "completed_configuration_selection_only",
+      "run_ids": [
+        "E3_stageB_unweighted_3ep_seed42_v1",
+        "E3_stageB_weighted_3ep_seed42_v1"
+      ],
+      "config": "configs/accuracy/E3_stage_b.json",
+      "report": "docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_B.md",
+      "train_images": 1000,
+      "calibration_images": 250,
+      "epochs_per_pilot": 3,
+      "sampling_choice": "unweighted",
+      "full_E3_started": false,
+      "fusion_started": false,
+      "reserved_evaluation_started": false
     }
   ]
 }

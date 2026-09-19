@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "selected_images_hash_checked": 1250,
+  "all_six_checkpoints_readable": true,
+  "sampling_only_configuration_difference": true,
+  "identical_initial_state": true,
+  "all_six_epoch_losses_finite": true,
+  "historical_files_unchanged": 356,
+  "reserved_manifest_opened": false,
+  "checks": [
+    "frozen parent and protocol hashes",
+    "selected row membership and disjointness",
+    "selected pixel/label integrity",
+    "actual process exits",
+    "six readable hashed checkpoints",
+    "deterministic draw replay and class exposure",
+    "identical initial model and paired configuration",
+    "historical preservation"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "seed": 42, "batch_size": 1, "workers": 0, "device": "mps",
+  "min_size": 480, "max_size": 640, "augmentation": "none",
+  "optimizer": "SGD", "learning_rate": 0.001, "momentum": 0.9,
+  "weight_decay": 0.0005, "maximum_image_repeats_per_epoch": 3,
+  "scheduler": "lr(e) = 0.001 * min(1,e/2) * 0.1**(int(e>=13)+int(e>=18)); e is one-based",
+  "lr_rationale": "Batch-one gradients are noisy; Stage A only established finite losses at 0.005 for 128 updates. Use fivefold lower base LR with two-epoch warm-up as a conservative, unoptimized safety choice. Three epochs cannot validate later decay milestones.",
+  "decision": {"overall_regression_limit_ap": 0.01, "minority_class_ids": [13,9,10,12,11], "minimum_calibration_objects_for_minority_ap": 10,
+    "rule": "Prefer weighted only with finite losses, no overall AP50 or AP50:95 regression above 0.01, and improved aggregate minority exposure or supported minority macro AP. Require supported minority macro AP not to regress when judging exposure-only benefit. Otherwise prefer unweighted; single-seed three-epoch evidence is provisional."},
+  "scope": "Configuration selection only; 1000 train / 250 calibration. Reserved 1500 never opened. Full 20 epochs requires separate authorization."
+}

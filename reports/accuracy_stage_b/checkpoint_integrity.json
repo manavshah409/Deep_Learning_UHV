@@ -1,0 +1,50 @@
+[
+  {
+    "method": "unweighted",
+    "epoch": 1,
+    "path": "runs/E3_stageB_unweighted_3ep_seed42_v1/epoch_001.pth",
+    "sha256": "a21b2757c74315592f310be9af6a67001007b190ea7f1c62bfbc8ce33ed70a93",
+    "bytes": 330580683,
+    "readable": true
+  },
+  {
+    "method": "unweighted",
+    "epoch": 2,
+    "path": "runs/E3_stageB_unweighted_3ep_seed42_v1/epoch_002.pth",
+    "sha256": "295ab9760c68735d7a0194e4841d37a1bbd99d385ce61d4cf2f15af990636b02",
+    "bytes": 330580683,
+    "readable": true
+  },
+  {
+    "method": "unweighted",
+    "epoch": 3,
+    "path": "runs/E3_stageB_unweighted_3ep_seed42_v1/epoch_003.pth",
+    "sha256": "a3951d74c6b50fc2b60193c472b3b611b51bbcb64f01548387f74cef2da560f0",
+    "bytes": 330580683,
+    "readable": true
+  },
+  {
+    "method": "weighted",
+    "epoch": 1,
+    "path": "runs/E3_stageB_weighted_3ep_seed42_v1/epoch_001.pth",
+    "sha256": "986b51aefd563438ce8cecb4807473301f0e38532b77864cf90b2a68615cdd5e",
+    "bytes": 330580683,
+    "readable": true
+  },
+  {
+    "method": "weighted",
+    "epoch": 2,
+    "path": "runs/E3_stageB_weighted_3ep_seed42_v1/epoch_002.pth",
+    "sha256": "b2114ba49513242565e9e62cc2642d78780bb8e05330f502e6aa5e61c903d6bb",
+    "bytes": 330580683,
+    "readable": true
+  },
+  {
+    "method": "weighted",
+    "epoch": 3,
+    "path": "runs/E3_stageB_weighted_3ep_seed42_v1/epoch_003.pth",
+    "sha256": "bd1f3703dd21c43b7209b11530769ca6581b1464ae4c6cda0e2119842bd1f407",
+    "bytes": 330580683,
+    "readable": true
+  }
+]

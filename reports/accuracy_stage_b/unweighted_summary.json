@@ -1,0 +1,630 @@
+{
+  "run_id": "E3_stageB_unweighted_3ep_seed42_v1",
+  "completed_epochs": 3,
+  "initial_state_sha256": "d1e6d7c12c066be9f3be743461926f63874bc000ed2e9cbd6961eb84e306242f",
+  "epochs": [
+    {
+      "epoch": 1,
+      "start_utc": "2026-09-19T13:07:44.320616+00:00",
+      "end_utc": "2026-09-19T13:13:56.188591+00:00",
+      "training_seconds": 325.65163116700205,
+      "validation_seconds": 44.74589783299962,
+      "total_epoch_seconds": 371.8686237499969,
+      "cumulative_seconds": 371.8686281250011,
+      "learning_rate": 0.0005,
+      "total_training_loss": 1.094143532651302,
+      "classification_loss": 0.480247185703367,
+      "box_regression_loss": 0.4747388217265252,
+      "rpn_objectness_loss": 0.07098438957659528,
+      "rpn_box_loss": 0.06817313564481446,
+      "validation_precision": 0.2062140011620257,
+      "validation_recall": 0.33424571635278866,
+      "validation_map50": 0.3032527012601589,
+      "validation_map50_95": 0.1802181422488922,
+      "checkpoint_saved": "epoch_001.pth",
+      "device": "mps",
+      "batch_size": 1,
+      "resize_policy": "min480/max640 aspect preserving",
+      "checkpoint_sha256": "a21b2757c74315592f310be9af6a67001007b190ea7f1c62bfbc8ce33ed70a93",
+      "checkpoint_bytes": 330580683,
+      "metrics": {
+        "per_class": [
+          {
+            "class_id": 0,
+            "support": 305,
+            "precision": 0.3432642487046632,
+            "recall": 0.8688524590163934,
+            "ap50": 0.4750590183062849,
+            "ap50_95": 0.3039668108650615
+          },
+          {
+            "class_id": 1,
+            "support": 154,
+            "precision": 0.24324324324324326,
+            "recall": 0.525974025974026,
+            "ap50": 0.23729209541879773,
+            "ap50_95": 0.15745273777054358
+          },
+          {
+            "class_id": 2,
+            "support": 118,
+            "precision": 0.2602739726027397,
+            "recall": 0.16101694915254236,
+            "ap50": 0.22637876871165655,
+            "ap50_95": 0.1542095867387395
+          },
+          {
+            "class_id": 3,
+            "support": 67,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.11805915806238679,
+            "ap50_95": 0.07073392278886927
+          },
+          {
+            "class_id": 4,
+            "support": 80,
+            "precision": 0.3253968253968254,
+            "recall": 0.5125,
+            "ap50": 0.43107313960032234,
+            "ap50_95": 0.2707010126599321
+          },
+          {
+            "class_id": 5,
+            "support": 122,
+            "precision": 0.3090909090909091,
+            "recall": 0.5573770491803278,
+            "ap50": 0.3894469354252469,
+            "ap50_95": 0.2515706167122453
+          },
+          {
+            "class_id": 6,
+            "support": 484,
+            "precision": 0.5039787798408488,
+            "recall": 0.7851239669421488,
+            "ap50": 0.6971779873632876,
+            "ap50_95": 0.4475592156751063
+          },
+          {
+            "class_id": 7,
+            "support": 1538,
+            "precision": 0.4335399449035813,
+            "recall": 0.8185955786736021,
+            "ap50": 0.7296391614589377,
+            "ap50_95": 0.39827424249117976
+          },
+          {
+            "class_id": 8,
+            "support": 180,
+            "precision": 0.4682080924855491,
+            "recall": 0.45,
+            "ap50": 0.3713955990065612,
+            "ap50_95": 0.23198443275541633
+          },
+          {
+            "class_id": 9,
+            "support": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.0020124860037430367,
+            "ap50_95": 0.0007434312504404196
+          },
+          {
+            "class_id": 10,
+            "support": 16,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.21201051217921893,
+            "ap50_95": 0.11130342030284954
+          },
+          {
+            "class_id": 11,
+            "support": 28,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.3023621234942419,
+            "ap50_95": 0.0975305153733477
+          },
+          {
+            "class_id": 12,
+            "support": 23,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.047171191598841054,
+            "ap50_95": 0.02494025781973265
+          },
+          {
+            "class_id": 13,
+            "support": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.006459641012698372,
+            "ap50_95": 0.0020837882810266764
+          }
+        ],
+        "precision": 0.2062140011620257,
+        "recall": 0.33424571635278866,
+        "map50": 0.3032527012601589,
+        "map50_95": 0.1802181422488922,
+        "images": 250,
+        "objects": 3132,
+        "prediction_count": 73994,
+        "class_support": [
+          305,
+          154,
+          118,
+          67,
+          80,
+          122,
+          484,
+          1538,
+          180,
+          9,
+          16,
+          28,
+          23,
+          8
+        ],
+        "method": "COCO bbox AP maxDet300; P/R macro over represented GT classes, conf.25 IoU.5 greedy; Stage B configuration-selection only; AP is macro over represented classes, not final results"
+      },
+      "sampling": {
+        "total_draws": 1000,
+        "unique_images": 1000,
+        "coverage_percentage": 100.0,
+        "maximum_repetitions": 1,
+        "repetition_histogram": {
+          "1": 1000
+        },
+        "effective_per_class_objects": [
+          1099,
+          585,
+          473,
+          228,
+          346,
+          422,
+          1862,
+          5571,
+          615,
+          31,
+          61,
+          129,
+          99,
+          18
+        ],
+        "effective_per_class_image_exposures": [
+          563,
+          391,
+          333,
+          196,
+          216,
+          318,
+          661,
+          921,
+          394,
+          30,
+          53,
+          118,
+          84,
+          15
+        ],
+        "epoch": 1
+      }
+    },
+    {
+      "epoch": 2,
+      "start_utc": "2026-09-19T13:13:56.192165+00:00",
+      "end_utc": "2026-09-19T13:19:56.270819+00:00",
+      "training_seconds": 317.4270660000002,
+      "validation_seconds": 41.2700435830011,
+      "total_epoch_seconds": 360.0639597909976,
+      "cumulative_seconds": 731.9361307910003,
+      "learning_rate": 0.001,
+      "total_training_loss": 0.7997395460805128,
+      "classification_loss": 0.35466882576420905,
+      "box_regression_loss": 0.3394049888765439,
+      "rpn_objectness_loss": 0.04504925608032499,
+      "rpn_box_loss": 0.060616475359434846,
+      "validation_precision": 0.26050047117281955,
+      "validation_recall": 0.38347403316781936,
+      "validation_map50": 0.3424978277718953,
+      "validation_map50_95": 0.21342646315259528,
+      "checkpoint_saved": "epoch_002.pth",
+      "device": "mps",
+      "batch_size": 1,
+      "resize_policy": "min480/max640 aspect preserving",
+      "checkpoint_sha256": "295ab9760c68735d7a0194e4841d37a1bbd99d385ce61d4cf2f15af990636b02",
+      "checkpoint_bytes": 330580683,
+      "metrics": {
+        "per_class": [
+          {
+            "class_id": 0,
+            "support": 305,
+            "precision": 0.42402826855123676,
+            "recall": 0.7868852459016393,
+            "ap50": 0.4427336513742327,
+            "ap50_95": 0.30191865549484986
+          },
+          {
+            "class_id": 1,
+            "support": 154,
+            "precision": 0.29831932773109243,
+            "recall": 0.461038961038961,
+            "ap50": 0.2831466760152999,
+            "ap50_95": 0.179456941434501
+          },
+          {
+            "class_id": 2,
+            "support": 118,
+            "precision": 0.29464285714285715,
+            "recall": 0.2796610169491525,
+            "ap50": 0.23212941098212958,
+            "ap50_95": 0.16328016964692021
+          },
+          {
+            "class_id": 3,
+            "support": 67,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.1451527204034629,
+            "ap50_95": 0.10622420359342974
+          },
+          {
+            "class_id": 4,
+            "support": 80,
+            "precision": 0.2903225806451613,
+            "recall": 0.675,
+            "ap50": 0.4812122984803841,
+            "ap50_95": 0.32124984073784585
+          },
+          {
+            "class_id": 5,
+            "support": 122,
+            "precision": 0.5512820512820513,
+            "recall": 0.3524590163934426,
+            "ap50": 0.4631678515049549,
+            "ap50_95": 0.2843661198412773
+          },
+          {
+            "class_id": 6,
+            "support": 484,
+            "precision": 0.4819557625145518,
+            "recall": 0.8553719008264463,
+            "ap50": 0.8095996143504856,
+            "ap50_95": 0.5345074766229744
+          },
+          {
+            "class_id": 7,
+            "support": 1538,
+            "precision": 0.5316666666666666,
+            "recall": 0.8296488946684005,
+            "ap50": 0.7795604078999991,
+            "ap50_95": 0.44817555055257263
+          },
+          {
+            "class_id": 8,
+            "support": 180,
+            "precision": 0.38769230769230767,
+            "recall": 0.7,
+            "ap50": 0.5014622750086708,
+            "ap50_95": 0.2975182031116368
+          },
+          {
+            "class_id": 9,
+            "support": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.008023246680614039,
+            "ap50_95": 0.0023676375412543162
+          },
+          {
+            "class_id": 10,
+            "support": 16,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.13924582379307796,
+            "ap50_95": 0.09629032032403971
+          },
+          {
+            "class_id": 11,
+            "support": 28,
+            "precision": 0.3870967741935484,
+            "recall": 0.42857142857142855,
+            "ap50": 0.4367997238310084,
+            "ap50_95": 0.20503972011762697
+          },
+          {
+            "class_id": 12,
+            "support": 23,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.06538499269016529,
+            "ap50_95": 0.04466932930511295
+          },
+          {
+            "class_id": 13,
+            "support": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.007350895792048559,
+            "ap50_95": 0.0029063158122920097
+          }
+        ],
+        "precision": 0.26050047117281955,
+        "recall": 0.38347403316781936,
+        "map50": 0.3424978277718953,
+        "map50_95": 0.21342646315259528,
+        "images": 250,
+        "objects": 3132,
+        "prediction_count": 69543,
+        "class_support": [
+          305,
+          154,
+          118,
+          67,
+          80,
+          122,
+          484,
+          1538,
+          180,
+          9,
+          16,
+          28,
+          23,
+          8
+        ],
+        "method": "COCO bbox AP maxDet300; P/R macro over represented GT classes, conf.25 IoU.5 greedy; Stage B configuration-selection only; AP is macro over represented classes, not final results"
+      },
+      "sampling": {
+        "total_draws": 1000,
+        "unique_images": 1000,
+        "coverage_percentage": 100.0,
+        "maximum_repetitions": 1,
+        "repetition_histogram": {
+          "1": 1000
+        },
+        "effective_per_class_objects": [
+          1099,
+          585,
+          473,
+          228,
+          346,
+          422,
+          1862,
+          5571,
+          615,
+          31,
+          61,
+          129,
+          99,
+          18
+        ],
+        "effective_per_class_image_exposures": [
+          563,
+          391,
+          333,
+          196,
+          216,
+          318,
+          661,
+          921,
+          394,
+          30,
+          53,
+          118,
+          84,
+          15
+        ],
+        "epoch": 2
+      }
+    },
+    {
+      "epoch": 3,
+      "start_utc": "2026-09-19T13:19:56.274958+00:00",
+      "end_utc": "2026-09-19T13:26:10.262400+00:00",
+      "training_seconds": 326.0177252499998,
+      "validation_seconds": 46.492457792002824,
+      "total_epoch_seconds": 373.9870981669992,
+      "cumulative_seconds": 1105.9273462910023,
+      "learning_rate": 0.001,
+      "total_training_loss": 0.6594782790572135,
+      "classification_loss": 0.2915014033988118,
+      "box_regression_loss": 0.282622571637854,
+      "rpn_objectness_loss": 0.030913310984062265,
+      "rpn_box_loss": 0.054440993036485454,
+      "validation_precision": 0.23909899038336144,
+      "validation_recall": 0.4426280143726918,
+      "validation_map50": 0.3769762770928542,
+      "validation_map50_95": 0.23409653304561803,
+      "checkpoint_saved": "epoch_003.pth",
+      "device": "mps",
+      "batch_size": 1,
+      "resize_policy": "min480/max640 aspect preserving",
+      "checkpoint_sha256": "a3951d74c6b50fc2b60193c472b3b611b51bbcb64f01548387f74cef2da560f0",
+      "checkpoint_bytes": 330580683,
+      "metrics": {
+        "per_class": [
+          {
+            "class_id": 0,
+            "support": 305,
+            "precision": 0.36312849162011174,
+            "recall": 0.8524590163934426,
+            "ap50": 0.4447858429630314,
+            "ap50_95": 0.29556404404564773
+          },
+          {
+            "class_id": 1,
+            "support": 154,
+            "precision": 0.2551928783382789,
+            "recall": 0.5584415584415584,
+            "ap50": 0.2650553007316032,
+            "ap50_95": 0.1819428277653523
+          },
+          {
+            "class_id": 2,
+            "support": 118,
+            "precision": 0.2020997375328084,
+            "recall": 0.652542372881356,
+            "ap50": 0.2565497950446092,
+            "ap50_95": 0.1769450670062465
+          },
+          {
+            "class_id": 3,
+            "support": 67,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.1526293835200038,
+            "ap50_95": 0.11535499443897891
+          },
+          {
+            "class_id": 4,
+            "support": 80,
+            "precision": 0.5569620253164557,
+            "recall": 0.55,
+            "ap50": 0.5540868560881721,
+            "ap50_95": 0.35511496752514193
+          },
+          {
+            "class_id": 5,
+            "support": 122,
+            "precision": 0.3088803088803089,
+            "recall": 0.6557377049180327,
+            "ap50": 0.4804792546791722,
+            "ap50_95": 0.287791175539897
+          },
+          {
+            "class_id": 6,
+            "support": 484,
+            "precision": 0.5060827250608273,
+            "recall": 0.859504132231405,
+            "ap50": 0.8172436986905066,
+            "ap50_95": 0.45209535767986614
+          },
+          {
+            "class_id": 7,
+            "support": 1538,
+            "precision": 0.5826879271070615,
+            "recall": 0.8315994798439532,
+            "ap50": 0.7970214393508869,
+            "ap50_95": 0.44241321058359573
+          },
+          {
+            "class_id": 8,
+            "support": 180,
+            "precision": 0.30151843817787416,
+            "recall": 0.7722222222222223,
+            "ap50": 0.574269402210641,
+            "ap50_95": 0.36666927669534655
+          },
+          {
+            "class_id": 9,
+            "support": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.040647907720224724,
+            "ap50_95": 0.025347655894347038
+          },
+          {
+            "class_id": 10,
+            "support": 16,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.3514717948808999,
+            "ap50_95": 0.24132440139747768
+          },
+          {
+            "class_id": 11,
+            "support": 28,
+            "precision": 0.2708333333333333,
+            "recall": 0.4642857142857143,
+            "ap50": 0.4200793838729661,
+            "ap50_95": 0.26676991479991713
+          },
+          {
+            "class_id": 12,
+            "support": 23,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.0949118457403211,
+            "ap50_95": 0.06601180096627086
+          },
+          {
+            "class_id": 13,
+            "support": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "ap50": 0.028435973806921404,
+            "ap50_95": 0.0040067683005663894
+          }
+        ],
+        "precision": 0.23909899038336144,
+        "recall": 0.4426280143726918,
+        "map50": 0.3769762770928542,
+        "map50_95": 0.23409653304561803,
+        "images": 250,
+        "objects": 3132,
+        "prediction_count": 66276,
+        "class_support": [
+          305,
+          154,
+          118,
+          67,
+          80,
+          122,
+          484,
+          1538,
+          180,
+          9,
+          16,
+          28,
+          23,
+          8
+        ],
+        "method": "COCO bbox AP maxDet300; P/R macro over represented GT classes, conf.25 IoU.5 greedy; Stage B configuration-selection only; AP is macro over represented classes, not final results"
+      },
+      "sampling": {
+        "total_draws": 1000,
+        "unique_images": 1000,
+        "coverage_percentage": 100.0,
+        "maximum_repetitions": 1,
+        "repetition_histogram": {
+          "1": 1000
+        },
+        "effective_per_class_objects": [
+          1099,
+          585,
+          473,
+          228,
+          346,
+          422,
+          1862,
+          5571,
+          615,
+          31,
+          61,
+          129,
+          99,
+          18
+        ],
+        "effective_per_class_image_exposures": [
+          563,
+          391,
+          333,
+          196,
+          216,
+          318,
+          661,
+          921,
+          394,
+          30,
+          53,
+          118,
+          84,
+          15
+        ],
+        "epoch": 3
+      }
+    }
+  ],
+  "configuration_selection_only": true,
+  "reserved_split_accessed": false
+}

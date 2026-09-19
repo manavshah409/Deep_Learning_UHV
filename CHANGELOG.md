@@ -1,3 +1,9 @@
+## Accuracy Improvement Stage B — 2026-09-19
+
+- Completed paired three-epoch COCO-initialized Faster R-CNN MPS pilots on deterministic 1000/250 train/calibration subsets.
+- Frozen batch-one SGD .001 and two-epoch warm-up with proposed epoch13/18 decays; exported per-class metrics, timings, coverage and all checkpoint hashes.
+- Provisional sampling choice: unweighted; full E3, E4 fusion and reserved1500 evaluation remain unstarted.
+
 ## Accuracy Improvement Stage A — 2026-09-18
 
 - Added official Faster R-CNN ResNet-50-FPN pipeline, explicit background mapping, capped inverse-square-root image sampling and durable epoch CSV logging.

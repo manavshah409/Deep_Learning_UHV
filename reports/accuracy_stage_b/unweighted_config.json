@@ -1,0 +1,45 @@
+{
+  "seed": 42,
+  "batch_size": 1,
+  "workers": 0,
+  "device": "mps",
+  "min_size": 480,
+  "max_size": 640,
+  "augmentation": "none",
+  "optimizer": "SGD",
+  "learning_rate": 0.001,
+  "momentum": 0.9,
+  "weight_decay": 0.0005,
+  "maximum_image_repeats_per_epoch": 3,
+  "scheduler": "lr(e) = 0.001 * min(1,e/2) * 0.1**(int(e>=13)+int(e>=18)); e is one-based",
+  "lr_rationale": "Batch-one gradients are noisy; Stage A only established finite losses at 0.005 for 128 updates. Use fivefold lower base LR with two-epoch warm-up as a conservative, unoptimized safety choice. Three epochs cannot validate later decay milestones.",
+  "decision": {
+    "overall_regression_limit_ap": 0.01,
+    "minority_class_ids": [
+      13,
+      9,
+      10,
+      12,
+      11
+    ],
+    "minimum_calibration_objects_for_minority_ap": 10,
+    "rule": "Prefer weighted only with finite losses, no overall AP50 or AP50:95 regression above 0.01, and improved aggregate minority exposure or supported minority macro AP. Require supported minority macro AP not to regress when judging exposure-only benefit. Otherwise prefer unweighted; single-seed three-epoch evidence is provisional."
+  },
+  "scope": "Configuration selection only; 1000 train / 250 calibration. Reserved 1500 never opened. Full 20 epochs requires separate authorization.",
+  "sampling": "unweighted",
+  "epochs": 3,
+  "train_images": 1000,
+  "calibration_images": 250,
+  "train_sha256": "34fa84707b06acc9261eb2a9f9a186b0436b08d159ed7ae1efa4ea2b0f4e32f8",
+  "calibration_sha256": "c1137ae07dc3f4bfd58d1d2b66e7a9295890c9e2683fd0eedec5729b2a5c90c1",
+  "initializer_sha256": "258fb6c638b15964ddcdd1ae0748c5eef1be9e732750120cc857feed3faac384",
+  "torch": "2.14.0",
+  "config_sha256": "8d2d06c3d848cc86d6c93bbcbfcac61d2e8c1b3d845d548f07f28ab1d7985609",
+  "source_sha256": {
+    "src/experiments/stage_b.py": "b9accb3fb124ab4da3000a11f21f10ce5499c70be1ce04139f4ca059497f3587",
+    "src/experiments/stage_b_metrics.py": "0f009d8a7244c83619e4fbb0d324eb8fbaaa1b8f95f9586326c763fd9b0a2619",
+    "src/experiments/faster_rcnn.py": "383949a37825bdd75dc5de96e5525f4c5e92d9ff6b9f54f508de10a8187ce9ac",
+    "src/experiments/accuracy_data.py": "f3e92fe62b7796b700cb35efef08efab305043e91d296eee40a4eafd478c92a4",
+    "src/experiments/train_frcnn.py": "7a1f6530235a0cc8af0a5673a6e4e84a3398633b74f87624b0c64e10bb55aad5"
+  }
+}
