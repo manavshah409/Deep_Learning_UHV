@@ -95,6 +95,21 @@
       "full_E3_started": false,
       "fusion_started": false,
       "reserved_evaluation_started": false
+    },
+    {
+      "id": "E3_stageC0_epoch_resume",
+      "status": "engineering_validated_full_training_unstarted",
+      "report": "docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_C0.md",
+      "checkpoint_format_version": 2,
+      "local_tests": 175,
+      "targeted_tests": 62,
+      "resume_test_cases": 39,
+      "full_training_started": false,
+      "fusion_started": false,
+      "reserved_evaluation_started": false,
+      "prelaunch_local_tests": 178,
+      "launch_critical_tests": 42,
+      "detached_launcher": "scripts/launch_e3.py"
     }
   ]
 }

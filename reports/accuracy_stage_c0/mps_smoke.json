@@ -1,0 +1,15 @@
+{
+  "engineering_only": true,
+  "device": "mps",
+  "model": "Linear(2,1)",
+  "completed_epochs": 2,
+  "resumed_from_epoch": 1,
+  "mps_rng_saved": true,
+  "mps_rng_roundtrip_equal": true,
+  "optimizer_momentum_devices": [
+    "mps:0"
+  ],
+  "best_epoch": 2,
+  "full_E3_started": false,
+  "reserved_split_accessed": false
+}

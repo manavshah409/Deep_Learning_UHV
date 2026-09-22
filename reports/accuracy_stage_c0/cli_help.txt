@@ -1,0 +1,12 @@
+usage: stage_b.py [-h]
+                  (--prepare | --validate | --run-id RUN_ID | --resume-run-id RESUME_RUN_ID)
+                  [--sampling {unweighted,weighted}] [--allow-full-training]
+
+options:
+  -h, --help            show this help message and exit
+  --prepare
+  --validate
+  --run-id RUN_ID
+  --resume-run-id RESUME_RUN_ID
+  --sampling {unweighted,weighted}
+  --allow-full-training

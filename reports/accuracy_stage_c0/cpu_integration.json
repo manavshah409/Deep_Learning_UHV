@@ -1,0 +1,46 @@
+{
+  "engineering_only": true,
+  "device": "cpu",
+  "model": "Linear(2,1)",
+  "interrupted_completed_epochs": [
+    1,
+    2
+  ],
+  "final_completed_epochs": [
+    1,
+    2,
+    3
+  ],
+  "restored_completed_epoch": 2,
+  "restored_next_epoch": 3,
+  "restored_current_lr": 0.001,
+  "restored_next_lr": 0.001,
+  "cumulative_completed_seconds": 6.0,
+  "timing_note": "Synthetic fixed epoch durations 1+2+3 seconds, not a performance measurement",
+  "best_epoch": 2,
+  "best_metric": 0.3,
+  "exact_model_equality": true,
+  "exact_optimizer_equality": true,
+  "same_scientific_run_directory": true,
+  "scientific_subdirectories": [
+    "resumed",
+    "uninterrupted"
+  ],
+  "checkpoint_sha256": "a4f1ed6d2ce6a85bf8040ab66ac255916d3119cc552a0e9db183e2cc30e410be",
+  "checkpoint_bytes": 18265,
+  "rng_saved": {
+    "python": true,
+    "numpy": true,
+    "torch_cpu": true,
+    "mps": {
+      "get_api": true,
+      "set_api": true,
+      "saved": false,
+      "reason": "CPU experiment"
+    }
+  },
+  "full_E3_started": false,
+  "reserved_split_accessed": false,
+  "failure_evidence_preserved": true,
+  "session_count": 2
+}

@@ -1,3 +1,11 @@
+## Accuracy Improvement Stage C0 — 2026-09-21
+
+- Added a detached E3 supervisor, atomic exit-status evidence and read-only status helper; harmless success/nonzero-exit and duplicate-launch tests passed.
+
+- Added versioned epoch-boundary recovery with optimizer/RNG/schedule restoration, run locks, provenance checks, atomic checkpoint publication and CSV reconciliation.
+- Preserved best/last checkpoints and partial-attempt/failure evidence; new and resume CLI modes are mutually exclusive.
+- Passed 39 new recovery cases, 62 targeted tests and 175 local tests; CPU resumed/uninterrupted states match exactly, and tiny MPS resume smoke passed. No full E3 launch or reserved-split access.
+
 ## Accuracy Improvement Stage B — 2026-09-19
 
 - Completed paired three-epoch COCO-initialized Faster R-CNN MPS pilots on deterministic 1000/250 train/calibration subsets.

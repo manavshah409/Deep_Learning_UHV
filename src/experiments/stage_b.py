@@ -114,9 +114,19 @@ def state_hash(model):
         h.update(name.encode()); h.update(value.detach().cpu().contiguous().numpy().tobytes())
     return h.hexdigest()
 
-def run(method, run_id, full=False):
+def run(method, run_id, full=False, resume=False):
     from src.experiments.stage_b_metrics import evaluate
+    from src.training.epoch_resume import EpochRun, atomic_json, active_clock, FORMAT_VERSION
+    import platform
+    import torchvision
     if not run_id.replace('_','').replace('-','').isalnum(): raise ValueError('Invalid run ID')
+    run_dir = ROOT/'runs'/run_id
+    if resume:
+        if not run_dir.is_dir(): raise FileNotFoundError('Resume requires an existing run')
+        if (run_dir/'COMPLETE.json').exists(): raise ValueError('Completed runs cannot be resumed')
+        method = json.loads((run_dir/'config.json').read_text())['sampling']
+    elif run_dir.exists(): raise FileExistsError('New run ID already exists')
+    if method not in ['unweighted','weighted']: raise ValueError('Unknown sampling method')
     init = verify_protocol()
     if not torch.backends.mps.is_available(): raise RuntimeError('MPS required; no silent CPU fallback')
     cfg = json.loads(CONFIG.read_text())
@@ -124,14 +134,22 @@ def run(method, run_id, full=False):
     val_file = A/'protocol_v2/calibration_500.json' if full else OUT/'calibration_250.json'
     train, val = json.loads(train_file.read_text()), json.loads(val_file.read_text())
     assert_disjoint(train, val)
-    run_dir = ROOT/'runs'/run_id; run_dir.mkdir(exist_ok=False)
-    completed = 0
-    try:
-        cfg.update(sampling=method, epochs=20 if full else 3, train_images=len(train), calibration_images=len(val),
-                   train_sha256=sha256(train_file), calibration_sha256=sha256(val_file), initializer_sha256=init['sha256'],
-                   torch=str(torch.__version__), config_sha256=sha256(CONFIG),
-                   source_sha256={str(p.relative_to(ROOT)):sha256(p) for p in [Path(__file__),ROOT/'src/experiments/stage_b_metrics.py',ROOT/'src/experiments/faster_rcnn.py',ROOT/'src/experiments/accuracy_data.py',ROOT/'src/experiments/train_frcnn.py']})
-        save(run_dir/'config.json', cfg)
+    epochs = 20 if full else 3
+    cfg.update(sampling=method, epochs=epochs, train_images=len(train), calibration_images=len(val),
+        train_manifest=str(train_file.relative_to(ROOT)), calibration_manifest=str(val_file.relative_to(ROOT)),
+        train_sha256=sha256(train_file), calibration_sha256=sha256(val_file), initializer=init,
+        initializer_sha256=init['sha256'], class_mapping_sha256=sha256(ROOT/'configs/class_mapping.yaml'),
+        architecture='torchvision FasterRCNN ResNet50 FPN COCO_V1; default pretrained backbone freezing', output_classes=15,
+        optimizer_definition=dict(name='SGD', lr=cfg['learning_rate'], momentum=cfg['momentum'], weight_decay=cfg['weight_decay']),
+        resize_policy=dict(min_size=cfg['min_size'],max_size=cfg['max_size']), dtype='float32',
+        schedule=dict(definition=cfg['scheduler'], indexing='one-based', scheduler_object=None),
+        lr_by_epoch=[lr(e,cfg['learning_rate']) for e in range(1,epochs+1)], checkpoint_format_version=FORMAT_VERSION,
+        torch=str(torch.__version__), torchvision=str(torchvision.__version__), numpy=np.__version__, python=platform.python_version(),
+        config_sha256=sha256(CONFIG), timing_policy='Completed epoch uptime, includes train/validation/export; excludes checkpoint commit and inter-session downtime; session/calendar times separate',
+        scope='8000 train / 500 calibration full proposal' if full else '1000 train / 250 calibration configuration pilot',
+        source_sha256={str(p.relative_to(ROOT)):sha256(p) for p in [Path(__file__),ROOT/'src/training/epoch_resume.py',ROOT/'src/experiments/stage_b_metrics.py',ROOT/'src/experiments/faster_rcnn.py',ROOT/'src/experiments/accuracy_data.py',ROOT/'src/experiments/train_frcnn.py',ROOT/'src/training/epoch_timing.py']})
+    # The OS lock covers all initialization, restoration, updates and persistence.
+    with EpochRun(run_dir,cfg,resume=resume) as state:
         with (A/'protocol_v2/image_sampling_weights.csv').open() as f:
             weights_by_id = {int(r['image_id']):float(r['weight']) for r in csv.DictReader(f)}
         weights = [weights_by_id[r['image_id']] for r in train]; object_counts = counts(train)
@@ -139,51 +157,56 @@ def run(method, run_id, full=False):
         val_loader = DataLoader(VehicleDataset(DATA,val),batch_size=1,shuffle=False,num_workers=0,collate_fn=collate)
         seeded(cfg['seed']); model = build_model(min_size=cfg['min_size'],max_size=cfg['max_size'])
         initial_hash = state_hash(model)
-        save(run_dir/'initialization.json',dict(initializer=init,initial_model_state_sha256=initial_hash,seed=cfg['seed'],stage_a_checkpoint_used=False))
         model.to('mps'); opt = optimizer(model,cfg)
-        logger = EpochLogger(run_dir/'epoch_timing.csv'); start = time.perf_counter(); epochs = []
-        for epoch in range(1,cfg['epochs']+1):
-            epoch_start = time.perf_counter(); start_utc = utc()
-            indices = draws(method, weights, epoch, cfg['seed'],cfg['maximum_image_repeats_per_epoch'])
-            sampling = exposure(indices,object_counts)
+        if resume:
+            state.restore(model,opt)
+        else:
+            atomic_json(run_dir/'initialization.json',dict(initializer=init,initial_model_state_sha256=initial_hash,seed=cfg['seed'],stage_a_checkpoint_used=False))
+            state.initialize(model,opt)
+        for epoch in range(state.epoch+1,epochs+1):
+            epoch_start=active_clock();start_utc=utc()
+            indices=draws(method,weights,epoch,cfg['seed'],cfg['maximum_image_repeats_per_epoch'])
+            sampling=exposure(indices,object_counts)
             sampling.update(epoch=epoch,draw_image_ids=[train[i]['image_id'] for i in indices])
-            save(run_dir/f'sampling_epoch_{epoch:03d}.json',sampling)
-            for group in opt.param_groups: group['lr'] = lr(epoch,cfg['learning_rate'])
-            loader = DataLoader(dataset,batch_size=1,sampler=indices,num_workers=0,collate_fn=collate)
-            losses=[]; sync('mps'); t=time.perf_counter()
+            atomic_json(run_dir/f'sampling_epoch_{epoch:03d}.json',sampling)
+            for group in opt.param_groups: group['lr']=lr(epoch,cfg['learning_rate'])
+            loader=DataLoader(dataset,batch_size=1,sampler=indices,num_workers=0,collate_fn=collate)
+            losses=[];sync('mps');t=active_clock()
             for images,targets in loader: losses.append(step(model,opt,images,targets,'mps'))
-            sync('mps'); train_seconds=time.perf_counter()-t
+            sync('mps');train_seconds=active_clock()-t
             means={k:float(np.mean([x[k] for x in losses])) for k in losses[0]}
-            save(run_dir/f'losses_epoch_{epoch:03d}.json',dict(mean=means,steps=losses,all_finite=True))
-            t=time.perf_counter(); metrics=evaluate(model,val_loader,'mps'); sync('mps'); val_seconds=time.perf_counter()-t
-            save(run_dir/f'metrics_epoch_{epoch:03d}.json',metrics)
-            checkpoint=run_dir/f'epoch_{epoch:03d}.pth'
-            checksum=save_checkpoint(checkpoint,model,opt,epoch,dict(config=cfg,metrics=metrics,initial_state_sha256=initial_hash))
-            loaded=load_checkpoint(checkpoint,checksum,model)
-            if loaded['epoch']!=epoch or any(not torch.isfinite(v).all() for v in loaded['model'].values()): raise ValueError('Checkpoint integrity failed')
-            del loaded
+            atomic_json(run_dir/f'losses_epoch_{epoch:03d}.json',dict(mean=means,steps=losses,all_finite=True))
+            t=active_clock();metrics=evaluate(model,val_loader,'mps');sync('mps');val_seconds=active_clock()-t
+            atomic_json(run_dir/f'metrics_epoch_{epoch:03d}.json',metrics)
+            total_seconds=active_clock()-epoch_start
             row=dict(epoch=epoch,start_utc=start_utc,end_utc=utc(),training_seconds=train_seconds,validation_seconds=val_seconds,
-                     total_epoch_seconds=time.perf_counter()-epoch_start,cumulative_seconds=time.perf_counter()-start,
-                     learning_rate=lr(epoch,cfg['learning_rate']),total_training_loss=sum(means.values()),
-                     classification_loss=means['loss_classifier'],box_regression_loss=means['loss_box_reg'],
-                     rpn_objectness_loss=means['loss_objectness'],rpn_box_loss=means['loss_rpn_box_reg'],
-                     validation_precision=metrics['precision'],validation_recall=metrics['recall'],validation_map50=metrics['map50'],validation_map50_95=metrics['map50_95'],
-                     checkpoint_saved=checkpoint.name,device='mps',batch_size=1,resize_policy='min480/max640 aspect preserving')
-            logger.append(row); completed=epoch
-            epochs.append(dict(**row,checkpoint_sha256=checksum,checkpoint_bytes=checkpoint.stat().st_size,metrics=metrics,sampling={k:v for k,v in sampling.items() if k!='draw_image_ids'}))
-            save(run_dir/'summary.json',dict(run_id=run_id,completed_epochs=completed,initial_state_sha256=initial_hash,epochs=epochs,configuration_selection_only=not full,reserved_split_accessed=False))
+                total_epoch_seconds=total_seconds,cumulative_seconds=state.cumulative+total_seconds,
+                learning_rate=lr(epoch,cfg['learning_rate']),total_training_loss=sum(means.values()),
+                classification_loss=means['loss_classifier'],box_regression_loss=means['loss_box_reg'],
+                rpn_objectness_loss=means['loss_objectness'],rpn_box_loss=means['loss_rpn_box_reg'],
+                validation_precision=metrics['precision'],validation_recall=metrics['recall'],validation_map50=metrics['map50'],validation_map50_95=metrics['map50_95'],
+                checkpoint_saved=f'epoch_{epoch:03d}.pth',device='mps',batch_size=1,resize_policy='min480/max640 aspect preserving')
+            checkpoint=state.commit(model,opt,row,metrics['map50_95'])
+            atomic_json(run_dir/'summary.json',dict(run_id=run_id,completed_epochs=state.epoch,best_epoch=state.best_epoch,best_metric=state.best_metric,
+                cumulative_active_seconds=state.cumulative,checkpoint=checkpoint,epochs=state.history,
+                configuration_selection_only=not full,reserved_split_accessed=False))
             print(json.dumps(dict(epoch=epoch,train_s=round(train_seconds,2),val_s=round(val_seconds,2),loss=sum(means.values()),map50=metrics['map50'],map50_95=metrics['map50_95'])),flush=True)
-        save(run_dir/'COMPLETE.json',dict(exit_status=0,completed_epochs=completed,end_utc=utc()))
-    except BaseException as error:
-        save(run_dir/'FAILURE.json',dict(error=str(error),traceback=traceback.format_exc(),completed_epochs=completed,utc=utc()))
-        raise
+        state.complete()
+
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('--prepare',action='store_true');p.add_argument('--validate',action='store_true')
-    p.add_argument('--sampling',choices=['unweighted','weighted']);p.add_argument('--run-id');p.add_argument('--allow-full-training',action='store_true')
+    p=argparse.ArgumentParser()
+    mode=p.add_mutually_exclusive_group(required=True)
+    mode.add_argument('--prepare',action='store_true');mode.add_argument('--validate',action='store_true')
+    mode.add_argument('--run-id');mode.add_argument('--resume-run-id')
+    p.add_argument('--sampling',choices=['unweighted','weighted']);p.add_argument('--allow-full-training',action='store_true')
     a=p.parse_args()
     if a.prepare: prepare()
     elif a.validate: verify_protocol(); print('Frozen Stage B input hashes passed; reserved split not accessed')
-    elif a.sampling and a.run_id: run(a.sampling,a.run_id,a.allow_full_training)
-    else: p.error('Choose prepare, validate, or sampling and run-id')
+    elif a.resume_run_id:
+        if a.sampling: p.error('Resume uses the frozen sampling method; do not provide --sampling')
+        run(None,a.resume_run_id,a.allow_full_training,resume=True)
+    elif a.run_id:
+        if not a.sampling: p.error('New-run mode requires --sampling')
+        run(a.sampling,a.run_id,a.allow_full_training)
 if __name__=='__main__': main()

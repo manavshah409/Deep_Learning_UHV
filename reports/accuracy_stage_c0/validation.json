@@ -1,0 +1,13 @@
+{
+  "historical_stage_a_b_config_files_unchanged": 47,
+  "changed": [],
+  "reserved_manifest_not_opened": true,
+  "full_training_run_directory_absent": true,
+  "full_training_launched": false,
+  "tests": 175,
+  "targeted_tests": 62,
+  "resume_cases": 39,
+  "mps_smoke_passed": true,
+  "git_commit_or_push_performed": false,
+  "original_phase3_untracked_files_untouched": true
+}
