@@ -1,0 +1,67 @@
+{
+  "checkpoints": [
+    {
+      "epoch": 1,
+      "sha256": "2da1e5015b0319a7f179faf97a1496c222b287b0556345a76c9791e474b12075",
+      "bytes": 330594397
+    },
+    {
+      "epoch": 2,
+      "sha256": "df5c78eb42a723c36fb9476ba1f37559133b718737be929c36877cc7e1041897",
+      "bytes": 330594781
+    },
+    {
+      "epoch": 3,
+      "sha256": "e917a71c2bf83c07724c0a28b893e459c500d2128c3dbb01c83ad8e3661f8dea",
+      "bytes": 330595101
+    },
+    {
+      "epoch": 4,
+      "sha256": "01dc381e893425745c0ad9938a85112b13fe6959f4da62f18235dc867d329462",
+      "bytes": 330595485
+    },
+    {
+      "epoch": 5,
+      "sha256": "cc891963d5021c018c1d19dc771fdd414a6340c3401f24a8ad412712a4d24733",
+      "bytes": 330595869
+    },
+    {
+      "epoch": 6,
+      "sha256": "72d6b060faffbc098545aad56ae5e5351f93e54bb65d2a27140d87ea6eabf927",
+      "bytes": 330596189
+    }
+  ],
+  "csv_epochs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "checkpoint_best_epoch": 6,
+  "checkpoint_best_metric": 0.40144057587257664,
+  "config_hash": "03dc3eead31d7ac24cda306056cb7d0ae7d1a1d97d7dc133ce2134fb8590b0e2",
+  "run_uuid": "f92b8c3236f74270860f5ada5f8a0980",
+  "source_sha256": {
+    "src/experiments/stage_b.py": "041b3aa48070d5e882cd67705245b2cf6570f0b3f558f004e202c09b75e65f5f",
+    "src/training/epoch_resume.py": "0d6371b2b102022da8448899bb2d2a40bf072aebae456c119cea83a10cc1d4c0",
+    "src/experiments/stage_b_metrics.py": "0f009d8a7244c83619e4fbb0d324eb8fbaaa1b8f95f9586326c763fd9b0a2619",
+    "src/experiments/faster_rcnn.py": "383949a37825bdd75dc5de96e5525f4c5e92d9ff6b9f54f508de10a8187ce9ac",
+    "src/experiments/accuracy_data.py": "f3e92fe62b7796b700cb35efef08efab305043e91d296eee40a4eafd478c92a4",
+    "src/experiments/train_frcnn.py": "7a1f6530235a0cc8af0a5673a6e4e84a3398633b74f87624b0c64e10bb55aad5",
+    "src/training/epoch_timing.py": "6ee6001a95022e983c2f89c4e2c422f5c34331c349373b57977ce6914b0ee414"
+  },
+  "finite_model_optimizer": true,
+  "next_epoch": 7,
+  "current_lr": 0.001,
+  "next_lr": 0.001,
+  "cumulative_active_seconds": 11867.904832333996,
+  "stale_alias_temps": [
+    {
+      "name": "best.pth.dd42d9fe12534ba09ad88ae2cff3afd6.tmp",
+      "inode": 10054401
+    }
+  ],
+  "best_alias_inode": 10054401
+}

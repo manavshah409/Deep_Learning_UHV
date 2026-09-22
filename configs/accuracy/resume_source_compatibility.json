@@ -1,0 +1,29 @@
+{
+  "repairs": [
+    {
+      "id": "E3_alias_same_inode_repair_v1",
+      "run_id": "E3_fasterrcnn_unweighted_20ep_seed42_v1",
+      "original_config_hash": "03dc3eead31d7ac24cda306056cb7d0ae7d1a1d97d7dc133ce2134fb8590b0e2",
+      "original_source_sha256": {
+        "src/experiments/stage_b.py": "041b3aa48070d5e882cd67705245b2cf6570f0b3f558f004e202c09b75e65f5f",
+        "src/training/epoch_resume.py": "0d6371b2b102022da8448899bb2d2a40bf072aebae456c119cea83a10cc1d4c0",
+        "src/experiments/stage_b_metrics.py": "0f009d8a7244c83619e4fbb0d324eb8fbaaa1b8f95f9586326c763fd9b0a2619",
+        "src/experiments/faster_rcnn.py": "383949a37825bdd75dc5de96e5525f4c5e92d9ff6b9f54f508de10a8187ce9ac",
+        "src/experiments/accuracy_data.py": "f3e92fe62b7796b700cb35efef08efab305043e91d296eee40a4eafd478c92a4",
+        "src/experiments/train_frcnn.py": "7a1f6530235a0cc8af0a5673a6e4e84a3398633b74f87624b0c64e10bb55aad5",
+        "src/training/epoch_timing.py": "6ee6001a95022e983c2f89c4e2c422f5c34331c349373b57977ce6914b0ee414"
+      },
+      "approved_execution_source_sha256": {
+        "src/experiments/stage_b.py": "041b3aa48070d5e882cd67705245b2cf6570f0b3f558f004e202c09b75e65f5f",
+        "src/training/epoch_resume.py": "4d2a09d724f4cb2b38076f5302828580911d65934b21b3e4fefc43c0e23ce306",
+        "src/experiments/stage_b_metrics.py": "0f009d8a7244c83619e4fbb0d324eb8fbaaa1b8f95f9586326c763fd9b0a2619",
+        "src/experiments/faster_rcnn.py": "383949a37825bdd75dc5de96e5525f4c5e92d9ff6b9f54f508de10a8187ce9ac",
+        "src/experiments/accuracy_data.py": "f3e92fe62b7796b700cb35efef08efab305043e91d296eee40a4eafd478c92a4",
+        "src/experiments/train_frcnn.py": "7a1f6530235a0cc8af0a5673a6e4e84a3398633b74f87624b0c64e10bb55aad5",
+        "src/training/epoch_timing.py": "6ee6001a95022e983c2f89c4e2c422f5c34331c349373b57977ce6914b0ee414"
+      },
+      "reason": "Hard-link alias publication and explicit recording of this code-only recovery; no scientific setting change",
+      "recovery_checkpoint_sha256": "72d6b060faffbc098545aad56ae5e5351f93e54bb65d2a27140d87ea6eabf927"
+    }
+  ]
+}

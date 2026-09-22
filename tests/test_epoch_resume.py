@@ -357,3 +357,39 @@ def test_foreign_run_checkpoint_refused(tmp_path):
     m,o=model_and_opt()
     with pytest.raises(ValueError,match='different scientific run'):
         with EpochRun(b,config(),resume=True) as state:state.restore(m,o)
+
+
+def test_plateau_best_then_improvement_alias_publication(tmp_path):
+    cfg=config();cfg['lr_by_epoch']=[lr(e) for e in range(1,7)]
+    m,o=model_and_opt();path=tmp_path/'run'
+    with EpochRun(path,cfg) as state:
+        state.initialize(m,o)
+        for e,metric in enumerate([.1,.2,.3,.4,.35,.5],1):
+            for group in o.param_groups:group['lr']=lr(e)
+            state.commit(m,o,timing(state,e),metric)
+        assert state.best_epoch==6
+        for _ in range(4):state._alias(path/'epoch_006.pth','best.pth')
+        assert not list(path.glob('best.pth*.tmp'))
+        assert digest(path/'best.pth')==digest(path/'epoch_006.pth')
+
+
+def test_reviewed_code_repair_keeps_original_provenance(tmp_path,monkeypatch):
+    import src.training.epoch_resume as module
+    cfg=config();cfg['source_sha256']={'engine':'old'};path=tmp_path/'run'
+    m,o=model_and_opt()
+    with EpochRun(path,cfg) as state:state.initialize(m,o);one_epoch(state,m,o,1)
+    original_config=(path/'config.json').read_bytes();original_cp=(path/'epoch_001.pth').read_bytes()
+    changed=copy.deepcopy(cfg);changed['source_sha256']={'engine':'approved-fix'}
+    policy=tmp_path/'policy.json';monkeypatch.setattr(module,'REPAIR_POLICY',policy)
+    atomic_json(policy,{'repairs':[dict(id='test-fix',run_id='run',original_config_hash=canonical_hash(cfg),original_source_sha256=cfg['source_sha256'],approved_execution_source_sha256=changed['source_sha256'])]})
+    m,o=model_and_opt()
+    with EpochRun(path,changed,resume=True) as state:
+        state.restore(m,o);one_epoch(state,m,o,2)
+        assert state.code_repair=='test-fix' and state.configuration==cfg
+    assert (path/'config.json').read_bytes()==original_config and (path/'epoch_001.pth').read_bytes()==original_cp
+    saved=torch.load(path/'epoch_002.pth',weights_only=True)
+    assert saved['configuration']==cfg and saved['execution_source_sha256']==changed['source_sha256']
+    for field,value in [('seed',99),('source_sha256',{'engine':'unapproved'})]:
+        bad=copy.deepcopy(changed);bad[field]=value
+        with pytest.raises(ValueError,match='configuration'):
+            with EpochRun(path,bad,resume=True):pass

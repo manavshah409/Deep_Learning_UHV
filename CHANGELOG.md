@@ -1,3 +1,9 @@
+## E3 checkpoint-publication recovery — 2026-09-23
+
+- Fixed same-inode hard-link alias publication after a best-metric plateau.
+- Added an exact run/config/source-hash repair allowlist while preserving original checkpoint/configuration provenance.
+- Added detached same-run resumption with independent attempt logs and consistent status reporting.
+
 ## Accuracy Improvement Stage C0 — 2026-09-21
 
 - Added a detached E3 supervisor, atomic exit-status evidence and read-only status helper; harmless success/nonzero-exit and duplicate-launch tests passed.

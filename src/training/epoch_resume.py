@@ -20,6 +20,7 @@ import torch
 from src.training.epoch_timing import FIELDS
 
 FORMAT_VERSION = 2
+REPAIR_POLICY = Path(__file__).resolve().parents[2] / 'configs/accuracy/resume_source_compatibility.json'
 
 
 def utc():
@@ -138,6 +139,8 @@ class EpochRun:
         self.path = Path(directory)
         self.configuration = configuration
         self.config_hash = canonical_hash(configuration)
+        self.execution_sources = configuration.get('source_sha256', {})
+        self.code_repair = None
         self.resume_mode = resume
         self.session_id = uuid.uuid4().hex
         self.epoch = 0; self.history = []; self.cumulative = 0.
@@ -155,7 +158,10 @@ class EpochRun:
             if (self.path / 'COMPLETE.json').exists(): raise ValueError('Completed runs cannot be resumed')
             if self.resume_mode:
                 original = json.loads((self.path / 'config.json').read_text())
-                if canonical_hash(original) != self.config_hash: raise ValueError('Scientific configuration/provenance mismatch')
+                if canonical_hash(original) != self.config_hash:
+                    if not self._approved_code_repair(original): raise ValueError('Scientific configuration/provenance mismatch')
+                    self.configuration = original
+                    self.config_hash = canonical_hash(original)
             else:
                 atomic_json(self.path / 'config.json', self.configuration)
                 atomic_json(self.path / 'provenance.json', dict(format_version=FORMAT_VERSION, config_hash=self.config_hash, run_id=self.path.name, run_uuid=uuid.uuid4().hex, created_utc=utc()))
@@ -169,18 +175,33 @@ class EpochRun:
                 (self.path / name).mkdir(exist_ok=True)
             self.started_utc = utc(); self.started_wall = time.time(); self.started_active = active_clock()
             self.session = dict(session_id=self.session_id, pid=os.getpid(), resumed=self.resume_mode,
-                                started_utc=self.started_utc, active_clock=CLOCK_POLICY, status='running')
+                                started_utc=self.started_utc, active_clock=CLOCK_POLICY, status='running',
+                                execution_source_sha256=self.execution_sources, approved_code_repair=self.code_repair)
             atomic_json(self.path / 'sessions' / f'{self.session_id}.json', self.session)
             return self
         except BaseException:
             self.lock.__exit__(None, None, None)
             raise
 
+    def _approved_code_repair(self, original):
+        # Narrow, reviewed code-only exception. Never rewrite frozen config or old checkpoints.
+        current = self.configuration
+        if {k:v for k,v in original.items() if k!='source_sha256'} != {k:v for k,v in current.items() if k!='source_sha256'}:
+            return False
+        if not REPAIR_POLICY.exists(): return False
+        for repair in json.loads(REPAIR_POLICY.read_text())['repairs']:
+            if (repair['run_id']==self.path.name and repair['original_config_hash']==canonical_hash(original)
+                    and repair['original_source_sha256']==original.get('source_sha256')
+                    and repair['approved_execution_source_sha256']==current.get('source_sha256')):
+                self.code_repair=repair['id']
+                return True
+        return False
+
     def _payload(self, model, optimizer, epoch, row, metric, scheduler):
         rates = self.configuration['lr_by_epoch']
         history = self.history + ([row] if row is not None else [])
         improved = metric is not None and (self.best_metric is None or metric > self.best_metric)
-        return dict(format_version=FORMAT_VERSION, run_uuid=self.run_uuid, run_id=self.path.name, configuration=self.configuration, config_hash=self.config_hash,
+        return dict(execution_source_sha256=self.execution_sources, approved_code_repair=self.code_repair, format_version=FORMAT_VERSION, run_uuid=self.run_uuid, run_id=self.path.name, configuration=self.configuration, config_hash=self.config_hash,
             schedule_hash=canonical_hash(self.configuration['schedule']), schedule_definition=self.configuration['schedule'],
             model={k:v.detach().cpu().clone() for k,v in model.state_dict().items()}, optimizer=optimizer.state_dict(),
             scheduler=scheduler.state_dict() if scheduler is not None else None, completed_epoch=epoch, next_epoch=epoch+1,
@@ -272,11 +293,17 @@ class EpochRun:
         if e==len(rows)+1: self._append_row(payload['timing_row'])
 
     def _alias(self, canonical, name):
-        # Hard-link pointers save space. Canonical epoch files are never rewritten.
-        temp = self.path / (name + '.' + self.session_id + '.tmp')
-        os.link(canonical, temp)
-        if digest(temp) != digest(canonical): raise ValueError('Checkpoint alias hash mismatch')
-        os.replace(temp, self.path/name); fsync_directory(self.path)
+        # rename(old,new) is a no-op when both names already refer to one inode.
+        # Skip that case; use a fresh temporary name for every other publication.
+        target = self.path/name
+        if target.exists() and os.path.samefile(canonical,target): return
+        temp = self.path / (name + '.' + self.session_id + '.' + uuid.uuid4().hex + '.tmp')
+        os.link(canonical,temp)
+        if digest(temp)!=digest(canonical): raise ValueError('Checkpoint alias hash mismatch')
+        os.replace(temp,target)
+        # POSIX permits a same-inode rename to leave its source name in place.
+        if temp.exists(): temp.unlink()  # Only this invocation's new temporary link.
+        fsync_directory(self.path)
 
     def _publish(self, payload, path):
         self.epoch = payload['completed_epoch']; self.history = payload['timing_history']

@@ -1,0 +1,10 @@
+{
+  "approved_code_repair": "E3_alias_same_inode_repair_v1",
+  "next_epoch": 7,
+  "scientific_configuration_unchanged": true,
+  "frozen_inputs_and_runtime_versions_match": true,
+  "checkpoint_validated_without_mutating_run": true,
+  "original_config_file_sha256": "898dfce27052e0c56f070196e7c985d0cd394d5b56e76b81e3538e4a3854b394",
+  "original_provenance_file_sha256": "54b53b474944b1ced5590f5dc062992564463688967bd289506fd591a019cd3e",
+  "original_csv_sha256": "4ee0fc7061320843099763b09f06cefebc7b8e686942249a6d14baf7aabfe9da"
+}

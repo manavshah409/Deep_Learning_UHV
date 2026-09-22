@@ -1,3 +1,5 @@
+**E3 recovery:** the original run stopped during alias publication after sealing epoch 6. Checkpoints and timing history verified; publication fix and audited same-run recovery are implemented. [Recovery evidence](docs/phase_reports/E3_CHECKPOINT_ALIAS_RECOVERY.md).
+
 **Accuracy Improvement Stage C0 complete:** safe epoch-boundary resume implemented; 175 local tests and a tiny MPS resume smoke passed. Full E3 remains unstarted. [Resume contract and evidence](docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_C0.md).
 
 **Accuracy Improvement Stage B complete:** paired three-epoch Faster R-CNN pilots on 1,000 training / 250 calibration images; provisional sampling choice **unweighted**. Configuration-selection evidence only; full E3, E4 fusion and reserved-split evaluation remain unstarted. [Measured report](docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_B.md).

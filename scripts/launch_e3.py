@@ -9,6 +9,7 @@ from pathlib import Path
 import subprocess
 import sys
 import time
+import uuid
 from datetime import datetime, timezone
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -40,10 +41,24 @@ def locked(path):
     return False
 
 
-def launch(root,run_id,command,commit):
+def launch(root,run_id,command,commit,resume=False):
+    parent=root/'runs/launches';parent.mkdir(parents=True,exist_ok=True)
+    with (parent/f'.dispatch_{run_id}.lock').open('a+') as guard:
+        fcntl.flock(guard.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)
+        return _launch_locked(root,run_id,command,commit,resume)
+
+
+def _launch_locked(root,run_id,command,commit,resume):
     if not run_id.replace('_','').replace('-','').isalnum():raise ValueError('Invalid run ID')
-    if (root/'runs'/run_id).exists():raise FileExistsError('Scientific run already exists; inspect it before any resume')
-    folder=root/'runs/launches'/run_id
+    run=root/'runs'/run_id; base=root/'runs/launches'/run_id
+    if resume:
+        if not run.is_dir() or (run/'COMPLETE.json').exists():raise ValueError('Resume requires an existing incomplete run')
+        locks=[run/'.run.lock',base/'launcher.lock',*base.glob('resume_*/launcher.lock')]
+        if any(locked(p) for p in locks):raise RuntimeError('Original training or supervisor is still active')
+        folder=base/('resume_'+uuid.uuid4().hex)
+    else:
+        if run.exists():raise FileExistsError('Scientific run already exists; inspect it before any resume')
+        folder=base
     folder.parent.mkdir(parents=True,exist_ok=True)
     folder.mkdir()  # Atomic reservation, never overwrite even a finished launch.
     lock=(folder/'launcher.lock').open('x+')
@@ -55,6 +70,7 @@ def launch(root,run_id,command,commit):
                 cwd=root,stdin=subprocess.DEVNULL,stdout=output,stderr=subprocess.STDOUT,
                 start_new_session=True,close_fds=True,pass_fds=(lock.fileno(),))
         atomic(folder/'supervisor_pid.json',dict(pid=p.pid,launched_utc=utc()))
+        if resume:atomic(base/'latest_attempt.json',dict(folder=folder.name))
     finally:lock.close()  # Child keeps the inherited flock for its full lifetime.
     return dict(status='dispatched',supervisor_pid=p.pid,launch_directory=str(folder.relative_to(root)))
 
@@ -75,7 +91,9 @@ def supervise(folder,fd):
 
 
 def status(root,run_id):
-    run=root/'runs'/run_id;folder=root/'runs/launches'/run_id
+    run=root/'runs'/run_id;base=root/'runs/launches'/run_id
+    latest=read(base/'latest_attempt.json').get('folder')
+    folder=base/latest if latest else base
     state=read(run/'run_state.json');pid=read(folder/'pid.json');exit_info=read(folder/'exit.json')
     run_active=locked(run/'.run.lock');supervisor_active=locked(folder/'launcher.lock')
     active=run_active or supervisor_active
@@ -85,18 +103,19 @@ def status(root,run_id):
     if (run/'epoch_timing.csv').exists():
         with (run/'epoch_timing.csv').open() as f:entries=list(csv.DictReader(f))
     last=entries[-1] if entries else {}
-    completed=state.get('last_completed_epoch',0)
+    completed=int(last['epoch']) if last else state.get('last_completed_epoch',0)
+    state_stale=state.get('last_completed_epoch',0)!=completed
     mean=sum(float(r['total_epoch_seconds']) for r in entries)/len(entries) if entries else 14.86*3600/20
     return dict(status=phase,pid=read(run/'.run.lock').get('pid',pid.get('pid')),launch_utc=pid.get('launch_utc'),
         last_completed_epoch=completed,latest_loss=last.get('total_training_loss'),AP50=last.get('validation_map50'),AP50_95=last.get('validation_map50_95'),
-        best_epoch=state.get('best_epoch'),best_AP50_95=state.get('best_metric'),latest_epoch_seconds=last.get('total_epoch_seconds'),
-        cumulative_active_seconds=state.get('cumulative_active_seconds',0),estimated_remaining_hours=max(0,20-completed)*mean/3600,
+        state_metadata_stale=state_stale,best_epoch=None if state_stale else state.get('best_epoch'),best_AP50_95=None if state_stale else state.get('best_metric'),latest_epoch_seconds=last.get('total_epoch_seconds'),
+        cumulative_active_seconds=float(last['cumulative_seconds']) if last else state.get('cumulative_active_seconds',0),estimated_remaining_hours=max(0,20-completed)*mean/3600,
         estimate_note='At last epoch boundary; before first epoch uses Stage B projection',exit_code=exit_info.get('exit_code'))
 
 
 def main():
     p=argparse.ArgumentParser();mode=p.add_mutually_exclusive_group(required=True)
-    mode.add_argument('--launch',action='store_true');mode.add_argument('--status',action='store_true');mode.add_argument('--supervise',type=Path)
+    mode.add_argument('--launch',action='store_true');mode.add_argument('--resume',action='store_true');mode.add_argument('--status',action='store_true');mode.add_argument('--supervise',type=Path)
     p.add_argument('--lock-fd',type=int);a=p.parse_args()
     if a.supervise:supervise(a.supervise,a.lock_fd);return
     if a.status:print(json.dumps(status(ROOT,RUN_ID),indent=2));return
@@ -109,5 +128,6 @@ def main():
     if "Now drawing from 'AC Power'" not in subprocess.check_output(['pmset','-g','batt'],text=True):raise RuntimeError('AC power required')
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     command=['/usr/bin/caffeinate','-i','-s',sys.executable,'-m','src.experiments.stage_b','--sampling','unweighted','--run-id',RUN_ID,'--allow-full-training']
-    print(json.dumps(launch(ROOT,RUN_ID,command,commit)))
+    if a.resume:command=['/usr/bin/caffeinate','-i','-s',sys.executable,'-m','src.experiments.stage_b','--resume-run-id',RUN_ID,'--allow-full-training']
+    print(json.dumps(launch(ROOT,RUN_ID,command,commit,resume=a.resume)))
 if __name__=='__main__':main()
