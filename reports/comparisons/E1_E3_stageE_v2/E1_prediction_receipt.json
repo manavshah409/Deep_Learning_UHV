@@ -1,0 +1,39 @@
+{
+  "id": "E1_yolov8s_calibration500_common_v2",
+  "model_id": "E1",
+  "checkpoint_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+  "manifest_sha256": "a436b78d561516d61ae2f7eedb4a8acb4a58222d2c13df80411ae807f288c502",
+  "mapping_sha256": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+  "prediction_sha256": "7389243341d9c945e2307ae99cdfd42435bf8949bbe607546db65eda5f7bdbcc",
+  "prediction_bytes": 11309238,
+  "images": 500,
+  "predictions": 43608,
+  "background_excluded": 0,
+  "out_of_frame_rejected": 6,
+  "boxes_clipped": 7930,
+  "seconds": 64.20772279199446,
+  "inference_configuration": {
+    "id": "E1_yolov8s_calibration500_common_v2",
+    "checkpoint": "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt",
+    "sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+    "epoch": 22,
+    "preprocessing": {
+      "kind": "Ultralytics OpenCV BGR decode, stride-aligned rectangular letterbox, RGB CHW float32 /255",
+      "imgsz": 640,
+      "rect": true,
+      "stride": 32,
+      "padding_value": 114,
+      "scaleup": true
+    },
+    "nms_iou": 0.7,
+    "agnostic_nms": false,
+    "device": "mps",
+    "dtype": "float32",
+    "batch": 1,
+    "workers": 0,
+    "score_floor": 0.001,
+    "max_detections": 300,
+    "augmentation": false
+  },
+  "schema_version": "uvh-common-predictions-1"
+}

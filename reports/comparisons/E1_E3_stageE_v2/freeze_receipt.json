@@ -1,0 +1,25 @@
+{
+  "protocol_file": "configs/accuracy/E1_E3_comparison_v1.json",
+  "protocol_file_sha256": "83e9d019fed1d69b2cb1bd2d3104e5d8d9fab25172fd95a5337e8ea33f7123d1",
+  "protocol_canonical_sha256": "2d15fd4edde67eb07b8ddf5b6e1090204fdda28a2b2b4601f366ea8e95f6c199",
+  "artifact_sha256": {
+    "reports/comparisons/E1_E3_stageE_v2/COMPLETE.json": "71e5a7de724ec8bbf39a729ae5c2ce6e13e35ec01cc6cc03d5621165e7a55cec",
+    "reports/comparisons/E1_E3_stageE_v2/E1_confusion.json": "c90edc44e00cf45ae10337436e34e8d6ca33fd8ca92a403868d136636b6437fb",
+    "reports/comparisons/E1_E3_stageE_v2/E1_errors.json": "6c5f975a69667f4cd0f48a7109506adda141aded52b3a3b67f957607dbb19518",
+    "reports/comparisons/E1_E3_stageE_v2/E1_metrics.json": "2f198661bb957a258682b4c441e51aa466baf5da19a5c293fd567ddfeb191dec",
+    "reports/comparisons/E1_E3_stageE_v2/E1_per_class.csv": "248e6b684140e265a71b1aae3c1300b17591bc9693023ef27c90272a004df9f5",
+    "reports/comparisons/E1_E3_stageE_v2/E1_prediction_receipt.json": "0bd8d5eecb61c9a986cff11ac46231319f2dfd52250aa2a0933884645cc8bbec",
+    "reports/comparisons/E1_E3_stageE_v2/E1_threshold_curve.csv": "d7a81d52df59b070a0f05ccdc52fbb46f67f526e5abf7d0b0f6143708d042db3",
+    "reports/comparisons/E1_E3_stageE_v2/E3_confusion.json": "0f0150a76d96251a5aa68f3fe9438c397c069dae40a17fb2e72c59b75b4e134e",
+    "reports/comparisons/E1_E3_stageE_v2/E3_errors.json": "d156790efe77ad3e97378fefddcbca43695c83b05f27776a40b6c6641541f294",
+    "reports/comparisons/E1_E3_stageE_v2/E3_metrics.json": "59496bcf40dc898239d3f85c19407976ba354170038022bb724bc689bfb0392a",
+    "reports/comparisons/E1_E3_stageE_v2/E3_per_class.csv": "7580560fb10e555bc312ac7ef47444203974431fb261c56562d41a30109a139d",
+    "reports/comparisons/E1_E3_stageE_v2/E3_prediction_receipt.json": "f7f0c0822ad4f304902d7dc71df69fd73d720c7c8a8b228b5397317e4763b516",
+    "reports/comparisons/E1_E3_stageE_v2/E3_threshold_curve.csv": "87a59b5a86e583ecffd3fc2828960a353418580afeb98277217dbd757885ec68",
+    "reports/comparisons/E1_E3_stageE_v2/calibration_plan.json": "a36c0af60e150f8610b16afcbd593f2250138095c75b804ebd5a20cf616bdc1f",
+    "reports/comparisons/E1_E3_stageE_v2/complementarity.json": "ee8e9428759a6bf70489a12817a0e5a63769b96cdf1f101d4819f03bde82ad58",
+    "reports/comparisons/E1_E3_stageE_v2/operating_thresholds.json": "d6b76e32cbdabc9b0902132ccc9025abd768731411ebe61e7a44caebd8f1d8a7",
+    "reports/comparisons/E1_E3_stageE_v2/paired_image_recoveries.csv": "a6f8c04434fb9f85b1b7f8d72bcec019776f7d9a48f4d3f8c18df398307e2bf3"
+  },
+  "reserved_accessed": false
+}

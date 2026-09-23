@@ -1,0 +1,19 @@
+{
+  "precision": 0.5362697840680013,
+  "recall": 0.568768236024869,
+  "harmonic_aggregate_f1": 0.552041130842105,
+  "macro_class_f1": 0.546461938382426,
+  "map50": 0.5635613642138032,
+  "map50_95": 0.4290700953563752,
+  "images": 500,
+  "objects": 6148,
+  "predictions_raw": 42811,
+  "predictions_fixed": 7042,
+  "confidence": 0.43,
+  "matching_iou": 0.5,
+  "ap_score_floor": 0.001,
+  "nms_iou": "detector-specific; see inference configuration",
+  "max_detections": 300,
+  "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+  "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+}

@@ -1,0 +1,15 @@
+{
+  "failed_attempt": "E1_yolov8s_calibration500_common_v1",
+  "completed_images": 107,
+  "failed_image_id": 6008,
+  "error": "Positive-area YOLO box lay wholly in letterbox padding; native scale_boxes clipped it to zero height and the invalid-box guard stopped export.",
+  "v1_plan_sha256": "63adf60866fcde7eb4bb80df043df0c32b434ba023d5a4f37adaaa63687d04b1",
+  "evidence": "runs/E1_yolov8s_calibration500_common_v1/coordinate_failure.json",
+  "preserved_source": "runs/E1_yolov8s_calibration500_common_v1/failed_source",
+  "recovery": "Fresh v2 IDs and preregistration. Preserve unclipped mapped YOLO boxes, then apply common explicit out-of-frame rejection with counters. Non-finite or non-positive raw boxes remain fatal; no threshold/metric tuning motivated the repair.",
+  "v2_out_of_frame_rejected": {
+    "E1": 6,
+    "E3": 0
+  },
+  "v2_warnings": []
+}

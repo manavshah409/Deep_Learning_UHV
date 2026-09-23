@@ -1,3 +1,10 @@
+## Accuracy Improvement Stage E — 2026-09-23
+
+- Added fail-closed calibration manifest/path guards, common prediction schema and independent COCO evaluator for E1/E3.
+- Generated fresh immutable calibration500 prediction bundles; preserved a failed padding-coordinate export and repaired the adapter under new v2 IDs with explicit out-of-frame rejection accounting.
+- Selected operating thresholds on a preregistered 100-point macro-F1 grid; exported all curves, class support, confusion/errors and object-level complementarity evidence.
+- Sealed the future matched E1/E3/E4 protocol, paired bootstrap and latency procedure; reserved gate remains closed pending E4 calibration freeze and separate authorization. No reserved access, fusion or training.
+
 ## Accuracy Improvement Stage D — 2026-09-23
 
 - Audited completed 20-epoch E3 and preserved the original/recovery session evidence; selected epoch 13 with finite hash-verified checkpoints.

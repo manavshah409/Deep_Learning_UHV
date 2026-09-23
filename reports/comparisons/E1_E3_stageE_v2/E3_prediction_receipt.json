@@ -1,0 +1,48 @@
+{
+  "id": "E3_fasterrcnn_calibration500_common_v2",
+  "model_id": "E3",
+  "checkpoint_sha256": "2d035a95206475b1e9939c5686a731a2427f84918389a2aa4d59148ed5ba5df9",
+  "manifest_sha256": "a436b78d561516d61ae2f7eedb4a8acb4a58222d2c13df80411ae807f288c502",
+  "mapping_sha256": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+  "prediction_sha256": "1db478fb2bfdab67c3378c3cf02d5b6d6f72809c8231be79649485496c08727c",
+  "prediction_bytes": 11185329,
+  "images": 500,
+  "predictions": 42811,
+  "background_excluded": 0,
+  "out_of_frame_rejected": 0,
+  "boxes_clipped": 0,
+  "seconds": 92.62885441601975,
+  "inference_configuration": {
+    "id": "E3_fasterrcnn_calibration500_common_v2",
+    "checkpoint": "runs/E3_fasterrcnn_unweighted_20ep_seed42_v1/best.pth",
+    "sha256": "2d035a95206475b1e9939c5686a731a2427f84918389a2aa4d59148ed5ba5df9",
+    "epoch": 13,
+    "preprocessing": {
+      "kind": "PIL RGB float32 /255; torchvision normalization and aspect resize with divisible32 batch padding",
+      "short_side": 480,
+      "max_side": 640,
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "nms_iou": 0.5,
+    "rpn_nms_iou": 0.7,
+    "rpn_pre_nms_top_n_test": 1000,
+    "rpn_post_nms_top_n_test": 1000,
+    "device": "mps",
+    "dtype": "float32",
+    "batch": 1,
+    "workers": 0,
+    "score_floor": 0.001,
+    "max_detections": 300,
+    "augmentation": false
+  },
+  "schema_version": "uvh-common-predictions-1"
+}

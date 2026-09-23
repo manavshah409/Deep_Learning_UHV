@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "local_prediction_and_checkpoint_hashes_verified": true,
+  "images_per_model": 500,
+  "reserved_accessed": false,
+  "protocol_canonical_sha256": "2d15fd4edde67eb07b8ddf5b6e1090204fdda28a2b2b4601f366ea8e95f6c199",
+  "E4_gate": "closed pending calibration-only E4 freeze and separate authorization"
+}

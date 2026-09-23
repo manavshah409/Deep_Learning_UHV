@@ -1,0 +1,11 @@
+{
+  "tp": 4789,
+  "fp": 1454,
+  "fn": 1359,
+  "duplicate_predictions": 159,
+  "localization_candidates": 162,
+  "background_candidates": 654,
+  "missed_original_small": 28,
+  "missed_resized_small": 143,
+  "limitations": "Geometric error candidates; not exhaustive mutually exclusive FP causes. Small sizes use original32px and E3-reference-resized16px area; no actual YOLO resize-size comparison."
+}

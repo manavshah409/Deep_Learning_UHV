@@ -1,0 +1,18 @@
+{
+  "deliverable_tests": 200,
+  "seconds": 5.77,
+  "new_comparison_tests": 16,
+  "command": ".venv/bin/python -m pytest -q tests --ignore=tests/test_event_evaluation.py",
+  "excluded": "Existing unrelated untracked Phase3 test only",
+  "ruff": "Passed all seven new Python files",
+  "local_validation": {
+    "passed": true,
+    "local_prediction_and_checkpoint_hashes_verified": true,
+    "images_per_model": 500,
+    "reserved_accessed": false,
+    "protocol_canonical_sha256": "2d15fd4edde67eb07b8ddf5b6e1090204fdda28a2b2b4601f366ea8e95f6c199",
+    "E4_gate": "closed pending calibration-only E4 freeze and separate authorization"
+  },
+  "reserved_accessed": false,
+  "test_isolation_recovery": "Initial suite exposed a global PIL monkeypatch from an Ultralytics import in the new coordinate-parity test. Moved that import to a subprocess; existing corrupt-image test now passes. No evaluator/model/protocol changes."
+}

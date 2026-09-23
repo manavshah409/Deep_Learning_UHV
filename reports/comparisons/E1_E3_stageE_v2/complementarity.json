@@ -1,0 +1,174 @@
+{
+  "thresholds": {
+    "E1": 0.34,
+    "E3": 0.43
+  },
+  "matching_iou": 0.5,
+  "counts": {
+    "both": 4358,
+    "E1_only": 431,
+    "E3_only": 467,
+    "neither": 892
+  },
+  "per_class": [
+    {
+      "class_id": 0,
+      "name": "Hatchback",
+      "gt_support": 610,
+      "meaningful_support": true,
+      "both": 332,
+      "E1_only": 74,
+      "E3_only": 102,
+      "neither": 102
+    },
+    {
+      "class_id": 1,
+      "name": "Sedan",
+      "gt_support": 301,
+      "meaningful_support": true,
+      "both": 125,
+      "E1_only": 35,
+      "E3_only": 34,
+      "neither": 107
+    },
+    {
+      "class_id": 2,
+      "name": "SUV",
+      "gt_support": 236,
+      "meaningful_support": true,
+      "both": 104,
+      "E1_only": 31,
+      "E3_only": 27,
+      "neither": 74
+    },
+    {
+      "class_id": 3,
+      "name": "MUV",
+      "gt_support": 147,
+      "meaningful_support": true,
+      "both": 42,
+      "E1_only": 22,
+      "E3_only": 18,
+      "neither": 65
+    },
+    {
+      "class_id": 4,
+      "name": "Bus",
+      "gt_support": 166,
+      "meaningful_support": true,
+      "both": 103,
+      "E1_only": 17,
+      "E3_only": 12,
+      "neither": 34
+    },
+    {
+      "class_id": 5,
+      "name": "Truck",
+      "gt_support": 253,
+      "meaningful_support": true,
+      "both": 163,
+      "E1_only": 17,
+      "E3_only": 21,
+      "neither": 52
+    },
+    {
+      "class_id": 6,
+      "name": "Three-wheeler",
+      "gt_support": 1035,
+      "meaningful_support": true,
+      "both": 873,
+      "E1_only": 35,
+      "E3_only": 43,
+      "neither": 84
+    },
+    {
+      "class_id": 7,
+      "name": "Two-wheeler",
+      "gt_support": 2920,
+      "meaningful_support": true,
+      "both": 2334,
+      "E1_only": 160,
+      "E3_only": 177,
+      "neither": 249
+    },
+    {
+      "class_id": 8,
+      "name": "LCV",
+      "gt_support": 311,
+      "meaningful_support": true,
+      "both": 212,
+      "E1_only": 19,
+      "E3_only": 24,
+      "neither": 56
+    },
+    {
+      "class_id": 9,
+      "name": "Mini-bus",
+      "gt_support": 19,
+      "meaningful_support": false,
+      "both": 4,
+      "E1_only": 0,
+      "E3_only": 2,
+      "neither": 13
+    },
+    {
+      "class_id": 10,
+      "name": "Tempo-traveller",
+      "gt_support": 30,
+      "meaningful_support": false,
+      "both": 12,
+      "E1_only": 4,
+      "E3_only": 3,
+      "neither": 11
+    },
+    {
+      "class_id": 11,
+      "name": "Bicycle",
+      "gt_support": 62,
+      "meaningful_support": true,
+      "both": 36,
+      "E1_only": 5,
+      "E3_only": 4,
+      "neither": 17
+    },
+    {
+      "class_id": 12,
+      "name": "Van",
+      "gt_support": 48,
+      "meaningful_support": false,
+      "both": 18,
+      "E1_only": 12,
+      "E3_only": 0,
+      "neither": 18
+    },
+    {
+      "class_id": 13,
+      "name": "Others",
+      "gt_support": 10,
+      "meaningful_support": false,
+      "both": 0,
+      "E1_only": 0,
+      "E3_only": 0,
+      "neither": 10
+    }
+  ],
+  "confidence_correlation": {
+    "method": "Pearson on scores for GT objects correctly detected by both; conditional descriptive statistic, not calibrated probability agreement",
+    "objects": 4358,
+    "pearson": 0.4549408685410203
+  },
+  "localization": {
+    "objects": 4358,
+    "E1_mean_iou": 0.9018004329284434,
+    "E3_mean_iou": 0.8733119005427114,
+    "mean_E3_minus_E1": -0.028488532385732013
+  },
+  "prediction_overlap": {
+    "definition": "For every E1 operating-threshold prediction, maximum same-class IoU with any E3 operating prediction in same image; missing candidate gives zero, many-to-one",
+    "E1_predictions": 6243,
+    "mean_max_iou": 0.7389253692060536,
+    "fraction_iou_ge_50": 0.8361364728495916,
+    "fraction_iou_ge_75": 0.7515617491590582
+  },
+  "limitations": "Not a fusion result: oracle unique recoveries do not quantify attainable fusion AP. Rare classes <50 GT are flagged; no significance tests on this calibration analysis."
+}

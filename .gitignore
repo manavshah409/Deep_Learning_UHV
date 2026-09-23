@@ -36,3 +36,6 @@ data/videos/
 # Accuracy experiment weights and incomplete preparation evidence
 *.pth
 reports/accuracy_stage_a/protocol_v1/
+
+# Preserved incomplete Stage E coordinate-export attempt (summary in successful v2).
+reports/comparisons/E1_E3_stageE_v1/

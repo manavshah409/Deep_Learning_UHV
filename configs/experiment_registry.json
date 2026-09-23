@@ -158,6 +158,32 @@
       "reserved_evaluation_started": false,
       "matched_E1_comparison_started": false,
       "fusion_started": false
+    },
+    {
+      "id": "E1_E3_stageE_v2",
+      "status": "calibration_complete_future_reserved_protocol_frozen_gate_closed",
+      "report": "docs/phase_reports/E1_E3_COMPARISON_PROTOCOL.md",
+      "protocol": "configs/accuracy/E1_E3_comparison_v1.json",
+      "protocol_canonical_sha256": "2d15fd4edde67eb07b8ddf5b6e1090204fdda28a2b2b4601f366ea8e95f6c199",
+      "calibration_images": 500,
+      "E1_AP50_95": 0.4828289044955134,
+      "E3_AP50_95": 0.4290700953563752,
+      "operating_thresholds": {
+        "E1": 0.34,
+        "E3": 0.43
+      },
+      "complementarity": {
+        "both": 4358,
+        "E1_only": 431,
+        "E3_only": 467,
+        "neither": 892
+      },
+      "prediction_ids": [
+        "E1_yolov8s_calibration500_common_v2",
+        "E3_fasterrcnn_calibration500_common_v2"
+      ],
+      "reserved_accessed": false,
+      "fusion_started": false
     }
   ]
 }

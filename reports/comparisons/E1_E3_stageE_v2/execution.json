@@ -1,0 +1,8 @@
+{
+  "scientific_completion_verified": true,
+  "supervisor_exit_code": null,
+  "supervisor_note": "Original tool session no longer available after user continuation; not claiming an observed supervisor exit code. Both immutable bundle COMPLETE records, full metrics and successful artifact validation verify scientific completion.",
+  "warnings": [],
+  "failed_v1_exit_code": 1,
+  "calibration_only": true
+}
