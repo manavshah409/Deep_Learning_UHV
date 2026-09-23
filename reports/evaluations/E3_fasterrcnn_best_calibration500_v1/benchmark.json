@@ -1,0 +1,50 @@
+{
+  "device": "mps",
+  "dtype": "float32",
+  "batch": 1,
+  "warmups": 10,
+  "timed_images": 100,
+  "timed_passes": 1,
+  "resize": "short480/max640 aspect preserving",
+  "confidence": 0.25,
+  "model_score_floor": 0.001,
+  "nms": 0.5,
+  "max_detections": 300,
+  "model_loading_seconds_excluded": 0.509588166984031,
+  "parameter_count": 41365786,
+  "checkpoint_bytes": 330600285,
+  "timings": {
+    "preprocessing_ms": {
+      "mean": 28.308462890272494,
+      "median": 28.247500013094395,
+      "p95": 29.6576889406424
+    },
+    "inference_ms": {
+      "mean": 84.59683499007951,
+      "median": 83.08814599877223,
+      "p95": 93.06839820783352
+    },
+    "postprocessing_ms": {
+      "mean": 1.4233721123309806,
+      "median": 1.399521017447114,
+      "p95": 1.5627520697307773
+    },
+    "end_to_end_ms": {
+      "mean": 114.32866999268299,
+      "median": 112.90120851481333,
+      "p95": 122.44993547355989
+    }
+  },
+  "inference_only_images_per_second": 11.82077320170746,
+  "end_to_end_still_images_per_second": 8.746712439355761,
+  "allocated_bytes_sampled_max": 191055872,
+  "driver_bytes_sampled_max": 1243283456,
+  "definitions": {
+    "preprocessing": "File decode, tensor conversion/transfer, model normalization, resizing and batch padding",
+    "inference": "Backbone, RPN and RoI heads INCLUDING their internal proposal/box decoding and NMS",
+    "postprocessing": "Map boxes to original resolution, CPU transfer and confidence .25 filtering",
+    "end_to_end": "Sum of synchronized stages; excludes model load, prior integrity hashes, display/capture, metrics and logging"
+  },
+  "limitations": "Warm filesystem/model; one pass; memory sampled after each image, not peak memory; no video FPS or matched E1 comparison",
+  "split_forward_matches_standard": true
+}

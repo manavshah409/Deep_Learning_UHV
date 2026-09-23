@@ -7,6 +7,8 @@ Date: 13 September 2026
 
 import streamlit as st
 
+from components.e3 import render_e3_section
+
 # Configure wide layout and page metadata
 st.set_page_config(
     page_title="Real-Time Vehicle Detection · Phase 1 Review",
@@ -129,6 +131,7 @@ def main():
     render_baseline_section()
     render_e1_section()
     render_e2_section()
+    render_e3_section()
     render_metrics()
     render_pipeline()
     render_dataset_section()

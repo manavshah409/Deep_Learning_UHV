@@ -1,0 +1,75 @@
+{
+  "correct": 5113,
+  "class_aware_fp": 3310,
+  "class_aware_fn": 1035,
+  "missed_original_small": 23,
+  "missed_resized_small": 113,
+  "duplicate_predictions": 411,
+  "localization_candidates": 486,
+  "background_candidates": 1955,
+  "original_small_support": 72,
+  "resized_small_support": 429,
+  "common_confusions": [
+    {
+      "count": 111,
+      "gt": "Sedan",
+      "prediction": "Hatchback"
+    },
+    {
+      "count": 82,
+      "gt": "Hatchback",
+      "prediction": "Sedan"
+    },
+    {
+      "count": 71,
+      "gt": "SUV",
+      "prediction": "Hatchback"
+    },
+    {
+      "count": 68,
+      "gt": "Hatchback",
+      "prediction": "SUV"
+    },
+    {
+      "count": 45,
+      "gt": "MUV",
+      "prediction": "Hatchback"
+    },
+    {
+      "count": 37,
+      "gt": "Truck",
+      "prediction": "LCV"
+    },
+    {
+      "count": 32,
+      "gt": "LCV",
+      "prediction": "Truck"
+    },
+    {
+      "count": 29,
+      "gt": "MUV",
+      "prediction": "SUV"
+    },
+    {
+      "count": 19,
+      "gt": "Sedan",
+      "prediction": "SUV"
+    },
+    {
+      "count": 17,
+      "gt": "SUV",
+      "prediction": "Sedan"
+    },
+    {
+      "count": 17,
+      "gt": "Hatchback",
+      "prediction": "MUV"
+    },
+    {
+      "count": 16,
+      "gt": "Bus",
+      "prediction": "Truck"
+    }
+  ],
+  "diagnostic_limitations": "Duplicate/localization/background counts are geometric candidates from class-agnostic unmatched predictions, not mutually exhaustive class-aware FP causes. Small is original area<32^2 or resized area<16^2; occlusion is reviewed visually, not an annotation attribute."
+}

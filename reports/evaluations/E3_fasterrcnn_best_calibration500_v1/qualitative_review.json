@@ -1,0 +1,115 @@
+{
+  "reviewed_all_panels": true,
+  "review_method": "Visual comparison of all 13 deterministic GT/prediction panels; additionally inspected full-resolution rare-Others example. Curated coverage sample, not random error prevalence estimate.",
+  "samples": [
+    {
+      "image_id": 8315,
+      "selection_reasons": [
+        "objects"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/8315.jpg",
+      "observations": "Dense stopped traffic: many foreground vehicles match. Redundant overlapping boxes, distant errors and missed/confused partly visible vehicles remain. Dense overlap makes box extent important."
+    },
+    {
+      "image_id": 7790,
+      "selection_reasons": [
+        "small"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/7790.jpg",
+      "observations": "Near three-wheeler and truck are detected, but distant vehicles have extra boxes. A large false truck box spans the foreground camera/support structure: clear background false detection, not just a rare-class issue."
+    },
+    {
+      "image_id": 20269,
+      "selection_reasons": [
+        "two_wheelers"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/20269.jpg",
+      "observations": "Many foreground and middle-distance two-wheelers are correctly detected. Tiny distant motorcycles overlap with redundant predictions; a few GT vehicles remain missed."
+    },
+    {
+      "image_id": 13135,
+      "selection_reasons": [
+        "three_wheelers"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/13135.jpg",
+      "observations": "Most parked/foreground three-wheelers are detected. Extra boxes appear around distant vehicles and adjacent pedestrians/occluded regions. Large near vehicles work better than the crowded background."
+    },
+    {
+      "image_id": 6784,
+      "selection_reasons": [
+        "heavy"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/6784.jpg",
+      "observations": "Several large buses and trucks match. Leftmost partly obscured bus and distant right-side vehicles are missed; overlapping car/body predictions show localization/duplicate issues."
+    },
+    {
+      "image_id": 3969,
+      "selection_reasons": [
+        "mini_bus"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/3969.jpg",
+      "observations": "Two-wheelers and three-wheelers match. Bus/car regions receive conflicting overlapping predictions; the example does not establish reliable Mini-bus recognition despite its selection by Mini-bus support."
+    },
+    {
+      "image_id": 4757,
+      "selection_reasons": [
+        "tempo"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/4757.jpg",
+      "observations": "Some distant vehicles and two-wheelers match, while distant traffic has redundant boxes. The cropped vehicle at the left image boundary receives multiple overlapping class hypotheses."
+    },
+    {
+      "image_id": 4566,
+      "selection_reasons": [
+        "van"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/4566.jpg",
+      "observations": "Near motorcycles and three-wheelers match. Van/truck regions have overlapping class hypotheses and differing box extents; parked foreground truck is not cleanly localized in predictions."
+    },
+    {
+      "image_id": 18073,
+      "selection_reasons": [
+        "others"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/18073.jpg",
+      "observations": "Foreground three-wheeler and motorcycles match. Two annotated Others objects resembling handcarts are missed. The large covered foreground object is annotated Sedan but its visible appearance cannot confirm that identity; record taxonomy/visibility ambiguity separately, without changing GT."
+    },
+    {
+      "image_id": 21566,
+      "selection_reasons": [
+        "overlap_pairs"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/21566.jpg",
+      "observations": "Heavily overlapping queue: many vehicles match, but partly visible motorcycles/vehicles and distant rows show misses and duplicates. Visually confirmed occlusion; overlap-pair ranking was only a selection proxy."
+    },
+    {
+      "image_id": 19266,
+      "selection_reasons": [
+        "misses"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/19266.jpg",
+      "observations": "Dense queue contains many correct large-vehicle detections but several red GT boxes on smaller or partly hidden vehicles. Redundant background boxes and class ambiguity among light vehicles remain."
+    },
+    {
+      "image_id": 10139,
+      "selection_reasons": [
+        "fp"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/10139.jpg",
+      "observations": "FP-selected congested scene: many correct near detections coexist with numerous redundant boxes, distant detections and overlapping car/truck class hypotheses. Visually plausible unannotated distant objects may contribute to some unmatched predictions, but this was not independently adjudicated."
+    },
+    {
+      "image_id": 11427,
+      "selection_reasons": [
+        "sparse"
+      ],
+      "render": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/11427.jpg",
+      "observations": "Sparse road: the single partially cropped edge vehicle is detected and the broad empty road has no extra detections at confidence .25."
+    }
+  ],
+  "annotation_limitations": [
+    "Others is visually heterogeneous; covered/cropped vehicles can have ambiguous class identity.",
+    "Some unmatched distant boxes may reflect missing source annotations; this is a hypothesis, not a relabeling decision or corrected metric.",
+    "No annotation edits; all reported errors retain frozen GT. Occlusion has no explicit GT attribute."
+  ]
+}

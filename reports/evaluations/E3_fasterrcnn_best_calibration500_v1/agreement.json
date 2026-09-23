@@ -1,0 +1,10 @@
+{
+  "tolerance_absolute": 1e-05,
+  "differences": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "map50": 0.0,
+    "map50_95": 0.0
+  },
+  "passed": true
+}

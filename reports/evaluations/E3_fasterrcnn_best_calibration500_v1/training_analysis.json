@@ -1,0 +1,15 @@
+{
+  "epochs": 20,
+  "active_seconds": 39407.97106929304,
+  "calendar_seconds": 41721.797291,
+  "calendar_minus_completed_epoch_seconds": 2313.826221706964,
+  "epoch_mean_seconds": 1970.398553464652,
+  "epoch_sample_std_seconds": 53.552100762281896,
+  "epoch_min_seconds": 1904.3562229170057,
+  "epoch_max_seconds": 2127.9747314999986,
+  "first_loss": 0.7842351615376733,
+  "last_loss": 0.19922015649275251,
+  "epoch12_to13_ap5095_change": 0.04548684274591319,
+  "epoch17_to18_ap5095_change": 0.003654586825995454,
+  "epoch13_to20_ap5095_change": -0.0007465766647954397
+}

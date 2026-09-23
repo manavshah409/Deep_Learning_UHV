@@ -1,0 +1,53 @@
+{
+  "deliverable_tests": {
+    "passed": 184,
+    "seconds": 6.0,
+    "command": ".venv/bin/python -m pytest -q tests --ignore=tests/test_event_evaluation.py",
+    "excluded": "Pre-existing untracked Phase 3 test file only"
+  },
+  "ruff": {
+    "passed": true,
+    "scope": [
+      "scripts/evaluate_e3_stage_d.py",
+      "scripts/render_e3_stage_d.py",
+      "scripts/validate_e3_stage_d.py",
+      "src/evaluation/e3_metrics.py",
+      "components/e3.py",
+      "tests/test_e3_standalone.py"
+    ],
+    "dashboard_app_baseline_codes": {
+      "I001": 1
+    },
+    "dashboard_app_current_codes": {
+      "I001": 1
+    },
+    "dashboard_app_new_diagnostics": 0
+  },
+  "artifact_validator": {
+    "passed": true,
+    "local_checkpoint_and_manifest_checks": true,
+    "epochs": 20,
+    "calibration_images": 500,
+    "benchmark_images": 100,
+    "qualitative_images": 13,
+    "historical_files_verified": 72,
+    "reserved_accessed": false
+  },
+  "dashboard": {
+    "passed": true,
+    "exceptions": [],
+    "E3_calibration_AP50_95": "0.4291",
+    "E3_f1": "0.5309",
+    "scope": "Artifact-only Streamlit AppTest"
+  },
+  "deliverable_tests.txt": {
+    "path": "runs/E3_fasterrcnn_best_calibration500_v1/validation/deliverable_tests.txt",
+    "sha256": "1e837fe9d21a7c32ecfeacc5da5acbb145acdf6f989e65b96c4470369fa43617",
+    "raw_output_not_committed": true
+  },
+  "ruff.txt": {
+    "path": "runs/E3_fasterrcnn_best_calibration500_v1/validation/ruff.txt",
+    "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "raw_output_not_committed": true
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "E3_fasterrcnn_best_calibration500_v1",
+  "status": "completed_calibration_only",
+  "technical_report": "docs/phase_reports/E3_STANDALONE_CALIBRATION_CLOSEOUT.md",
+  "faculty_summary": "docs/faculty_review/E3_STAGE_D_SUMMARY.md",
+  "reproduction": "docs/reproducibility/E3_STANDALONE_CALIBRATION.md",
+  "summary_files": [
+    "metrics.json",
+    "audit.json",
+    "agreement.json",
+    "per_class.csv",
+    "confusion_matrix.json",
+    "pr_curves.npz",
+    "error_summary.json",
+    "qualitative_selection.json",
+    "qualitative_review.json",
+    "benchmark.json",
+    "benchmark_samples.csv",
+    "training_analysis.json",
+    "epoch_timing.csv",
+    "historical_preservation.json"
+  ],
+  "figures": [
+    "training_curves.png",
+    "confusion_matrix.png",
+    "pr_curves.png"
+  ],
+  "local_qualitative_directory": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative",
+  "reserved_accessed": false,
+  "E1_comparison_started": false,
+  "fusion_started": false
+}

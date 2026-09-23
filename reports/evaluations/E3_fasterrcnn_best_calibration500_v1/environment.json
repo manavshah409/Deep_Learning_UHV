@@ -1,0 +1,12 @@
+{
+  "python": "3.12.14",
+  "torch": "2.14.0",
+  "torchvision": "0.29.0",
+  "numpy": "2.5.3",
+  "system": "Darwin",
+  "os_release": "25.6.0",
+  "hardware": {
+    "machdep.cpu.brand_string": "Apple M5",
+    "hw.memsize": "25769803776"
+  }
+}

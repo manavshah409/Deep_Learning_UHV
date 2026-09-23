@@ -1,3 +1,10 @@
+## Accuracy Improvement Stage D — 2026-09-23
+
+- Audited completed 20-epoch E3 and preserved the original/recovery session evidence; selected epoch 13 with finite hash-verified checkpoints.
+- Independently reproduced calibration500 AP50 0.563561 / AP50:95 0.429070 exactly; exported class support, fixed-threshold F1, PR/confusion and qualitative error evidence.
+- Measured deterministic 100-image batch-one MPS timing, training curves and active/calendar time; updated the faculty briefing, dashboard artifacts and reproducibility commands.
+- Reserved1500, matched E1 comparison, fusion and further training remain unstarted. Earlier entries below describe historical stage status.
+
 ## E3 checkpoint-publication recovery — 2026-09-23
 
 - Fixed same-inode hard-link alias publication after a best-metric plateau.

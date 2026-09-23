@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "exceptions": [],
+  "E3_calibration_AP50_95": "0.4291",
+  "E3_f1": "0.5309",
+  "scope": "Artifact-only Streamlit AppTest"
+}

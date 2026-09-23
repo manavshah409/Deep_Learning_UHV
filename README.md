@@ -1,10 +1,8 @@
-**E3 recovery:** the original run stopped during alias publication after sealing epoch 6. Checkpoints and timing history verified; publication fix and audited same-run recovery are implemented. [Recovery evidence](docs/phase_reports/E3_CHECKPOINT_ALIAS_RECOVERY.md).
+**Accuracy Improvement Stage D complete:** E3 Faster R-CNN finished 20/20 epochs (exit 0); epoch 13 selected. Independent **calibration500-only** evaluation: AP50 **0.563561**, AP50:95 **0.429070**, harmonic aggregate F1 **0.530884**; exact agreement with epoch 13. MPS batch-one median/p95 end-to-end **112.90/122.45 ms**, **8.75 still images/s**. These results must not be compared directly with historical YOLO metrics below. Reserved1500 remains unused under the new protocol; no matched E1/E3 comparison or fusion has begun.
 
-**Accuracy Improvement Stage C0 complete:** safe epoch-boundary resume implemented; 175 local tests and a tiny MPS resume smoke passed. Full E3 remains unstarted. [Resume contract and evidence](docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_C0.md).
+[Stage D technical report](docs/phase_reports/E3_STANDALONE_CALIBRATION_CLOSEOUT.md) · [Faculty briefing](docs/faculty_review/E3_STAGE_D_SUMMARY.md) · [Reproduction and validation](docs/reproducibility/E3_STANDALONE_CALIBRATION.md)
 
-**Accuracy Improvement Stage B complete:** paired three-epoch Faster R-CNN pilots on 1,000 training / 250 calibration images; provisional sampling choice **unweighted**. Configuration-selection evidence only; full E3, E4 fusion and reserved-split evaluation remain unstarted. [Measured report](docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_B.md).
-
-**Accuracy Improvement Stage A complete:** official Faster R-CNN ResNet-50-FPN preparation, capped image sampling, frozen 500/1,500 protocol and one-epoch 128/64 preflight passed on MPS (52.00 s). Full training/fusion unstarted; E1 remains selected. [Report](docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_A.md).
+Stage A preparation, Stage B pilots and Stage C0 resume engineering remain preserved historical evidence. E3 recovered from an epoch-6 checkpoint-alias publication failure and completed; [recovery record](docs/phase_reports/E3_CHECKPOINT_ALIAS_RECOVERY.md).
 
 **Phase 3 initial delivery:** architecture/configuration and detector-only video smoke are implemented; 90 tests pass. Tracking/counting and real-video evaluation remain pending suitable clips. [Progress](docs/phase_reports/PHASE_3_INITIAL_PROGRESS.md) · [Architecture](docs/phase_reports/PHASE_3_ARCHITECTURE.md).
 

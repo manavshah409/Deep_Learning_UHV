@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "local_checkpoint_and_manifest_checks": true,
+  "epochs": 20,
+  "calibration_images": 500,
+  "benchmark_images": 100,
+  "qualitative_images": 13,
+  "historical_files_verified": 72,
+  "reserved_accessed": false
+}

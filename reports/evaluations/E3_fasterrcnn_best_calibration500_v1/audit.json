@@ -1,0 +1,323 @@
+{
+  "passed": true,
+  "selected_epoch": 13,
+  "run_uuid": "f92b8c3236f74270860f5ada5f8a0980",
+  "complete": {
+    "completed_epochs": 20,
+    "exit_status": 0,
+    "completed_utc": "2026-09-23T05:33:00.816393+00:00",
+    "session_id": "1c5f369e178e4099b86eab56767bf3f2",
+    "config_hash": "03dc3eead31d7ac24cda306056cb7d0ae7d1a1d97d7dc133ce2134fb8590b0e2"
+  },
+  "config_hash": "03dc3eead31d7ac24cda306056cb7d0ae7d1a1d97d7dc133ce2134fb8590b0e2",
+  "config_file_sha256": "898dfce27052e0c56f070196e7c985d0cd394d5b56e76b81e3538e4a3854b394",
+  "configuration": {
+    "seed": 42,
+    "batch_size": 1,
+    "workers": 0,
+    "device": "mps",
+    "min_size": 480,
+    "max_size": 640,
+    "augmentation": "none",
+    "optimizer": "SGD",
+    "learning_rate": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.0005,
+    "maximum_image_repeats_per_epoch": 3,
+    "scheduler": "lr(e) = 0.001 * min(1,e/2) * 0.1**(int(e>=13)+int(e>=18)); e is one-based",
+    "lr_rationale": "Batch-one gradients are noisy; Stage A only established finite losses at 0.005 for 128 updates. Use fivefold lower base LR with two-epoch warm-up as a conservative, unoptimized safety choice. Three epochs cannot validate later decay milestones.",
+    "decision": {
+      "overall_regression_limit_ap": 0.01,
+      "minority_class_ids": [
+        13,
+        9,
+        10,
+        12,
+        11
+      ],
+      "minimum_calibration_objects_for_minority_ap": 10,
+      "rule": "Prefer weighted only with finite losses, no overall AP50 or AP50:95 regression above 0.01, and improved aggregate minority exposure or supported minority macro AP. Require supported minority macro AP not to regress when judging exposure-only benefit. Otherwise prefer unweighted; single-seed three-epoch evidence is provisional."
+    },
+    "scope": "8000 train / 500 calibration full proposal",
+    "sampling": "unweighted",
+    "epochs": 20,
+    "train_images": 8000,
+    "calibration_images": 500,
+    "train_manifest": "data/processed/uvh26_mv_yolo_v1/subsets/baseline_seed42_v2/train_manifest.json",
+    "calibration_manifest": "reports/accuracy_stage_a/protocol_v2/calibration_500.json",
+    "train_sha256": "8e4a72413caecc9defee68e75f498b71160b06fb33f30f6cbe2dc8b3677032cf",
+    "calibration_sha256": "a436b78d561516d61ae2f7eedb4a8acb4a58222d2c13df80411ae807f288c502",
+    "initializer": {
+      "source_url": "https://download.pytorch.org/models/fasterrcnn_resnet50_fpn_coco-258fb6c6.pth",
+      "weights_enum": "FasterRCNN_ResNet50_FPN_Weights.COCO_V1",
+      "sha256": "258fb6c638b15964ddcdd1ae0748c5eef1be9e732750120cc857feed3faac384",
+      "bytes": 167502836,
+      "path": "models/torchvision/checkpoints/fasterrcnn_resnet50_fpn_coco-258fb6c6.pth"
+    },
+    "initializer_sha256": "258fb6c638b15964ddcdd1ae0748c5eef1be9e732750120cc857feed3faac384",
+    "class_mapping_sha256": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+    "architecture": "torchvision FasterRCNN ResNet50 FPN COCO_V1; default pretrained backbone freezing",
+    "output_classes": 15,
+    "optimizer_definition": {
+      "name": "SGD",
+      "lr": 0.001,
+      "momentum": 0.9,
+      "weight_decay": 0.0005
+    },
+    "resize_policy": {
+      "min_size": 480,
+      "max_size": 640
+    },
+    "dtype": "float32",
+    "schedule": {
+      "definition": "lr(e) = 0.001 * min(1,e/2) * 0.1**(int(e>=13)+int(e>=18)); e is one-based",
+      "indexing": "one-based",
+      "scheduler_object": null
+    },
+    "lr_by_epoch": [
+      0.0005,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      1.0000000000000003e-05,
+      1.0000000000000003e-05,
+      1.0000000000000003e-05
+    ],
+    "checkpoint_format_version": 2,
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "python": "3.12.14",
+    "config_sha256": "8d2d06c3d848cc86d6c93bbcbfcac61d2e8c1b3d845d548f07f28ab1d7985609",
+    "timing_policy": "Completed epoch uptime, includes train/validation/export; excludes checkpoint commit and inter-session downtime; session/calendar times separate",
+    "source_sha256": {
+      "src/experiments/stage_b.py": "041b3aa48070d5e882cd67705245b2cf6570f0b3f558f004e202c09b75e65f5f",
+      "src/training/epoch_resume.py": "0d6371b2b102022da8448899bb2d2a40bf072aebae456c119cea83a10cc1d4c0",
+      "src/experiments/stage_b_metrics.py": "0f009d8a7244c83619e4fbb0d324eb8fbaaa1b8f95f9586326c763fd9b0a2619",
+      "src/experiments/faster_rcnn.py": "383949a37825bdd75dc5de96e5525f4c5e92d9ff6b9f54f508de10a8187ce9ac",
+      "src/experiments/accuracy_data.py": "f3e92fe62b7796b700cb35efef08efab305043e91d296eee40a4eafd478c92a4",
+      "src/experiments/train_frcnn.py": "7a1f6530235a0cc8af0a5673a6e4e84a3398633b74f87624b0c64e10bb55aad5",
+      "src/training/epoch_timing.py": "6ee6001a95022e983c2f89c4e2c422f5c34331c349373b57977ce6914b0ee414"
+    }
+  },
+  "checkpoints": [
+    {
+      "epoch": 1,
+      "sha256": "2da1e5015b0319a7f179faf97a1496c222b287b0556345a76c9791e474b12075",
+      "completed_epoch": 1,
+      "bytes": 330594397,
+      "format_version": 2
+    },
+    {
+      "epoch": 2,
+      "sha256": "df5c78eb42a723c36fb9476ba1f37559133b718737be929c36877cc7e1041897",
+      "completed_epoch": 2,
+      "bytes": 330594781,
+      "format_version": 2
+    },
+    {
+      "epoch": 3,
+      "sha256": "e917a71c2bf83c07724c0a28b893e459c500d2128c3dbb01c83ad8e3661f8dea",
+      "completed_epoch": 3,
+      "bytes": 330595101,
+      "format_version": 2
+    },
+    {
+      "epoch": 4,
+      "sha256": "01dc381e893425745c0ad9938a85112b13fe6959f4da62f18235dc867d329462",
+      "completed_epoch": 4,
+      "bytes": 330595485,
+      "format_version": 2
+    },
+    {
+      "epoch": 5,
+      "sha256": "cc891963d5021c018c1d19dc771fdd414a6340c3401f24a8ad412712a4d24733",
+      "completed_epoch": 5,
+      "bytes": 330595869,
+      "format_version": 2
+    },
+    {
+      "epoch": 6,
+      "sha256": "72d6b060faffbc098545aad56ae5e5351f93e54bb65d2a27140d87ea6eabf927",
+      "completed_epoch": 6,
+      "bytes": 330596189,
+      "format_version": 2
+    },
+    {
+      "epoch": 7,
+      "sha256": "0015bb80e57a711c6987343170169420a744bed599784997ac68c8a84df69511",
+      "completed_epoch": 7,
+      "bytes": 330598109,
+      "format_version": 2
+    },
+    {
+      "epoch": 8,
+      "sha256": "396bbf0e6604fca98bf39757665b0989a51950b2deedd341a6c0bfe3a964056e",
+      "completed_epoch": 8,
+      "bytes": 330598493,
+      "format_version": 2
+    },
+    {
+      "epoch": 9,
+      "sha256": "dd038150e1b60ea624d94628158a43bdac99bc99cedbb62eef158ce8e8452187",
+      "completed_epoch": 9,
+      "bytes": 330598813,
+      "format_version": 2
+    },
+    {
+      "epoch": 10,
+      "sha256": "6331de544aca9f8104c1234dde195d43439192c4b5604042081abf7d501e0ac2",
+      "completed_epoch": 10,
+      "bytes": 330599197,
+      "format_version": 2
+    },
+    {
+      "epoch": 11,
+      "sha256": "a12aead950f48f339432b599fbbfe2b24d68d5daa88194d68b8d1f2aa37e3d4b",
+      "completed_epoch": 11,
+      "bytes": 330599581,
+      "format_version": 2
+    },
+    {
+      "epoch": 12,
+      "sha256": "8f2279822725b1f97103e37ade6682ff327c701665161dbdb2e2b591b9044316",
+      "completed_epoch": 12,
+      "bytes": 330599901,
+      "format_version": 2
+    },
+    {
+      "epoch": 13,
+      "sha256": "2d035a95206475b1e9939c5686a731a2427f84918389a2aa4d59148ed5ba5df9",
+      "completed_epoch": 13,
+      "bytes": 330600285,
+      "format_version": 2
+    },
+    {
+      "epoch": 14,
+      "sha256": "8a5422dd54ae84930a088545252b500149fe2059d8b7768ec6ad2e9c25d29bdb",
+      "completed_epoch": 14,
+      "bytes": 330600605,
+      "format_version": 2
+    },
+    {
+      "epoch": 15,
+      "sha256": "f25295e8d425db80f6ee558b1406a4cdcd48acc972d464807a547a60c13b46a8",
+      "completed_epoch": 15,
+      "bytes": 330600989,
+      "format_version": 2
+    },
+    {
+      "epoch": 16,
+      "sha256": "7909328efe3e6c8ed4837a632adab3ca2ce00fc0cb7a5648f5d4db4b7500242d",
+      "completed_epoch": 16,
+      "bytes": 330601373,
+      "format_version": 2
+    },
+    {
+      "epoch": 17,
+      "sha256": "0af682d0975a7402a50a0c21048b4f5fe025b05db974c5052e1fb85e3d2dcc92",
+      "completed_epoch": 17,
+      "bytes": 330601693,
+      "format_version": 2
+    },
+    {
+      "epoch": 18,
+      "sha256": "b8f59a2fb8179d63b1d188266666aa50afc66308079085f324bf71213080b504",
+      "completed_epoch": 18,
+      "bytes": 330602077,
+      "format_version": 2
+    },
+    {
+      "epoch": 19,
+      "sha256": "540e5c28f660341eb2537d8476a5355a054ed12a246d448e12d3b125ee04b680",
+      "completed_epoch": 19,
+      "bytes": 330602461,
+      "format_version": 2
+    },
+    {
+      "epoch": 20,
+      "sha256": "ae975e629e85125ee19605af7ee9d308fa9684a99f6c3f3e2302f6274690bd89",
+      "completed_epoch": 20,
+      "bytes": 330602781,
+      "format_version": 2
+    }
+  ],
+  "process_history": [
+    {
+      "commit": "7985af2607220282a6f3269d5af353e2e8e86329",
+      "exit_code": 1,
+      "finished_utc": "2026-09-22T21:15:38.035658+00:00"
+    },
+    {
+      "commit": "3a9586b929d4c9f7892d7fd8630c7dc3c7298290",
+      "exit_code": 0,
+      "finished_utc": "2026-09-23T05:33:01.038496+00:00"
+    }
+  ],
+  "sessions": [
+    {
+      "session_id": "1c5f369e178e4099b86eab56767bf3f2",
+      "pid": 58112,
+      "resumed": true,
+      "started_utc": "2026-09-22T21:53:36.364341+00:00",
+      "active_clock": "CLOCK_UPTIME_RAW (excludes sleep)",
+      "status": "complete",
+      "execution_source_sha256": {
+        "src/experiments/stage_b.py": "041b3aa48070d5e882cd67705245b2cf6570f0b3f558f004e202c09b75e65f5f",
+        "src/training/epoch_resume.py": "4d2a09d724f4cb2b38076f5302828580911d65934b21b3e4fefc43c0e23ce306",
+        "src/experiments/stage_b_metrics.py": "0f009d8a7244c83619e4fbb0d324eb8fbaaa1b8f95f9586326c763fd9b0a2619",
+        "src/experiments/faster_rcnn.py": "383949a37825bdd75dc5de96e5525f4c5e92d9ff6b9f54f508de10a8187ce9ac",
+        "src/experiments/accuracy_data.py": "f3e92fe62b7796b700cb35efef08efab305043e91d296eee40a4eafd478c92a4",
+        "src/experiments/train_frcnn.py": "7a1f6530235a0cc8af0a5673a6e4e84a3398633b74f87624b0c64e10bb55aad5",
+        "src/training/epoch_timing.py": "6ee6001a95022e983c2f89c4e2c422f5c34331c349373b57977ce6914b0ee414"
+      },
+      "approved_code_repair": "E3_alias_same_inode_repair_v1",
+      "ended_utc": "2026-09-23T05:33:00.816876+00:00",
+      "wall_seconds": 27564.452533960342,
+      "session_uptime_seconds": 27561.396535208012,
+      "last_completed_epoch": 20,
+      "cumulative_completed_epoch_seconds": 39407.97106929304
+    },
+    {
+      "session_id": "dd42d9fe12534ba09ad88ae2cff3afd6",
+      "pid": 53500,
+      "resumed": false,
+      "started_utc": "2026-09-22T17:57:39.019102+00:00",
+      "active_clock": "CLOCK_UPTIME_RAW (excludes sleep)",
+      "status": "failed",
+      "ended_utc": "2026-09-22T21:15:37.694166+00:00",
+      "wall_seconds": 11878.675070047379,
+      "session_uptime_seconds": 11878.520903750003,
+      "last_completed_epoch": 6,
+      "cumulative_completed_epoch_seconds": 11867.904832333996
+    }
+  ],
+  "failure_history_preserved": true,
+  "current_status": "completed",
+  "active_completed_epoch_seconds": 39407.97106929304,
+  "calendar_seconds": 41721.797291,
+  "checks": [
+    "20 contiguous timing rows",
+    "frozen per-epoch LR",
+    "160000 finite component-loss steps",
+    "20 checkpoint hashes",
+    "best/last readable and all tensors finite",
+    "original and repaired source commits",
+    "manifest/class-map/initializer hashes",
+    "completion plus final process exit zero"
+  ],
+  "reserved_split_accessed": false
+}

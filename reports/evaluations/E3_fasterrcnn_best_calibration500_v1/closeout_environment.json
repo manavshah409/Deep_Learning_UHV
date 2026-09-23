@@ -1,0 +1,18 @@
+{
+  "packages": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "pycocotools": "2.0.11",
+    "Pillow": "12.3.0",
+    "matplotlib": "3.11.1",
+    "pytest": "9.1.1",
+    "ruff": "0.16.7",
+    "streamlit": "1.63.0"
+  },
+  "source_sha256": {
+    "scripts/render_e3_stage_d.py": "73a2e8a3d87556bcf9f00470579efdb14b9fd26fba436d5d57d429c0f1dc6239",
+    "scripts/validate_e3_stage_d.py": "743a393454a0e56dc8fea618964f4c7ff9c2c503f4c7e21556349bec8c78455e",
+    "components/e3.py": "3e083755635bf7c7d28838be44a2c5e74feb5085e15a476afd65e904c4f9b4fc"
+  }
+}

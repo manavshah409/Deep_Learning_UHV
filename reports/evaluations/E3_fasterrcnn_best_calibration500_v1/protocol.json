@@ -1,0 +1,19 @@
+{
+  "id": "E3_fasterrcnn_best_calibration500_v1",
+  "scope": "calibration500 only",
+  "selected_epoch": 13,
+  "numerical_tolerance_absolute": 1e-05,
+  "confidence": 0.25,
+  "matching_iou": 0.5,
+  "ap_score_floor": 0.001,
+  "nms": 0.5,
+  "max_detections": 300,
+  "benchmark_seed": 42,
+  "benchmark_count": 100,
+  "warmups": 10,
+  "reserved_split_accessed": false,
+  "evaluator_source_sha256": {
+    "scripts/evaluate_e3_stage_d.py": "7bd26e085685e0db0526d369f7b96a9b0b0c4a359ed93df1e3a97b6bc2867fb5",
+    "src/evaluation/e3_metrics.py": "7b21cc0d6523fd3974af8212511ce35f35ed446d22d2eec1ded08364d418c264"
+  }
+}

@@ -77,7 +77,8 @@
       "architecture": "torchvision_fasterrcnn_resnet50_fpn_COCO_V1",
       "report": "docs/phase_reports/ACCURACY_IMPROVEMENT_STAGE_A.md",
       "full_training_started": false,
-      "fusion_started": false
+      "fusion_started": false,
+      "historical_stage_snapshot": true
     },
     {
       "id": "E3_stageB_sampling_pilot",
@@ -94,7 +95,8 @@
       "sampling_choice": "unweighted",
       "full_E3_started": false,
       "fusion_started": false,
-      "reserved_evaluation_started": false
+      "reserved_evaluation_started": false,
+      "historical_stage_snapshot": true
     },
     {
       "id": "E3_stageC0_epoch_resume",
@@ -109,7 +111,53 @@
       "reserved_evaluation_started": false,
       "prelaunch_local_tests": 178,
       "launch_critical_tests": 42,
-      "detached_launcher": "scripts/launch_e3.py"
+      "detached_launcher": "scripts/launch_e3.py",
+      "historical_stage_snapshot": true
+    },
+    {
+      "id": "E3_fasterrcnn_unweighted_20ep_seed42_v1",
+      "status": "completed_standalone_calibration_only",
+      "epochs": 20,
+      "exit_code": 0,
+      "selected_epoch": 13,
+      "run_uuid": "f92b8c3236f74270860f5ada5f8a0980",
+      "train_images": 8000,
+      "calibration_images": 500,
+      "sampling": "unweighted",
+      "seed": 42,
+      "report": "docs/phase_reports/E3_STANDALONE_CALIBRATION_CLOSEOUT.md",
+      "evaluation_id": "E3_fasterrcnn_best_calibration500_v1",
+      "metrics": {
+        "precision": 0.456161013331201,
+        "recall": 0.634882026193483,
+        "harmonic_aggregate_f1": 0.5308836002296556,
+        "macro_class_f1": 0.5262591776511334,
+        "map50": 0.5635613642138032,
+        "map50_95": 0.4290700953563752,
+        "images": 500,
+        "objects": 6148,
+        "predictions_raw": 42811,
+        "predictions_fixed": 8423,
+        "confidence": 0.25,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": 0.5,
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching",
+        "evaluation_seconds": 59.08136741700582,
+        "prediction_seconds": 57.65889774999232,
+        "checkpoint_sha256": "2d035a95206475b1e9939c5686a731a2427f84918389a2aa4d59148ed5ba5df9",
+        "configuration_sha256": "03dc3eead31d7ac24cda306056cb7d0ae7d1a1d97d7dc133ce2134fb8590b0e2",
+        "manifest_sha256": "a436b78d561516d61ae2f7eedb4a8acb4a58222d2c13df80411ae807f288c502",
+        "selected_epoch": 13,
+        "scope": "Independent calibration500 evaluation only; no E1 comparison or reserved evaluation"
+      },
+      "best_checkpoint_sha256": "2d035a95206475b1e9939c5686a731a2427f84918389a2aa4d59148ed5ba5df9",
+      "last_checkpoint_sha256": "ae975e629e85125ee19605af7ee9d308fa9684a99f6c3f3e2302f6274690bd89",
+      "reserved_evaluation_started": false,
+      "matched_E1_comparison_started": false,
+      "fusion_started": false
     }
   ]
 }
