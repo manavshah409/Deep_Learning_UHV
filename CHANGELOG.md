@@ -1,3 +1,10 @@
+
+## 2026-09-25 — Faculty Streamlit application
+
+- Added an eight-page faculty app with default Saved Evidence Mode, artifact-backed model/training/EDA pages and optional hash-verified E1 image inference.
+- Added session-local exports/analytics, bounded uploads, device fallback, focused tests, demo requirements and launch instructions.
+- Preserved the historical dashboard and experiment evidence. Video UI explicitly deferred pending a safe adapter; no training or reserved evaluation started.
+
 ## Accuracy Improvement Stage E — 2026-09-23
 
 - Added fail-closed calibration manifest/path guards, common prediction schema and independent COCO evaluator for E1/E3.

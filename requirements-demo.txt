@@ -1,0 +1,6 @@
+# Presentation-only environment; install training requirements separately for optional inference.
+streamlit==1.63.0
+plotly==7.0.0
+pandas>=2.2,<3
+Pillow>=11,<13
+PyYAML>=6,<7
