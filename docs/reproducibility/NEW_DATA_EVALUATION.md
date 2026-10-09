@@ -6,7 +6,7 @@ Launch from repository root:
 .venv/bin/python -m streamlit run dashboard/app.py
 ```
 
-Choose New Data Evaluation and Live Inference Mode. CPU is default; MPS falls back to CPU only when unavailable. The E1 checkpoint must already exist at its frozen path and pass SHA-256 verification. Saved Evidence and Faculty Presentation modes require no weights. No new-data results exist until you supply data. Historical fallback is clearly labelled.
+Choose New Data Evaluation and the Evaluate new images workspace. Validate the dataset, review findings, then explicitly run the model. Install requirements-new-data.txt for inference and labeled saved-result reconstruction. CPU is default; MPS falls back to CPU only when unavailable. The E1 checkpoint must already exist at its frozen path and pass SHA-256 verification. Saved Evidence and Faculty Presentation modes require no weights. No new-data results exist until you supply data. Historical fallback is clearly labelled.
 
 ## Prepare uploads
 Use simple unique base filenames: letters, numbers, space, dot, dash, underscore. JPG/PNG only. Maximum 100MB total, 500 images/100MP total decoded, 10MB/20MP per image. ZIP folders are flattened only after path and duplicate-name checks; never use duplicate stems. Do not supply project reserved data.

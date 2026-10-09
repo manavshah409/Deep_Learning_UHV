@@ -1,0 +1,4 @@
+# Full inference/evaluation environment. Use requirements-demo.txt only for historical browsing.
+-r requirements.txt
+-r requirements-dashboard.txt
+-r requirements-e2-evaluation.txt

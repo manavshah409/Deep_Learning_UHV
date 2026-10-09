@@ -112,10 +112,16 @@ def ingest(files, fmt, metadata, known_hashes=None):
         raise ValueError("Duplicate filenames.")
     images = {}
     decode_times = {}
+    total_pixels = 0
     for n, v in files.items():
         if PurePosixPath(n).suffix.lower() in {".png", ".jpg", ".jpeg"}:
             start = time.perf_counter()
             images[n] = decode_image(v, n)
+            total_pixels += images[n].width * images[n].height
+            if len(images) > 500 or total_pixels > 100_000_000:
+                raise ValueError(
+                    "Limit: 500 images and 100 megapixels decoded in total."
+                )
             decode_times[n] = (time.perf_counter() - start) * 1000
     if (
         len(images) > 500

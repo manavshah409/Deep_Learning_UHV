@@ -7,30 +7,30 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import streamlit as st
 
+from dashboard import presentation as ui
 from dashboard.new_data import views
 
 st.set_page_config(
-    page_title="Indian Urban Traffic Analytics System", page_icon="🚗", layout="wide"
+    page_title="UVH-26 | Vehicle Detection Research", page_icon="🚗", layout="wide"
 )
-st.html("""<style>
-.stApp {background:#f6f8fc;color:#142b49}
-[data-testid="stSidebar"] {background:#142b49;color:white}
-[data-testid="stSidebar"] * {color:inherit}
-[data-testid="stMetric"] {background:white;border:1px solid #dce5f0;border-top:3px solid #ed9741;padding:18px;border-radius:10px}
-[data-testid="stMetric"] * {color:#142b49 !important}
-[data-testid="stMetricValue"] {font-size:1.5rem;white-space:normal;overflow:visible}
-[data-testid="stMetricLabel"] p {white-space:normal}
-h1,h2,h3 {color:#173e68} .stMainBlockContainer {max-width:1400px}
-</style>""")
+ui.theme()
 with st.sidebar:
-    st.header("URBAN TRAFFIC")
-    st.caption("UVH-26 · Faculty demonstration")
+    st.header("UVH-26")
+    st.caption("VEHICLE DETECTION RESEARCH")
     mode = st.radio(
-        "Application mode",
-        ["Saved Evidence Mode", "Live Inference Mode", "Faculty Presentation Mode"],
+        "Workspace",
+        ui.MODES,
+        format_func=lambda m: ui.MODE_LABELS[m],
+        key="application_mode",
     )
-    selected = st.radio("Navigate", views.NAV)
-    st.caption("Verified E1 YOLOv8s / 640 · research prototype")
+    st.divider()
+    selected = st.radio("Navigate", views.NAV, key="navigation")
+    st.divider()
+    st.caption("Selected detector")
+    st.markdown("**YOLOv8s · Epoch 22**")
+    st.caption(
+        "14 vehicle classes · 640 px — Research evaluation, not a live-video system"
+    )
 try:
     views.render(selected, mode)
 except (OSError, ValueError, KeyError, TypeError, ImportError):
@@ -39,5 +39,5 @@ except (OSError, ValueError, KeyError, TypeError, ImportError):
     )
 st.divider()
 st.caption(
-    "Indian Urban Traffic Analytics System · measured evidence, explicit limitations · no datasets or uploads stored by this app"
+    "UVH-26 research project · Historical evidence stays separate from new-data results · Uploads stay in this browser session unless you download them"
 )

@@ -31,3 +31,6 @@ Immutable UUID/timestamp IDs, exclusive output-directory creation and atomic evi
 
 ## Boundaries and incident
 No training, fine-tuning, fusion, video work, downloads or deployment. Historical results remain unchanged. An initial overbroad report-preservation snapshot hashed report files including reserved manifest metadata. No reserved images were opened or evaluated; subsequent checks exclude these paths. See progress record for exact verification and delivery evidence. Consequently, this task does not claim that reserved metadata was never accessed.
+
+## Professional presentation update 2026-10-09
+The dashboard now uses a consistent light/blue theme, one executive overview, plain-language workspaces and guided navigation. New data follows validate → review audit → run, with stale validation invalidated whenever inputs change. Failed runs preserve prior results. Explorer filters now govern overlays and CSVs consistently. Metric definitions, scope labels and actionable empty states clarify what the user can conclude. See docs/progress/2026-10-09_DASHBOARD_REVAMP.md for286 passing tests, real checkpoint functionality smoke and portable package verification. Install requirements-new-data.txt for full evaluation functionality; requirements-demo.txt supports lightweight historical browsing.

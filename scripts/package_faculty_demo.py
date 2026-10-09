@@ -10,10 +10,24 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def package(output: Path) -> dict:
-    files = list((ROOT / "dashboard").glob("*.py"))
+    files = list((ROOT / "dashboard").glob("*.py")) + list(
+        (ROOT / "dashboard/new_data").glob("*.py")
+    )
     names = [
         "README_DEMO.md",
+        "scripts/evaluate_new_data.py",
+        ".streamlit/config.toml",
+        "src/evaluation/__init__.py",
+        "src/evaluation/error_analysis.py",
+        "src/evaluation/common_metrics.py",
+        "docs/reproducibility/NEW_DATA_EVALUATION.md",
+        "docs/phase_reports/NEW_DATA_EVALUATION_DASHBOARD.md",
         "requirements-demo.txt",
+        "requirements-new-data.txt",
+        "requirements.txt",
+        "requirements-dashboard.txt",
+        "requirements-e2-evaluation.txt",
+        "reports/comparisons/E1_E3_stageE_v2/operating_thresholds.json",
         "configs/class_mapping.yaml",
         "src/__init__.py",
         "src/data/__init__.py",

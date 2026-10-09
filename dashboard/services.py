@@ -11,6 +11,7 @@ from pathlib import Path
 
 import pandas as pd
 from PIL import Image, ImageDraw, UnidentifiedImageError
+from PIL.Image import open as pil_open
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKPOINT = "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt"
@@ -61,7 +62,7 @@ def decode_image(data: bytes, name: str) -> Image.Image:
     ):
         raise ValueError("Upload a JPG or PNG of at most 10 MB.")
     try:
-        with Image.open(io.BytesIO(data)) as im:
+        with pil_open(io.BytesIO(data)) as im:
             if im.format not in {"JPEG", "PNG"} or im.width * im.height > 20_000_000:
                 raise ValueError("Unsupported image or image exceeds 20 megapixels.")
             im.load()

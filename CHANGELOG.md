@@ -96,3 +96,9 @@ Unselected-image acquisition/integrity verification remains incomplete. Catalogu
 - Added eight-page faculty workflow, bounded YOLO/COCO ingestion, labeled COCO metrics, error taxonomy, bootstrap intervals, latency, immutable exports and saved-result reconstruction.
 - Kept unlabeled predictions separate from correctness metrics and historical pools. Added synthetic tests and offline CLI; no training or reserved image evaluation.
 - Documented initial reserved-manifest hashing incident and remaining limitations.
+
+## 2026-10-09 — Professional dashboard presentation
+
+- Redesigned overview, guided validation and inference, faculty walkthrough, metric explanations and consistent explorer filtering.
+- Hardened saved-result/timing checks and session input preservation; refreshed dependency setup and the portable faculty package.
+- 286 tests passed; historical scientific results unchanged. See docs/progress/2026-10-09_DASHBOARD_REVAMP.md.

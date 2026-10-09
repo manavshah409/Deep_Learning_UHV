@@ -1,57 +1,61 @@
-# Indian Urban Traffic Analytics System
+# UVH-26 faculty dashboard
 
-A faculty-facing Streamlit application using verified UVH-26 research evidence and the selected E1 YOLOv8s / 640 checkpoint. The historical root `app.py` showcase is preserved. This is a research prototype, not a production or live-video system.
+A project dashboard for presenting saved research and evaluating new road images with the selected YOLOv8s detector. Historical results, newly measured results and unlabeled predictions are clearly separated.
 
-## Quick start
+## Start the dashboard
 
-From the repository or extracted demonstration package:
-
-```bash
-python3.12 -m venv .venv-demo
-source .venv-demo/bin/activate
-python -m pip install -r requirements-demo.txt
-streamlit run dashboard/app.py
-```
-
-Saved Evidence Mode is the default. It requires no PyTorch, model weights or datasets. All eight pages open; Image Detection displays saved evidence and an explicit media-unavailable state, Traffic Analytics waits for session predictions, and Recorded Video displays the existing synthetic smoke summary with a planned integration notice.
-
-For optional local image inference, use the existing project `.venv` with its training dependencies and dashboard packages:
+In the existing project environment:
 
 ```bash
 .venv/bin/python -m streamlit run dashboard/app.py
 ```
 
-Place the existing verified checkpoint at `runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt`. Do not download a replacement model automatically. Expected SHA-256:
+For a fresh installation, create a Python3.12 environment. Choose **one** dependency set:
 
-`9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab`
+```bash
+python3.12 -m venv .venv-demo
+source .venv-demo/bin/activate
+# Browse historical evidence without weights:
+python -m pip install -r requirements-demo.txt
+# OR install the full inference and labeled-evaluation dependencies:
+python -m pip install -r requirements-new-data.txt
+python -m streamlit run dashboard/app.py
+```
 
-Select Live Inference Mode, upload your own permitted JPG/PNG, set thresholds and click Detect vehicles. CPU is available; unavailable MPS falls back to CPU. A corrupt or different checkpoint is refused. Missing optional inference dependencies show an unavailable message.
+The full environment includes pycocotools, required to recompute labeled saved results. The lightweight environment supports historical presentation and unlabeled saved summaries. No packages or model weights need to be downloaded during a presentation.
 
-## Faculty sequence
+## Choose your workspace
 
-1. Overview: explain Indian heterogeneous traffic, audit scope and E1 selection.
-2. Model Comparison: show the separate validation2000 and calibration500 tables; explain the unmet precision/recall target.
-3. Training Analysis: show convergence and E3 epoch 13 selection.
-4. Dataset Insights: discuss imbalance, small objects and annotation limitations.
-5. Optional Image Detection with your own permitted image; inspect boxes and export CSV/JSON.
-6. Traffic Analytics: explain visible detections and the prototype density rule.
-7. Recorded Video: distinguish the saved synthetic smoke from road-video validation.
-8. Documentation: explain reproducibility and remaining work.
+- **Browse saved results:** present project evidence or reopen an exported result.json.
+- **Evaluate new images:** choose images-only, YOLO labels or COCO annotations; complete source and permission details; click Validate dataset; review the audit; then Run predictions or Run evaluation.
+- **Present to faculty:** follow the Next button through the overview, comparisons and methodology, or through metrics/errors/examples when a new result is available.
 
-Preflight on presentation day: start Saved Evidence Mode offline; inspect every page; if demonstrating inference, verify weights and run a permitted image before the session. No permitted dataset photographs or annotated photo outputs are included in this package. Existing aggregate plots are included; no arbitrary media were downloaded.
+Changing an upload or declaration invalidates its previous validation. Inference never starts automatically. A failed run preserves the last successful result. The progress indicator identifies model loading, warm-up, image processing and metric calculation.
 
-## Troubleshooting and limitations
+## Understand the screens
 
-- Missing/corrupt artifacts display Not available; restore the original small report files. Never fabricate replacements.
-- If inference fails on MPS, choose CPU. Model loading is lazy and cached; image outputs remain session-local. Shared model calls are locked.
-- Uploaded filenames are never used as filesystem paths. Image bytes are capped at 10 MB and decoded images at 20 MP. Restart/close the session to clear memory.
-- Timing is a measured single request, not a throughput benchmark; excludes model load, hash checks and browser/network time.
-- Video upload integration is deliberately disabled: current CLI lacks UI progress, persisted per-class detections and validated browser codec support. Tracking/counting are not added.
-- 70–80% precision/recall has not been achieved. Fusion feasibility was rejected; E1 remains selected.
-- Never commit checkpoints, uploads, datasets, generated videos, run directories, caches or logs. Portable ZIP lives under ignored `deliverables/`.
+Executive Overview presents the current dataset, or clearly labelled historical evidence when none exists. Prediction Explorer applies the same filters to the gallery, overlays and CSV downloads. Missed objects have no prediction confidence; they are not removed by confidence filters. Image-level metric cards remain fixed at the evaluation protocol even when display filters change.
 
-Detailed evidence: `docs/phase_reports/FACULTY_STREAMLIT_DELIVERABLE.md`.
+Images-only inputs cannot produce precision, recall, F1, AP or error labels. Confidence is not accuracy. Metric definitions are available under Dataset and Methodology. Performance reports still-image throughput, not live-video FPS.
 
-## New data evaluation workflow
+## Model and data requirements
 
-Use the eight-page navigation beginning with Executive Overview. New Data Evaluation accepts images alone, YOLO image/label ZIPs or images plus annotations.json. Faculty Presentation Mode uses saved evidence without weights. See [preparation and CLI instructions](docs/reproducibility/NEW_DATA_EVALUATION.md) and [technical protocol](docs/phase_reports/NEW_DATA_EVALUATION_DASHBOARD.md). The older portable ZIP predates this extension; use the repository checkout for the new workflow.
+Actual inference requires the original E1 checkpoint at `runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt`. Its SHA-256 is verified before execution; no fallback model is substituted. Use CPU when MPS is unavailable or fails. Model loading is lazy and session-local for each evaluation.
+
+JPG/PNG inputs: up to100MB total,500 images,100MP decoded total; maximum10MB/20MP per image. ZIP contents must have safe, unique base filenames. YOLO needs matching TXT files, including empty files for empty images; COCO needs annotations.json. See [dataset preparation](docs/reproducibility/NEW_DATA_EVALUATION.md).
+
+Uploads stay in session memory; Clear uploaded data and session results resets the upload workflow. Downloads are explicit. Evidence bundles contain predictions, labels, manifests and metrics, but no source images or checkpoints. Imported image galleries are therefore unavailable; their records and recomputed metrics remain inspectable. Imported provenance/timing is user-supplied, not authenticated.
+
+## Portable faculty package
+
+Build an exclusive evidence-only archive:
+
+```bash
+.venv/bin/python scripts/package_faculty_demo.py --output deliverables/faculty_dashboard.zip
+```
+
+Extract it and run the startup command above after installing the selected dependency set. It includes all dashboard modules, theme, guides and allowlisted historical evidence. No dataset, model weights or generated prediction images are bundled. Reusing an existing ZIP name is refused.
+
+## Limits
+
+No training, fusion, video tracking, counting evaluation or public deployment occurs through the dashboard. AP confidence intervals and stratum AP are not implemented; supported strata report recall. No independent-test or production-readiness claim is made. Overlap verification needs a separately supplied approved hash index; do not use the reserved split. Historical results remain unchanged.

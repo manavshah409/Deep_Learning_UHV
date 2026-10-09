@@ -233,6 +233,8 @@ def unlabeled(records):
 
 
 def latency(rows):
+    if not rows:
+        raise ValueError("No timing records supplied.")
     result = {}
     for key in [
         "preprocessing_ms",
@@ -241,12 +243,26 @@ def latency(rows):
         "end_to_end_ms",
     ]:
         values = [r[key] for r in rows]
+        if not all(
+            isinstance(v, (int, float))
+            and not isinstance(v, bool)
+            and np.isfinite(v)
+            and v >= 0
+            for v in values
+        ):
+            raise ValueError("Timing values must be finite nonnegative milliseconds.")
         result[key] = {
             "mean": float(np.mean(values)),
             "median": float(np.median(values)),
             "p90": float(np.percentile(values, 90)),
             "p95": float(np.percentile(values, 95)),
         }
+    if result["end_to_end_ms"]["mean"] <= 0:
+        raise ValueError("End-to-end time must be positive.")
     result["still_images_per_second"] = 1000 / result["end_to_end_ms"]["mean"]
-    result["inference_images_per_second"] = 1000 / result["inference_ms"]["mean"]
+    result["inference_images_per_second"] = (
+        1000 / result["inference_ms"]["mean"]
+        if result["inference_ms"]["mean"] > 0
+        else None
+    )
     return result

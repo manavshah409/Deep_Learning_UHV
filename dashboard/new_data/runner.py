@@ -1,5 +1,6 @@
 """Session-local prediction with explicit timing and immutable downloadable evidence."""
 
+import copy
 import csv
 import hashlib
 import io
@@ -24,7 +25,10 @@ from dashboard.services import (
 )
 
 
-def run(images, records, audit, metadata, device="cpu", bootstrap=100):
+def run(images, records, audit, metadata, device="cpu", bootstrap=100, progress=None):
+    records = copy.deepcopy(records)
+    notify = progress or (lambda value, message: None)
+    notify(0.0, "Verifying checkpoint and loading model…")
     import torch
     import ultralytics
 
@@ -40,11 +44,16 @@ def run(images, records, audit, metadata, device="cpu", bootstrap=100):
     detector.sync()
     load_ms = (time.perf_counter() - started) * 1000
     first = np.asarray(next(iter(images.values())))[:, :, ::-1].copy()
+    notify(0.05, "Warming up model: 10 iterations…")
     for _ in range(10):
         detector(first)
     detector.sync()
     timing = []
-    for record in records:
+    for index, record in enumerate(records):
+        notify(
+            0.1 + 0.75 * index / len(records),
+            f"Processing image {index + 1} of {len(records)}…",
+        )
         im = images[record["name"]]
         detector.sync()
         start = time.perf_counter()
@@ -101,11 +110,13 @@ def run(images, records, audit, metadata, device="cpu", bootstrap=100):
         "metric_protocol": "common_metrics COCO v1; macro over GT-present classes",
         "timing": "Ultralytics stage timers; synchronized per-image outer time includes array conversion and result transfer; plus separately measured upload decode time; excludes upload transfer, loading, plotting, export. Stage timers do not sum to outer time.",
     }
+    notify(0.88, "Computing summaries and uncertainty intervals…")
     metrics = (
         analysis.unlabeled(records)
         if metadata["format"] == "unlabeled"
         else analysis.labeled(records, bootstrap)
     )
+    notify(1.0, "Evaluation complete")
     return {
         "schema_version": 1,
         "run_id": "newdata_"
@@ -236,6 +247,32 @@ def load_saved(data):
 
     if not 0 < len(r["records"]) <= 1000:
         raise ValueError("Invalid record count.")
+    if r["metadata"].get("format") not in {"unlabeled", "yolo", "coco"}:
+        raise ValueError("Unknown saved annotation format.")
+    if any(
+        c.get(k) != v
+        for k, v in {
+            "nms_iou": 0.7,
+            "matching_iou": 0.5,
+            "max_det": 300,
+            "ap_score_floor": 0.001,
+            "batch": 1,
+            "precision": "float32",
+            "metric_protocol": "common_metrics COCO v1; macro over GT-present classes",
+        }.items()
+    ):
+        raise ValueError("Saved evaluation settings do not match the frozen protocol.")
+    if len(r["timing"]) != len(r["records"]) or sorted(
+        t["name"] for t in r["timing"]
+    ) != sorted(rec["name"] for rec in r["records"]):
+        raise ValueError("Timing records do not match the image manifest.")
+    analysis.latency(r["timing"])
+    if (
+        not isinstance(r["model_load_ms"], (int, float))
+        or not np.isfinite(r["model_load_ms"])
+        or r["model_load_ms"] < 0
+    ):
+        raise ValueError("Invalid model load time.")
     ids = set()
     for rec in r["records"]:
         if rec["image_id"] in ids:
