@@ -184,6 +184,16 @@
       ],
       "reserved_accessed": false,
       "fusion_started": false
+    },
+    {
+      "id": "NEW_DATA_DASHBOARD",
+      "status": "implemented_and_validated",
+      "model": "E1 YOLOv8s epoch22",
+      "scope": "user-supplied labeled or unlabeled images; no scientific new-data result claimed",
+      "report": "docs/phase_reports/NEW_DATA_EVALUATION_DASHBOARD.md",
+      "commands": "docs/reproducibility/NEW_DATA_EVALUATION.md",
+      "reserved_evaluation_started": false,
+      "boundary_note": "Initial preservation snapshot hashed reserved manifest metadata; no reserved images or evaluation."
     }
   ]
 }

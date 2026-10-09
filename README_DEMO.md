@@ -51,3 +51,7 @@ Preflight on presentation day: start Saved Evidence Mode offline; inspect every 
 - Never commit checkpoints, uploads, datasets, generated videos, run directories, caches or logs. Portable ZIP lives under ignored `deliverables/`.
 
 Detailed evidence: `docs/phase_reports/FACULTY_STREAMLIT_DELIVERABLE.md`.
+
+## New data evaluation workflow
+
+Use the eight-page navigation beginning with Executive Overview. New Data Evaluation accepts images alone, YOLO image/label ZIPs or images plus annotations.json. Faculty Presentation Mode uses saved evidence without weights. See [preparation and CLI instructions](docs/reproducibility/NEW_DATA_EVALUATION.md) and [technical protocol](docs/phase_reports/NEW_DATA_EVALUATION_DASHBOARD.md). The older portable ZIP predates this extension; use the repository checkout for the new workflow.

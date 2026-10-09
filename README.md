@@ -60,3 +60,7 @@ Do not rerun training to demonstrate results. Existing run/evaluation IDs refuse
 ## Phase 2 E1
 
 E1 compares YOLOv8s with the frozen YOLOv8n reference. Same 8,000/2,000 subset, imgsz640, batch8, seed42 and 30-epoch budget. [Preregistered protocol and current status](docs/phase_reports/PHASE_2_E1_MODEL_COMPARISON.md). E1 training and standalone evaluation are complete; preflight remains a separate pipeline check.
+
+## New data evaluation dashboard
+
+The faculty dashboard supports YOLO/COCO-labeled evaluation and unlabeled image inference with E1 YOLOv8s, error analysis, latency and saved evidence. Launch `.venv/bin/python -m streamlit run dashboard/app.py`. [Protocol and limitations](docs/phase_reports/NEW_DATA_EVALUATION_DASHBOARD.md) · [Dataset preparation and commands](docs/reproducibility/NEW_DATA_EVALUATION.md). No new-data accuracy claim is made until an actual permitted dataset is evaluated.

@@ -95,16 +95,7 @@ def test_video_and_device():
 
 @pytest.mark.parametrize(
     "page",
-    [
-        "Project Overview",
-        "Image Detection",
-        "Recorded Video Detection",
-        "Traffic Analytics",
-        "Model Comparison",
-        "Training Analysis",
-        "Dataset Insights",
-        "Documentation and Reproducibility",
-    ],
+    __import__("dashboard.new_data.views", fromlist=["NAV"]).NAV,
 )
 def test_evidence_pages(page, monkeypatch):
     def forbidden(*args, **kwargs):
@@ -123,15 +114,17 @@ def test_evidence_pages(page, monkeypatch):
 
 def test_startup_without_artifacts_or_weights(tmp_path, monkeypatch):
     from dashboard import pages
+    from dashboard.new_data import views
 
     monkeypatch.setattr(s, "ROOT", tmp_path)
     monkeypatch.setattr(pages, "ROOT", tmp_path)
+    monkeypatch.setattr(views, "ROOT", tmp_path)
     pages.load.clear()
     app = AppTest.from_file(
         str(Path(__file__).resolve().parents[1] / "dashboard/app.py")
     ).run()
     assert not app.exception and not app.error
-    app.sidebar.radio[1].set_value("Image Detection").run()
+    app.sidebar.radio[1].set_value("New Data Evaluation").run()
     app.sidebar.radio[0].set_value("Live Inference Mode").run()
     assert any("absent" in w.value for w in app.warning)
     pages.load.clear()

@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import streamlit as st
 
-from dashboard import pages
+from dashboard.new_data import views
 
 st.set_page_config(
     page_title="Indian Urban Traffic Analytics System", page_icon="🚗", layout="wide"
@@ -18,41 +18,21 @@ st.html("""<style>
 [data-testid="stSidebar"] * {color:inherit}
 [data-testid="stMetric"] {background:white;border:1px solid #dce5f0;border-top:3px solid #ed9741;padding:18px;border-radius:10px}
 [data-testid="stMetric"] * {color:#142b49 !important}
+[data-testid="stMetricValue"] {font-size:1.5rem;white-space:normal;overflow:visible}
+[data-testid="stMetricLabel"] p {white-space:normal}
 h1,h2,h3 {color:#173e68} .stMainBlockContainer {max-width:1400px}
 </style>""")
 with st.sidebar:
     st.header("URBAN TRAFFIC")
     st.caption("UVH-26 · Faculty demonstration")
-    mode = st.radio("Application mode", ["Saved Evidence Mode", "Live Inference Mode"])
-    selected = st.radio(
-        "Navigate",
-        [
-            "Project Overview",
-            "Image Detection",
-            "Recorded Video Detection",
-            "Traffic Analytics",
-            "Model Comparison",
-            "Training Analysis",
-            "Dataset Insights",
-            "Documentation and Reproducibility",
-        ],
+    mode = st.radio(
+        "Application mode",
+        ["Saved Evidence Mode", "Live Inference Mode", "Faculty Presentation Mode"],
     )
-    st.caption(
-        "Verified · E1 YOLOv8s / 640\n\nResearch prototype · no live-video claim"
-    )
-st.caption(f"ACTIVE MODE: {mode}")
-handlers = {
-    "Project Overview": pages.overview,
-    "Image Detection": lambda: pages.image_page(mode),
-    "Recorded Video Detection": pages.video_page,
-    "Traffic Analytics": pages.analytics,
-    "Model Comparison": pages.comparison,
-    "Training Analysis": pages.training,
-    "Dataset Insights": pages.dataset,
-    "Documentation and Reproducibility": pages.documentation,
-}
+    selected = st.radio("Navigate", views.NAV)
+    st.caption("Verified E1 YOLOv8s / 640 · research prototype")
 try:
-    handlers[selected]()
+    views.render(selected, mode)
 except (OSError, ValueError, KeyError, TypeError, ImportError):
     st.error(
         "This page could not load an artifact. Other pages remain available. See README_DEMO.md for troubleshooting."

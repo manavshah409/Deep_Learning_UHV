@@ -90,3 +90,9 @@
 - Initial source checkpoint c82e277 recorded the project while proper training was active; later closeout records supersede that progress snapshot.
 
 Unselected-image acquisition/integrity verification remains incomplete. Catalogue metadata audit and selected-image pixel audit are separate claims.
+
+## 2026-10-09 — New data evaluation dashboard
+
+- Added eight-page faculty workflow, bounded YOLO/COCO ingestion, labeled COCO metrics, error taxonomy, bootstrap intervals, latency, immutable exports and saved-result reconstruction.
+- Kept unlabeled predictions separate from correctness metrics and historical pools. Added synthetic tests and offline CLI; no training or reserved image evaluation.
+- Documented initial reserved-manifest hashing incident and remaining limitations.
