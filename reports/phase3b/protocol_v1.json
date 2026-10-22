@@ -1,0 +1,132 @@
+{
+  "payload": {
+    "schema": 1,
+    "created_utc": "2026-10-22T14:47:30.191738+00:00",
+    "video": {
+      "filename": "data/videos/derived/bangalore_0_30_v2.mp4",
+      "video_id": "bangalore01_0_30",
+      "sha256": "42833cd01527ee03c6bee7b9c6caba5baa75532c57ca3262757dd51f0347dab2",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 900,
+      "duration_seconds": 30.0,
+      "codec": "FMP4",
+      "permission": "Gpkp, Ramana Maharshi Road Bangalore 2025 01, CC BY-SA 4.0; excerpt, no audio, re-encoded; retain attribution and share-alike for adapted footage.",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ramana_Maharshi_Road,_Bangalore_(2025)_01.webm",
+      "camera": "Mostly stable elevated handheld view; minor movement, night glare; limited fixed-image-line pilot"
+    },
+    "detector": {
+      "checkpoint": "runs/E1_yolov8s_uvh26_mv_640_seed42/weights/best.pt",
+      "checkpoint_sha256": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+      "imgsz": 640,
+      "confidence": 0.25,
+      "nms_iou": 0.7,
+      "max_det": 300,
+      "device": "mps",
+      "cpu_fallback": false,
+      "seed": 42
+    },
+    "tracker": {
+      "tracker_type": "bytetrack",
+      "track_high_thresh": 0.25,
+      "track_low_thresh": 0.1,
+      "new_track_thresh": 0.25,
+      "track_buffer": 30,
+      "match_thresh": 0.8,
+      "fuse_score": true
+    },
+    "counting": {
+      "anchor": "bottom_center",
+      "line_normalized": [
+        [
+          0.08,
+          0.6
+        ],
+        [
+          0.72,
+          0.6
+        ]
+      ],
+      "minimum_confirmed_age": 3,
+      "maximum_absence_frames": 30,
+      "hysteresis_pixels": 5,
+      "minimum_displacement_pixels": 10,
+      "maximum_crossing_gap_frames": 1,
+      "endpoint_tolerance_pixels": 0,
+      "mode": "per_direction",
+      "recrossing": "one_event_per_track_per_direction_no_reset",
+      "class_policy": "confidence_weighted_vote_at_event_final_vote_in_track_summary",
+      "matching_tolerance_seconds": 0.5
+    },
+    "class_names": [
+      "Hatchback",
+      "Sedan",
+      "SUV",
+      "MUV",
+      "Bus",
+      "Truck",
+      "Three-wheeler",
+      "Two-wheeler",
+      "LCV",
+      "Mini-bus",
+      "Tempo-traveller",
+      "Bicycle",
+      "Van",
+      "Others"
+    ],
+    "directions": {
+      "A_to_B": "negative to positive signed side; downwards for left-to-right horizontal line",
+      "B_to_A": "positive to negative; upwards for this line"
+    },
+    "matching": {
+      "rule": "Global closest absolute timestamp pair first, same video/class/direction, one-to-one; ties GT timestamp then GT ID then prediction ID. Not maximum-cardinality matching.",
+      "tolerance_seconds": 0.5,
+      "timestamp": "frame/fps of first observed point beyond opposite dead-band; interpolation diagnostic only"
+    },
+    "timing": {
+      "warmup_iterations": 10,
+      "warmup_excluded": true,
+      "measured_frames": "all 900, decoded anew for every mode",
+      "stages": "decode, internal preprocess/inference/postprocess, detector outer call, tracking, counting plus evidence publication, rendering, encoding, table writes",
+      "wall": "After startup/warmup/encoder initialization through all frames, encoder finalization and detailed artifact export; summary/completion hashing separately outside processing wall.",
+      "realtime_target": "Complete pipeline effective FPS >= source FPS, zero dropped/failed frames; no live capture/display or GUI network included"
+    },
+    "acceptance": {
+      "event_f1_minimum": 0.8,
+      "wape_percent_maximum": 20,
+      "status": "preregistered engineering pilot targets, not deployment certification",
+      "human_review": "all frames reviewed before predictions; all uncertainty resolved; zero-event confirmation if empty",
+      "real_time_fps": 30,
+      "no_failed_or_dropped_frames": true
+    },
+    "environment": {
+      "python": "3.12.14",
+      "platform": "macOS-27.0.1-arm64-arm-64bit",
+      "machine": "arm64",
+      "packages": {
+        "torch": "2.14.0",
+        "torchvision": "0.29.0",
+        "ultralytics": "8.4.146",
+        "opencv-python": "5.0.0.93",
+        "streamlit": "1.63.0"
+      }
+    },
+    "launch_commit": "b02e877b193b01facb4edb78bae954f8ba9a4243",
+    "sources": {
+      "src/video/__init__.py": "d8783aa0964083a76b7169e3dc3216f3ff78c69452e8905115c541f421c8da71",
+      "src/video/counting.py": "1b0642f09ffca14f16c5d77b6250848e58bf90fbbf0fbc891c111d043c0c4583",
+      "src/video/phase3b.py": "d6cb795d8d9ae7cdbe153f4f3021f1d392d59fb70a94461069f37fca8f285e29",
+      "src/video/phase3b_annotations.py": "95bd901aba63aff3353a52cacbfd0ec661ef6b61c418580659c5fe14082b7bab",
+      "src/video/phase3b_evaluation.py": "fd64bb2bca3f01200aa8852ca679a1b226f7cd79f42a19b79331c278506616f0",
+      "src/video/pipeline.py": "6f6dd6d3d6197426d265beacabb53b8ad4d41a59b66c357966b3133e0769f74c",
+      "src/video/tracking.py": "243c8f37452da5412ecb2ac534805d51a38a7284e02a8bda29dc6b73a1434805",
+      "src/video/traffic.py": "df036db48d89d0bc4f3e74f0bd3a9703227a276a8a67d6312e543f734e0f010f"
+    },
+    "configs": {
+      "configs/phase3_tracking.yaml": "4238c519282280b113e06c7baa9c6dad6895b23d04e2355685aa885192392a5a",
+      "configs/phase3_counting.yaml": "7195eb8ac9f5ef6e60ca6e124848199781e1b76883186e211777d66915afc6b5"
+    }
+  },
+  "sha256": "253b24deb789f5ee6c29b7eae8fc5f1548c19c75d278fb05ff73ef3ab60576ef"
+}

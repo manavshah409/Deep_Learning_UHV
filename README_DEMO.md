@@ -59,3 +59,7 @@ Extract it and run the startup command above after installing the selected depen
 ## Limits
 
 No training, fusion, video tracking, counting evaluation or public deployment occurs through the dashboard. AP confidence intervals and stratum AP are not implemented; supported strata report recall. No independent-test or production-readiness claim is made. Overlap verification needs a separately supplied approved hash index; do not use the reserved split. Historical results remain unchanged.
+
+## Video Traffic Analytics
+
+The Video Traffic Analytics page includes the Phase 3B saved benchmark and a separate manual-annotation workspace. Saved Evidence Mode does not load model weights or require OpenCV. The source/annotated videos are excluded from the portable package; replay and manual annotation require the permitted local video plus full project dependencies. No reviewed counts exist yet:40 predicted events are not ground truth. The complete prerecorded-file pipeline measured 60.04 FPS against 30 FPS source in one local MPS session; browser display and preview transcoding are excluded. Follow [human review instructions](docs/reproducibility/PHASE_3B_VIDEO_COUNTING.md) before reporting counting precision/recall.

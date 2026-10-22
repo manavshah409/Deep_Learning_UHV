@@ -102,3 +102,10 @@ Unselected-image acquisition/integrity verification remains incomplete. Catalogu
 - Redesigned overview, guided validation and inference, faculty walkthrough, metric explanations and consistent explorer filtering.
 - Hardened saved-result/timing checks and session input preservation; refreshed dependency setup and the portable faculty package.
 - 286 tests passed; historical scientific results unchanged. See docs/progress/2026-10-09_DASHBOARD_REVAMP.md.
+
+## 2026-10-22 Phase 3B implementation and human review gate
+
+- Added frozen video protocol, public track lifetime handling, detailed histories, displacement-guarded line events and four measured pipeline modes.
+- Added immutable manual annotation revisions and human-gated closest-time event metrics.
+- Added faculty Video Traffic Analytics with saved evidence and local browser video preview.
+- Preserved v1 failure; completed v2 benchmark. Counting accuracy remains unavailable pending independent human review.

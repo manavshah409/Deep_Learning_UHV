@@ -194,6 +194,19 @@
       "commands": "docs/reproducibility/NEW_DATA_EVALUATION.md",
       "reserved_evaluation_started": false,
       "boundary_note": "Initial preservation snapshot hashed reserved manifest metadata; no reserved images or evaluation."
+    },
+    {
+      "id": "PHASE_3B_VIDEO_COUNTING",
+      "status": "implemented_benchmarked_awaiting_human_review",
+      "model": "E1 YOLOv8s epoch22",
+      "protocol": "reports/phase3b/protocol_v2.json",
+      "benchmark": "reports/phase3b/benchmark_summary.json",
+      "report": "docs/phase_reports/PHASE_3B_VIDEO_COUNTING_VALIDATION.md",
+      "predicted_crossings": 40,
+      "counting_metrics": null,
+      "reviewed_ground_truth": false,
+      "reserved_accessed_in_this_stage": false,
+      "new_training_started": false
     }
   ]
 }

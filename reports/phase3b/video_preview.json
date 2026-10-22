@@ -1,0 +1,11 @@
+{
+  "run_id": "phase3b_complete_v2",
+  "protocol_sha256": "ff25e26a085b90aec48f0df88083fcc8a92f6b56973caf96eee270b1c90594de",
+  "filename": "runs/phase3b_previews/phase3b_complete_v2/annotated_browser.mp4",
+  "sha256": "1ec61c92fc4de8e6aa280b30c81bcac454d81454de493b6784a13a88363cc3ce",
+  "frames": 900,
+  "codec": "avc1",
+  "source_sha256": "3c01f8326c8c5dd0cf446824eec72edfdd0e91819ffc905a2a33ac8ee1dc4754",
+  "timing_note": "Presentation-only transcode after benchmark; not included in measured pipeline FPS",
+  "licence": "Adapted Gpkp Commons footage, CC BY-SA 4.0; boxes, IDs and predicted counts added; no audio."
+}

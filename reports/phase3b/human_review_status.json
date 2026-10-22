@@ -1,0 +1,10 @@
+{
+  "status": "awaiting_independent_human_review",
+  "reviewed_ground_truth_count": null,
+  "precision": null,
+  "recall": null,
+  "f1": null,
+  "count_error": null,
+  "error_category_counts": null,
+  "final_video_evaluation_executed": false
+}

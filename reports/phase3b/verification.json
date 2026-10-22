@@ -1,0 +1,27 @@
+{
+  "full_suite": "311 passed in 9.68s",
+  "focused_tests": "43 passed (Phase3B plus existing tracking/counting; included in full suite)",
+  "ruff_new_modules_dashboard_scripts": "passed",
+  "legacy_tracking_counting_pyflakes": "passed; pre-existing compact style retained",
+  "phase3b_validator": {
+    "passed": true,
+    "modes": 4,
+    "historical_summaries_unchanged": 16,
+    "human_review_complete": false
+  },
+  "historical_stage_D": "passed",
+  "historical_stage_E": "passed",
+  "actual_checkpoint_smoke": "30 frames MPS passed under v1; four full v2 modes passed",
+  "dashboard_actual_local_AppTest": "manual and saved pages rendered; saved page contains H264 video element",
+  "portable_zip": {
+    "files": 60,
+    "bytes": 623289,
+    "sha256": "c9e617bf2c2f29fec1d7a3a573480be014a82adcf42558887a94f94cd094f9a0"
+  },
+  "human_review_complete": false,
+  "counting_metrics": null,
+  "reserved_accessed_in_this_stage": false,
+  "source_hashes_match_v2": true,
+  "clean_staged_repository_tests": "292 passed in 11.22s",
+  "test_count_note": "311 local tests include preserved uncommitted Phase3A/E4 tests; the isolated eligible staged repository passes292tests."
+}

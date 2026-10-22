@@ -33,11 +33,11 @@ class Track:
         self.observations += 1
         self.scores[cls] = self.scores.get(cls, 0.) + confidence
         self.confidence = confidence
-        self.history.append(dict(frame=frame,box=list(map(float,box)),anchor=[float((box[0]+box[2])/2),float(box[3])]))
+        self.history.append(dict(frame=frame,confidence=float(confidence),observed_class=int(cls),resolved_class=self.class_id,box=list(map(float,box)),anchor=[float((box[0]+box[2])/2),float(box[3])]))
 
 
 class VehicleTracker:
-    def __init__(self, config, maximum_absence=30):
+    def __init__(self, config, maximum_absence=30, reidentify_retired=False):
         from ultralytics.engine.results import Boxes
         from ultralytics.trackers.byte_tracker import BYTETracker
         self.boxes_type = Boxes
@@ -46,6 +46,11 @@ class VehicleTracker:
         self.tracker.max_frames_lost = maximum_absence
         self.active = {}
         self.finished = []
+        self.terminated_ids = set()
+        self.reidentify_retired = reidentify_retired
+        self.raw_to_public = {}
+        self.next_public_id = 1
+        self.identity_transitions = []
         self.last_frame = -1
 
     def update(self, detections, frame, shape):
@@ -78,9 +83,21 @@ class VehicleTracker:
         for tid,t in list(self.active.items()):
             if frame-t.last_frame>self.maximum_absence:
                 self.finished.append(self.active.pop(tid))
+                self.terminated_ids.add(tid)
         observed=[]
         for row in result:
             box,tid,conf,cls=row[:4],int(row[4]),float(row[5]),int(row[6])
+            if self.reidentify_retired:
+                raw_id = tid
+                previous = self.raw_to_public.get(raw_id)
+                if previous is None or previous in self.terminated_ids:
+                    self.raw_to_public[raw_id] = self.next_public_id
+                    self.next_public_id += 1
+                    if previous is not None:
+                        self.identity_transitions.append(dict(frame=frame, raw_tracker_id=raw_id, previous_public_id=previous, new_public_id=self.raw_to_public[raw_id], reason='reappearance_after_maximum_absence'))
+                tid = self.raw_to_public[raw_id]
+            if tid in self.terminated_ids:
+                raise ValueError('Terminated track ID reused')
             if tid not in self.active:
                 self.active[tid]=Track(tid,frame,frame)
             t=self.active[tid]

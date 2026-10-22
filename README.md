@@ -64,3 +64,7 @@ E1 compares YOLOv8s with the frozen YOLOv8n reference. Same 8,000/2,000 subset, 
 ## New data evaluation dashboard
 
 The faculty dashboard supports YOLO/COCO-labeled evaluation and unlabeled image inference with E1 YOLOv8s, error analysis, latency and saved evidence. Launch `.venv/bin/python -m streamlit run dashboard/app.py`. [Protocol and limitations](docs/phase_reports/NEW_DATA_EVALUATION_DASHBOARD.md) · [Dataset preparation and commands](docs/reproducibility/NEW_DATA_EVALUATION.md). No new-data accuracy claim is made until an actual permitted dataset is evaluated.
+
+## Phase 3B video traffic analytics
+
+Tracking, line-crossing counting, revisioned human annotation and Saved Evidence Mode are implemented. Four 900-frame MPS benchmarks completed; the full prerecorded-video pipeline reached 60.04 FPS against 30 FPS source, producing 40 **unverified predicted** crossings. Human ground truth is still required; counting accuracy and Phase 3B completion are pending. Open `.venv/bin/python -m streamlit run dashboard/app.py` and select Video Traffic Analytics. [Report](docs/phase_reports/PHASE_3B_VIDEO_COUNTING_VALIDATION.md) · [Human review and commands](docs/reproducibility/PHASE_3B_VIDEO_COUNTING.md).

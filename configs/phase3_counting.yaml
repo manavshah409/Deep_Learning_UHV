@@ -1,0 +1,12 @@
+anchor: bottom_center
+line_normalized: [[0.08, 0.6], [0.72, 0.6]]
+minimum_confirmed_age: 3
+maximum_absence_frames: 30
+hysteresis_pixels: 5
+minimum_displacement_pixels: 10
+maximum_crossing_gap_frames: 1
+endpoint_tolerance_pixels: 0
+mode: per_direction
+recrossing: one_event_per_track_per_direction_no_reset
+class_policy: confidence_weighted_vote_at_event_final_vote_in_track_summary
+matching_tolerance_seconds: 0.5

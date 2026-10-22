@@ -7,13 +7,15 @@ from src.video.pipeline import CLASS_NAMES,atomic_json
 
 
 class LineCounter:
-    def __init__(self, endpoints, minimum_age=3, hysteresis=5, maximum_gap=1, mode='per_direction', roi=None, tolerance=0):
+    def __init__(self, endpoints, minimum_age=3, hysteresis=5, maximum_gap=1, mode='per_direction', roi=None, tolerance=0, minimum_displacement=0):
         self.a,self.b=np.asarray(endpoints,dtype=float)
         self.vector=self.b-self.a
         self.length=float(np.linalg.norm(self.vector))
         if self.length<=0 or not np.isfinite([self.a,self.b]).all():raise ValueError('Invalid line')
         if minimum_age<1 or hysteresis<0 or maximum_gap<1 or mode not in ['per_direction','total']:raise ValueError('Invalid counting configuration')
         self.minimum_age=minimum_age;self.hysteresis=hysteresis;self.maximum_gap=maximum_gap;self.mode=mode;self.roi=roi;self.tolerance=tolerance
+        if not np.isfinite(minimum_displacement) or minimum_displacement < 0: raise ValueError('Invalid displacement')
+        self.minimum_displacement=minimum_displacement
         self.states={};self.events=[]
 
     def side(self,p):
@@ -34,6 +36,7 @@ class LineCounter:
         sign=1 if distance>0 else -1
         self.states[track.track_id]=dict(sign=sign,p=p.copy(),frame=frame,seen=frame)
         if not old or old['sign']==sign or track.observations<self.minimum_age:return None
+        if np.linalg.norm(p-old['p']) < self.minimum_displacement:return None
         direction='A_to_B' if old['sign']<sign else 'B_to_A'
         if direction in track.counted or (self.mode=='total' and track.counted):return None
         d0=self.side(old['p']);alpha=d0/(d0-distance)

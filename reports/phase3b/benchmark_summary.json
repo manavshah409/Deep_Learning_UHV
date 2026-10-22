@@ -1,0 +1,1091 @@
+{
+  "protocol_sha256": "ff25e26a085b90aec48f0df88083fcc8a92f6b56973caf96eee270b1c90594de",
+  "runs": [
+    {
+      "status": "processing_complete_human_review_pending",
+      "run_id": "phase3b_detection_v2",
+      "mode": "detection",
+      "protocol_sha256": "ff25e26a085b90aec48f0df88083fcc8a92f6b56973caf96eee270b1c90594de",
+      "actual_checkpoint_verified": true,
+      "device": "mps",
+      "frames": 900,
+      "source_fps": 30.0,
+      "full_clip": true,
+      "dropped_frames": 0,
+      "failed_frames": 0,
+      "model_load_and_first_decode_seconds": 0.4451138330041431,
+      "warmup_seconds": 1.0808643749915063,
+      "setup_seconds": 0.0008777080074651167,
+      "processing_wall_seconds": 10.503407541997149,
+      "encoding_finalize_seconds": 8.300412446260452e-08,
+      "effective_fps": 85.68647806927535,
+      "realtime_target_pass": false,
+      "achieved_source_fps_ratio": 2.8562159356425116,
+      "latency_ms": {
+        "decode_ms": {
+          "mean": 0.5777509278494917,
+          "median": 0.5596460032393225,
+          "p90": 0.6383202067809179,
+          "p95": 0.708886904612882
+        },
+        "detector_ms": {
+          "mean": 11.083747876804814,
+          "median": 10.901562505750917,
+          "p90": 12.101683302898891,
+          "p95": 12.353818753763335
+        },
+        "preprocessing_ms": {
+          "mean": 0.5095060641502237,
+          "median": 0.48387500282842666,
+          "p90": 0.593596101680305,
+          "p95": 0.7278860517544666
+        },
+        "inference_ms": {
+          "mean": 2.0090837610769086,
+          "median": 2.0044789926032536,
+          "p90": 2.2042833050363697,
+          "p95": 2.2790923008869868
+        },
+        "postprocessing_ms": {
+          "mean": 8.05415223004982,
+          "median": 7.813020994944964,
+          "p90": 8.892670802015346,
+          "p95": 8.990448250551708
+        },
+        "tracking_ms": {
+          "mean": 0.0001832767803635862,
+          "median": 0.000166997779160738,
+          "p90": 0.0002500019036233425,
+          "p95": 0.0002500019036233425
+        },
+        "counting_publication_ms": {
+          "mean": 0.00029112754014527635,
+          "median": 0.00029199873097240925,
+          "p90": 0.00037500285543501377,
+          "p95": 0.0004169996827840805
+        },
+        "rendering_ms": {
+          "mean": 0.00010645907928442789,
+          "median": 8.399365469813347e-05,
+          "p90": 0.000166997779160738,
+          "p95": 0.0002090091584250331
+        },
+        "encoding_ms": {
+          "mean": 7.95934142337905e-05,
+          "median": 8.300412446260452e-05,
+          "p90": 0.00012500095181167126,
+          "p95": 0.00012500095181167126
+        },
+        "total_ms": {
+          "mean": 11.663583992275461,
+          "median": 11.472354497527704,
+          "p90": 12.733712208864745,
+          "p95": 13.003427399235079
+        }
+      },
+      "predicted_crossings": 0,
+      "detection_instances": 10194,
+      "maximum_observed_active_tracks": 0,
+      "class_counts": {
+        "Hatchback": 0,
+        "Sedan": 0,
+        "SUV": 0,
+        "MUV": 0,
+        "Bus": 0,
+        "Truck": 0,
+        "Three-wheeler": 0,
+        "Two-wheeler": 0,
+        "LCV": 0,
+        "Mini-bus": 0,
+        "Tempo-traveller": 0,
+        "Bicycle": 0,
+        "Van": 0,
+        "Others": 0
+      },
+      "direction_counts": {
+        "A_to_B": 0,
+        "B_to_A": 0
+      },
+      "class_direction": [
+        {
+          "class_name": "Hatchback",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Hatchback",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Sedan",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Sedan",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "SUV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "SUV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "MUV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "MUV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Bus",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Bus",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Truck",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Truck",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Three-wheeler",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Three-wheeler",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Two-wheeler",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Two-wheeler",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "LCV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "LCV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Mini-bus",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Mini-bus",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Tempo-traveller",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Tempo-traveller",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Bicycle",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Bicycle",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Van",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Van",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Others",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Others",
+          "direction": "B_to_A",
+          "count": 0
+        }
+      ],
+      "identity_transitions": [],
+      "track_id_policy": "New public ID after maximum absence; raw ByteTrack revival is recorded",
+      "ground_truth_reviewed": false,
+      "counting_metrics": null,
+      "timing_boundary": {
+        "warmup_iterations": 10,
+        "warmup_excluded": true,
+        "measured_frames": "all 900, decoded anew for every mode",
+        "stages": "decode, internal preprocess/inference/postprocess, detector outer call, tracking, counting plus evidence publication, rendering, encoding, table writes",
+        "wall": "After startup/warmup/encoder initialization through all frames, encoder finalization and detailed artifact export; summary/completion hashing separately outside processing wall.",
+        "realtime_target": "Complete pipeline effective FPS >= source FPS, zero dropped/failed frames; no live capture/display or GUI network included"
+      }
+    },
+    {
+      "status": "processing_complete_human_review_pending",
+      "run_id": "phase3b_tracking_v2",
+      "mode": "tracking",
+      "protocol_sha256": "ff25e26a085b90aec48f0df88083fcc8a92f6b56973caf96eee270b1c90594de",
+      "actual_checkpoint_verified": true,
+      "device": "mps",
+      "frames": 900,
+      "source_fps": 30.0,
+      "full_clip": true,
+      "dropped_frames": 0,
+      "failed_frames": 0,
+      "model_load_and_first_decode_seconds": 0.46204349999607075,
+      "warmup_seconds": 0.7818982080061687,
+      "setup_seconds": 0.00463616699562408,
+      "processing_wall_seconds": 10.534805375005817,
+      "encoding_finalize_seconds": 8.300412446260452e-08,
+      "effective_fps": 85.43109891097566,
+      "realtime_target_pass": false,
+      "achieved_source_fps_ratio": 2.8477032970325222,
+      "latency_ms": {
+        "decode_ms": {
+          "mean": 0.5137754699131215,
+          "median": 0.5026875005569309,
+          "p90": 0.5496121986652724,
+          "p95": 0.5852978894836269
+        },
+        "detector_ms": {
+          "mean": 10.568085692470454,
+          "median": 10.124937500222586,
+          "p90": 11.583129099744838,
+          "p95": 11.873145846038824
+        },
+        "preprocessing_ms": {
+          "mean": 0.43289309805711834,
+          "median": 0.40866649942472577,
+          "p90": 0.4923375046928414,
+          "p95": 0.579408301564399
+        },
+        "inference_ms": {
+          "mean": 1.7931242578520648,
+          "median": 1.7551250057294965,
+          "p90": 1.9886712048901245,
+          "p95": 2.047949696861906
+        },
+        "postprocessing_ms": {
+          "mean": 7.866956031971818,
+          "median": 7.531687500886619,
+          "p90": 8.656966402486432,
+          "p95": 8.693468402634608
+        },
+        "tracking_ms": {
+          "mean": 0.45644921528744614,
+          "median": 0.4481249998207204,
+          "p90": 0.5588292042375542,
+          "p95": 0.5891357497603166
+        },
+        "counting_publication_ms": {
+          "mean": 0.00023201481477978328,
+          "median": 0.0002090091584250331,
+          "p90": 0.00033300602808594704,
+          "p95": 0.0003339962859172374
+        },
+        "rendering_ms": {
+          "mean": 7.61843693908304e-05,
+          "median": 8.298957254737616e-05,
+          "p90": 0.00012500095181167126,
+          "p95": 0.00016600824892520905
+        },
+        "encoding_ms": {
+          "mean": 5.161415578590499e-05,
+          "median": 4.1996827349066734e-05,
+          "p90": 8.399365469813347e-05,
+          "p95": 0.00012500095181167126
+        },
+        "total_ms": {
+          "mean": 11.555741316567744,
+          "median": 11.125833007099573,
+          "p90": 12.613024401071016,
+          "p95": 12.92176189890597
+        }
+      },
+      "predicted_crossings": 0,
+      "detection_instances": 10194,
+      "maximum_observed_active_tracks": 22,
+      "class_counts": {
+        "Hatchback": 0,
+        "Sedan": 0,
+        "SUV": 0,
+        "MUV": 0,
+        "Bus": 0,
+        "Truck": 0,
+        "Three-wheeler": 0,
+        "Two-wheeler": 0,
+        "LCV": 0,
+        "Mini-bus": 0,
+        "Tempo-traveller": 0,
+        "Bicycle": 0,
+        "Van": 0,
+        "Others": 0
+      },
+      "direction_counts": {
+        "A_to_B": 0,
+        "B_to_A": 0
+      },
+      "class_direction": [
+        {
+          "class_name": "Hatchback",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Hatchback",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Sedan",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Sedan",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "SUV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "SUV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "MUV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "MUV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Bus",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Bus",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Truck",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Truck",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Three-wheeler",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Three-wheeler",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Two-wheeler",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Two-wheeler",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "LCV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "LCV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Mini-bus",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Mini-bus",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Tempo-traveller",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Tempo-traveller",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Bicycle",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Bicycle",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Van",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Van",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Others",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Others",
+          "direction": "B_to_A",
+          "count": 0
+        }
+      ],
+      "identity_transitions": [
+        {
+          "frame": 32,
+          "raw_tracker_id": 8,
+          "previous_public_id": 8,
+          "new_public_id": 29,
+          "reason": "reappearance_after_maximum_absence"
+        },
+        {
+          "frame": 468,
+          "raw_tracker_id": 461,
+          "previous_public_id": 115,
+          "new_public_id": 179,
+          "reason": "reappearance_after_maximum_absence"
+        }
+      ],
+      "track_id_policy": "New public ID after maximum absence; raw ByteTrack revival is recorded",
+      "ground_truth_reviewed": false,
+      "counting_metrics": null,
+      "timing_boundary": {
+        "warmup_iterations": 10,
+        "warmup_excluded": true,
+        "measured_frames": "all 900, decoded anew for every mode",
+        "stages": "decode, internal preprocess/inference/postprocess, detector outer call, tracking, counting plus evidence publication, rendering, encoding, table writes",
+        "wall": "After startup/warmup/encoder initialization through all frames, encoder finalization and detailed artifact export; summary/completion hashing separately outside processing wall.",
+        "realtime_target": "Complete pipeline effective FPS >= source FPS, zero dropped/failed frames; no live capture/display or GUI network included"
+      }
+    },
+    {
+      "status": "processing_complete_human_review_pending",
+      "run_id": "phase3b_counting_v2",
+      "mode": "counting",
+      "protocol_sha256": "ff25e26a085b90aec48f0df88083fcc8a92f6b56973caf96eee270b1c90594de",
+      "actual_checkpoint_verified": true,
+      "device": "mps",
+      "frames": 900,
+      "source_fps": 30.0,
+      "full_clip": true,
+      "dropped_frames": 0,
+      "failed_frames": 0,
+      "model_load_and_first_decode_seconds": 0.44338620800408535,
+      "warmup_seconds": 0.7413125000020955,
+      "setup_seconds": 0.004803499992704019,
+      "processing_wall_seconds": 10.787072207996971,
+      "encoding_finalize_seconds": 8.298957254737616e-08,
+      "effective_fps": 83.4332043622353,
+      "realtime_target_pass": false,
+      "achieved_source_fps_ratio": 2.78110681207451,
+      "latency_ms": {
+        "decode_ms": {
+          "mean": 0.5145042546145204,
+          "median": 0.5035630019847304,
+          "p90": 0.5449918986414559,
+          "p95": 0.5890187385375611
+        },
+        "detector_ms": {
+          "mean": 10.655712748703081,
+          "median": 10.207270504906774,
+          "p90": 11.686716096301097,
+          "p95": 11.97595624398673
+        },
+        "preprocessing_ms": {
+          "mean": 0.45240351880137397,
+          "median": 0.4182914999546483,
+          "p90": 0.5783208936918527,
+          "p95": 0.7420500005537175
+        },
+        "inference_ms": {
+          "mean": 1.835874861086874,
+          "median": 1.7958964963327162,
+          "p90": 2.0321003001299687,
+          "p95": 2.1090045040182304
+        },
+        "postprocessing_ms": {
+          "mean": 7.894755334434901,
+          "median": 7.54737549868878,
+          "p90": 8.67477089050226,
+          "p95": 8.718338143080473
+        },
+        "tracking_ms": {
+          "mean": 0.47154151246003395,
+          "median": 0.4621874977601692,
+          "p90": 0.574874687299598,
+          "p95": 0.6049860516213812
+        },
+        "counting_publication_ms": {
+          "mean": 0.17353663316397513,
+          "median": 0.012166492524556816,
+          "p90": 0.01797469594748691,
+          "p95": 0.021919053688179698
+        },
+        "rendering_ms": {
+          "mean": 9.556231412312223e-05,
+          "median": 8.300412446260452e-05,
+          "p90": 0.000166997779160738,
+          "p95": 0.000166997779160738
+        },
+        "encoding_ms": {
+          "mean": 5.401666082131366e-05,
+          "median": 4.1996827349066734e-05,
+          "p90": 8.399365469813347e-05,
+          "p95": 0.00012500095181167126
+        },
+        "total_ms": {
+          "mean": 11.833426588111454,
+          "median": 11.316187505144626,
+          "p90": 12.999174403375946,
+          "p95": 13.581547910871441
+        }
+      },
+      "predicted_crossings": 40,
+      "detection_instances": 10194,
+      "maximum_observed_active_tracks": 22,
+      "class_counts": {
+        "Hatchback": 28,
+        "Sedan": 1,
+        "SUV": 0,
+        "MUV": 0,
+        "Bus": 0,
+        "Truck": 0,
+        "Three-wheeler": 3,
+        "Two-wheeler": 8,
+        "LCV": 0,
+        "Mini-bus": 0,
+        "Tempo-traveller": 0,
+        "Bicycle": 0,
+        "Van": 0,
+        "Others": 0
+      },
+      "direction_counts": {
+        "A_to_B": 12,
+        "B_to_A": 28
+      },
+      "class_direction": [
+        {
+          "class_name": "Hatchback",
+          "direction": "A_to_B",
+          "count": 8
+        },
+        {
+          "class_name": "Hatchback",
+          "direction": "B_to_A",
+          "count": 20
+        },
+        {
+          "class_name": "Sedan",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Sedan",
+          "direction": "B_to_A",
+          "count": 1
+        },
+        {
+          "class_name": "SUV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "SUV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "MUV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "MUV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Bus",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Bus",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Truck",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Truck",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Three-wheeler",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Three-wheeler",
+          "direction": "B_to_A",
+          "count": 3
+        },
+        {
+          "class_name": "Two-wheeler",
+          "direction": "A_to_B",
+          "count": 4
+        },
+        {
+          "class_name": "Two-wheeler",
+          "direction": "B_to_A",
+          "count": 4
+        },
+        {
+          "class_name": "LCV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "LCV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Mini-bus",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Mini-bus",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Tempo-traveller",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Tempo-traveller",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Bicycle",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Bicycle",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Van",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Van",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Others",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Others",
+          "direction": "B_to_A",
+          "count": 0
+        }
+      ],
+      "identity_transitions": [
+        {
+          "frame": 32,
+          "raw_tracker_id": 8,
+          "previous_public_id": 8,
+          "new_public_id": 29,
+          "reason": "reappearance_after_maximum_absence"
+        },
+        {
+          "frame": 468,
+          "raw_tracker_id": 461,
+          "previous_public_id": 115,
+          "new_public_id": 179,
+          "reason": "reappearance_after_maximum_absence"
+        }
+      ],
+      "track_id_policy": "New public ID after maximum absence; raw ByteTrack revival is recorded",
+      "ground_truth_reviewed": false,
+      "counting_metrics": null,
+      "timing_boundary": {
+        "warmup_iterations": 10,
+        "warmup_excluded": true,
+        "measured_frames": "all 900, decoded anew for every mode",
+        "stages": "decode, internal preprocess/inference/postprocess, detector outer call, tracking, counting plus evidence publication, rendering, encoding, table writes",
+        "wall": "After startup/warmup/encoder initialization through all frames, encoder finalization and detailed artifact export; summary/completion hashing separately outside processing wall.",
+        "realtime_target": "Complete pipeline effective FPS >= source FPS, zero dropped/failed frames; no live capture/display or GUI network included"
+      }
+    },
+    {
+      "status": "processing_complete_human_review_pending",
+      "run_id": "phase3b_complete_v2",
+      "mode": "complete",
+      "protocol_sha256": "ff25e26a085b90aec48f0df88083fcc8a92f6b56973caf96eee270b1c90594de",
+      "actual_checkpoint_verified": true,
+      "device": "mps",
+      "frames": 900,
+      "source_fps": 30.0,
+      "full_clip": true,
+      "dropped_frames": 0,
+      "failed_frames": 0,
+      "model_load_and_first_decode_seconds": 0.4372671250021085,
+      "warmup_seconds": 0.7537110420089448,
+      "setup_seconds": 0.005109749996336177,
+      "processing_wall_seconds": 14.98921629099641,
+      "encoding_finalize_seconds": 0.001614875000086613,
+      "effective_fps": 60.043165868558724,
+      "realtime_target_pass": true,
+      "achieved_source_fps_ratio": 2.001438862285291,
+      "latency_ms": {
+        "decode_ms": {
+          "mean": 0.5241463640737088,
+          "median": 0.5048124949098565,
+          "p90": 0.5536836062674411,
+          "p95": 0.5963315968983807
+        },
+        "detector_ms": {
+          "mean": 11.35728461698616,
+          "median": 11.109437502454966,
+          "p90": 12.404861891991459,
+          "p95": 12.64076184888836
+        },
+        "preprocessing_ms": {
+          "mean": 0.757015361806326,
+          "median": 0.75900049705524,
+          "p90": 0.9057252944330685,
+          "p95": 0.9421934533747843
+        },
+        "inference_ms": {
+          "mean": 1.963524219803124,
+          "median": 1.9237079977756366,
+          "p90": 2.168229404196609,
+          "p95": 2.2353285377903376
+        },
+        "postprocessing_ms": {
+          "mean": 8.117277825594,
+          "median": 7.907104503829032,
+          "p90": 9.061995598312933,
+          "p95": 9.164295854134252
+        },
+        "tracking_ms": {
+          "mean": 0.523002748862685,
+          "median": 0.5093540021334775,
+          "p90": 0.6328788920654915,
+          "p95": 0.6682579973130486
+        },
+        "counting_publication_ms": {
+          "mean": 0.1672097554385093,
+          "median": 0.013437500456348062,
+          "p90": 0.019213094492442906,
+          "p95": 0.02346184628549959
+        },
+        "rendering_ms": {
+          "mean": 0.12442163122209927,
+          "median": 0.10743749589892104,
+          "p90": 0.1419159976649098,
+          "p95": 0.1583874982316047
+        },
+        "encoding_ms": {
+          "mean": 3.7826507922404238,
+          "median": 3.3332704988424666,
+          "p90": 5.265616404358298,
+          "p95": 5.482569057494402
+        },
+        "total_ms": {
+          "mean": 16.50226539760802,
+          "median": 16.4060624956619,
+          "p90": 18.487129498680588,
+          "p95": 19.18621524091577
+        }
+      },
+      "predicted_crossings": 40,
+      "detection_instances": 10194,
+      "maximum_observed_active_tracks": 22,
+      "class_counts": {
+        "Hatchback": 28,
+        "Sedan": 1,
+        "SUV": 0,
+        "MUV": 0,
+        "Bus": 0,
+        "Truck": 0,
+        "Three-wheeler": 3,
+        "Two-wheeler": 8,
+        "LCV": 0,
+        "Mini-bus": 0,
+        "Tempo-traveller": 0,
+        "Bicycle": 0,
+        "Van": 0,
+        "Others": 0
+      },
+      "direction_counts": {
+        "A_to_B": 12,
+        "B_to_A": 28
+      },
+      "class_direction": [
+        {
+          "class_name": "Hatchback",
+          "direction": "A_to_B",
+          "count": 8
+        },
+        {
+          "class_name": "Hatchback",
+          "direction": "B_to_A",
+          "count": 20
+        },
+        {
+          "class_name": "Sedan",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Sedan",
+          "direction": "B_to_A",
+          "count": 1
+        },
+        {
+          "class_name": "SUV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "SUV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "MUV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "MUV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Bus",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Bus",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Truck",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Truck",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Three-wheeler",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Three-wheeler",
+          "direction": "B_to_A",
+          "count": 3
+        },
+        {
+          "class_name": "Two-wheeler",
+          "direction": "A_to_B",
+          "count": 4
+        },
+        {
+          "class_name": "Two-wheeler",
+          "direction": "B_to_A",
+          "count": 4
+        },
+        {
+          "class_name": "LCV",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "LCV",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Mini-bus",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Mini-bus",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Tempo-traveller",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Tempo-traveller",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Bicycle",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Bicycle",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Van",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Van",
+          "direction": "B_to_A",
+          "count": 0
+        },
+        {
+          "class_name": "Others",
+          "direction": "A_to_B",
+          "count": 0
+        },
+        {
+          "class_name": "Others",
+          "direction": "B_to_A",
+          "count": 0
+        }
+      ],
+      "identity_transitions": [
+        {
+          "frame": 32,
+          "raw_tracker_id": 8,
+          "previous_public_id": 8,
+          "new_public_id": 29,
+          "reason": "reappearance_after_maximum_absence"
+        },
+        {
+          "frame": 468,
+          "raw_tracker_id": 461,
+          "previous_public_id": 115,
+          "new_public_id": 179,
+          "reason": "reappearance_after_maximum_absence"
+        }
+      ],
+      "track_id_policy": "New public ID after maximum absence; raw ByteTrack revival is recorded",
+      "ground_truth_reviewed": false,
+      "counting_metrics": null,
+      "timing_boundary": {
+        "warmup_iterations": 10,
+        "warmup_excluded": true,
+        "measured_frames": "all 900, decoded anew for every mode",
+        "stages": "decode, internal preprocess/inference/postprocess, detector outer call, tracking, counting plus evidence publication, rendering, encoding, table writes",
+        "wall": "After startup/warmup/encoder initialization through all frames, encoder finalization and detailed artifact export; summary/completion hashing separately outside processing wall.",
+        "realtime_target": "Complete pipeline effective FPS >= source FPS, zero dropped/failed frames; no live capture/display or GUI network included"
+      }
+    }
+  ],
+  "review_status": "human_annotation_required"
+}

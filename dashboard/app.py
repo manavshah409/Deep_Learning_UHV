@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import streamlit as st
 
 from dashboard import presentation as ui
+from dashboard import video_analytics
 from dashboard.new_data import views
 
 st.set_page_config(
@@ -24,7 +25,7 @@ with st.sidebar:
         key="application_mode",
     )
     st.divider()
-    selected = st.radio("Navigate", views.NAV, key="navigation")
+    selected = st.radio("Navigate", views.NAV + ["Video Traffic Analytics"], key="navigation")
     st.divider()
     st.caption("Selected detector")
     st.markdown("**YOLOv8s · Epoch 22**")
@@ -32,7 +33,10 @@ with st.sidebar:
         "14 vehicle classes · 640 px — Research evaluation, not a live-video system"
     )
 try:
-    views.render(selected, mode)
+    if selected == "Video Traffic Analytics":
+        video_analytics.render()
+    else:
+        views.render(selected, mode)
 except (OSError, ValueError, KeyError, TypeError, ImportError):
     st.error(
         "This page could not load an artifact. Other pages remain available. See README_DEMO.md for troubleshooting."
