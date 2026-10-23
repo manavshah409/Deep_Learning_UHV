@@ -1,0 +1,48 @@
+{
+  "full_local_suite": {
+    "passed": 219,
+    "seconds": 6.6,
+    "command": ".venv/bin/python -m pytest -q",
+    "includes": 215,
+    "includes_note": "215 eligible cases plus four pre-existing untracked Phase3 test cases; no Phase3 changes staged"
+  },
+  "fusion_specific": {
+    "passed": 15,
+    "seconds": 0.78,
+    "command": ".venv/bin/python -m pytest -q tests/test_fusion.py"
+  },
+  "ruff": {
+    "passed": true,
+    "scope": [
+      "src/evaluation/fusion.py",
+      "scripts/stage_f_fusion.py",
+      "scripts/benchmark_stage_f.py",
+      "scripts/validate_stage_f.py",
+      "tests/test_fusion.py",
+      "components/fusion.py",
+      "components/e3.py"
+    ],
+    "existing_app_diagnostics_unchanged": {
+      "I001": 1
+    }
+  },
+  "artifact_validation": {
+    "passed": true,
+    "local_hashes_verified": true,
+    "historical_files_unchanged": 138,
+    "folds": 5,
+    "training_search_rows": 855,
+    "decision": "reject_E4_retain_E1",
+    "reserved_accessed": false
+  },
+  "dashboard": {
+    "passed": true,
+    "exceptions": [],
+    "rejection_status_rendered": true
+  },
+  "scientific_process_exit_codes": {
+    "CV": 0,
+    "latency": 0
+  },
+  "deviation": "Lint-only unused-local rename in benchmark wrapper; recorded executed source hash retained and exactly reconstructed by validator. No added inference or search."
+}

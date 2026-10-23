@@ -1,0 +1,651 @@
+{
+  "scope": "calibration-only five-fold model selection; preselected checkpoints and historical calibration exposure limit independence",
+  "pooled_oof": {
+    "baseline": {
+      "precision": 0.6204489326679539,
+      "recall": 0.5677240988925251,
+      "harmonic_aggregate_f1": 0.5929166911743924,
+      "macro_class_f1": 0.5861752392899195,
+      "map50": 0.5737779591395278,
+      "map50_95": 0.4828289044955134,
+      "images": 500,
+      "objects": 6148,
+      "predictions_raw": 43608,
+      "predictions_fixed": 6072,
+      "confidence": "training-selected threshold per held-out fold; see fold selections",
+      "matching_iou": 0.5,
+      "ap_score_floor": 0.001,
+      "nms_iou": "detector-specific; see inference configuration",
+      "max_detections": 300,
+      "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+      "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching",
+      "scope": "Calibration500 pooled out-of-fold model-selection evidence"
+    },
+    "union": {
+      "precision": 0.567557020613786,
+      "recall": 0.5991956039108655,
+      "harmonic_aggregate_f1": 0.582947343888051,
+      "macro_class_f1": 0.5774252055629453,
+      "map50": 0.6020221101829593,
+      "map50_95": 0.46601106114449903,
+      "images": 500,
+      "objects": 6148,
+      "predictions_raw": 54329,
+      "predictions_fixed": 6831,
+      "confidence": "training-selected threshold per held-out fold; see fold selections",
+      "matching_iou": 0.5,
+      "ap_score_floor": 0.001,
+      "nms_iou": "detector-specific; see inference configuration",
+      "max_detections": 300,
+      "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+      "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching",
+      "scope": "Calibration500 pooled out-of-fold model-selection evidence"
+    },
+    "wbf": {
+      "precision": 0.6291629670899431,
+      "recall": 0.5763365005659439,
+      "harmonic_aggregate_f1": 0.601592273521952,
+      "macro_class_f1": 0.5947049943245059,
+      "map50": 0.5888125606509489,
+      "map50_95": 0.4924316057869659,
+      "images": 500,
+      "objects": 6148,
+      "predictions_raw": 43608,
+      "predictions_fixed": 6243,
+      "confidence": "training-selected threshold per held-out fold; see fold selections",
+      "matching_iou": 0.5,
+      "ap_score_floor": 0.001,
+      "nms_iou": "detector-specific; see inference configuration",
+      "max_detections": 300,
+      "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+      "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching",
+      "scope": "Calibration500 pooled out-of-fold model-selection evidence"
+    },
+    "recovery": {
+      "precision": 0.5987313881423197,
+      "recall": 0.5749643972991179,
+      "harmonic_aggregate_f1": 0.586607255470101,
+      "macro_class_f1": 0.5788011408387811,
+      "map50": 0.5588143468105897,
+      "map50_95": 0.46717904885485945,
+      "images": 500,
+      "objects": 6148,
+      "predictions_raw": 44069,
+      "predictions_fixed": 6533,
+      "confidence": "training-selected threshold per held-out fold; see fold selections",
+      "matching_iou": 0.5,
+      "ap_score_floor": 0.001,
+      "nms_iou": "detector-specific; see inference configuration",
+      "max_detections": 300,
+      "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+      "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching",
+      "scope": "Calibration500 pooled out-of-fold model-selection evidence"
+    }
+  },
+  "fold_metrics": {
+    "baseline": [
+      {
+        "precision": 0.683335639949813,
+        "recall": 0.5402782848248349,
+        "harmonic_aggregate_f1": 0.6034442727999513,
+        "macro_class_f1": 0.583453269899448,
+        "map50": 0.5931728648042256,
+        "map50_95": 0.5032816254377905,
+        "images": 100,
+        "objects": 1209,
+        "predictions_raw": 8452,
+        "predictions_fixed": 1124,
+        "confidence": 0.4,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.6078725533307037,
+        "recall": 0.5517023796613694,
+        "harmonic_aggregate_f1": 0.578427016075682,
+        "macro_class_f1": 0.5693663183484318,
+        "map50": 0.6362988290874657,
+        "map50_95": 0.505301874354557,
+        "images": 100,
+        "objects": 1207,
+        "predictions_raw": 8272,
+        "predictions_fixed": 1198,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.6013282875051166,
+        "recall": 0.5940055578548964,
+        "harmonic_aggregate_f1": 0.5976444928083274,
+        "macro_class_f1": 0.5947602163293588,
+        "map50": 0.6170368243587477,
+        "map50_95": 0.5115886997702751,
+        "images": 100,
+        "objects": 1342,
+        "predictions_raw": 9855,
+        "predictions_fixed": 1367,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5867418472549775,
+        "recall": 0.5611889206497863,
+        "harmonic_aggregate_f1": 0.5736809800160355,
+        "macro_class_f1": 0.5591617009970675,
+        "map50": 0.5500319496247694,
+        "map50_95": 0.463879875848955,
+        "images": 100,
+        "objects": 1156,
+        "predictions_raw": 8336,
+        "predictions_fixed": 1174,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5786723863118918,
+        "recall": 0.5719920902217089,
+        "harmonic_aggregate_f1": 0.5753128467079391,
+        "macro_class_f1": 0.5719098040727005,
+        "map50": 0.5771568797723532,
+        "map50_95": 0.48543721834409154,
+        "images": 100,
+        "objects": 1234,
+        "predictions_raw": 8693,
+        "predictions_fixed": 1209,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      }
+    ],
+    "union": [
+      {
+        "precision": 0.5499997312043797,
+        "recall": 0.6326522482789819,
+        "harmonic_aggregate_f1": 0.5884378034039927,
+        "macro_class_f1": 0.5851122942970436,
+        "map50": 0.66925703586808,
+        "map50_95": 0.5401671359131863,
+        "images": 100,
+        "objects": 1209,
+        "predictions_raw": 10845,
+        "predictions_fixed": 1390,
+        "confidence": 0.5,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5337519498814477,
+        "recall": 0.5845166947482444,
+        "harmonic_aggregate_f1": 0.5579820681880014,
+        "macro_class_f1": 0.5551222948293278,
+        "map50": 0.6005123592065836,
+        "map50_95": 0.47341909794302134,
+        "images": 100,
+        "objects": 1207,
+        "predictions_raw": 10346,
+        "predictions_fixed": 1307,
+        "confidence": 0.55,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5951305411636023,
+        "recall": 0.6127735857362238,
+        "harmonic_aggregate_f1": 0.6038232133968089,
+        "macro_class_f1": 0.5940323192204083,
+        "map50": 0.6460437116659227,
+        "map50_95": 0.4965187711619043,
+        "images": 100,
+        "objects": 1342,
+        "predictions_raw": 12121,
+        "predictions_fixed": 1489,
+        "confidence": 0.55,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.6120251665528625,
+        "recall": 0.5615409866695023,
+        "harmonic_aggregate_f1": 0.5856972185998989,
+        "macro_class_f1": 0.5502254720088383,
+        "map50": 0.6081245994357306,
+        "map50_95": 0.461455822268712,
+        "images": 100,
+        "objects": 1156,
+        "predictions_raw": 10148,
+        "predictions_fixed": 1292,
+        "confidence": 0.55,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.516537488413605,
+        "recall": 0.5795382528579456,
+        "harmonic_aggregate_f1": 0.5462272766361458,
+        "macro_class_f1": 0.5417421916264725,
+        "map50": 0.5601147855206251,
+        "map50_95": 0.43093283202206933,
+        "images": 100,
+        "objects": 1234,
+        "predictions_raw": 10869,
+        "predictions_fixed": 1353,
+        "confidence": 0.55,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      }
+    ],
+    "wbf": [
+      {
+        "precision": 0.6329784511488263,
+        "recall": 0.6065132171066904,
+        "harmonic_aggregate_f1": 0.6194632954746785,
+        "macro_class_f1": 0.6101517044134795,
+        "map50": 0.6124921640830716,
+        "map50_95": 0.520874255437795,
+        "images": 100,
+        "objects": 1209,
+        "predictions_raw": 8452,
+        "predictions_fixed": 1259,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5899025830985535,
+        "recall": 0.5685059890033232,
+        "harmonic_aggregate_f1": 0.5790066812291589,
+        "macro_class_f1": 0.5742617287814262,
+        "map50": 0.6427251407352204,
+        "map50_95": 0.5076751598269464,
+        "images": 100,
+        "objects": 1207,
+        "predictions_raw": 8272,
+        "predictions_fixed": 1248,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.6533928980660552,
+        "recall": 0.5800369898236498,
+        "harmonic_aggregate_f1": 0.6145335920387158,
+        "macro_class_f1": 0.6094206311033655,
+        "map50": 0.6389279421856645,
+        "map50_95": 0.5218422566861329,
+        "images": 100,
+        "objects": 1342,
+        "predictions_raw": 9855,
+        "predictions_fixed": 1307,
+        "confidence": 0.4,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5800153476937611,
+        "recall": 0.5601113626963874,
+        "harmonic_aggregate_f1": 0.5698896163399254,
+        "macro_class_f1": 0.5545551646726313,
+        "map50": 0.5572959753287028,
+        "map50_95": 0.4677474807879317,
+        "images": 100,
+        "objects": 1156,
+        "predictions_raw": 8336,
+        "predictions_fixed": 1232,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5832960215180963,
+        "recall": 0.5546985373595024,
+        "harmonic_aggregate_f1": 0.5686379560598687,
+        "macro_class_f1": 0.5645342376664816,
+        "map50": 0.569660014621486,
+        "map50_95": 0.4753016583010773,
+        "images": 100,
+        "objects": 1234,
+        "predictions_raw": 8693,
+        "predictions_fixed": 1197,
+        "confidence": 0.4,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      }
+    ],
+    "recovery": [
+      {
+        "precision": 0.6514117827755667,
+        "recall": 0.547320304383999,
+        "harmonic_aggregate_f1": 0.5948466701560614,
+        "macro_class_f1": 0.5722272638244084,
+        "map50": 0.5722079110774928,
+        "map50_95": 0.48397965923725383,
+        "images": 100,
+        "objects": 1209,
+        "predictions_raw": 8546,
+        "predictions_fixed": 1218,
+        "confidence": 0.4,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5839171486284893,
+        "recall": 0.5552623201915476,
+        "harmonic_aggregate_f1": 0.5692293437888633,
+        "macro_class_f1": 0.5591354258775018,
+        "map50": 0.6221667158030844,
+        "map50_95": 0.49317240620789543,
+        "images": 100,
+        "objects": 1207,
+        "predictions_raw": 8355,
+        "predictions_fixed": 1281,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5858011796593442,
+        "recall": 0.6002554449875284,
+        "harmonic_aggregate_f1": 0.5929402365175109,
+        "macro_class_f1": 0.5893572415342209,
+        "map50": 0.6079622943680535,
+        "map50_95": 0.500970944996544,
+        "images": 100,
+        "objects": 1342,
+        "predictions_raw": 9953,
+        "predictions_fixed": 1465,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5661278414708423,
+        "recall": 0.5681341411543287,
+        "harmonic_aggregate_f1": 0.5671292169260321,
+        "macro_class_f1": 0.5512660611534288,
+        "map50": 0.5349705265626161,
+        "map50_95": 0.4458019061765857,
+        "images": 100,
+        "objects": 1156,
+        "predictions_raw": 8427,
+        "predictions_fixed": 1265,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      },
+      {
+        "precision": 0.5614945481962901,
+        "recall": 0.5837425926849481,
+        "harmonic_aggregate_f1": 0.5724024686980628,
+        "macro_class_f1": 0.5691495795846219,
+        "map50": 0.5695260218280012,
+        "map50_95": 0.4762178214991744,
+        "images": 100,
+        "objects": 1234,
+        "predictions_raw": 8788,
+        "predictions_fixed": 1304,
+        "confidence": 0.35,
+        "matching_iou": 0.5,
+        "ap_score_floor": 0.001,
+        "nms_iou": "detector-specific; see inference configuration",
+        "max_detections": 300,
+        "fixed_method": "Same-class score-descending greedy IoU>=.5; macro over represented GT classes",
+        "confusion_method": "Rows GT, columns prediction, last row/column background; separate class-agnostic score-descending IoU>=.5 matching"
+      }
+    ]
+  },
+  "fold_mean_std": {
+    "baseline": {
+      "precision": {
+        "mean": 0.6115901428705005,
+        "sample_std": 0.041735952698280246
+      },
+      "recall": {
+        "mean": 0.5638334466425192,
+        "sample_std": 0.0205299885055313
+      },
+      "harmonic_aggregate_f1": {
+        "mean": 0.5857019216815871,
+        "sample_std": 0.013809201617346238
+      },
+      "macro_class_f1": {
+        "mean": 0.5757302619294014,
+        "sample_std": 0.013705809936619169
+      },
+      "map50": {
+        "mean": 0.5947394695295124,
+        "sample_std": 0.03367015164880799
+      },
+      "map50_95": {
+        "mean": 0.4938978587511338,
+        "sample_std": 0.0193890061548422
+      }
+    },
+    "union": {
+      "precision": {
+        "mean": 0.5614889754431795,
+        "sample_std": 0.040643705116404236
+      },
+      "recall": {
+        "mean": 0.5942043536581796,
+        "sample_std": 0.028279399620640255
+      },
+      "harmonic_aggregate_f1": {
+        "mean": 0.5764335160449695,
+        "sample_std": 0.023627248296676187
+      },
+      "macro_class_f1": {
+        "mean": 0.5652469143964182,
+        "sample_std": 0.022933907728246286
+      },
+      "map50": {
+        "mean": 0.6168104983393884,
+        "sample_std": 0.042310454060219056
+      },
+      "map50_95": {
+        "mean": 0.4804987318617787,
+        "sample_std": 0.04088548688206195
+      }
+    },
+    "wbf": {
+      "precision": {
+        "mean": 0.6079170603050585,
+        "sample_std": 0.03318639645135036
+      },
+      "recall": {
+        "mean": 0.5739732191979106,
+        "sample_std": 0.020549792029034404
+      },
+      "harmonic_aggregate_f1": {
+        "mean": 0.5903062282284693,
+        "sample_std": 0.02475445187114642
+      },
+      "macro_class_f1": {
+        "mean": 0.5825846933274769,
+        "sample_std": 0.025791727460294036
+      },
+      "map50": {
+        "mean": 0.604220247390829,
+        "sample_std": 0.03921725542675513
+      },
+      "map50_95": {
+        "mean": 0.4986881622079767,
+        "sample_std": 0.02556049335318608
+      }
+    },
+    "recovery": {
+      "precision": {
+        "mean": 0.5897505001461065,
+        "sample_std": 0.03608381812261482
+      },
+      "recall": {
+        "mean": 0.5709429606804705,
+        "sample_std": 0.021417598835280688
+      },
+      "harmonic_aggregate_f1": {
+        "mean": 0.5793095872173061,
+        "sample_std": 0.013461765865210855
+      },
+      "macro_class_f1": {
+        "mean": 0.5682271143948363,
+        "sample_std": 0.014436676708698583
+      },
+      "map50": {
+        "mean": 0.5813666939278497,
+        "sample_std": 0.03445524964738132
+      },
+      "map50_95": {
+        "mean": 0.48002854762349073,
+        "sample_std": 0.021289322015576588
+      }
+    }
+  },
+  "gates": {
+    "union": {
+      "passed": false,
+      "checks": {
+        "ap_noninferiority": false,
+        "precision_noninferiority": false,
+        "recall_noninferiority": true,
+        "minimum_improvement": false,
+        "distributed_class_gain": false,
+        "duplicate_safety": false,
+        "reproducible": true
+      },
+      "deltas": {
+        "map50_95": -0.016817843351014383,
+        "precision": -0.05289191205416788,
+        "recall": 0.031471505018340395,
+        "macro_class_f1": -0.008750033726974249
+      },
+      "duplicates_baseline": 139,
+      "duplicates_candidate": 174,
+      "both_precision_recall_70": false
+    },
+    "wbf": {
+      "passed": false,
+      "checks": {
+        "ap_noninferiority": true,
+        "precision_noninferiority": true,
+        "recall_noninferiority": true,
+        "minimum_improvement": false,
+        "distributed_class_gain": false,
+        "duplicate_safety": true,
+        "reproducible": true
+      },
+      "deltas": {
+        "map50_95": 0.009602701291452465,
+        "precision": 0.008714034421989258,
+        "recall": 0.008612401673418812,
+        "macro_class_f1": 0.008529755034586306
+      },
+      "duplicates_baseline": 139,
+      "duplicates_candidate": 132,
+      "both_precision_recall_70": false
+    },
+    "recovery": {
+      "passed": false,
+      "checks": {
+        "ap_noninferiority": false,
+        "precision_noninferiority": false,
+        "recall_noninferiority": true,
+        "minimum_improvement": false,
+        "distributed_class_gain": false,
+        "duplicate_safety": true,
+        "reproducible": true
+      },
+      "deltas": {
+        "map50_95": -0.015649855640653965,
+        "precision": -0.021717544525634125,
+        "recall": 0.007240298406592793,
+        "macro_class_f1": -0.0073740984511384555
+      },
+      "duplicates_baseline": 139,
+      "duplicates_candidate": 140,
+      "both_precision_recall_70": false
+    }
+  },
+  "selected_fusion": null,
+  "strongest_candidate": "wbf",
+  "decision": "reject_E4_retain_E1",
+  "elapsed_seconds": 89.16982670800644,
+  "reserved_accessed": false
+}

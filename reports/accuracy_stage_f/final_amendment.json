@@ -1,0 +1,38 @@
+{
+  "payload": {
+    "purpose": "rejected_fusion_latency_only_not_selected",
+    "family": "wbf",
+    "configuration": {
+      "id": "wbf_0.45_0.70",
+      "algorithm": "wbf",
+      "iou": 0.45,
+      "weights": [
+        0.7,
+        0.3
+      ]
+    },
+    "threshold": 0.35,
+    "context": null,
+    "rule": "Fold0 training-selected representative; no additional all-calibration parameter search",
+    "parent_protocol_hash": "2d15fd4edde67eb07b8ddf5b6e1090204fdda28a2b2b4601f366ea8e95f6c199",
+    "stage_f_protocol_hash": "7cddd248587f612a0f1e0852799e7dbead93c0202fe7bb8d2983d92ab3144f7a",
+    "input_hashes": {
+      "parent_protocol": "2d15fd4edde67eb07b8ddf5b6e1090204fdda28a2b2b4601f366ea8e95f6c199",
+      "calibration": "a436b78d561516d61ae2f7eedb4a8acb4a58222d2c13df80411ae807f288c502",
+      "mapping": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+      "E1_checkpoint": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+      "E1_predictions": "7389243341d9c945e2307ae99cdfd42435bf8949bbe607546db65eda5f7bdbcc",
+      "E3_checkpoint": "2d035a95206475b1e9939c5686a731a2427f84918389a2aa4d59148ed5ba5df9",
+      "E3_predictions": "1db478fb2bfdab67c3378c3cf02d5b6d6f72809c8231be79649485496c08727c"
+    },
+    "source_sha256": {
+      "src/evaluation/fusion.py": "6f3f62a6943a6561c351316a87741cbf783aff74c8ed5bc180a3baa40d9f55c4",
+      "scripts/stage_f_fusion.py": "fd7e7e820b5c98e92f67b954331f00fc21feb0135a44b2dd5020119a4b68b9de",
+      "src/evaluation/common_metrics.py": "118d6f81753ce82ff320e6e33174448e83ca5b70cebda21d4cdec400b81509a4",
+      "src/evaluation/complementarity.py": "2984303fc8a8a71f1fd8bb5a26b5fc0834a53416ab87612ca75e6cb1a498e08d",
+      "src/evaluation/comparison_protocol.py": "d5ad9b063b0148de70e714ff4419ac48aabc597bb294c2973727f2569fb6c080"
+    },
+    "reserved_accessed": false
+  },
+  "canonical_sha256": "b56302f44a8e2eb2a14b467bf9be9451bd9520a63afddf6ae1660fe0de6bea41"
+}

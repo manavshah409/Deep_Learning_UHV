@@ -14,7 +14,7 @@ def render_e3_section():
         return
     st.header("E3 Faster R-CNN · calibration-only closeout")
     st.caption(
-        "20/20 epochs completed · selected epoch 13 · calibration500 only. No matched E1 comparison; reserved1500 and fusion remain unstarted."
+        "Historical Stage D snapshot:20/20 epochs · selected epoch13 · calibration500. Stage E/F now provide matched calibration and fusion-feasibility evidence. Reserved comparison remains unstarted."
     )
     columns = st.columns(3)
     for column, label, key in zip(

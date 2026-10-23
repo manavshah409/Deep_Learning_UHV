@@ -1,0 +1,7 @@
+{
+  "reason": "Non-behavioral unused-local rename after measurement; executed source hash retained unchanged in latency.json. Reverse this exact one-line rename to reconstruct and verify executed bytes.",
+  "executed_sha256": "18b0f4aad0659db90b48fb892265546ab10d8947482675ee63c6f4ea27b90c08",
+  "committed_sha256": "c2467fa1c54f5385a2d223aa0d372f8d2718d227e7b6a7acacec24214bc8aa1b",
+  "old_line": "        plan = verify_seal(json.loads((OUT / \"protocol.json\").read_text()))",
+  "new_line": "        _plan = verify_seal(json.loads((OUT / \"protocol.json\").read_text()))"
+}

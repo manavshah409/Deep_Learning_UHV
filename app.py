@@ -8,6 +8,7 @@ Date: 13 September 2026
 import streamlit as st
 
 from components.e3 import render_e3_section
+from components.fusion import render_fusion_section
 
 # Configure wide layout and page metadata
 st.set_page_config(
@@ -27,15 +28,19 @@ if css_path.is_file():
     )
 
 # Import modular components
+from components.baseline import (
+    render_baseline_section,
+    render_e1_section,
+    render_e2_section,
+)
+from components.dataset import render_dataset_section
+from components.eda import render_eda_section
 from components.hero import render_hero
 from components.metrics import render_metrics
 from components.pipeline import render_pipeline
-from components.dataset import render_dataset_section
-from components.eda import render_eda_section
-from components.training import render_training_section
-from components.testing import render_testing_section
 from components.status import render_status_section
-from components.baseline import render_baseline_section, render_e1_section, render_e2_section
+from components.testing import render_testing_section
+from components.training import render_training_section
 
 
 def main():
@@ -132,6 +137,7 @@ def main():
     render_e1_section()
     render_e2_section()
     render_e3_section()
+    render_fusion_section()
     render_metrics()
     render_pipeline()
     render_dataset_section()

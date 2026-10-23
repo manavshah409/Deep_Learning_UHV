@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-22",
+  "evidence": [
+    {
+      "source": "reports/figures/class_distribution.png",
+      "sha256": "12f0d689b086f17e7d5962bcc0880a557e27d5898a8e5779e5c85fff259c9d98"
+    },
+    {
+      "source": "reports/annotation_samples/final_baseline_seed42_v2/train_17614.jpg",
+      "sha256": "a9ba0f4ff8fe04b3741cacfddaf248de2614513187694f7d32eda8a57d9b9fac"
+    },
+    {
+      "source": "reports/figures/E1_yolov8s_uvh26_mv_640_seed42_results.png",
+      "sha256": "3e8340876f95293c17f3b561cd8e850448fe58d1df31292302a03c668071dc68"
+    },
+    {
+      "source": "reports/evaluations/yolov8s_uvh26_mv_e1_validation_seed42_v2/BoxPR_curve.png",
+      "sha256": "9e1bc9e5584ce99c9496654643c083720e673d04ee4b70a4524f8af755e55c8d"
+    },
+    {
+      "source": "src/experiments/stage_b.py",
+      "lines": [
+        30,
+        32
+      ],
+      "sha256": "041b3aa48070d5e882cd67705245b2cf6570f0b3f558f004e202c09b75e65f5f"
+    },
+    {
+      "source": "reports/evaluations/E3_fasterrcnn_best_calibration500_v1/training_curves.png",
+      "sha256": "ac2ef4e4fdd8e98c2ae8b94e79f6ec75773bd96ba9fc848ab3d3d2318b80cc2b"
+    },
+    {
+      "source": "runs/E3_fasterrcnn_best_calibration500_v1/qualitative/21566.jpg",
+      "sha256": "7b0064c9ddbd092664888483cc04f437192b9a43d7495a73ba3a66d8ced49820"
+    },
+    {
+      "source": "reports/evaluations/E3_fasterrcnn_best_calibration500_v1/confusion_matrix.png",
+      "sha256": "a1949f1a41f1c24fcd1577a65074cc31d213139478e3938f7cd813c24230ebc4"
+    },
+    {
+      "source": "src/video/counting.py",
+      "lines": [
+        21,
+        23
+      ],
+      "sha256": "1b0642f09ffca14f16c5d77b6250848e58bf90fbbf0fbc891c111d043c0c4583"
+    },
+    {
+      "source": "src/data/common.py",
+      "lines": [
+        75,
+        92
+      ],
+      "sha256": "8fa2ea507d8f4f474efa3cefb52ff796f06150ce3172d9b1a8a2814acdbc3a3c"
+    },
+    {
+      "source": "src/experiments/faster_rcnn.py",
+      "lines": [
+        25,
+        29
+      ],
+      "sha256": "383949a37825bdd75dc5de96e5525f4c5e92d9ff6b9f54f508de10a8187ce9ac"
+    },
+    {
+      "source": "reports/annotation_samples/final_baseline_seed42_v2/train_17614.jpg",
+      "sha256": "a9ba0f4ff8fe04b3741cacfddaf248de2614513187694f7d32eda8a57d9b9fac"
+    }
+  ],
+  "scope": "Existing project evidence only; no new training or reserved evaluation"
+}

@@ -1,0 +1,243 @@
+{
+  "files": {
+    "reports/accuracy_stage_f/per_class_results.csv": {
+      "sha256": "4f47e2ec13b501c6d65e0e555eeec77a3d554926eaf9a8a4aeab8577162e5768",
+      "bytes": 7374
+    },
+    "reports/accuracy_stage_f/baseline_oof_confusion.json": {
+      "sha256": "fbe740d26633c0bb7753878c855646c980ff5d38722c2018f36a6802f9561e3b",
+      "bytes": 2529
+    },
+    "reports/accuracy_stage_f/wbf_oof_errors.json": {
+      "sha256": "cf48d6f4df1395f5a5494c83ddec99592eb6e1711a25ce1e03a4906856d0cda2",
+      "bytes": 110
+    },
+    "reports/accuracy_stage_f/baseline_oof_per_class.csv": {
+      "sha256": "55f6f3adcd22eb27e6e20027fb021ecfd0e9c5f58a341f9e81fd0c0b24e11fc7",
+      "bytes": 1830
+    },
+    "reports/accuracy_stage_f/model_performance_addendum.csv": {
+      "sha256": "2ed0e739e35db5ffd75f2f79f2a2329f6f94a499d6066a1c9b12aa4c6d0a99b6",
+      "bytes": 701
+    },
+    "reports/accuracy_stage_f/fold_selections.json": {
+      "sha256": "54cddef9c5a940822223c59b44f240b9d2bff3351429293f55c933685400880a",
+      "bytes": 38722
+    },
+    "reports/accuracy_stage_f/union_oof_per_class.csv": {
+      "sha256": "3cbb59dbfa8e6cd2f370f56680fe0ee1d37e414dc47f4fe38369952d5af43e4f",
+      "bytes": 1824
+    },
+    "reports/accuracy_stage_f/baseline_oof_errors.json": {
+      "sha256": "9acc2fa61cc8169ab0a5e096dac3ead7d28bfb979a7ff88a3f541b5d6af616fa",
+      "bytes": 110
+    },
+    "reports/accuracy_stage_f/CV_COMPLETE.json": {
+      "sha256": "a777084daabaac715e8636799f2a6ffb0609735c4a367e9c3c42e5c16099b7b2",
+      "bytes": 120
+    },
+    "reports/accuracy_stage_f/dashboard_validation.json": {
+      "sha256": "9c07005bef3d3458d4e45567f861430bfa450e07808d8de1cfee2bbb7ec42423",
+      "bytes": 78
+    },
+    "reports/accuracy_stage_f/benchmark_lint_provenance.json": {
+      "sha256": "e540617b82695346cce3b6fc9d55999fcb7c1fa49988f796b4efcafd914f7eeb",
+      "bytes": 576
+    },
+    "reports/accuracy_stage_f/union_oof_metrics.json": {
+      "sha256": "127c843b78645173e1aa1250741f1e9693572705cd415be149c8c91cbf096aa4",
+      "bytes": 850
+    },
+    "reports/accuracy_stage_f/recovery_oof_confusion.json": {
+      "sha256": "a34162c82745623d3f30eed765dc137137b214f1d7bbfa164a241824265ebf13",
+      "bytes": 2528
+    },
+    "reports/accuracy_stage_f/documentation_validation.json": {
+      "sha256": "ff81ece034027146acedc12f79ee11aeb23f5c16259cc19acf4ff3b0ba8e7bcf",
+      "bytes": 106
+    },
+    "reports/accuracy_stage_f/folds.json": {
+      "sha256": "59244ef22ef39ae1fb8d2160c2d4958bc1be59b3a5bdd129b83953ba670b948c",
+      "bytes": 6523
+    },
+    "reports/accuracy_stage_f/union_oof_pr_curves.npz": {
+      "sha256": "d217ee4d4299f9b0c5a3f7f1627236318c4bbc38c2b5e8cbd9de92c7beb922b7",
+      "bytes": 32139
+    },
+    "reports/accuracy_stage_f/tests_summary.json": {
+      "sha256": "37e1ef1c2e8718adaf5a67e095fa7bedc0898eda87fc719d7c9580ab5c49b814",
+      "bytes": 1346
+    },
+    "reports/accuracy_stage_f/wbf_oof_metrics.json": {
+      "sha256": "0c72f901d5bde011b7a2a88727ee9030bb3ce673b2f88664bdb3866a55593f45",
+      "bytes": 850
+    },
+    "reports/accuracy_stage_f/baseline_oof_pr_curves.npz": {
+      "sha256": "98ab2a78bb25e199baeaaf94bd34d12c4e6dba47389e4814c1345157b92ce3cd",
+      "bytes": 23329
+    },
+    "reports/accuracy_stage_f/baseline_oof_metrics.json": {
+      "sha256": "f79106bc2fe5c1a4831a8c4e4ef16bd89c732c8775a8ae7aac5cda2a4219084e",
+      "bytes": 851
+    },
+    "reports/accuracy_stage_f/latency_prediction_parity.json": {
+      "sha256": "28797da34adf68ed33d92cb3673ccc42a1740217c8f0baba5cfb01b155a55a1a",
+      "bytes": 13927
+    },
+    "reports/accuracy_stage_f/recovery_oof_image_counts.csv": {
+      "sha256": "718cd51315082542ffa0236b2e0fd7578fde209903058a3ca36e83abab816bdc",
+      "bytes": 11607
+    },
+    "reports/accuracy_stage_f/fusion_pr_curves.png": {
+      "sha256": "18fca5e84600809fac7d6d470689ec9da3af9fab4d1a110f82a921adb02cb77a",
+      "bytes": 92842
+    },
+    "reports/accuracy_stage_f/recovery_oof_per_class.csv": {
+      "sha256": "fc598ed006d860efe9e4bb9fab43920ce108ceb6cde2bf3cd1955938646b9127",
+      "bytes": 1830
+    },
+    "reports/accuracy_stage_f/recovery_oof_metrics.json": {
+      "sha256": "220fba75f76c8f8bb09e8e965adf811323e79745e4b00664a728fd6000d7fa57",
+      "bytes": 851
+    },
+    "reports/accuracy_stage_f/final_amendment.json": {
+      "sha256": "385687b5189cd340c8ff63488df8c7e95075b60ab67d0abf9ab0533d7baf7202",
+      "bytes": 1951
+    },
+    "reports/accuracy_stage_f/wbf_oof_confusion.json": {
+      "sha256": "b421b71b84fb13d4f826fe8d3a9bb90efd2a0e3fcfa9050f0b2da6eeccb5e602",
+      "bytes": 2526
+    },
+    "reports/accuracy_stage_f/recovery_oof_errors.json": {
+      "sha256": "8255e108cb0007acd2cc66549427b6b939a2788202bd64ed6987c09f03864644",
+      "bytes": 110
+    },
+    "reports/accuracy_stage_f/wbf_oof_image_counts.csv": {
+      "sha256": "40f71c3095d483abe63fd3879965f0bb2c6c6837a35801d0c920b5dfb579d1e2",
+      "bytes": 11579
+    },
+    "reports/accuracy_stage_f/wbf_oof_per_class.csv": {
+      "sha256": "538b542ce97bffc76d830623fddee6f2d6d1f06ac97522dca25b7a9324e025c9",
+      "bytes": 1821
+    },
+    "reports/accuracy_stage_f/validation.json": {
+      "sha256": "ae05bd3d6792ee9268009772285a01816bab896f9c5f55e002e7524cbf7e11e6",
+      "bytes": 203
+    },
+    "reports/accuracy_stage_f/union_oof_image_counts.csv": {
+      "sha256": "eb0dec184eb58ce082af471eb445ce7b35ede1f017c00468a6c7a2a95a16cbc7",
+      "bytes": 11700
+    },
+    "reports/accuracy_stage_f/protocol.json": {
+      "sha256": "6da4447c55729637ee1e1c25401739924111d3858d92914845b2be46a74b4fa0",
+      "bytes": 8804
+    },
+    "reports/accuracy_stage_f/progress.json": {
+      "sha256": "0b50cbeead1227ea8a4af49968307f61855887575225145f15dabe00b72a8d82",
+      "bytes": 87
+    },
+    "reports/accuracy_stage_f/latency_samples.csv": {
+      "sha256": "ee1bf13b01d29d086029ffd2bfd8392b756a2fb850642f4e922053a85b839a73",
+      "bytes": 17862
+    },
+    "reports/accuracy_stage_f/union_oof_confusion.json": {
+      "sha256": "b7921adebe50143c61d71a838400dae7305742b93deea7c43a2255fefa2035ac",
+      "bytes": 2530
+    },
+    "reports/accuracy_stage_f/cross_validation_results.json": {
+      "sha256": "abb325519819e101ad72b6f4f2056e290bfcf4dcbdc5be49a52d5c2ad7508000",
+      "bytes": 25454
+    },
+    "reports/accuracy_stage_f/reproducibility.json": {
+      "sha256": "8c5d56b48c4589884bf6fcdb7dcbbee043278753d8c4c158f587d7d9b84bed5c",
+      "bytes": 3143
+    },
+    "reports/accuracy_stage_f/union_oof_errors.json": {
+      "sha256": "cf13eb8ea765622ae8c88c8ff5b57c6133c6475fbc8b992df70cb8d29359e79e",
+      "bytes": 111
+    },
+    "reports/accuracy_stage_f/baseline_oof_image_counts.csv": {
+      "sha256": "8027f47a696b3dc929e32ba7073aa6eb1d09a1e97a097b88dc5f26a289c845d2",
+      "bytes": 11572
+    },
+    "reports/accuracy_stage_f/latency.json": {
+      "sha256": "d1a580561cb19fa9c9af11094779ed7339c8372e2598077d19b7ceabbe1f6315",
+      "bytes": 5855
+    },
+    "reports/accuracy_stage_f/wbf_oof_pr_curves.npz": {
+      "sha256": "fc302a41d2f7bfdf9573d5b00dcc30bcd7759a4b9989da75d53df26c5b44fdf9",
+      "bytes": 23445
+    },
+    "reports/accuracy_stage_f/training_search.csv": {
+      "sha256": "c2fb4f284adbb874838e186037e6d979fb0823dfd4b1d6f1774aeb66f65584b5",
+      "bytes": 93042
+    },
+    "reports/accuracy_stage_f/recovery_oof_pr_curves.npz": {
+      "sha256": "282a6c4e21b5a848dbb380fc2e6079ab074987ce858e7e90651d9e5d3d41ccaa",
+      "bytes": 24266
+    },
+    "reports/accuracy_stage_f/integrity.json": {
+      "sha256": "e0c4a3d89990ca993749d52ffb95cd829f47909406adf439df0ca489bd51ed67",
+      "bytes": 20006
+    },
+    "configs/accuracy/E4_fusion.yaml": {
+      "sha256": "c9a7c97018147e02fb4725d0c463ec34e24f180b35b1995a0e2e19b1e8caaa4e",
+      "bytes": 1726
+    },
+    "src/evaluation/fusion.py": {
+      "sha256": "6f3f62a6943a6561c351316a87741cbf783aff74c8ed5bc180a3baa40d9f55c4",
+      "bytes": 8602
+    },
+    "scripts/stage_f_fusion.py": {
+      "sha256": "fd7e7e820b5c98e92f67b954331f00fc21feb0135a44b2dd5020119a4b68b9de",
+      "bytes": 25960
+    },
+    "scripts/benchmark_stage_f.py": {
+      "sha256": "c2467fa1c54f5385a2d223aa0d372f8d2718d227e7b6a7acacec24214bc8aa1b",
+      "bytes": 14718
+    },
+    "scripts/validate_stage_f.py": {
+      "sha256": "b58ba899e798f522975948b7c5d9357549f56eca268e2c1a665d58241dc9cd43",
+      "bytes": 9473
+    },
+    "docs/phase_reports/E4_FUSION_FEASIBILITY.md": {
+      "sha256": "631ce30c900e70f822fdb2a2316b3964280bc7b2e391f56b2442ef9b35497080",
+      "bytes": 13285
+    },
+    "docs/reproducibility/E4_FUSION.md": {
+      "sha256": "04d847837841bc3ccfae308a552dd1209ba29f7d82bf7cc18d3d8705534ce913",
+      "bytes": 1826
+    },
+    "docs/faculty_review/E4_STAGE_F_SUMMARY.md": {
+      "sha256": "ffd00e2885d90809efbde5bf6ce57d667c7e5320e4c9b1535a45a0167658b598",
+      "bytes": 1622
+    },
+    "docs/ALL_MODEL_PERFORMANCE.md": {
+      "sha256": "152d15c02fc91ad8d14c3b19f61bc08c7e9803fc9a612dc6dc7dc5c2584f5974",
+      "bytes": 8625
+    },
+    "docs/progress/2026-09-24_STAGE_F_DELIVERY.md": {
+      "sha256": "a55b1a22dc9aeeb46e1791825a68b0cce9a65b0240348dede04b8bc87b0bee51",
+      "bytes": 2120
+    },
+    "docs/progress/2026-09-23_STAGE_F1.md": {
+      "sha256": "6a023b27caee21e29d9a2aba4ac250a3b3cb686fc143b68bebfa97e8822ad2dd",
+      "bytes": 1166
+    },
+    "docs/progress/2026-09-23_STAGE_F2_F3.md": {
+      "sha256": "6666b1e10b2f6d38e426173e88b21eab9b51442de9a35618283d8885dc14ba39",
+      "bytes": 727
+    },
+    "docs/progress/2026-09-23_STAGE_F4_F5.md": {
+      "sha256": "87b67066b0564984078219d85d014df8b31b883aeb3655a27fdfff8ca11399b6",
+      "bytes": 2144
+    },
+    "docs/progress/2026-09-23_STAGE_F6.md": {
+      "sha256": "8d8b9a59dc5e2c7420f08d1ea9b295332af544be75aaec9f53e06d0e75caea30",
+      "bytes": 776
+    }
+  },
+  "reserved_accessed": false,
+  "decision": "reject_E4_retain_E1",
+  "large_predictions_committed": false
+}

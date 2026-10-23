@@ -1,0 +1,225 @@
+{
+  "payload": {
+    "id": "E4_stageF_calibration_CV_v1",
+    "parent_protocol_hash": "2d15fd4edde67eb07b8ddf5b6e1090204fdda28a2b2b4601f366ea8e95f6c199",
+    "input_hashes": {
+      "parent_protocol": "2d15fd4edde67eb07b8ddf5b6e1090204fdda28a2b2b4601f366ea8e95f6c199",
+      "calibration": "a436b78d561516d61ae2f7eedb4a8acb4a58222d2c13df80411ae807f288c502",
+      "mapping": "6fd0b458fed2cb174c924d4fa9ead86db0a292dc7c55fd0f4d4b3b9b20d08ea8",
+      "E1_checkpoint": "9f1045381024445b50e33539791da224b732d61781c73b347013477ebb077fab",
+      "E1_predictions": "7389243341d9c945e2307ae99cdfd42435bf8949bbe607546db65eda5f7bdbcc",
+      "E3_checkpoint": "2d035a95206475b1e9939c5686a731a2427f84918389a2aa4d59148ed5ba5df9",
+      "E3_predictions": "1db478fb2bfdab67c3378c3cf02d5b6d6f72809c8231be79649485496c08727c"
+    },
+    "seed": 42,
+    "scope": "cached calibration500 only; no inference except final latency",
+    "candidate_grid": [
+      {
+        "id": "baseline",
+        "algorithm": "baseline"
+      },
+      {
+        "id": "union_0.45",
+        "algorithm": "union",
+        "iou": 0.45
+      },
+      {
+        "id": "wbf_0.45_0.70",
+        "algorithm": "wbf",
+        "iou": 0.45,
+        "weights": [
+          0.7,
+          0.3
+        ]
+      },
+      {
+        "id": "wbf_0.45_0.85",
+        "algorithm": "wbf",
+        "iou": 0.45,
+        "weights": [
+          0.85,
+          0.15
+        ]
+      },
+      {
+        "id": "recovery_0.45_0.35",
+        "algorithm": "recovery",
+        "iou": 0.45,
+        "addition_threshold": 0.35
+      },
+      {
+        "id": "recovery_0.45_0.45",
+        "algorithm": "recovery",
+        "iou": 0.45,
+        "addition_threshold": 0.45
+      },
+      {
+        "id": "recovery_0.45_0.55",
+        "algorithm": "recovery",
+        "iou": 0.45,
+        "addition_threshold": 0.55
+      },
+      {
+        "id": "union_0.55",
+        "algorithm": "union",
+        "iou": 0.55
+      },
+      {
+        "id": "wbf_0.55_0.70",
+        "algorithm": "wbf",
+        "iou": 0.55,
+        "weights": [
+          0.7,
+          0.3
+        ]
+      },
+      {
+        "id": "wbf_0.55_0.85",
+        "algorithm": "wbf",
+        "iou": 0.55,
+        "weights": [
+          0.85,
+          0.15
+        ]
+      },
+      {
+        "id": "recovery_0.55_0.35",
+        "algorithm": "recovery",
+        "iou": 0.55,
+        "addition_threshold": 0.35
+      },
+      {
+        "id": "recovery_0.55_0.45",
+        "algorithm": "recovery",
+        "iou": 0.55,
+        "addition_threshold": 0.45
+      },
+      {
+        "id": "recovery_0.55_0.55",
+        "algorithm": "recovery",
+        "iou": 0.55,
+        "addition_threshold": 0.55
+      },
+      {
+        "id": "union_0.65",
+        "algorithm": "union",
+        "iou": 0.65
+      },
+      {
+        "id": "wbf_0.65_0.70",
+        "algorithm": "wbf",
+        "iou": 0.65,
+        "weights": [
+          0.7,
+          0.3
+        ]
+      },
+      {
+        "id": "wbf_0.65_0.85",
+        "algorithm": "wbf",
+        "iou": 0.65,
+        "weights": [
+          0.85,
+          0.15
+        ]
+      },
+      {
+        "id": "recovery_0.65_0.35",
+        "algorithm": "recovery",
+        "iou": 0.65,
+        "addition_threshold": 0.35
+      },
+      {
+        "id": "recovery_0.65_0.45",
+        "algorithm": "recovery",
+        "iou": 0.65,
+        "addition_threshold": 0.45
+      },
+      {
+        "id": "recovery_0.65_0.55",
+        "algorithm": "recovery",
+        "iou": 0.65,
+        "addition_threshold": 0.55
+      }
+    ],
+    "operating_grid": [
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6
+    ],
+    "algorithms": {
+      "baseline": "Unchanged E1 low-floor detections; operating threshold selected on training fold from same grid as fusion. Stage E .34 is not used to choose OOF threshold.",
+      "union": "Concatenate E1 then E3 scores unchanged; stable class-aware NMS, suppress IoU>grid threshold, top300. No score calibration.",
+      "wbf": "E1-anchored asymmetric two-model WBF. Process E1 descending score, pair at most one unused same-class E3 with highest IoU>=threshold. Box=(w1*s1*b1+w3*s3*b3)/(w1*s1+w3*s3); score=w1*s1+w3*s3. Unmatched E1 unchanged; unmatched E3 not added.",
+      "recovery": "Preserve all E1 values; add high-confidence E3 only when max ANY-class IoU against E1 anchors with score>=.20 and previously accepted additions is <grid IoU. Never evict E1 at max300. Training-fold GT support<100: E1-only. Among eligible classes, E3 training AP50:95<E1 class AP: require max(grid addition threshold,.55); otherwise grid addition threshold. Class rules fitted only on training folds."
+    },
+    "selection_rule": "For each family/train fold maximize macro class F1 over parameter x operating grid; round12 tie then prefer higher operating threshold, larger E1 weight, higher addition threshold, lower IoU, lexical candidate ID. No AP-based parameter search beyond fixed weak-class rule.",
+    "cross_validation": "Five deterministic image folds. Training labels only select params/threshold/support/weak-class rules; selected model evaluated once per held-out fold. Pooled low-floor OOF predictions determine AP; fold-specific threshold-filtered predictions separately determine fixed P/R/F1/confusion. Full OOF pool used to compare families, so this is model-selection evidence, not an unbiased final test.",
+    "gate": {
+      "AP50_95_delta_min": -0.005,
+      "precision_delta_min": -0.01,
+      "recall_delta_min": -0.01,
+      "gain": "macro class F1 >=.02 OR AP50:95 >=.01",
+      "distributed": "For the metric meeting gain gate, at least two classes with >=100 GT improve by >=.01; mean per-class gain excluding largest-GT class is positive.",
+      "duplicates": "Increase in duplicate count <=max(10,25% baseline duplicate count) AND duplicate/prediction-rate increase <=.02.",
+      "reproduction": "Bitwise-equivalent canonical prediction hashes from repeated deterministic fusion with same configuration.",
+      "target": "Report P>=.70 and R>=.70; never tune to force target."
+    },
+    "family_selection": "Among passing families maximize pooled OOF macro F1, then AP50:95, then fixed family order. If none pass reject E4; strongest nonbaseline OOF macro-F1 family is benchmarked only.",
+    "final_fit": "If pass, tune winning family on all calibration500 using exactly same grid/rule, freeze final code/config and evaluate once. If reject, no extra search/full-set score: benchmark fold0 training-selected configuration of strongest OOF family, explicitly unselected.",
+    "AP": {
+      "score_floor": 0.001,
+      "iou_thresholds": [
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.8500000000000001,
+        0.9,
+        0.95
+      ],
+      "maxDets": [
+        1,
+        10,
+        300
+      ],
+      "area": "original-pixel box area; COCO all/small[0,32^2]/medium[32^2,96^2]/large[96^2,1e10]",
+      "absent_classes": "COCO precision=-1 excluded from macro AP; zero-prediction supported class AP=0",
+      "category_ids": "COCO1..14; common0..13; mapping order fixed"
+    },
+    "matching_iou": 0.5,
+    "PR_curves": "COCO low-floor interpolated PR at IoU .50, distinct from fold-specific operating points.",
+    "latency": "Existing Stage D seed42 calibration100 sample; MPS float32 batch1,10warmups,one timed pass; actual E1 then E3 inference then fusion. Include file decode, both detector preprocess/inference/NMS, coordinate conversion, CPU transfer and fusion/filter; report load excluded. No video FPS.",
+    "forbidden": [
+      "reports/accuracy_stage_a/protocol_v2/final_evaluation_1500.json",
+      "data/processed/uvh26_mv_yolo_v1/subsets/baseline_seed42_v2/val_manifest.json",
+      "Any image/label path not in hash-verified calibration500 allowlist; do not enumerate or hash reserved paths"
+    ],
+    "source_sha256": {
+      "src/evaluation/fusion.py": "6f3f62a6943a6561c351316a87741cbf783aff74c8ed5bc180a3baa40d9f55c4",
+      "scripts/stage_f_fusion.py": "fd7e7e820b5c98e92f67b954331f00fc21feb0135a44b2dd5020119a4b68b9de",
+      "src/evaluation/common_metrics.py": "118d6f81753ce82ff320e6e33174448e83ca5b70cebda21d4cdec400b81509a4",
+      "src/evaluation/complementarity.py": "2984303fc8a8a71f1fd8bb5a26b5fc0834a53416ab87612ca75e6cb1a498e08d",
+      "src/evaluation/comparison_protocol.py": "d5ad9b063b0148de70e714ff4419ac48aabc597bb294c2973727f2569fb6c080"
+    },
+    "packages": {
+      "torch": "2.14.0",
+      "torchvision": "0.29.0",
+      "ultralytics": "8.4.146",
+      "numpy": "2.5.3",
+      "pycocotools": "2.0.11"
+    },
+    "reserved_accessed": false,
+    "created_utc": "2026-09-23T18:27:42.196783+00:00"
+  },
+  "canonical_sha256": "7cddd248587f612a0f1e0852799e7dbead93c0202fe7bb8d2983d92ab3144f7a"
+}

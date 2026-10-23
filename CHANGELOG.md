@@ -5,6 +5,13 @@
 - Added session-local exports/analytics, bounded uploads, device fallback, focused tests, demo requirements and launch instructions.
 - Preserved the historical dashboard and experiment evidence. Video UI explicitly deferred pending a safe adapter; no training or reserved evaluation started.
 
+## Accuracy Improvement Stage F — 2026-09-24
+
+- Verified preserved E1/E3 checkpoints, calibration500 labels, Stage E prediction bundles and parent protocol; froze a new bounded fusion amendment.
+- Completed five-fold training-only selection over19 configurations and9 thresholds; exported OOF metrics, class support, errors, confusion/PR data and reproducibility hashes.
+- Formally rejected E4: strongest WBF AP50:95 gain0.009603 and macro-F1 gain0.008530 missed the preregistered improvement threshold. Retain E1; no extra search.
+- Measured actual sequential E1+E3+fusion on the existing calibration100 sample:156.78ms mean,6.38 still images/s. No reserved access, new training, crop classifier or Phase3 work.
+
 ## Accuracy Improvement Stage E — 2026-09-23
 
 - Added fail-closed calibration manifest/path guards, common prediction schema and independent COCO evaluator for E1/E3.

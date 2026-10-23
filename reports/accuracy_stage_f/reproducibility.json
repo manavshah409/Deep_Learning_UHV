@@ -1,0 +1,122 @@
+[
+  {
+    "fold": 0,
+    "family": "baseline",
+    "prediction_hash": "e05767e6b2679f5209c22fccd598442c7acf7f4d7ecafa3b537f51f85eb84783",
+    "equal": true
+  },
+  {
+    "fold": 0,
+    "family": "union",
+    "prediction_hash": "6873f9f7aad54b9a3a6600979dc246eb0ece3cacb5c7af4416bc4f4fec41320a",
+    "equal": true
+  },
+  {
+    "fold": 0,
+    "family": "wbf",
+    "prediction_hash": "66e117b8c8c077de1a5653ec93e516c541a0ec74bd9e5b9de64025c39afeefa7",
+    "equal": true
+  },
+  {
+    "fold": 0,
+    "family": "recovery",
+    "prediction_hash": "15ae68c71f5663d10bdb26922b5afb603b4975f78139b4006d734ebc128484a0",
+    "equal": true
+  },
+  {
+    "fold": 1,
+    "family": "baseline",
+    "prediction_hash": "c6e261fd4521c15ff8e128274169088cae6e1b3247a08b93e154a5346b12e83e",
+    "equal": true
+  },
+  {
+    "fold": 1,
+    "family": "union",
+    "prediction_hash": "8b8cd784fa8e4813f58c6d1f696769ac04e0b23d82d01daec573c362caad3f3f",
+    "equal": true
+  },
+  {
+    "fold": 1,
+    "family": "wbf",
+    "prediction_hash": "7b944a9cb1b21eb7f6fcab79d342da17c6762b633a5da87b8ee33e6949366721",
+    "equal": true
+  },
+  {
+    "fold": 1,
+    "family": "recovery",
+    "prediction_hash": "60249ea02cc0c67a32b07943ea223c3878b6b6441c7cda99eb18968c49a777b7",
+    "equal": true
+  },
+  {
+    "fold": 2,
+    "family": "baseline",
+    "prediction_hash": "c6b02efe902b99d9d178fcb21ed2923fb9885b904fd63adfdb5f37c338407c65",
+    "equal": true
+  },
+  {
+    "fold": 2,
+    "family": "union",
+    "prediction_hash": "d9b7625f84a79dbf9d16238e0b0e4202af8e07cf76589de8d722286603bcba0d",
+    "equal": true
+  },
+  {
+    "fold": 2,
+    "family": "wbf",
+    "prediction_hash": "ab619924184bc491908e0a5b641780dc5e192e06442a96ff5f060da481f2e513",
+    "equal": true
+  },
+  {
+    "fold": 2,
+    "family": "recovery",
+    "prediction_hash": "c05459a278ab7d2217f0fc6eec1d1374e2ca8f3a4a2afacbc13b741f466d08fa",
+    "equal": true
+  },
+  {
+    "fold": 3,
+    "family": "baseline",
+    "prediction_hash": "238b0eee02ca41c64c5051329ed2cacef4aeed1b085d6fa8b428d99c65593d2c",
+    "equal": true
+  },
+  {
+    "fold": 3,
+    "family": "union",
+    "prediction_hash": "4f7c9e3544a30b56726d8793b0f7b52ea79540c87046ee5d9bf1ec0b1cec4a9c",
+    "equal": true
+  },
+  {
+    "fold": 3,
+    "family": "wbf",
+    "prediction_hash": "a18b190e3f9b68d5bfe576954a6d1b5c777d159a3ba9e4da36a120e8e0e301f1",
+    "equal": true
+  },
+  {
+    "fold": 3,
+    "family": "recovery",
+    "prediction_hash": "ab846526fc7504bba3430b6ded377ccc5068e1f4ef913c51f76281d589a5e776",
+    "equal": true
+  },
+  {
+    "fold": 4,
+    "family": "baseline",
+    "prediction_hash": "375d17bd98be6f7a2ad165b5fd98bcf3d888b59981ca4d89085d314b37d9de6a",
+    "equal": true
+  },
+  {
+    "fold": 4,
+    "family": "union",
+    "prediction_hash": "30056386937c50a12cbdc7c35336602faed4866dd87269c3a6ce2011fe681925",
+    "equal": true
+  },
+  {
+    "fold": 4,
+    "family": "wbf",
+    "prediction_hash": "ba74dfc79ad1e7d586b761dd81343b734b96105da5fd3c9fd671e84098dcd167",
+    "equal": true
+  },
+  {
+    "fold": 4,
+    "family": "recovery",
+    "prediction_hash": "e8c0a2af985554481c25dcce5e65c83e2a98e0f6e5e1d13a7086d9d6e5b1c6dd",
+    "equal": true
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "file": "UVH26_Detailed_Academic_Project_Report.docx",
+    "pages": 25,
+    "embedded_images": 7,
+    "sha256": "3deb342660884882dae227f72eaa54e305d0f576cadc9ae7d887992ac9cbb4ce",
+    "visual_review": "All rendered pages inspected; no clipping or table overflow",
+    "zip_integrity": "passed"
+  },
+  {
+    "file": "UVH26_Three_Member_Faculty_Explanation.docx",
+    "pages": 12,
+    "embedded_images": 1,
+    "sha256": "78a2af5500dbbac7d7fc286cff15a2b347178039f82cbdf8155ac6fcd43962cb",
+    "visual_review": "All rendered pages inspected; no clipping or table overflow",
+    "zip_integrity": "passed"
+  }
+]

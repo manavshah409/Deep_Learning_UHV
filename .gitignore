@@ -19,7 +19,12 @@ reports/annotation_samples/
 *.log
 *.egg-info/
 .ruff_cache/
-deliverables/
+deliverables/*
+!deliverables/final_reports_20261022/
+deliverables/final_reports_20261022/*
+!deliverables/final_reports_20261022/*.docx
+!deliverables/final_reports_20261022/evidence_manifest.json
+!deliverables/final_reports_20261022/document_verification.json
 tmp/
 
 # Preserved invalid preliminary size exports; audit hashes remain tracked.
@@ -39,3 +44,7 @@ reports/accuracy_stage_a/protocol_v1/
 
 # Preserved incomplete Stage E coordinate-export attempt (summary in successful v2).
 reports/comparisons/E1_E3_stageE_v1/
+
+# Machine-local skill link and raw historical test output
+.agents/skills/developing-with-streamlit
+reports/audit/phase3a_final_pytest.txt

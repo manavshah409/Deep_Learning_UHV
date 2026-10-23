@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "local_hashes_verified": true,
+  "historical_files_unchanged": 138,
+  "folds": 5,
+  "training_search_rows": 855,
+  "decision": "reject_E4_retain_E1",
+  "reserved_accessed": false
+}
